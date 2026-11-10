@@ -40,7 +40,7 @@ export function CoverflowCarousel({
   cardWidth = "clamp(200px, 28vw, 360px)",
   gap = 0.08,
   loop = true,
-  showCaption = true,
+  showCaption = false,
   showPagination = true,
   showNavigation = true,
   autoplay = true,
@@ -365,7 +365,7 @@ export function CoverflowCarousel({
         )}
       </div>
 
-      {/* Synchronized Caption */}
+      {/* Synchronized Caption (Disabled - purely visual photo wall) */}
       {showCaption && activeSlide && (
         <div className="mt-3 flex flex-col items-center px-4 text-center">
           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-slate-900 max-w-xl transition-all duration-300">
@@ -407,17 +407,14 @@ export function CoverflowCarousel({
             <img
               src={slides[lightboxIndex].src}
               alt={slides[lightboxIndex].alt}
-              className="max-h-[75vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl border border-white/15"
+              className="max-h-[78vh] w-auto max-w-full rounded-2xl object-contain shadow-2xl border border-white/15"
             />
 
-            {/* Modal Caption */}
-            <div className="mt-4 text-center text-white">
-              <h4 className="text-base sm:text-lg font-bold">
-                {slides[lightboxIndex].title}
-              </h4>
-              <p className="text-xs text-white/70 mt-1">
-                {slides[lightboxIndex].subtitle} ({lightboxIndex + 1} / {count})
-              </p>
+            {/* Modal Photo Counter */}
+            <div className="mt-3 text-center text-white/80">
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/15">
+                {lightboxIndex + 1} / {count}
+              </span>
             </div>
 
             {/* Modal Prev / Next */}

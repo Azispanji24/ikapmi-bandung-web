@@ -15,7 +15,7 @@ function GalleryApp() {
       fade={0.12}
       gap={0.07}
       loop={true}
-      showCaption={true}
+      showCaption={false}
       showNavigation={true}
       autoplay={true}
       autoplayInterval={3500}
