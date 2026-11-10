@@ -4,122 +4,304 @@ import { TeamLanyardRail, LanyardMember } from "./components/ui/team-lanyard-rai
 
 const IKAPMI_OFFICERS: LanyardMember[] = [
   {
-    id: "ketua-umum",
-    name: "M Rifqi Fauzan",
-    role: "Ketua Umum",
-    team: "IKAPMI Bandung · BPH",
-    image: "assets/pengurus/ketua_umum_rifqi.jpg",
-    bio: "Memegang komando kepemimpinan tertinggi, penentu arah kebijakan strategis organisasi, dan representasi resmi IKAPMI Regional Bandung.",
-    tags: ["Ketua Umum", "Astra Nowanta", "2025–2026"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" },
-      { label: "Web", href: "#" }
+    "id": "hafizh-najwal",
+    "name": "Hafizh Najwal",
+    "role": "Ketua Umum",
+    "team": "IKAPMI Bandung · BPH",
+    "image": "assets/pengurus/hafizh-najwal.jpg",
+    "bio": "Memegang pucuk pimpinan tertinggi, penentu arah kebijakan strategis organisasi, dan representasi resmi IKAPMI Regional Bandung.",
+    "tags": [
+      "Ketua Umum",
+      "BPH",
+      "2025–2026"
     ],
-    drop: 10
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 4
   },
   {
-    id: "wakil-ketua",
-    name: "Fadhlan",
-    role: "Wakil Ketua Umum",
-    team: "IKAPMI Bandung · BPH",
-    image: "assets/pengurus/wakil_ketua_fadhlan.jpg",
-    bio: "Membantu Ketua Umum dalam koordinasi kerja lintas bidang, pengawasan internal, dan kesinambungan program kerja kabinet.",
-    tags: ["Wakil Ketua", "Operasional", "BPH"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "muhammad-kahfi",
+    "name": "Muhammad Kahfi",
+    "role": "Sekretaris Umum",
+    "team": "IKAPMI Bandung · BPH",
+    "image": "assets/pengurus/muhammad-kahfi.jpg",
+    "bio": "Bertanggung jawab penuh atas tata kelola administrasi surat-menyurat, pengarsipan resmi, notulensi rapat, dan regulasi keorganisasian.",
+    "tags": [
+      "Sekretaris Umum",
+      "Administrasi",
+      "BPH"
     ],
-    drop: 22
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 8
   },
   {
-    id: "sekretaris-jenderal",
-    name: "Maryam Silva",
-    role: "Sekretaris Jenderal",
-    team: "IKAPMI Bandung · BPH",
-    image: "assets/pengurus/sekretaris_maryam.jpg",
-    bio: "Bertanggung jawab penuh atas tata kelola administrasi surat-menyurat, pengarsipan resmi, notulensi rapat, dan regulasi keorganisasian.",
-    tags: ["Sekjen", "Administrasi", "BPH"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "ramji-al-jamali",
+    "name": "Ramji Al Jamali",
+    "role": "Bidang PSDO",
+    "team": "IKAPMI Bandung · PSDO",
+    "image": "assets/pengurus/ramji-al-jamali.jpg",
+    "bio": "Pengembangan Sumber Daya Organisasi: Mengelola potensi internal, soliditas pengurus, dan pengembangan kapasitas keorganisasian alumni.",
+    "tags": [
+      "PSDO",
+      "Organisasi",
+      "Kapasitas"
     ],
-    drop: 6
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 12
   },
   {
-    id: "bendahara-umum",
-    name: "Ribka Atiyatul",
-    role: "Bendahara Umum",
-    team: "IKAPMI Bandung · BPH",
-    image: "assets/pengurus/bendahara_ribka.jpg",
-    bio: "Mengelola sirkulasi keuangan organisasi, perbendaharaan kas, transparansi anggaran tiap kegiatan, dan pelaporan berkala.",
-    tags: ["Bendahara", "Keuangan", "BPH"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "iddal-wihdatil",
+    "name": "Iddal Wihdatil Jalillah",
+    "role": "Bidang PSDO",
+    "team": "IKAPMI Bandung · PSDO",
+    "image": "assets/pengurus/iddal-wihdatil.jpg",
+    "bio": "Pengembangan Sumber Daya Organisasi: Penguatan keakraban antar-komisariat, upgrading kader, dan pendampingan struktural pengurus.",
+    "tags": [
+      "PSDO",
+      "Kaderisasi",
+      "Soliditas"
     ],
-    drop: 18
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 16
   },
   {
-    id: "bidang-pao",
-    name: "Ahmad Ghozi",
-    role: "Ketua Bidang PAO",
-    team: "IKAPMI Bandung · PAO",
-    image: "assets/pengurus/bidang_pao_ghozi.jpg",
-    bio: "Pengembangan Anggota & Organisasi: Fokus kaderisasi alumni, pendataan per angkatan, dan penguatan persaudaraan internal (IBANES).",
-    tags: ["Kaderisasi", "Soliditas", "PAO"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "wulan-nur-afiq",
+    "name": "Wulan Nur Afiq Ashihab",
+    "role": "Bidang PSDO",
+    "team": "IKAPMI Bandung · PSDO",
+    "image": "assets/pengurus/wulan-nur-afiq.jpg",
+    "bio": "Pengembangan Sumber Daya Organisasi: Tata kelola sumber daya pengurus, database keaktifan, dan regenerasi kepemimpinan santri.",
+    "tags": [
+      "PSDO",
+      "Regenerasi",
+      "SDM"
     ],
-    drop: 24
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 20
   },
   {
-    id: "bidang-pik",
-    name: "Bagas Jabbar",
-    role: "Ketua Bidang PIK",
-    team: "IKAPMI Bandung · PIK",
-    image: "assets/pengurus/bidang_pik_bagas.jpg",
-    bio: "Pendidikan & Informasi Keilmuan: Menggawangi forum intelektual, riset kealumnian, kajian keagamaan, serta pendampingan akademik.",
-    tags: ["Intelektual", "Kajian", "PIK"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "muhammad-fairuzzabadi",
+    "name": "Muhammad Fairuzzabadi",
+    "role": "Bidang PIK",
+    "team": "IKAPMI Bandung · PIK",
+    "image": "assets/pengurus/muhammad-fairuzzabadi.jpg",
+    "bio": "Pengembangan Intelektual & Keislaman: Mengawal kajian keagamaan kontemporer, diskusi ilmiah, serta pembinaan spiritual santri.",
+    "tags": [
+      "PIK",
+      "Intelektual",
+      "Keislaman"
     ],
-    drop: 12
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 4
   },
   {
-    id: "bidang-kominfo",
-    name: "Rahma Muthmainah",
-    role: "Bidang Komunikasi dan Informasi (KOMINFO)",
-    team: "IKAPMI Bandung · KOMINFO",
-    image: "assets/pengurus/bidang_kominfo_rahma.jpg",
-    bio: "Komunikasi & Informasi: Memegang tata kelola media digital (@ikapmi.bandung), publikasi informasi kealumnian, dokumentasi kegiatan, dan sistem web.",
-    tags: ["Kominfo", "Media & Informasi", "Kreatif"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "rizqi-rehan",
+    "name": "Muhammad Rizqi Rehan Hamdillah",
+    "role": "Bidang PIK",
+    "team": "IKAPMI Bandung · PIK",
+    "image": "assets/pengurus/rizqi-rehan.jpg",
+    "bio": "Pengembangan Intelektual & Keislaman: Mengoordinasikan forum keilmuan, riset alumni, dan pendampingan prestasi akademik.",
+    "tags": [
+      "PIK",
+      "Akademik",
+      "Riset"
     ],
-    drop: 4
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 8
   },
   {
-    id: "bidang-olahraga",
-    name: "Liana",
-    role: "Ketua Bidang Olahraga",
-    team: "IKAPMI Bandung · Olahraga",
-    image: "assets/pengurus/bidang_olahraga_liana.jpg",
-    bio: "Olahraga & Kebugaran: Mengkoordinasikan agenda fisik, latihan rutin (futsal, badminton), dan turnamen persahabatan santri Bandung.",
-    tags: ["Sportivitas", "Kebugaran", "Olahraga"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "aulia-advia",
+    "name": "Aulia Advia",
+    "role": "Bidang PIK",
+    "team": "IKAPMI Bandung · PIK",
+    "image": "assets/pengurus/aulia-advia.jpg",
+    "bio": "Pengembangan Intelektual & Keislaman: Program literasi santri, pengkajian kitab, dan penguatan nilai-nilai ke-Ummul Quro-an.",
+    "tags": [
+      "PIK",
+      "Literasi",
+      "Kajian"
     ],
-    drop: 16
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 12
   },
   {
-    id: "bidang-soskem",
-    name: "Nur Hikmah",
-    role: "Ketua Bidang Soskem",
-    team: "IKAPMI Bandung · Soskem",
-    image: "assets/pengurus/bidang_soskem_nurhikmah.jpg",
-    bio: "Sosial Kemasyarakatan: Aksi sosial peduli sesama, advokasi kesejahteraan anggota perantau, serta kolaborasi pengabdian santri.",
-    tags: ["Sosial", "Kemasyarakatan", "Soskem"],
-    links: [
-      { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
+    "id": "isfahani-fadhil",
+    "name": "Muhamad Isfahani Fadhil Rahman",
+    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "team": "IKAPMI Bandung · KOMINFO",
+    "image": "assets/pengurus/isfahani-fadhil.jpg",
+    "bio": "Komunikasi & Informasi: Tata kelola publikasi media sosial, dokumentasi visual, desain grafis, dan siaran warta kealumnian.",
+    "tags": [
+      "KOMINFO",
+      "Media",
+      "Publikasi"
     ],
-    drop: 8
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 16
+  },
+  {
+    "id": "rahma-muthmainah",
+    "name": "Rahma Muthmainah",
+    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "team": "IKAPMI Bandung · KOMINFO",
+    "image": "assets/pengurus/rahma-muthmainah.jpg",
+    "bio": "Komunikasi & Informasi: Mengelola konten digital kreatif (@ikapmi.bandung), branding visual, dan komunikasi publik alumni.",
+    "tags": [
+      "KOMINFO",
+      "Kreatif",
+      "Branding"
+    ],
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 20
+  },
+  {
+    "id": "veron-djuan",
+    "name": "Veron Djuan Sutisna",
+    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "team": "IKAPMI Bandung · KOMINFO",
+    "image": "assets/pengurus/veron-djuan.jpg",
+    "bio": "Komunikasi & Informasi: Pengelolaan dokumentasi multimedia, produksi video kegiatan, dan pemeliharaan website resmi.",
+    "tags": [
+      "KOMINFO",
+      "Multimedia",
+      "Web"
+    ],
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 4
+  },
+  {
+    "id": "novita-dea-naila",
+    "name": "Novita Dea Naila Izdihar",
+    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "team": "IKAPMI Bandung · KOMINFO",
+    "image": "assets/pengurus/novita-dea-naila.jpg",
+    "bio": "Komunikasi & Informasi: Hubungan masyarakat lintas media, penulisan rilis berita acara, dan kampanye digital santri.",
+    "tags": [
+      "KOMINFO",
+      "Humas",
+      "Informasi"
+    ],
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 8
+  },
+  {
+    "id": "fadlan-ahmad",
+    "name": "Fadlan Ahmad Rizki",
+    "role": "Bidang Sosial dan Ekonomi (Soskem)",
+    "team": "IKAPMI Bandung · Soskem",
+    "image": "assets/pengurus/fadlan-ahmad.jpg",
+    "bio": "Sosial & Ekonomi: Aksi sosial kemanusiaan, advokasi kesejahteraan santri perantau, serta inkubasi kewirausahaan mandiri alumni.",
+    "tags": [
+      "Soskem",
+      "Sosial",
+      "Ekonomi"
+    ],
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 12
+  },
+  {
+    "id": "azmi-putri",
+    "name": "Azmi Putri",
+    "role": "Bidang Sosial dan Ekonomi (Soskem)",
+    "team": "IKAPMI Bandung · Soskem",
+    "image": "assets/pengurus/azmi-putri.jpg",
+    "bio": "Sosial & Ekonomi: Program bakti sosial peduli umat, penggalangan dana kemanusiaan, dan kemitraan ekonomi produktif.",
+    "tags": [
+      "Soskem",
+      "Bakti Sosial",
+      "Pengabdian"
+    ],
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 16
+  },
+  {
+    "id": "fadhira-fauziah",
+    "name": "Fadhira Fauziah Hasna",
+    "role": "Bidang Sosial dan Ekonomi (Soskem)",
+    "team": "IKAPMI Bandung · Soskem",
+    "image": "assets/pengurus/fadhira-fauziah.jpg",
+    "bio": "Sosial & Ekonomi: Pemberdayaan potensi ekonomi kreatif santri, merchandise kealumnian, dan jaring pengaman sosial perantauan.",
+    "tags": [
+      "Soskem",
+      "Pemberdayaan",
+      "Kreatif"
+    ],
+    "links": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com/ikapmi.bandung"
+      }
+    ],
+    "drop": 20
   }
 ];
 
