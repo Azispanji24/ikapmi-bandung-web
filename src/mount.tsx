@@ -84,9 +84,9 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   },
   {
     id: "bidang-kominfo",
-    name: "Rahma Mutmainah",
-    role: "Ketua Bidang Kominfo",
-    team: "IKAPMI Bandung · Kominfo",
+    name: "Rahma Muthmainah",
+    role: "Bidang Komunikasi dan Informasi (KOMINFO)",
+    team: "IKAPMI Bandung · KOMINFO",
     image: "assets/pengurus/bidang_kominfo_rahma.jpg",
     bio: "Komunikasi & Informasi: Memegang tata kelola media digital (@ikapmi.bandung), publikasi informasi kealumnian, dokumentasi kegiatan, dan sistem web.",
     tags: ["Kominfo", "Media & Informasi", "Kreatif"],
