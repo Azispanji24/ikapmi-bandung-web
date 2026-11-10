@@ -173,6 +173,7 @@
         <a href="#kampus" class="liquid-nav-item" data-nav="kampus">Kampus</a>
         <a href="#panduan" class="liquid-nav-item" data-nav="panduan">Panduan</a>
         <a href="#dokumentasi" class="liquid-nav-item" data-nav="dokumentasi">Dokumentasi</a>
+        <a href="#gallery" class="liquid-nav-item" data-nav="gallery">Galeri</a>
         <a href="#warta" class="liquid-nav-item" data-nav="warta">Warta</a>
       </nav>
 
@@ -210,6 +211,8 @@
           Baru</a>
         <a href="#dokumentasi"
           class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Dokumentasi 3D</a>
+        <a href="#gallery"
+          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Galeri Foto</a>
         <a href="#warta" class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Warta
           Sadulur</a>
         <div class="pt-2 mt-2 border-t border-slate-200/60">
@@ -1553,6 +1556,35 @@
 
   </section>
 
+  <!-- =================================================================
+       8B. GALLERY IKAPMI BANDUNG: 3D COVERFLOW CAROUSEL
+       Inspired by 21st.dev/@ruixen.ui/components/coverflow-carousel
+  ================================================================== -->
+  <section id="gallery" class="py-16 sm:py-24 bg-white border-b border-slate-200 relative overflow-hidden">
+    <!-- Ambient Radial Glow Behind Carousel -->
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_45%,rgba(15,46,89,0.04)_0%,transparent_80%)] z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section Header -->
+      <div class="max-w-3xl mx-auto text-center mb-6 sm:mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-emerald text-xs font-semibold mb-3 shadow-xs">
+          <i data-lucide="camera" class="size-3.5 text-brand-700"></i>
+          <span>GALERI RESMI ALUMNI</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Gallery IKAPMI Bandung
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-3 max-w-2xl mx-auto leading-relaxed">
+          Koleksi dokumentasi visual perjalanan keorganisasian, musyawarah, temu keakraban, dan rekam jejak dinamika santri Ummul Quro Al-Islami di Bandung Raya.
+        </p>
+      </div>
+
+      <!-- React 3D Coverflow Mount Container -->
+      <div id="coverflow-gallery-root" class="w-full">
+        <!-- Rendered by js/coverflow-carousel.bundle.js -->
+      </div>
+    </div>
+  </section>
 
   <!-- =================================================================
        9. WARTA & ARTIKEL TERKINI (KABAR SADULUR)
@@ -2098,6 +2130,7 @@
   </script>
   <script src="js/card-deck-carousel.bundle.js"></script>
   <script src="js/team-lanyard-rail.v10.js?t=kominfo_20261111"></script>
+  <script src="js/coverflow-carousel.bundle.js?t=gallery_20261111"></script>
   <!-- Inline Campus Filter Script to guarantee 100% instantaneous execution on all browsers -->
   <script>
     (function() {
