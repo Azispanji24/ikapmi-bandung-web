@@ -166,10 +166,10 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "isfahani-fadhil",
     "name": "Muhamad Isfahani Fadhil Rahman",
-    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "role": "Bidang KOMINFO",
     "team": "IKAPMI Bandung · KOMINFO",
     "image": "assets/pengurus/isfahani-fadhil.jpg",
-    "bio": "Komunikasi & Informasi: Tata kelola publikasi media sosial, dokumentasi visual, desain grafis, dan siaran warta kealumnian.",
+    "bio": "KOMINFO: Tata kelola publikasi media sosial, dokumentasi visual, desain grafis, dan siaran warta kealumnian.",
     "tags": [
       "KOMINFO",
       "Media",
@@ -186,10 +186,10 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "rahma-muthmainah",
     "name": "Rahma Muthmainah",
-    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "role": "Bidang KOMINFO",
     "team": "IKAPMI Bandung · KOMINFO",
     "image": "assets/pengurus/rahma-muthmainah.jpg",
-    "bio": "Komunikasi & Informasi: Mengelola konten digital kreatif (@ikapmi.bandung), branding visual, dan komunikasi publik alumni.",
+    "bio": "KOMINFO: Mengelola konten digital kreatif (@ikapmi.bandung), branding visual, dan komunikasi publik alumni.",
     "tags": [
       "KOMINFO",
       "Kreatif",
@@ -206,10 +206,10 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "veron-djuan",
     "name": "Veron Djuan Sutisna",
-    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "role": "Bidang KOMINFO",
     "team": "IKAPMI Bandung · KOMINFO",
     "image": "assets/pengurus/veron-djuan.jpg",
-    "bio": "Komunikasi & Informasi: Pengelolaan dokumentasi multimedia, produksi video kegiatan, dan pemeliharaan website resmi.",
+    "bio": "KOMINFO: Pengelolaan dokumentasi multimedia, produksi video kegiatan, dan pemeliharaan website resmi.",
     "tags": [
       "KOMINFO",
       "Multimedia",
@@ -226,10 +226,10 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "novita-dea-naila",
     "name": "Novita Dea Naila Izdihar",
-    "role": "Bidang Komunikasi dan Informasi (KOMINFO)",
+    "role": "Bidang KOMINFO",
     "team": "IKAPMI Bandung · KOMINFO",
     "image": "assets/pengurus/novita-dea-naila.jpg",
-    "bio": "Komunikasi & Informasi: Hubungan masyarakat lintas media, penulisan rilis berita acara, dan kampanye digital santri.",
+    "bio": "KOMINFO: Hubungan masyarakat lintas media, penulisan rilis berita acara, dan kampanye digital santri.",
     "tags": [
       "KOMINFO",
       "Humas",
