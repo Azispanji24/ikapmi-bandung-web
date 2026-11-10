@@ -32,89 +32,7 @@ export type Testimonial = {
 export const DEFAULT_CLOUD_API_URL =
   "https://script.google.com/macros/s/AKfycbwUxVCFgFcPPaMwwJJisWoVlNnmXC0_iW7xJGOESROCUBAvYklT6DQDNZeKJLcFWB1z/exec";
 
-const DEFAULT_TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "Pertama kali nginjek kaki di Bandung sempat bingung arah dan cari kosan. Untung ketemu pengurus IKAPMI, langsung diarahkan dan dibantu sampe tuntas. Solidaritasnya luar biasa!",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    name: "Ahmad Fauzan",
-    role: "Teknik Elektro '22",
-    company: "ITB Bandung",
-    date: "Baru saja",
-  },
-  {
-    quote:
-      "IKAPMI Bandung bukan sekadar organisasi alumni daerah, tapi rumah kedua di perantauan. Dari kajian santri, makrab, sampe bimbingan skripsi selalu ada yang dampingi.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
-    name: "Nabila Zahra",
-    role: "Hukum Tata Negara '21",
-    company: "UIN SGD Bandung",
-    date: "1 hari yang lalu",
-  },
-  {
-    quote:
-      "Jejaring santri di Bandung ngebantu banget buat magang dan riset tugas akhir. Banyak senior IKAPMI yang udah kerja dan loyal banget sharing peluang karir.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    name: "Rifqi Al-Fatih",
-    role: "Informatika '20",
-    company: "Telkom University",
-    date: "2 hari yang lalu",
-  },
-  {
-    quote:
-      "Bagi santri baru yang belum terbiasa dengan dinginnya Bandung dan ritme kuliah kampus negeri, IKAPMI punya panduan ospek dan adaptasi yang super komprehensif!",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
-    name: "Salma Putri",
-    role: "Farmasi '23",
-    company: "UNPAD Jatinangor",
-    date: "3 hari yang lalu",
-  },
-  {
-    quote:
-      "Kegiatan Sadulur Ngahiji bikin kita ga pernah ngerasa kesepian di kota rantau. Makan liwet bareng, ngobrol santai, nambah sodara dari satu pondok.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    name: "Habiburrahman",
-    role: "Pendidikan Bahasa Arab '21",
-    company: "UPI Bumi Siliwangi",
-    date: "4 hari yang lalu",
-  },
-  {
-    quote:
-      "Website IKAPMI Bandung sekarang keren banget, modern dan interaktif! Ada panduan santri baru, struktur kepengurusan, dan galeri kenangan kegiatan kita bersama.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-    name: "Fathimah Az-Zahra",
-    role: "Akuntansi Syariah '22",
-    company: "Unisba Bandung",
-    date: "5 hari yang lalu",
-  },
-  {
-    quote:
-      "Mureg dan Raker IKAPMI selalu menghasilkan program kerja yang berdampak nyata buat santri. Senang bisa terus berkontribusi di perantauan kota kembang.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
-    name: "Dimas Suryo",
-    role: "Teknik Kimia '19",
-    company: "POLBAN (Alumni)",
-    date: "1 minggu yang lalu",
-  },
-  {
-    quote:
-      "Tetap jaga marwah santri di manapun kuliahnya. Nilai kesederhanaan dan ketakziman yang diajarkan di pondok terbukti jadi pondasi sukses di dunia akademis.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80",
-    name: "M. Azis Panji",
-    role: "Ketua Umum",
-    company: "IKAPMI Bandung",
-    date: "2 minggu yang lalu",
-  },
-  {
-    quote:
-      "Buat adik-adik santri yang baru lulus dan mau lanjut studi ke Bandung: jangan ragu! Komunitas IKAPMI siap menyambut hangat dari terminal/stasiun sampe gerbang kampus.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    name: "Annisa Rahmadani",
-    role: "Desain Komunikasi Visual '22",
-    company: "ISBI Bandung",
-    date: "2 minggu yang lalu",
-  },
-];
+const DEFAULT_TESTIMONIALS: Testimonial[] = [];
 
 const AVATAR_OPTIONS = [
   "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
@@ -125,7 +43,7 @@ const AVATAR_OPTIONS = [
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
 ];
 
-const LOCAL_STORAGE_KEY = "ikapmi_testimonials_v1";
+const LOCAL_STORAGE_KEY = "ikapmi_testimonials_v3";
 const CLOUD_URL_STORAGE_KEY = "ikapmi_cloud_api_url_v1";
 
 /**
@@ -227,19 +145,10 @@ export function TestimonialsSection() {
       });
       const result = await res.json();
       if (result && result.status === "success" && Array.isArray(result.data)) {
-        if (result.data.length > 0) {
-          // Merge with defaults
-          const cloudItems: Testimonial[] = result.data;
-          const cloudSet = new Set(cloudItems.map((c) => c.name + c.quote));
-          const filteredDefaults = DEFAULT_TESTIMONIALS.filter(
-            (d) => !cloudSet.has(d.name + d.quote)
-          );
-          const combined = [...cloudItems, ...filteredDefaults];
-          setTestimonials(combined);
-          try {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(combined));
-          } catch {}
-        }
+        setTestimonials(result.data);
+        try {
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(result.data));
+        } catch {}
       }
     } catch (err) {
       console.warn("Cloud fetch notice:", err);
@@ -332,8 +241,14 @@ export function TestimonialsSection() {
 
   // Divide into 3 columns
   const firstColumn = testimonials.filter((_, idx) => idx % 3 === 0);
-  const secondColumn = testimonials.filter((_, idx) => idx % 3 === 1);
-  const thirdColumn = testimonials.filter((_, idx) => idx % 3 === 2);
+  const secondColumn =
+    testimonials.length > 1
+      ? testimonials.filter((_, idx) => idx % 3 === 1)
+      : firstColumn;
+  const thirdColumn =
+    testimonials.length > 2
+      ? testimonials.filter((_, idx) => idx % 3 === 2)
+      : firstColumn;
 
   return (
     <section id="ulasan-wall" className="relative py-16 sm:py-24 bg-white overflow-hidden">
@@ -401,59 +316,79 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        {/* 3-Column Draggable & Swipeable Infinite Vertical Slider with Gradient Mask */}
-        <div
-          className={cn(
-            "mt-10 flex h-[580px] max-h-[640px] justify-center gap-6 overflow-hidden",
-            "mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]",
-          )}
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-          }}
-        >
-          {/* Column 1 (All screens) */}
-          <InfiniteSlider direction="vertical" speed={32} gap={20}>
-            {firstColumn.map((testimonial, i) => (
-              <TestimonialsCard
-                key={`${testimonial.name}-${i}`}
-                testimonial={testimonial}
-              />
-            ))}
-          </InfiniteSlider>
-
-          {/* Column 2 (md and up) */}
-          <InfiniteSlider
-            className="hidden md:block"
-            direction="vertical"
-            speed={48}
-            gap={20}
+        {testimonials.length === 0 ? (
+          <div className="mt-12 mx-auto max-w-md rounded-3xl border border-dashed border-slate-300 bg-slate-50/70 p-8 sm:p-10 text-center">
+            <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-brand-50 text-brand-600 mb-3 border border-brand-200/80">
+              <MessageSquarePlus className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-bold text-slate-800">Dinding Ulasan Siap Diisi</h3>
+            <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+              Belum ada ulasan santri. Jadilah yang pertama menyapa dan berbagi cerita rantau di Bandung!
+            </p>
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2 text-xs font-semibold text-white shadow-sm hover:bg-brand-700 active:scale-95 transition cursor-pointer"
+            >
+              <MessageSquarePlus className="w-3.5 h-3.5" />
+              <span>Tulis Ulasan Perdana</span>
+            </button>
+          </div>
+        ) : (
+          /* 3-Column Draggable & Swipeable Infinite Vertical Slider with Gradient Mask */
+          <div
+            className={cn(
+              "mt-10 flex h-[580px] max-h-[640px] justify-center gap-6 overflow-hidden",
+              "mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]",
+            )}
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+            }}
           >
-            {secondColumn.map((testimonial, i) => (
-              <TestimonialsCard
-                key={`${testimonial.name}-${i}`}
-                testimonial={testimonial}
-              />
-            ))}
-          </InfiniteSlider>
+            {/* Column 1 (All screens) */}
+            <InfiniteSlider direction="vertical" speed={32} gap={20}>
+              {firstColumn.map((testimonial, i) => (
+                <TestimonialsCard
+                  key={`${testimonial.name}-${i}`}
+                  testimonial={testimonial}
+                />
+              ))}
+            </InfiniteSlider>
 
-          {/* Column 3 (lg and up) */}
-          <InfiniteSlider
-            className="hidden lg:block"
-            direction="vertical"
-            speed={38}
-            gap={20}
-          >
-            {thirdColumn.map((testimonial, i) => (
-              <TestimonialsCard
-                key={`${testimonial.name}-${i}`}
-                testimonial={testimonial}
-              />
-            ))}
-          </InfiniteSlider>
-        </div>
+            {/* Column 2 (md and up) */}
+            <InfiniteSlider
+              className="hidden md:block"
+              direction="vertical"
+              speed={48}
+              gap={20}
+            >
+              {secondColumn.map((testimonial, i) => (
+                <TestimonialsCard
+                  key={`${testimonial.name}-${i}`}
+                  testimonial={testimonial}
+                />
+              ))}
+            </InfiniteSlider>
+
+            {/* Column 3 (lg and up) */}
+            <InfiniteSlider
+              className="hidden lg:block"
+              direction="vertical"
+              speed={38}
+              gap={20}
+            >
+              {thirdColumn.map((testimonial, i) => (
+                <TestimonialsCard
+                  key={`${testimonial.name}-${i}`}
+                  testimonial={testimonial}
+                />
+              ))}
+            </InfiniteSlider>
+          </div>
+        )}
       </div>
 
       {/* Modal / Dialog Tulis Ulasan */}
