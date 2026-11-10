@@ -28,8 +28,9 @@ export type Testimonial = {
   date?: string;
 };
 
-// URL Default Google Apps Script (Bisa diisi oleh user atau disimpan lewat tombol Cloud Sync)
-export const DEFAULT_CLOUD_API_URL = "";
+// URL Default Google Apps Script Resmi Terhubung ke Google Sheet IKAPMI (100% Gratis Selamanya)
+export const DEFAULT_CLOUD_API_URL =
+  "https://script.google.com/macros/s/AKfycbwUxVCFgFcPPaMwwJJisWoVlNnmXC0_iW7xJGOESROCUBAvYklT6DQDNZeKJLcFWB1z/exec";
 
 const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {
