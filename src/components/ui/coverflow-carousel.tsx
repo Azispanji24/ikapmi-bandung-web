@@ -321,25 +321,17 @@ export function CoverflowCarousel({
                     className="h-full w-full select-none object-cover transition-transform duration-500 group-hover:scale-105"
                   />
 
-                  {/* Gradient overlay on bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity pointer-events-none" />
-
-                  {/* Center Card Badge / Zoom Hint */}
+                  {/* Simple Zoom Icon Button on Center Card */}
                   {isCenter && (
-                    <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-medium border border-white/20 shadow-md">
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    <div
+                      aria-label="Perbesar foto"
+                      className="absolute top-3 right-3 z-10 size-8 sm:size-9 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md text-white flex items-center justify-center border border-white/25 shadow-md transition-all hover:scale-110 active:scale-95 pointer-events-none"
+                    >
+                      <svg className="size-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                       </svg>
-                      <span>Perbesar</span>
                     </div>
                   )}
-
-                  {/* Card Mini Pill Label */}
-                  <div className="absolute bottom-3 left-3 right-3 z-10 text-white pointer-events-none">
-                    <p className="text-xs font-semibold truncate drop-shadow-md">
-                      {slide.title}
-                    </p>
-                  </div>
                 </div>
               );
             })}
