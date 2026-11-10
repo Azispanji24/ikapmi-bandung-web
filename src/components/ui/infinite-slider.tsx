@@ -7,31 +7,10 @@ export type InfiniteSliderProps = {
   children: React.ReactNode;
   direction?: "horizontal" | "vertical";
   speed?: number; // duration in seconds for one full loop
-  speedOnHover?: number;
-  reverse?: boolean;
   gap?: number;
   className?: string;
   style?: React.CSSProperties;
 };
-
-const STYLE_ID = "infinite-slider-interactive-styles";
-
-function ensureStyles() {
-  if (typeof document === "undefined") return;
-  if (document.getElementById(STYLE_ID)) return;
-  const style = document.createElement("style");
-  style.id = STYLE_ID;
-  style.textContent = `
-    .no-scrollbar::-webkit-scrollbar {
-      display: none !important;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none !important;
-      scrollbar-width: none !important;
-    }
-  `;
-  document.head.appendChild(style);
-}
 
 export function InfiniteSlider({
   children,
@@ -42,23 +21,23 @@ export function InfiniteSlider({
   style,
 }: InfiniteSliderProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const trackRef = React.useRef<HTMLDivElement>(null);
   const firstSetRef = React.useRef<HTMLDivElement>(null);
 
-  const [halfHeight, setHalfHeight] = React.useState(0);
-  const halfHeightRef = React.useRef(0);
-  halfHeightRef.current = halfHeight;
+  const [singleHeight, setSingleHeight] = React.useState(0);
+  const singleHeightRef = React.useRef(0);
+  singleHeightRef.current = singleHeight;
+
+  // Transform offset in pixels
+  const offsetRef = React.useRef(0);
 
   // Interaction tracking refs
-  const isInteractingRef = React.useRef(false);
   const isDraggingRef = React.useRef(false);
+  const isInteractingRef = React.useRef(false);
   const startYRef = React.useRef(0);
-  const startScrollTopRef = React.useRef(0);
+  const startOffsetRef = React.useRef(0);
   const resumeTimerRef = React.useRef<number | null>(null);
   const lastTimeRef = React.useRef<number | null>(null);
-
-  React.useEffect(() => {
-    ensureStyles();
-  }, []);
 
   // Measure content height with ResizeObserver
   React.useEffect(() => {
@@ -67,7 +46,10 @@ export function InfiniteSlider({
 
     const updateHeight = () => {
       const h = el.offsetHeight + gap;
-      setHalfHeight(h);
+      if (h > 10) {
+        setSingleHeight(h);
+        singleHeightRef.current = h;
+      }
     };
 
     updateHeight();
@@ -77,49 +59,61 @@ export function InfiniteSlider({
     });
     ro.observe(el);
 
-    return () => ro.disconnect();
+    // Also update on window load/resize
+    window.addEventListener("resize", updateHeight);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateHeight);
+    };
   }, [gap, children]);
 
-  // Pause interaction and resume after 2.5s of inactivity
-  const markUserInteraction = React.useCallback(() => {
+  // Pause auto-scroll temporarily during manual drag/scroll and resume after 1s of inactivity
+  const markManualInteraction = React.useCallback(() => {
     isInteractingRef.current = true;
     if (resumeTimerRef.current) {
       window.clearTimeout(resumeTimerRef.current);
     }
     resumeTimerRef.current = window.setTimeout(() => {
       isInteractingRef.current = false;
-    }, 2400);
+    }, 1200);
   }, []);
 
-  // Animation Loop (requestAnimationFrame for 60/120fps smoothness)
+  // Main continuous 60fps/120fps animation loop using GPU translate3d
   React.useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
     let animId: number;
 
     const step = (now: number) => {
       if (lastTimeRef.current === null) {
         lastTimeRef.current = now;
       }
-      const dt = Math.min((now - lastTimeRef.current) / 1000, 0.1); // delta in seconds
+      const dt = Math.min((now - lastTimeRef.current) / 1000, 0.1);
       lastTimeRef.current = now;
 
-      const half = halfHeightRef.current;
-
-      // Handle wraparound seamlessly at any time
-      if (half > 0 && container) {
-        if (container.scrollTop >= half) {
-          container.scrollTop -= half;
-        } else if (container.scrollTop <= 0 && isInteractingRef.current) {
-          container.scrollTop += half;
+      let H = singleHeightRef.current;
+      if (H <= 0 && firstSetRef.current) {
+        H = firstSetRef.current.offsetHeight + gap;
+        if (H > 0) {
+          singleHeightRef.current = H;
         }
       }
 
-      // Auto-scroll when user is not touching or hovering
-      if (!isInteractingRef.current && half > 0 && container) {
-        const pxPerSecond = Math.max(18, half / (speed || 35));
-        container.scrollTop += pxPerSecond * dt;
+      const track = trackRef.current;
+
+      // Auto-scroll runs continuously! Only pauses when user is actively dragging or scrolling
+      if (!isDraggingRef.current && !isInteractingRef.current && H > 0) {
+        const pxPerSecond = Math.max(24, H / (speed || 35));
+        offsetRef.current += pxPerSecond * dt;
+      }
+
+      // Wrap around seamlessly
+      if (H > 0) {
+        offsetRef.current = ((offsetRef.current % H) + H) % H;
+      }
+
+      // Apply GPU-accelerated translation
+      if (track) {
+        track.style.transform = `translate3d(0, ${-offsetRef.current}px, 0)`;
       }
 
       animId = requestAnimationFrame(step);
@@ -131,27 +125,73 @@ export function InfiniteSlider({
       cancelAnimationFrame(animId);
       if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     };
-  }, [speed]);
+  }, [speed, gap]);
 
   // Mouse Drag Handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    const container = containerRef.current;
-    if (!container) return;
     isDraggingRef.current = true;
     startYRef.current = e.clientY;
-    startScrollTopRef.current = container.scrollTop;
-    markUserInteraction();
+    startOffsetRef.current = offsetRef.current;
+    markManualInteraction();
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDraggingRef.current || !containerRef.current) return;
+    if (!isDraggingRef.current) return;
     const dy = e.clientY - startYRef.current;
-    containerRef.current.scrollTop = startScrollTopRef.current - dy;
-    markUserInteraction();
+    const H = singleHeightRef.current;
+    offsetRef.current = startOffsetRef.current - dy;
+    if (H > 0) {
+      offsetRef.current = ((offsetRef.current % H) + H) % H;
+    }
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(0, ${-offsetRef.current}px, 0)`;
+    }
+    markManualInteraction();
   };
 
   const handleMouseUp = () => {
     isDraggingRef.current = false;
+    markManualInteraction();
+  };
+
+  // Touch Drag Handlers (Mobile Screen Swipe)
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    isDraggingRef.current = true;
+    startYRef.current = e.touches[0].clientY;
+    startOffsetRef.current = offsetRef.current;
+    markManualInteraction();
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+    const dy = e.touches[0].clientY - startYRef.current;
+    const H = singleHeightRef.current;
+    offsetRef.current = startOffsetRef.current - dy;
+    if (H > 0) {
+      offsetRef.current = ((offsetRef.current % H) + H) % H;
+    }
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(0, ${-offsetRef.current}px, 0)`;
+    }
+    markManualInteraction();
+  };
+
+  const handleTouchEnd = () => {
+    isDraggingRef.current = false;
+    markManualInteraction();
+  };
+
+  // Mousewheel / Trackpad scroll handler
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const H = singleHeightRef.current;
+    offsetRef.current += e.deltaY * 0.8;
+    if (H > 0) {
+      offsetRef.current = ((offsetRef.current % H) + H) % H;
+    }
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(0, ${-offsetRef.current}px, 0)`;
+    }
+    markManualInteraction();
   };
 
   return (
@@ -161,43 +201,75 @@ export function InfiniteSlider({
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      onTouchStart={markUserInteraction}
-      onTouchMove={markUserInteraction}
-      onWheel={markUserInteraction}
-      onMouseEnter={markUserInteraction}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onWheel={handleWheel}
       className={cn(
-        "no-scrollbar relative h-full overflow-y-auto select-none cursor-grab active:cursor-grabbing",
+        "relative h-full overflow-hidden select-none cursor-grab active:cursor-grabbing",
         className
       )}
       style={{
         touchAction: "pan-y",
-        WebkitOverflowScrolling: "touch",
         ...style,
       }}
     >
-      {/* Set 1 */}
       <div
-        ref={firstSetRef}
+        ref={trackRef}
         style={{
           display: "flex",
           flexDirection: "column",
           gap: `${gap}px`,
-          paddingBottom: `${gap}px`,
+          willChange: "transform",
         }}
       >
-        {children}
-      </div>
+        {/* Set 1 */}
+        <div
+          ref={firstSetRef}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: `${gap}px`,
+          }}
+        >
+          {children}
+        </div>
 
-      {/* Set 2 (Duplicate for Seamless Infinite Loop) */}
-      <div
-        aria-hidden="true"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: `${gap}px`,
-        }}
-      >
-        {children}
+        {/* Set 2 */}
+        <div
+          aria-hidden="true"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: `${gap}px`,
+          }}
+        >
+          {children}
+        </div>
+
+        {/* Set 3 */}
+        <div
+          aria-hidden="true"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: `${gap}px`,
+          }}
+        >
+          {children}
+        </div>
+
+        {/* Set 4 */}
+        <div
+          aria-hidden="true"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: `${gap}px`,
+          }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

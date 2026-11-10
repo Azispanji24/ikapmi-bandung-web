@@ -117,16 +117,16 @@ export function TestimonialsSection() {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setTestimonials(parsed);
-        } else {
-          setTestimonials(DEFAULT_TESTIMONIALS);
+          const clean = parsed.filter((item: any) => {
+            const isTestCard =
+              item.quote?.includes("Alhamdulillah database ulasan real-time IKAPMI Bandung") ||
+              (item.name === "M. Azis Panji" && item.quote?.includes("resmi aktif dan tersinkronisasi"));
+            return !isTestCard;
+          });
+          setTestimonials(clean);
         }
-      } else {
-        setTestimonials(DEFAULT_TESTIMONIALS);
       }
-    } catch {
-      setTestimonials(DEFAULT_TESTIMONIALS);
-    }
+    } catch {}
 
     // Trigger cloud sync if URL exists
     if (activeUrl) {
@@ -145,9 +145,17 @@ export function TestimonialsSection() {
       });
       const result = await res.json();
       if (result && result.status === "success" && Array.isArray(result.data)) {
-        setTestimonials(result.data);
+        // Filter out dummy/test reviews created earlier
+        const cleanData = result.data.filter((item: any) => {
+          const isTestCard =
+            item.quote?.includes("Alhamdulillah database ulasan real-time IKAPMI Bandung") ||
+            (item.name === "M. Azis Panji" && item.quote?.includes("resmi aktif dan tersinkronisasi"));
+          return !isTestCard;
+        });
+
+        setTestimonials(cleanData);
         try {
-          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(result.data));
+          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cleanData));
         } catch {}
       }
     } catch (err) {
@@ -258,24 +266,6 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header Section Matching 21st.dev testimonials-6 */}
         <div className="mx-auto flex max-w-xl flex-col items-center justify-center gap-4 text-center">
-          <div className="flex justify-center items-center gap-2">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-brand-200/80 bg-brand-50/80 px-4 py-1 text-xs font-semibold text-brand-800 shadow-sm backdrop-blur-sm">
-              <Sparkles className="w-3.5 h-3.5 text-brand-600" />
-              <span>Suara Santri & Ulasan Alumni</span>
-            </div>
-
-            {/* Cloud Sync Status Indicator */}
-            <button
-              type="button"
-              onClick={() => setIsConfigOpen(true)}
-              className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 text-[11px] font-medium text-slate-500 hover:text-brand-600 hover:border-brand-200 transition shadow-xs cursor-pointer"
-              title="Pengaturan Database Cloud Antar-Device (100% Gratis Google Sheets)"
-            >
-              <Cloud className={cn("w-3 h-3", cloudApiUrl ? "text-emerald-500" : "text-amber-500")} />
-              <span>{cloudApiUrl ? "Cloud Aktif" : "Sync Cloud"}</span>
-            </button>
-          </div>
-
           <h2 className="font-bold text-3xl tracking-tighter text-slate-900 sm:text-4xl lg:text-5xl">
             Cerita & Sapaan Rantau
           </h2>
@@ -283,36 +273,28 @@ export function TestimonialsSection() {
             Dengar langsung pengalaman para santri IKAPMI yang menuntut ilmu di berbagai perguruan tinggi negeri & swasta se-Bandung Raya.
           </p>
 
-          {/* Interactive Trigger Button & Gesture Hint */}
-          <div className="mt-2 flex flex-col items-center justify-center gap-2">
-            <div className="flex flex-wrap items-center justify-center gap-3">
+          {/* Interactive Trigger Button */}
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-brand-500/20 hover:bg-brand-700 active:scale-95 transition-all cursor-pointer"
+            >
+              <MessageSquarePlus className="w-4 h-4" />
+              <span>Tulis Ulasan / Sapa Santri</span>
+            </button>
+
+            {cloudApiUrl && (
               <button
                 type="button"
-                onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-brand-500/20 hover:bg-brand-700 active:scale-95 transition-all cursor-pointer"
+                onClick={() => fetchFromCloud(cloudApiUrl)}
+                disabled={isSyncing}
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition shadow-xs cursor-pointer"
               >
-                <MessageSquarePlus className="w-4 h-4" />
-                <span>Tulis Ulasan / Sapa Santri</span>
+                <RefreshCw className={cn("w-3.5 h-3.5", isSyncing && "animate-spin text-brand-600")} />
+                <span>{isSyncing ? "Menyinkronkan..." : "Segarkan"}</span>
               </button>
-
-              {cloudApiUrl && (
-                <button
-                  type="button"
-                  onClick={() => fetchFromCloud(cloudApiUrl)}
-                  disabled={isSyncing}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition shadow-xs cursor-pointer"
-                >
-                  <RefreshCw className={cn("w-3.5 h-3.5", isSyncing && "animate-spin text-brand-600")} />
-                  <span>{isSyncing ? "Menyinkronkan..." : "Segarkan"}</span>
-                </button>
-              )}
-            </div>
-
-            {/* Gesture Hint */}
-            <div className="inline-flex items-center gap-1.5 text-xs text-slate-400 font-medium mt-1">
-              <Hand className="w-3.5 h-3.5 text-brand-500 animate-pulse" />
-              <span>Bisa digeser ke atas / bawah bebas dengan mouse atau swipe layar HP</span>
-            </div>
+            )}
           </div>
         </div>
 
