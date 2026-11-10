@@ -43,8 +43,31 @@ const AVATAR_OPTIONS = [
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
 ];
 
-const LOCAL_STORAGE_KEY = "ikapmi_testimonials_v3";
+const LOCAL_STORAGE_KEY = "ikapmi_testimonials_v4";
 const CLOUD_URL_STORAGE_KEY = "ikapmi_cloud_api_url_v1";
+
+function isValidTestimonial(item: any): boolean {
+  if (!item || !item.name || !item.quote) return false;
+  const name = String(item.name).trim().toLowerCase();
+  const quote = String(item.quote).trim().toLowerCase();
+
+  // Filter out test/dummy accounts
+  if (name === "cpntph" || name === "contoh" || name === "m. azis panji") {
+    return false;
+  }
+
+  // Filter out test/spam quotes
+  if (
+    quote.includes("alhamdulillah database ulasan") ||
+    quote === "aaaaaa" ||
+    quote === "adasdas" ||
+    quote === "sss"
+  ) {
+    return false;
+  }
+
+  return true;
+}
 
 /**
  * Resize and center-crop uploaded photo to crisp 200x200 square.
@@ -117,12 +140,7 @@ export function TestimonialsSection() {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          const clean = parsed.filter((item: any) => {
-            const isTestCard =
-              item.quote?.includes("Alhamdulillah database ulasan real-time IKAPMI Bandung") ||
-              (item.name === "M. Azis Panji" && item.quote?.includes("resmi aktif dan tersinkronisasi"));
-            return !isTestCard;
-          });
+          const clean = parsed.filter(isValidTestimonial);
           setTestimonials(clean);
         }
       }
@@ -145,14 +163,7 @@ export function TestimonialsSection() {
       });
       const result = await res.json();
       if (result && result.status === "success" && Array.isArray(result.data)) {
-        // Filter out dummy/test reviews created earlier
-        const cleanData = result.data.filter((item: any) => {
-          const isTestCard =
-            item.quote?.includes("Alhamdulillah database ulasan real-time IKAPMI Bandung") ||
-            (item.name === "M. Azis Panji" && item.quote?.includes("resmi aktif dan tersinkronisasi"));
-          return !isTestCard;
-        });
-
+        const cleanData = result.data.filter(isValidTestimonial);
         setTestimonials(cleanData);
         try {
           localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cleanData));
