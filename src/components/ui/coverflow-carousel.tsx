@@ -373,17 +373,9 @@ export function CoverflowCarousel({
         )}
       </div>
 
-      {/* Synchronized Caption & Meta Information */}
+      {/* Synchronized Caption */}
       {showCaption && activeSlide && (
-        <div className="mt-2 flex flex-col items-center px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold mb-2 border border-slate-200/70">
-            <span>Foto {activeIndex + 1} dari {count}</span>
-            <span className="text-slate-300">•</span>
-            <span className="text-brand-700 font-bold">
-              {activeSlide.meta?.[0]?.value || "Dokumentasi"}
-            </span>
-          </div>
-
+        <div className="mt-3 flex flex-col items-center px-4 text-center">
           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-slate-900 max-w-xl transition-all duration-300">
             {activeSlide.title}
           </h3>
@@ -393,44 +385,6 @@ export function CoverflowCarousel({
               {activeSlide.subtitle}
             </p>
           )}
-
-          {/* Quick Category / Info Tags */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-            {activeSlide.meta?.map((m) => (
-              <span
-                key={m.label}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-[11px] text-slate-600 shadow-sm"
-              >
-                <span className="font-semibold text-slate-800">{m.label}:</span>
-                <span>{m.value}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Scrub Bar / Pagination Dots */}
-      {showPagination && (
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 px-4">
-          <div className="w-full max-w-md flex items-center gap-2">
-            <span className="text-[11px] font-mono text-slate-400">01</span>
-            <input
-              type="range"
-              min={0}
-              max={count - 1}
-              value={activeIndex}
-              onChange={(e) => goToSlide(Number(e.target.value))}
-              aria-label="Navigasi cepat galeri"
-              className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-900"
-            />
-            <span className="text-[11px] font-mono text-slate-400">
-              {String(count).padStart(2, "0")}
-            </span>
-          </div>
-
-          <p className="text-[11px] text-slate-500">
-            Geser kartu atau tekan tombol panah <kbd className="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-300 text-[10px]">←</kbd> <kbd className="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-300 text-[10px]">→</kbd> untuk menelusuri momen
-          </p>
         </div>
       )}
 

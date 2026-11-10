@@ -16,7 +16,6 @@ function GalleryApp() {
       gap={0.07}
       loop={true}
       showCaption={true}
-      showPagination={true}
       showNavigation={true}
       autoplay={true}
       autoplayInterval={3500}
