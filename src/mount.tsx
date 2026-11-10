@@ -84,12 +84,12 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   },
   {
     id: "bidang-kominfo",
-    name: "Azis Panji",
+    name: "Rahma Mutmainah",
     role: "Ketua Bidang Kominfo",
     team: "IKAPMI Bandung · Kominfo",
-    image: "assets/pengurus/bidang_kominfo_azis.jpg",
-    bio: "Komunikasi & Informasi: Memegang tata kelola media digital (@ikapmi.bandung), branding visual, dokumentasi fotografi, dan sistem web.",
-    tags: ["Media", "Digital", "Kominfo"],
+    image: "assets/pengurus/bidang_kominfo_rahma.jpg",
+    bio: "Komunikasi & Informasi: Memegang tata kelola media digital (@ikapmi.bandung), publikasi informasi kealumnian, dokumentasi kegiatan, dan sistem web.",
+    tags: ["Kominfo", "Media & Informasi", "Kreatif"],
     links: [
       { label: "Instagram", href: "https://instagram.com/ikapmi.bandung" }
     ],
