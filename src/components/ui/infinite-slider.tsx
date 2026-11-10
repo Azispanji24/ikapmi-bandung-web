@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export type InfiniteSliderProps = {
   children: React.ReactNode;
   direction?: "horizontal" | "vertical";
-  speed?: number;
+  speed?: number; // duration in seconds for one full loop
   speedOnHover?: number;
   reverse?: boolean;
   gap?: number;
@@ -14,7 +14,7 @@ export type InfiniteSliderProps = {
   style?: React.CSSProperties;
 };
 
-const STYLE_ID = "infinite-slider-styles";
+const STYLE_ID = "infinite-slider-interactive-styles";
 
 function ensureStyles() {
   if (typeof document === "undefined") return;
@@ -22,24 +22,12 @@ function ensureStyles() {
   const style = document.createElement("style");
   style.id = STYLE_ID;
   style.textContent = `
-    @keyframes infinite-slider-v {
-      0% { transform: translateY(0%); }
-      100% { transform: translateY(-50%); }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none !important;
     }
-    @keyframes infinite-slider-v-reverse {
-      0% { transform: translateY(-50%); }
-      100% { transform: translateY(0%); }
-    }
-    @keyframes infinite-slider-h {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes infinite-slider-h-reverse {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0%); }
-    }
-    .infinite-slider-hover-pause:hover {
-      animation-play-state: paused !important;
+    .no-scrollbar {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
     }
   `;
   document.head.appendChild(style);
@@ -47,69 +35,169 @@ function ensureStyles() {
 
 export function InfiniteSlider({
   children,
-  direction = "horizontal",
-  speed = 30,
-  speedOnHover,
-  reverse = false,
-  gap = 24,
+  direction = "vertical",
+  speed = 35,
+  gap = 20,
   className,
   style,
 }: InfiniteSliderProps) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const firstSetRef = React.useRef<HTMLDivElement>(null);
+
+  const [halfHeight, setHalfHeight] = React.useState(0);
+  const halfHeightRef = React.useRef(0);
+  halfHeightRef.current = halfHeight;
+
+  // Interaction tracking refs
+  const isInteractingRef = React.useRef(false);
+  const isDraggingRef = React.useRef(false);
+  const startYRef = React.useRef(0);
+  const startScrollTopRef = React.useRef(0);
+  const resumeTimerRef = React.useRef<number | null>(null);
+  const lastTimeRef = React.useRef<number | null>(null);
+
   React.useEffect(() => {
     ensureStyles();
   }, []);
 
-  const isVertical = direction === "vertical";
-  const animName = isVertical
-    ? reverse
-      ? "infinite-slider-v-reverse"
-      : "infinite-slider-v"
-    : reverse
-    ? "infinite-slider-h-reverse"
-    : "infinite-slider-h";
+  // Measure content height with ResizeObserver
+  React.useEffect(() => {
+    const el = firstSetRef.current;
+    if (!el) return;
 
-  const duration = speed > 0 ? speed : 30;
+    const updateHeight = () => {
+      const h = el.offsetHeight + gap;
+      setHalfHeight(h);
+    };
+
+    updateHeight();
+
+    const ro = new ResizeObserver(() => {
+      updateHeight();
+    });
+    ro.observe(el);
+
+    return () => ro.disconnect();
+  }, [gap, children]);
+
+  // Pause interaction and resume after 2.5s of inactivity
+  const markUserInteraction = React.useCallback(() => {
+    isInteractingRef.current = true;
+    if (resumeTimerRef.current) {
+      window.clearTimeout(resumeTimerRef.current);
+    }
+    resumeTimerRef.current = window.setTimeout(() => {
+      isInteractingRef.current = false;
+    }, 2400);
+  }, []);
+
+  // Animation Loop (requestAnimationFrame for 60/120fps smoothness)
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let animId: number;
+
+    const step = (now: number) => {
+      if (lastTimeRef.current === null) {
+        lastTimeRef.current = now;
+      }
+      const dt = Math.min((now - lastTimeRef.current) / 1000, 0.1); // delta in seconds
+      lastTimeRef.current = now;
+
+      const half = halfHeightRef.current;
+
+      // Handle wraparound seamlessly at any time
+      if (half > 0 && container) {
+        if (container.scrollTop >= half) {
+          container.scrollTop -= half;
+        } else if (container.scrollTop <= 0 && isInteractingRef.current) {
+          container.scrollTop += half;
+        }
+      }
+
+      // Auto-scroll when user is not touching or hovering
+      if (!isInteractingRef.current && half > 0 && container) {
+        const pxPerSecond = Math.max(18, half / (speed || 35));
+        container.scrollTop += pxPerSecond * dt;
+      }
+
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, [speed]);
+
+  // Mouse Drag Handlers
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    const container = containerRef.current;
+    if (!container) return;
+    isDraggingRef.current = true;
+    startYRef.current = e.clientY;
+    startScrollTopRef.current = container.scrollTop;
+    markUserInteraction();
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current || !containerRef.current) return;
+    const dy = e.clientY - startYRef.current;
+    containerRef.current.scrollTop = startScrollTopRef.current - dy;
+    markUserInteraction();
+  };
+
+  const handleMouseUp = () => {
+    isDraggingRef.current = false;
+  };
 
   return (
     <div
+      ref={containerRef}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchStart={markUserInteraction}
+      onTouchMove={markUserInteraction}
+      onWheel={markUserInteraction}
+      onMouseEnter={markUserInteraction}
       className={cn(
-        "relative overflow-hidden select-none",
-        isVertical ? "h-full flex flex-col" : "w-full flex flex-row",
+        "no-scrollbar relative h-full overflow-y-auto select-none cursor-grab active:cursor-grabbing",
         className
       )}
-      style={style}
+      style={{
+        touchAction: "pan-y",
+        WebkitOverflowScrolling: "touch",
+        ...style,
+      }}
     >
+      {/* Set 1 */}
       <div
-        className="infinite-slider-hover-pause"
+        ref={firstSetRef}
         style={{
           display: "flex",
-          flexDirection: isVertical ? "column" : "row",
+          flexDirection: "column",
           gap: `${gap}px`,
-          width: isVertical ? "100%" : "max-content",
-          height: isVertical ? "max-content" : "100%",
-          animation: `${animName} ${duration}s linear infinite`,
-          willChange: "transform",
+          paddingBottom: `${gap}px`,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: isVertical ? "column" : "row",
-            gap: `${gap}px`,
-          }}
-        >
-          {children}
-        </div>
-        <div
-          aria-hidden="true"
-          style={{
-            display: "flex",
-            flexDirection: isVertical ? "column" : "row",
-            gap: `${gap}px`,
-          }}
-        >
-          {children}
-        </div>
+        {children}
+      </div>
+
+      {/* Set 2 (Duplicate for Seamless Infinite Loop) */}
+      <div
+        aria-hidden="true"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: `${gap}px`,
+        }}
+      >
+        {children}
       </div>
     </div>
   );

@@ -13,6 +13,10 @@ import {
   Sparkles,
   Camera,
   Trash2,
+  Cloud,
+  RefreshCw,
+  Sliders,
+  Hand,
 } from "lucide-react";
 
 export type Testimonial = {
@@ -23,6 +27,9 @@ export type Testimonial = {
   company?: string;
   date?: string;
 };
+
+// URL Default Google Apps Script (Bisa diisi oleh user atau disimpan lewat tombol Cloud Sync)
+export const DEFAULT_CLOUD_API_URL = "";
 
 const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {
@@ -118,10 +125,10 @@ const AVATAR_OPTIONS = [
 ];
 
 const LOCAL_STORAGE_KEY = "ikapmi_testimonials_v1";
+const CLOUD_URL_STORAGE_KEY = "ikapmi_cloud_api_url_v1";
 
 /**
  * Resize and center-crop uploaded photo to crisp 200x200 square.
- * This guarantees ultra-sharp avatars while keeping data footprint ~15KB.
  */
 function compressAvatar(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -162,6 +169,11 @@ function compressAvatar(file: File): Promise<string> {
 export function TestimonialsSection() {
   const [testimonials, setTestimonials] = React.useState<Testimonial[]>([]);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isConfigOpen, setIsConfigOpen] = React.useState(false);
+  const [cloudApiUrl, setCloudApiUrl] = React.useState("");
+  const [isSyncing, setIsSyncing] = React.useState(false);
+
+  // Form states
   const [formName, setFormName] = React.useState("");
   const [formRole, setFormRole] = React.useState("");
   const [formCompany, setFormCompany] = React.useState("ITB Bandung");
@@ -171,22 +183,69 @@ export function TestimonialsSection() {
   const [uploadError, setUploadError] = React.useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
-  // Load from localStorage or defaults
+  // Load cloud URL and cached testimonials on mount
   React.useEffect(() => {
+    let activeUrl = DEFAULT_CLOUD_API_URL;
+    try {
+      const storedUrl = localStorage.getItem(CLOUD_URL_STORAGE_KEY);
+      if (storedUrl) activeUrl = storedUrl;
+    } catch {}
+    setCloudApiUrl(activeUrl);
+
+    // Initial cache
     try {
       const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
           setTestimonials(parsed);
-          return;
+        } else {
+          setTestimonials(DEFAULT_TESTIMONIALS);
         }
+      } else {
+        setTestimonials(DEFAULT_TESTIMONIALS);
       }
     } catch {
-      // ignore
+      setTestimonials(DEFAULT_TESTIMONIALS);
     }
-    setTestimonials(DEFAULT_TESTIMONIALS);
+
+    // Trigger cloud sync if URL exists
+    if (activeUrl) {
+      fetchFromCloud(activeUrl);
+    }
   }, []);
+
+  const fetchFromCloud = async (url: string) => {
+    if (!url || !url.startsWith("http")) return;
+    setIsSyncing(true);
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        redirect: "follow",
+      });
+      const result = await res.json();
+      if (result && result.status === "success" && Array.isArray(result.data)) {
+        if (result.data.length > 0) {
+          // Merge with defaults
+          const cloudItems: Testimonial[] = result.data;
+          const cloudSet = new Set(cloudItems.map((c) => c.name + c.quote));
+          const filteredDefaults = DEFAULT_TESTIMONIALS.filter(
+            (d) => !cloudSet.has(d.name + d.quote)
+          );
+          const combined = [...cloudItems, ...filteredDefaults];
+          setTestimonials(combined);
+          try {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(combined));
+          } catch {}
+        }
+      }
+    } catch (err) {
+      console.warn("Cloud fetch notice:", err);
+    } finally {
+      setIsSyncing(false);
+    }
+  };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -226,13 +285,25 @@ export function TestimonialsSection() {
       date: "Baru saja",
     };
 
+    // 1. Instantly update local wall
     const updated = [newTestimonial, ...testimonials];
     setTestimonials(updated);
 
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
-    } catch {
-      // ignore storage issues
+    } catch {}
+
+    // 2. Post to Cloud API (Google Apps Script / Webhook) so other devices see it!
+    if (cloudApiUrl && cloudApiUrl.startsWith("http")) {
+      fetch(cloudApiUrl, {
+        method: "POST",
+        mode: "cors",
+        redirect: "follow",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(newTestimonial),
+      }).catch((err) => console.warn("Cloud save warning:", err));
     }
 
     setIsSubmitted(true);
@@ -245,6 +316,17 @@ export function TestimonialsSection() {
       setSelectedAvatar(AVATAR_OPTIONS[0]);
       setIsCustomUploaded(false);
     }, 1500);
+  };
+
+  const handleSaveCloudUrl = (url: string) => {
+    setCloudApiUrl(url);
+    try {
+      localStorage.setItem(CLOUD_URL_STORAGE_KEY, url);
+    } catch {}
+    if (url) {
+      fetchFromCloud(url);
+    }
+    setIsConfigOpen(false);
   };
 
   // Divide into 3 columns
@@ -260,11 +342,22 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header Section Matching 21st.dev testimonials-6 */}
         <div className="mx-auto flex max-w-xl flex-col items-center justify-center gap-4 text-center">
-          <div className="flex justify-center">
+          <div className="flex justify-center items-center gap-2">
             <div className="inline-flex items-center gap-1.5 rounded-full border border-brand-200/80 bg-brand-50/80 px-4 py-1 text-xs font-semibold text-brand-800 shadow-sm backdrop-blur-sm">
               <Sparkles className="w-3.5 h-3.5 text-brand-600" />
               <span>Suara Santri & Ulasan Alumni</span>
             </div>
+
+            {/* Cloud Sync Status Indicator */}
+            <button
+              type="button"
+              onClick={() => setIsConfigOpen(true)}
+              className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 text-[11px] font-medium text-slate-500 hover:text-brand-600 hover:border-brand-200 transition shadow-xs cursor-pointer"
+              title="Pengaturan Database Cloud Antar-Device (100% Gratis Google Sheets)"
+            >
+              <Cloud className={cn("w-3 h-3", cloudApiUrl ? "text-emerald-500" : "text-amber-500")} />
+              <span>{cloudApiUrl ? "Cloud Aktif" : "Sync Cloud"}</span>
+            </button>
           </div>
 
           <h2 className="font-bold text-3xl tracking-tighter text-slate-900 sm:text-4xl lg:text-5xl">
@@ -274,26 +367,43 @@ export function TestimonialsSection() {
             Dengar langsung pengalaman para santri IKAPMI yang menuntut ilmu di berbagai perguruan tinggi negeri & swasta se-Bandung Raya.
           </p>
 
-          {/* Zero-Cost Interactive Trigger Button */}
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-brand-500/20 hover:bg-brand-700 active:scale-95 transition-all cursor-pointer"
-            >
-              <MessageSquarePlus className="w-4 h-4" />
-              <span>Tulis Ulasan / Sapa Santri</span>
-            </button>
-            <span className="text-xs text-slate-400 font-medium">
-              • Bisa upload foto profil bebas (Gratis 100%)
-            </span>
+          {/* Interactive Trigger Button & Gesture Hint */}
+          <div className="mt-2 flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-brand-500/20 hover:bg-brand-700 active:scale-95 transition-all cursor-pointer"
+              >
+                <MessageSquarePlus className="w-4 h-4" />
+                <span>Tulis Ulasan / Sapa Santri</span>
+              </button>
+
+              {cloudApiUrl && (
+                <button
+                  type="button"
+                  onClick={() => fetchFromCloud(cloudApiUrl)}
+                  disabled={isSyncing}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-600 transition shadow-xs cursor-pointer"
+                >
+                  <RefreshCw className={cn("w-3.5 h-3.5", isSyncing && "animate-spin text-brand-600")} />
+                  <span>{isSyncing ? "Menyinkronkan..." : "Segarkan"}</span>
+                </button>
+              )}
+            </div>
+
+            {/* Gesture Hint */}
+            <div className="inline-flex items-center gap-1.5 text-xs text-slate-400 font-medium mt-1">
+              <Hand className="w-3.5 h-3.5 text-brand-500 animate-pulse" />
+              <span>Bisa digeser ke atas / bawah bebas dengan mouse atau swipe layar HP</span>
+            </div>
           </div>
         </div>
 
-        {/* 3-Column Infinite Vertical Slider with Gradient Mask */}
+        {/* 3-Column Draggable & Swipeable Infinite Vertical Slider with Gradient Mask */}
         <div
           className={cn(
-            "mt-12 flex h-[580px] max-h-[640px] justify-center gap-6 overflow-hidden",
+            "mt-10 flex h-[580px] max-h-[640px] justify-center gap-6 overflow-hidden",
             "mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]",
           )}
           style={{
@@ -304,7 +414,7 @@ export function TestimonialsSection() {
           }}
         >
           {/* Column 1 (All screens) */}
-          <InfiniteSlider direction="vertical" speed={32} speedOnHover={15} gap={20}>
+          <InfiniteSlider direction="vertical" speed={32} gap={20}>
             {firstColumn.map((testimonial, i) => (
               <TestimonialsCard
                 key={`${testimonial.name}-${i}`}
@@ -318,7 +428,6 @@ export function TestimonialsSection() {
             className="hidden md:block"
             direction="vertical"
             speed={48}
-            speedOnHover={20}
             gap={20}
           >
             {secondColumn.map((testimonial, i) => (
@@ -334,7 +443,6 @@ export function TestimonialsSection() {
             className="hidden lg:block"
             direction="vertical"
             speed={38}
-            speedOnHover={18}
             gap={20}
           >
             {thirdColumn.map((testimonial, i) => (
@@ -370,6 +478,11 @@ export function TestimonialsSection() {
                 <p className="mt-2 text-sm text-slate-600">
                   Ulasan dan foto kamu telah berhasil disematkan dan tampil langsung di dinding suara santri IKAPMI Bandung.
                 </p>
+                {cloudApiUrl && (
+                  <p className="mt-1 text-xs text-emerald-600 font-medium">
+                    ✓ Otomatis tersinkron ke Cloud & dapat dilihat di device lain.
+                  </p>
+                )}
               </div>
             ) : (
               <div>
@@ -559,7 +672,95 @@ export function TestimonialsSection() {
           </div>
         </div>
       )}
+
+      {/* Modal Pengaturan Cloud Sync Multi-Device (100% Gratis Google Sheets) */}
+      {isConfigOpen && (
+        <CloudConfigModal
+          currentUrl={cloudApiUrl}
+          onSave={handleSaveCloudUrl}
+          onClose={() => setIsConfigOpen(false)}
+        />
+      )}
     </section>
+  );
+}
+
+function CloudConfigModal({
+  currentUrl,
+  onSave,
+  onClose,
+}: {
+  currentUrl: string;
+  onSave: (url: string) => void;
+  onClose: () => void;
+}) {
+  const [urlInput, setUrlInput] = React.useState(currentUrl);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-2xl">
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute top-5 right-5 rounded-full p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        <div className="flex items-center gap-2 text-brand-600 mb-2">
+          <Cloud className="w-5 h-5" />
+          <span className="text-xs font-bold uppercase tracking-wider">Sinkronisasi Cloud Antar-Perangkat</span>
+        </div>
+
+        <h3 className="text-xl font-bold text-slate-900">Database Ulasan 100% Gratis</h3>
+        <p className="text-xs text-slate-500 mt-1 mb-4 leading-relaxed">
+          Agar ulasan yang dikirim dari HP atau laptop lain langsung muncul bersamaan (tanpa harus commit/push Git), sambungkan Google Spreadsheet gratis Anda via Google Apps Script.
+        </p>
+
+        <div className="space-y-3 mb-5">
+          <div className="rounded-2xl bg-slate-50 p-4 border border-slate-200 text-xs text-slate-700 space-y-2">
+            <div className="font-semibold text-slate-900">Langkah Pasang Cepat (1 Menit):</div>
+            <ol className="list-decimal list-inside space-y-1 text-slate-600">
+              <li>Buat Google Spreadsheet baru di Google Drive Anda.</li>
+              <li>Klik menu <b>Ekstensi &gt; Apps Script</b>.</li>
+              <li>Copy-paste kode dari file <code>GoogleAppsScript_UlasanBackend.js</code>.</li>
+              <li>Klik <b>Deploy &gt; New deployment &gt; Web app</b> (Who has access: <b>Anyone</b>).</li>
+              <li>Salin URL Web App yang berakhiran <code>/exec</code> lalu tempel di bawah ini:</li>
+            </ol>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">
+              Google Apps Script Web App URL:
+            </label>
+            <input
+              type="url"
+              placeholder="https://script.google.com/macros/s/.../exec"
+              value={urlInput}
+              onChange={(e) => setUrlInput(e.target.value)}
+              className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-xs text-slate-800 placeholder-slate-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition font-mono"
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-xl px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-100 transition"
+          >
+            Batal
+          </button>
+          <button
+            type="button"
+            onClick={() => onSave(urlInput.trim())}
+            className="rounded-xl bg-brand-600 px-5 py-2 text-xs font-semibold text-white shadow-md shadow-brand-500/20 hover:bg-brand-700 active:scale-95 transition"
+          >
+            Simpan URL Cloud
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -574,7 +775,7 @@ function TestimonialsCard({
   return (
     <figure
       className={cn(
-        "w-full max-w-xs rounded-3xl border border-slate-200/90 bg-white/95 p-6 shadow-sm hover:shadow-md hover:border-brand-200 transition-all dark:bg-card/20",
+        "w-full max-w-xs rounded-3xl border border-slate-200/90 bg-white/95 p-6 shadow-sm hover:shadow-md hover:border-brand-200 transition-all dark:bg-card/20 select-none",
         className,
       )}
       {...props}
