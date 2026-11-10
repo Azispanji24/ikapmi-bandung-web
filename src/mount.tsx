@@ -246,12 +246,12 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "fadlan-ahmad",
     "name": "Fadlan Ahmad Rizki",
-    "role": "Bidang Sosial dan Ekonomi (Soskem)",
-    "team": "IKAPMI Bandung · Soskem",
+    "role": "Bidang Sosem",
+    "team": "IKAPMI Bandung · Sosem",
     "image": "assets/pengurus/fadlan-ahmad.jpg",
-    "bio": "Sosial & Ekonomi: Aksi sosial kemanusiaan, advokasi kesejahteraan santri perantau, serta inkubasi kewirausahaan mandiri alumni.",
+    "bio": "Sosem (Sosial & Ekonomi): Aksi sosial kemanusiaan, advokasi kesejahteraan santri perantau, serta inkubasi kewirausahaan mandiri alumni.",
     "tags": [
-      "Soskem",
+      "Sosem",
       "Sosial",
       "Ekonomi"
     ],
@@ -266,12 +266,12 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "azmi-putri",
     "name": "Azmi Putri",
-    "role": "Bidang Sosial dan Ekonomi (Soskem)",
-    "team": "IKAPMI Bandung · Soskem",
+    "role": "Bidang Sosem",
+    "team": "IKAPMI Bandung · Sosem",
     "image": "assets/pengurus/azmi-putri.jpg",
-    "bio": "Sosial & Ekonomi: Program bakti sosial peduli umat, penggalangan dana kemanusiaan, dan kemitraan ekonomi produktif.",
+    "bio": "Sosem (Sosial & Ekonomi): Program bakti sosial peduli umat, penggalangan dana kemanusiaan, dan kemitraan ekonomi produktif.",
     "tags": [
-      "Soskem",
+      "Sosem",
       "Bakti Sosial",
       "Pengabdian"
     ],
@@ -286,12 +286,12 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "fadhira-fauziah",
     "name": "Fadhira Fauziah Hasna",
-    "role": "Bidang Sosial dan Ekonomi (Soskem)",
-    "team": "IKAPMI Bandung · Soskem",
+    "role": "Bidang Sosem",
+    "team": "IKAPMI Bandung · Sosem",
     "image": "assets/pengurus/fadhira-fauziah.jpg",
-    "bio": "Sosial & Ekonomi: Pemberdayaan potensi ekonomi kreatif santri, merchandise kealumnian, dan jaring pengaman sosial perantauan.",
+    "bio": "Sosem (Sosial & Ekonomi): Pemberdayaan potensi ekonomi kreatif santri, merchandise kealumnian, dan jaring pengaman sosial perantauan.",
     "tags": [
-      "Soskem",
+      "Sosem",
       "Pemberdayaan",
       "Kreatif"
     ],
