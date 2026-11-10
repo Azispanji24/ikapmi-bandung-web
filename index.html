@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>IKAPMI Regional Bandung | Ikatan Keluarga & Alumni Pesantren Modern Ummul Quro Al-Islami</title>
+
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description"
+    content="Situs Resmi IKAPMI Regional Bandung - Wadah silaturahmi, pengembangan, dan pengabdian alumni Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI) di Bandung Raya. Slogan: Sadulur Ngahiji.">
+  <meta name="keywords"
+    content="IKAPMI Bandung, IKAPMI Regional Bandung, Alumni Ummul Quro Al-Islami, PMUQI Bandung, Sadulur Ngahiji, Santri Bandung">
+  <meta property="og:title" content="IKAPMI Regional Bandung - Sadulur Ngahiji di Tatar Pasundan">
+  <meta property="og:description"
+    content="Portal resmi silaturahmi, direktori kampus, agenda, dan pendataan alumni santri Ummul Quro Al-Islami di Bandung Raya.">
+  <meta property="og:image" content="assets/hero_mureg.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/jpeg" href="assets/ikapmi_logo.jpg">
+
+    <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN with custom brand color tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f4f9',
+              100: '#dbe6f5',
+              200: '#b9d1ee',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#0f2e59',
+              800: '#0b2140',
+              900: '#08172c',
+              dark: '#050f1e'
+            },
+            accent: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#c98a2c',
+              800: '#925c15'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+  <!-- Liquid Glass Navbar Styles (Inspired by 21st.dev/@gughigug/components/liquid-glass-navbar) -->
+  <style>
+    .liquid-glass-wrapper {
+      background: rgba(255, 255, 255, 0.72);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6) brightness(1.06);
+      backdrop-filter: blur(20px) saturate(1.6) brightness(1.06);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow:
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.03),
+        0 16px 36px -12px rgba(15, 46, 89, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .liquid-glass-dock {
+      background: rgba(241, 245, 249, 0.55);
+      -webkit-backdrop-filter: blur(14px) saturate(1.3);
+      backdrop-filter: blur(14px) saturate(1.3);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow:
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.02),
+        0 2px 8px rgba(15, 46, 89, 0.04);
+    }
+
+    .liquid-drop {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      border-radius: 9999px;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(120% 140% at 30% 0%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.3) 60%), rgba(15, 46, 89, 0.12);
+      box-shadow:
+        inset 0 1.5px 2px rgba(255, 255, 255, 1),
+        inset 0 -1.5px 4px rgba(15, 46, 89, 0.14),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.85),
+        0 4px 14px -3px rgba(15, 46, 89, 0.22);
+      will-change: transform, width;
+      transition: transform 0.42s cubic-bezier(0.25, 1.35, 0.35, 1), width 0.36s cubic-bezier(0.25, 1.35, 0.35, 1), opacity 0.2s ease;
+    }
+
+    .liquid-nav-item {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 15px;
+      border-radius: 9999px;
+      color: #475569;
+      font-weight: 600;
+      font-size: 13.5px;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.25s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .liquid-nav-item:hover {
+      color: #0f2e59;
+    }
+
+    .liquid-nav-item.active {
+      color: #0f2e59;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body class="bg-[#fbfdfc] text-slate-800 antialiased selection:bg-[#0f2e59] selection:text-white">
+
+  <header id="navbar-header"
+    class="sticky top-2 sm:top-4 z-50 w-full px-3 sm:px-6 pointer-events-none transition-all duration-300">
+    <div
+      class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto liquid-glass-wrapper h-16 sm:h-[68px] px-3.5 sm:px-6 rounded-full transition-all duration-300">
+
+      <!-- Brand Logo & Identity -->
+      <a href="#beranda" class="flex items-center gap-3 shrink-0 group">
+        <div
+          class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105 shrink-0 shadow-sm">
+          <img src="assets/ikapmi_logo.jpg" alt="Logo IKAPMI Regional Bandung"
+            class="w-full h-full object-cover rounded-full">
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="font-extrabold tracking-tight text-base sm:text-lg text-brand-900 leading-none">
+            IKAPMI BANDUNG
+          </span>
+
+        </div>
+      </a>
+
+      <!-- Center Liquid Glass Navigation with Real Water Drop Effect -->
+      <nav id="liquid-nav-dock" class="hidden lg:flex items-center relative liquid-glass-dock p-1 rounded-full isolate"
+        aria-label="Main Navigation">
+        <!-- The Sliding Liquid Water Droplet -->
+        <span id="liquid-drop" class="liquid-drop" aria-hidden="true"></span>
+
+        <a href="#beranda" class="liquid-nav-item active" data-nav="beranda">Beranda</a>
+        <a href="#tentang" class="liquid-nav-item" data-nav="tentang">Tentang</a>
+        <a href="#struktur" class="liquid-nav-item" data-nav="struktur">Kepengurusan</a>
+        <a href="#kampus" class="liquid-nav-item" data-nav="kampus">Kampus</a>
+        <a href="#panduan" class="liquid-nav-item" data-nav="panduan">Panduan</a>
+        <a href="#dokumentasi" class="liquid-nav-item" data-nav="dokumentasi">Dokumentasi</a>
+        <a href="#warta" class="liquid-nav-item" data-nav="warta">Warta</a>
+      </nav>
+
+      <!-- Action CTA & Mobile Toggle Button -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <a href="#database"
+          class="hidden sm:inline-flex items-center gap-2 h-9 sm:h-10 px-4 text-xs font-bold rounded-full bg-brand-700 hover:bg-brand-800 text-white shadow-md shadow-brand-900/10 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 whitespace-nowrap">
+          <i data-lucide="user-plus" class="w-3.5 h-3.5 text-blue-200"></i>
+          <span>Database Alumni</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobile-toggle" aria-label="Toggle Navigation"
+          class="lg:hidden p-2 rounded-full text-slate-700 hover:bg-white/80 border border-white/60 transition-colors shadow-sm">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Liquid Glass Menu -->
+    <div id="mobile-menu"
+      class="hidden lg:hidden max-w-7xl mx-auto mt-2 pointer-events-auto liquid-glass-wrapper rounded-3xl p-4 shadow-2xl animate-fadeIn">
+      <div class="flex flex-col space-y-1 text-sm font-medium text-slate-700">
+        <a href="#beranda"
+          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Beranda</a>
+        <a href="#tentang"
+          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Tentang & Nilai</a>
+        <a href="#struktur"
+          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Kepengurusan 2025</a>
+        <a href="#kampus"
+          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Direktori Kampus</a>
+        <a href="#panduan"
+          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Panduan Santri
+          Baru</a>
+        <a href="#dokumentasi"
+          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Dokumentasi 3D</a>
+        <a href="#warta" class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Warta
+          Sadulur</a>
+        <div class="pt-2 mt-2 border-t border-slate-200/60">
+          <a href="#database"
+            class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-full bg-brand-700 text-white font-bold text-xs shadow-md">
+            <i data-lucide="clipboard-check" class="w-4 h-4 text-blue-200"></i>
+            <span>Daftar Database Alumni</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================================================================
+       3. HERO SECTION
+  ================================================================== -->
+  <section id="beranda"
+    class="relative overflow-hidden min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-84px)] flex items-center py-12 lg:py-16 bg-pattern-subtle border-b border-slate-200">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+        <!-- Left Editorial Copy -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+
+          <!-- Main Distinctive Heading -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+            <span class="font-serif italic font-normal text-brand-700 block sm:inline">Sadulur Ngahiji</span>
+            di Tatar Pasundan.
+          </h1>
+
+          <!-- Lead Paragraph -->
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
+            Wadah persaudaraan, jejaring intelektual, dan pengabdian bagi seluruh alumni
+            <strong class="text-slate-900 font-semibold">Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI)</strong>
+            yang tengah menempuh studi perguruan tinggi, berkarya, dan berdomisili di wilayah Bandung Raya.
+          </p>
+
+          <!-- Action CTAs -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-10">
+            <a href="#database"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-semibold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5">
+              <i data-lucide="clipboard-check" class="w-4 h-4 text-blue-200"></i>
+              <span>Daftar Database Alumni</span>
+            </a>
+            <a href="#dokumentasi"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold text-sm shadow-sm transition-all duration-200 hover:border-slate-400">
+              <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+              <span>Lihat Dokumentasi Kegiatan</span>
+            </a>
+          </div>
+
+          <!-- Credibility Metrics Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-6 border-t border-slate-200 w-full">
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-brand-900 leading-none">690+</p>
+              <p class="text-xs text-slate-500 mt-1">Alumni Terhubung</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-brand-900 leading-none">8+</p>
+              <p class="text-xs text-slate-500 mt-1">Kampus di Bandung</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-brand-900 leading-none">5</p>
+              <p class="text-xs text-slate-500 mt-1">Divisi Kepengurusan</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-extrabold text-accent-700 leading-none">1993</p>
+              <p class="text-xs text-slate-500 mt-1">Basis Pesantren PMUQI</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual: 3D Interactive Glossy Standalone Emblem Logo -->
+        <div class="lg:col-span-5 relative flex items-center justify-center py-6 lg:py-0">
+
+          <!-- Ambient Aura Glow Behind Logo -->
+          <div aria-hidden="true"
+            class="absolute -inset-4 sm:-inset-12 bg-gradient-to-tr from-brand-600/35 via-blue-500/25 to-indigo-600/25 rounded-full blur-3xl opacity-80 pointer-events-none -z-10 animate-pulse"
+            style="animation-duration: 5s;"></div>
+
+          <!-- 3D Tilt Perspective Wrapper -->
+          <div id="hero-logo-container"
+            class="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] xl:max-w-[490px] aspect-square flex items-center justify-center cursor-pointer select-none"
+            style="perspective: 1200px;">
+
+            <!-- 3D Skewed Interactive Logo (Glossy & Shiny) -->
+            <div id="hero-interactive-logo"
+              class="hero-glossy-logo relative w-full h-full flex items-center justify-center preserve-3d">
+
+              <!-- Standalone HD Logo -->
+              <img src="assets/logo_ikapmi_hd.png" alt="Emblem Logo Resmi IKAPMI Regional Bandung"
+                class="w-full h-full object-contain pointer-events-none select-none filter contrast-[1.06] brightness-[1.03]"
+                draggable="false">
+
+              <!-- Glossy Specular Glare & Shimmer Layer Masked to Logo Silhouette ("Mengkilat") -->
+              <div class="hero-logo-shine-mask pointer-events-none absolute inset-0"
+                style="mask-image: url('assets/logo_ikapmi_hd.png'); -webkit-mask-image: url('assets/logo_ikapmi_hd.png'); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-position: center; -webkit-mask-position: center;">
+                <!-- Dynamic Cursor Follow Glare ("Mengkilat" spotlight) -->
+                <div class="hero-logo-glare-radial absolute inset-0"></div>
+                <!-- Sweeping Holographic Shimmer Beam -->
+                <div class="hero-logo-glare-shimmer absolute inset-0"></div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+       4. TENTANG KAMI & FILOSOFI SADULUR NGAHIJI (Solid Biru Dongker - 1 Layar Desktop)
+  ================================================================== -->
+  <section id="tentang"
+    class="min-h-screen lg:h-screen flex flex-col justify-center py-10 lg:py-0 bg-[#081326] relative overflow-hidden border-b border-blue-950/80 text-white isolate">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+      <!-- Section Header (Model serupa Struktur Kepengurusan IKAPMI Bandung) -->
+      <div class="text-center max-w-3xl mx-auto mb-6 lg:mb-10">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug">
+          Tentang Kami
+        </h2>
+      </div>
+
+      <!-- Symmetrical 6-6 Split Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+        <!-- Left: Interactive Card Deck Carousel (Stack of 5 Authentic Documentation Photos) -->
+        <div class="lg:col-span-6 flex flex-col items-center justify-center relative w-full">
+          <div id="card-deck-root" class="w-full flex items-center justify-center"></div>
+        </div>
+
+        <!-- Right: Story (Tersusun Rapi, Sejajar & Setara dengan Visual Foto) -->
+        <div class="lg:col-span-6 flex flex-col justify-center space-y-5 max-w-xl mx-auto lg:mx-0">
+
+          <h3
+            class="text-2xl sm:text-3xl lg:text-[34px] xl:text-[36px] font-extrabold text-white tracking-tight leading-[1.25]">
+            Bukan Sekadar Perkumpulan Alumni, Melainkan <span class="text-blue-300 font-serif italic">Rumah
+              Pertama</span> di Perantauan.
+          </h3>
+
+          <div class="text-slate-300 text-sm sm:text-base lg:text-[16px] leading-relaxed space-y-4">
+            <p>
+              <strong class="text-white font-semibold">IKAPMI Regional Bandung</strong> didirikan sebagai simpul ikatan
+              keluarga bagi para lulusan
+              <em class="text-slate-100 font-normal">Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI)</em> yang
+              melanjutkan perjalanan thalabul 'ilmi di perguruan tinggi negeri maupun swasta,
+              serta mereka yang tengah merintis karier di wilayah Bandung Raya.
+            </p>
+            <p>
+              Di tengah ritme akademis dan dinamika kota Bandung yang majemuk, IKAPMI Bandung hadir sebagai jangkar
+              moral, ruang bertukar gagasan,
+              dan keluarga terdekat saat jauh dari kampung halaman. Melalui semangat <em
+                class="text-blue-300 font-serif italic font-medium">"Sadulur Ngahiji"</em>, setiap anggota dipandang
+              setara sebagai saudara
+              yang saling menguatkan dalam suka maupun duka.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       5. STRUKTUR KEPENGURUSAN - KABINET ASTRA NOWANTA (TEAM LANYARD RAIL)
+  ================================================================== -->
+  <section id="struktur" class="py-16 sm:py-24 bg-[#f8faf9] border-b border-slate-200 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
+          Struktur Kepengurusan IKAPMI Bandung
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2">
+          Kabinet Astra Nowanta IKAPMI Regional Bandung masa
+          khidmat 2025–2026.
+        </p>
+      </div>
+
+      <!-- React Team Lanyard Rail Mount Point -->
+      <div id="team-lanyard-root" class="w-full"></div>
+
+    </div>
+  </section>
+
+
+  <!-- =================================================================
+       6. DIREKTORI KAMPUS & JEJARING ALUMNI BANDUNG
+  ================================================================== -->
+  <section id="kampus" class="py-16 sm:py-24 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
+            Direktori Kampus & Jejaring Alumni
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
+            Jejaring alumni santri Ummul Quro Al-Islami tersebar di berbagai universitas terkemuka di wilayah Bandung
+            Raya. Temukan koordinator komisariat kampus Anda.
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="w-full md:w-72">
+          <div class="relative">
+            <input type="text" id="campus-search" placeholder="Cari kampus atau jurusan..."
+              class="w-full px-4 py-2.5 pl-10 text-xs sm:text-sm rounded-xl border border-slate-300 input-field bg-slate-50">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Campus Filter Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 text-xs font-semibold scrollbar-none">
+        <button class="campus-filter-btn tab-btn active px-4 py-2 rounded-lg border transition-all shrink-0"
+          data-filter="all">Semua Kampus</button>
+        <button class="campus-filter-btn tab-btn px-4 py-2 rounded-lg border transition-all shrink-0"
+          data-filter="negeri">Kampus Negri</button>
+        <button class="campus-filter-btn tab-btn px-4 py-2 rounded-lg border transition-all shrink-0"
+          data-filter="swasta">Kampus Swasta</button>
+      </div>
+
+                  <!-- Campus Cards Grid (Compact 3-Column Luxury Editorial Style matching Reference) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6" id="campus-cards-grid">
+
+        <!-- Card 1: UIN Sunan Gunung Djati -->
+        <div class="campus-card campus-card-editorial group relative min-h-[305px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between"
+             data-category="negeri" data-campus="negeri"
+             data-keywords="uin sgd bandung uinsgd cibiru soekarno hatta ushuluddin syariah tarbiyah dakwah pai pba iat tafsir hadis hukum islam komunikasi kpi bpi bimbingan konseling manajemen dakwah muamalah ekonomi syariah sains teknologi fst psikologi adab humaniora islam negeri ptn">
+          <!-- Background Image with Zoom on Hover -->
+          <img src="assets/kampus/kampus_uin.jpg" alt="Gedung Kampus UIN Sunan Gunung Djati Bandung" 
+               class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none">
+
+          <!-- Multi-stop Dark Cinematic Scrim Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-900/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-slate-950/40 pointer-events-none"></div>
+
+          <!-- Sweeping Holographic Kilauan (Shimmer / Glow) -->
+          <div class="campus-shimmer-layer"></div>
+
+          <!-- Top Section: Number & Campus Name (Left), Frosted Badge (Right) -->
+          <div class="relative z-10 flex items-start justify-between gap-3">
+            <div>
+              <div class="font-serif text-2xl sm:text-3xl text-white/90 font-light tracking-tight leading-none drop-shadow-md mb-1.5">
+                01
+              </div>
+              <h3 class="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug drop-shadow-md">
+                UIN Sunan Gunung Djati
+              </h3>
+            </div>
+
+            <!-- Frosted Glass Badge -->
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase text-white/95 bg-white/15 backdrop-blur-md border border-white/25 shadow-sm shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Basis Terbesar</span>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Info & Tags, Metric & CTA Row -->
+          <div class="relative z-10 flex flex-col justify-end gap-2.5 pt-4 mt-auto">
+            <!-- Description -->
+            <p class="text-xs text-slate-200/90 leading-relaxed drop-shadow line-clamp-2">
+              Kampus 1 & 2 Cibiru, Kota Bandung. Konsentrasi alumni di Fakultas Ushuluddin, Syariah, Tarbiyah, dan Dakwah.
+            </p>
+            
+            <!-- Tags row -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                Koor: Kang Fauzan
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-sky-400"></span>
+                Cibiru & Soetta
+              </span>
+            </div>
+
+            <!-- Metric & Hubungi Koor CTA Row -->
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10">
+              <div>
+                <div class="font-serif text-xl sm:text-2xl font-medium text-white tracking-tight leading-none drop-shadow">
+                  ~280+
+                </div>
+                <div class="text-[9px] font-bold text-slate-300 tracking-widest uppercase mt-0.5">
+                  ALUMNI TERDATA
+                </div>
+              </div>
+
+              <!-- Button Hubungi Koor -->
+              <a href="https://wa.me/6281200000000?text=Halo%20Koor%20IKAPMI%20UIN%20Bandung,%20saya%20alumni%20PMUQI..."
+                 target="_blank"
+                 class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md hover:shadow-amber-400/25 transition-all duration-300 hover:scale-[1.03] active:scale-95 group/btn shrink-0">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-900 fill-emerald-900/10"></i>
+                <span>Hubungi Koor</span>
+                <i data-lucide="arrow-right" class="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Universitas Padjadjaran (UNPAD) -->
+        <div class="campus-card campus-card-editorial group relative min-h-[305px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between"
+             data-category="negeri" data-campus="negeri"
+             data-keywords="unpad universitas padjadjaran jatinangor dipatiukur du fib sastra fisip hubungan internasional hi ilmu pemerintahan fikom komunikasi jurnalistik hukum fakultas hukum fh ekonomi fe feb manajemen akuntansi kedokteran fk farmasi psikologi pertanian faperta peternakan fapet perikanan fpik fkg mipa fapsi fpsi negeri ptn">
+          <!-- Background Image with Zoom on Hover -->
+          <img src="assets/kampus/kampus_unpad.jpg" alt="Gedung Rektorat Bale Sawala UNPAD Jatinangor" 
+               class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none">
+
+          <!-- Multi-stop Dark Cinematic Scrim Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-900/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-slate-950/40 pointer-events-none"></div>
+
+          <!-- Sweeping Holographic Kilauan (Shimmer / Glow) -->
+          <div class="campus-shimmer-layer"></div>
+
+          <!-- Top Section: Number & Campus Name (Left), Frosted Badge (Right) -->
+          <div class="relative z-10 flex items-start justify-between gap-3">
+            <div>
+              <div class="font-serif text-2xl sm:text-3xl text-white/90 font-light tracking-tight leading-none drop-shadow-md mb-1.5">
+                02
+              </div>
+              <h3 class="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug drop-shadow-md">
+                Universitas Padjadjaran
+              </h3>
+            </div>
+
+            <!-- Frosted Glass Badge -->
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase text-white/95 bg-white/15 backdrop-blur-md border border-white/25 shadow-sm shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <span>Komisariat Utama</span>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Info & Tags, Metric & CTA Row -->
+          <div class="relative z-10 flex flex-col justify-end gap-2.5 pt-4 mt-auto">
+            <!-- Description -->
+            <p class="text-xs text-slate-200/90 leading-relaxed drop-shadow line-clamp-2">
+              Jatinangor & Dipatiukur. Konsentrasi alumni di Fakultas FIB, FISIP, Fikom, Hukum, dan Ekonomi Bisnis.
+            </p>
+            
+            <!-- Tags row -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                Koor: Kang Raihan
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-blue-400"></span>
+                Jatinangor & DU
+              </span>
+            </div>
+
+            <!-- Metric & Hubungi Koor CTA Row -->
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10">
+              <div>
+                <div class="font-serif text-xl sm:text-2xl font-medium text-white tracking-tight leading-none drop-shadow">
+                  ~120+
+                </div>
+                <div class="text-[9px] font-bold text-slate-300 tracking-widest uppercase mt-0.5">
+                  ALUMNI TERDATA
+                </div>
+              </div>
+
+              <!-- Button Hubungi Koor -->
+              <a href="https://wa.me/6281200000000?text=Halo%20Koor%20IKAPMI%20UNPAD,%20saya%20alumni%20PMUQI..."
+                 target="_blank"
+                 class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md hover:shadow-amber-400/25 transition-all duration-300 hover:scale-[1.03] active:scale-95 group/btn shrink-0">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-900 fill-emerald-900/10"></i>
+                <span>Hubungi Koor</span>
+                <i data-lucide="arrow-right" class="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Universitas Pendidikan Indonesia (UPI) -->
+        <div class="campus-card campus-card-editorial group relative min-h-[305px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between"
+             data-category="negeri" data-campus="negeri"
+             data-keywords="upi universitas pendidikan indonesia bumi siliwangi setiabudi bandung fpips pendidikan sejarah geografi fpbs bahasa inggris arab jepang indonesia fip pgsd psikologi pendidikan fpmipa matematika fisika kimia biologi ilmu komputer ilkom fptk teknik mesin elektro sipil arsitektur fpok olahraga kedokteran negeri ptn">
+          <!-- Background Image with Zoom on Hover -->
+          <img src="assets/kampus/kampus_upi.jpg" alt="Gedung Ikonik Villa Isola UPI Bumi Siliwangi Setiabudi" 
+               class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none">
+
+          <!-- Multi-stop Dark Cinematic Scrim Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-900/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-slate-950/40 pointer-events-none"></div>
+
+          <!-- Sweeping Holographic Kilauan (Shimmer / Glow) -->
+          <div class="campus-shimmer-layer"></div>
+
+          <!-- Top Section: Number & Campus Name (Left), Frosted Badge (Right) -->
+          <div class="relative z-10 flex items-start justify-between gap-3">
+            <div>
+              <div class="font-serif text-2xl sm:text-3xl text-white/90 font-light tracking-tight leading-none drop-shadow-md mb-1.5">
+                03
+              </div>
+              <h3 class="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug drop-shadow-md">
+                Universitas Pendidikan Indonesia
+              </h3>
+            </div>
+
+            <!-- Frosted Glass Badge -->
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase text-white/95 bg-white/15 backdrop-blur-md border border-white/25 shadow-sm shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+              <span>Komisariat Pendidikan</span>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Info & Tags, Metric & CTA Row -->
+          <div class="relative z-10 flex flex-col justify-end gap-2.5 pt-4 mt-auto">
+            <!-- Description -->
+            <p class="text-xs text-slate-200/90 leading-relaxed drop-shadow line-clamp-2">
+              Bumi Siliwangi Setiabudi, Bandung. Konsentrasi alumni di Fakultas FPIPS, FPBS, FIP, dan Pendidikan Bahasa.
+            </p>
+            
+            <!-- Tags row -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                Koor: Kang Ilham
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-purple-400"></span>
+                Bumi Siliwangi
+              </span>
+            </div>
+
+            <!-- Metric & Hubungi Koor CTA Row -->
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10">
+              <div>
+                <div class="font-serif text-xl sm:text-2xl font-medium text-white tracking-tight leading-none drop-shadow">
+                  ~85+
+                </div>
+                <div class="text-[9px] font-bold text-slate-300 tracking-widest uppercase mt-0.5">
+                  ALUMNI TERDATA
+                </div>
+              </div>
+
+              <!-- Button Hubungi Koor -->
+              <a href="https://wa.me/6281200000000?text=Halo%20Koor%20IKAPMI%20UPI,%20saya%20alumni%20PMUQI..."
+                 target="_blank"
+                 class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md hover:shadow-amber-400/25 transition-all duration-300 hover:scale-[1.03] active:scale-95 group/btn shrink-0">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-900 fill-emerald-900/10"></i>
+                <span>Hubungi Koor</span>
+                <i data-lucide="arrow-right" class="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Institut Teknologi Bandung (ITB) -->
+        <div class="campus-card campus-card-editorial group relative min-h-[305px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between"
+             data-category="negeri" data-campus="negeri"
+             data-keywords="itb institut teknologi bandung ganesha jatinangor aula barat stei informatika teknik elektro sistem teknologi informasi sti ftmd teknik mesin dirgantara aeronautika material sbm sekolah bisnis manajemen ftsl teknik sipil lingkungan fti teknik industri kimia sith rekayasa hayati farmasi sf fsrd desain dkv seni rupa fitb geologi geodesi fmipa matematika fisika kimia astronomi sains rekayasa teknologi negeri ptn">
+          <!-- Background Image with Zoom on Hover -->
+          <img src="assets/kampus/kampus_itb.jpg" alt="Gedung Ikonik Aula Barat ITB Kampus Ganesha" 
+               class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none">
+
+          <!-- Multi-stop Dark Cinematic Scrim Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-900/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-slate-950/40 pointer-events-none"></div>
+
+          <!-- Sweeping Holographic Kilauan (Shimmer / Glow) -->
+          <div class="campus-shimmer-layer"></div>
+
+          <!-- Top Section: Number & Campus Name (Left), Frosted Badge (Right) -->
+          <div class="relative z-10 flex items-start justify-between gap-3">
+            <div>
+              <div class="font-serif text-2xl sm:text-3xl text-white/90 font-light tracking-tight leading-none drop-shadow-md mb-1.5">
+                04
+              </div>
+              <h3 class="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug drop-shadow-md">
+                Institut Teknologi Bandung
+              </h3>
+            </div>
+
+            <!-- Frosted Glass Badge -->
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase text-white/95 bg-white/15 backdrop-blur-md border border-white/25 shadow-sm shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span>Sains & Rekayasa</span>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Info & Tags, Metric & CTA Row -->
+          <div class="relative z-10 flex flex-col justify-end gap-2.5 pt-4 mt-auto">
+            <!-- Description -->
+            <p class="text-xs text-slate-200/90 leading-relaxed drop-shadow line-clamp-2">
+              Ganesha & Jatinangor. Konsentrasi alumni di Fakultas STEI, FTMD, SBM, FTSL, dan Seni Rupa Desain.
+            </p>
+            
+            <!-- Tags row -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                Koor: Kang Farhan
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                Aula Barat Ganesha
+              </span>
+            </div>
+
+            <!-- Metric & Hubungi Koor CTA Row -->
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10">
+              <div>
+                <div class="font-serif text-xl sm:text-2xl font-medium text-white tracking-tight leading-none drop-shadow">
+                  ~25+
+                </div>
+                <div class="text-[9px] font-bold text-slate-300 tracking-widest uppercase mt-0.5">
+                  ALUMNI TERDATA
+                </div>
+              </div>
+
+              <!-- Button Hubungi Koor -->
+              <a href="https://wa.me/6281200000000?text=Halo%20Koor%20IKAPMI%20ITB,%20saya%20alumni%20PMUQI..."
+                 target="_blank"
+                 class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md hover:shadow-amber-400/25 transition-all duration-300 hover:scale-[1.03] active:scale-95 group/btn shrink-0">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-900 fill-emerald-900/10"></i>
+                <span>Hubungi Koor</span>
+                <i data-lucide="arrow-right" class="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Telkom University -->
+        <div class="campus-card campus-card-editorial group relative min-h-[305px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between"
+             data-category="swasta" data-campus="swasta"
+             data-keywords="telkom university tel-u telu dayeuhkolot bandung selatan tult teknik informatika if software engineering rpl ilmu komputasi data science rekayasa industri teknik industri teknik elektro telekomunikasi bisnis manajemen mbti ilmu komunikasi fik dkv desain interior produk fkb swasta pts">
+          <!-- Background Image with Zoom on Hover -->
+          <img src="assets/kampus/kampus_telkom.jpg" alt="Gedung Landmark Tower TULT Telkom University" 
+               class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none">
+
+          <!-- Multi-stop Dark Cinematic Scrim Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-900/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-slate-950/40 pointer-events-none"></div>
+
+          <!-- Sweeping Holographic Kilauan (Shimmer / Glow) -->
+          <div class="campus-shimmer-layer"></div>
+
+          <!-- Top Section: Number & Campus Name (Left), Frosted Badge (Right) -->
+          <div class="relative z-10 flex items-start justify-between gap-3">
+            <div>
+              <div class="font-serif text-2xl sm:text-3xl text-white/90 font-light tracking-tight leading-none drop-shadow-md mb-1.5">
+                05
+              </div>
+              <h3 class="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug drop-shadow-md">
+                Telkom University
+              </h3>
+            </div>
+
+            <!-- Frosted Glass Badge -->
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase text-white/95 bg-white/15 backdrop-blur-md border border-white/25 shadow-sm shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+              <span>Teknologi & Bisnis</span>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Info & Tags, Metric & CTA Row -->
+          <div class="relative z-10 flex flex-col justify-end gap-2.5 pt-4 mt-auto">
+            <!-- Description -->
+            <p class="text-xs text-slate-200/90 leading-relaxed drop-shadow line-clamp-2">
+              Dayeuhkolot, Bandung Selatan. Konsentrasi alumni di Fakultas Informatika, Ekonomi Bisnis, dan Ilmu Komunikasi.
+            </p>
+            
+            <!-- Tags row -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                Koor: Kang Zaki
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-rose-400"></span>
+                TULT Dayeuhkolot
+              </span>
+            </div>
+
+            <!-- Metric & Hubungi Koor CTA Row -->
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10">
+              <div>
+                <div class="font-serif text-xl sm:text-2xl font-medium text-white tracking-tight leading-none drop-shadow">
+                  ~60+
+                </div>
+                <div class="text-[9px] font-bold text-slate-300 tracking-widest uppercase mt-0.5">
+                  ALUMNI TERDATA
+                </div>
+              </div>
+
+              <!-- Button Hubungi Koor -->
+              <a href="https://wa.me/6281200000000?text=Halo%20Koor%20IKAPMI%20Telkom,%20saya%20alumni%20PMUQI..."
+                 target="_blank"
+                 class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md hover:shadow-amber-400/25 transition-all duration-300 hover:scale-[1.03] active:scale-95 group/btn shrink-0">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-900 fill-emerald-900/10"></i>
+                <span>Hubungi Koor</span>
+                <i data-lucide="arrow-right" class="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+                <!-- No Result Message -->
+        <div id="no-campus-found" class="hidden col-span-full py-12 px-4 text-center bg-slate-50 border border-slate-200 rounded-2xl">
+          <div class="w-12 h-12 mx-auto rounded-full bg-slate-200 flex items-center justify-center text-slate-500 mb-3">
+            <i data-lucide="search-x" class="w-6 h-6"></i>
+          </div>
+          <h4 class="text-slate-800 font-bold text-base">Tidak ada kampus atau jurusan yang cocok</h4>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1 max-w-md mx-auto">
+            Coba gunakan kata kunci lain seperti nama kampus (UNPAD, UPI, ITB, Telkom, Unisba) atau nama jurusan (Informatika, Kedokteran, Hukum, Dakwah).
+          </p>
+        </div>
+
+        <!-- Card 6: UNISBA, UNPAS & POLBAN -->
+        <div class="campus-card campus-card-editorial group relative min-h-[305px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between"
+             data-category="swasta" data-campus="swasta"
+             data-keywords="unisba unpas polban politeknik negeri bandung ciwaruga tamansari universitas islam bandung kedokteran fk hukum fh tarbiyah dakwah syariah psikologi feb ekonomi manajemen akuntansi farmasi teknik unisba unpas universitas pasundan hukum fisip fikom teknik informatika pangan polban akuntansi teknik sipil mesin elektro rekayasa swasta politeknik">
+          <!-- Background Image with Zoom on Hover -->
+          <img src="assets/kampus/kampus_swasta.jpg" alt="Gedung Kampus Rektorat Unisba Tamansari & Polban Ciwaruga" 
+               class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none">
+
+          <!-- Multi-stop Dark Cinematic Scrim Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-slate-900/35 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-transparent to-slate-950/40 pointer-events-none"></div>
+
+          <!-- Sweeping Holographic Kilauan (Shimmer / Glow) -->
+          <div class="campus-shimmer-layer"></div>
+
+          <!-- Top Section: Number & Campus Name (Left), Frosted Badge (Right) -->
+          <div class="relative z-10 flex items-start justify-between gap-3">
+            <div>
+              <div class="font-serif text-2xl sm:text-3xl text-white/90 font-light tracking-tight leading-none drop-shadow-md mb-1.5">
+                06
+              </div>
+              <h3 class="font-serif text-lg sm:text-xl font-normal text-white tracking-tight leading-snug drop-shadow-md">
+                UNISBA, UNPAS & POLBAN
+              </h3>
+            </div>
+
+            <!-- Frosted Glass Badge -->
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase text-white/95 bg-white/15 backdrop-blur-md border border-white/25 shadow-sm shrink-0">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Komisariat Gabungan</span>
+            </div>
+          </div>
+
+          <!-- Bottom Section: Info & Tags, Metric & CTA Row -->
+          <div class="relative z-10 flex flex-col justify-end gap-2.5 pt-4 mt-auto">
+            <!-- Description -->
+            <p class="text-xs text-slate-200/90 leading-relaxed drop-shadow line-clamp-2">
+              Tamansari, Lengkong, dan Ciwaruga. Jejaring santri PMUQI di Kedokteran, Ilmu Hukum, Teknik, dan Akuntansi.
+            </p>
+            
+            <!-- Tags row -->
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                Koor: Kang Dimas
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-sm">
+                <span class="w-1 h-1 rounded-full bg-teal-400"></span>
+                Tamansari & Polban
+              </span>
+            </div>
+
+            <!-- Metric & Hubungi Koor CTA Row -->
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10">
+              <div>
+                <div class="font-serif text-xl sm:text-2xl font-medium text-white tracking-tight leading-none drop-shadow">
+                  ~95+
+                </div>
+                <div class="text-[9px] font-bold text-slate-300 tracking-widest uppercase mt-0.5">
+                  ALUMNI TERDATA
+                </div>
+              </div>
+
+              <!-- Button Hubungi Koor -->
+              <a href="https://wa.me/6281200000000?text=Halo%20Koor%20IKAPMI%20Bandung,%20saya%20alumni%20PMUQI..."
+                 target="_blank"
+                 class="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md hover:shadow-amber-400/25 transition-all duration-300 hover:scale-[1.03] active:scale-95 group/btn shrink-0">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-900 fill-emerald-900/10"></i>
+                <span>Hubungi Koor</span>
+                <i data-lucide="arrow-right" class="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       7. PUSAT PANDUAN SANTRI BARU (CAMPUS MENTORSHIP)
+  ================================================================== -->
+  <section id="panduan" class="py-16 sm:py-24 bg-[#f8faf9] border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-emerald text-xs font-semibold mb-3">
+          <span>KONSULTASI & PENDAMPINGAN</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
+          Pusat Panduan Santri Baru ke Bandung
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2">
+          Khusus dipersembahkan bagi adik-adik santri tingkat akhir di Pondok Pesantren Modern Ummul Quro Al-Islami
+          Bogor yang berminat melanjutkan pendidikan ke kampus di Bandung.
+        </p>
+      </div>
+
+      <!-- Interactive Guide Tabs -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+
+        <!-- Tab Navigation Buttons -->
+        <div
+          class="flex items-center gap-2 border-b border-slate-200 pb-4 overflow-x-auto text-xs sm:text-sm font-semibold">
+          <button class="guide-tab-btn tab-btn active px-4 py-2.5 rounded-xl border transition-all shrink-0"
+            data-guide-target="tab-jalur">
+            🎓 Jalur Masuk Kampus
+          </button>
+          <button class="guide-tab-btn tab-btn px-4 py-2.5 rounded-xl border transition-all shrink-0"
+            data-guide-target="tab-kost">
+            🏡 Panduan Wilayah Kost Santri
+          </button>
+          <button class="guide-tab-btn tab-btn px-4 py-2.5 rounded-xl border transition-all shrink-0"
+            data-guide-target="tab-beasiswa">
+            💰 Informasi Beasiswa
+          </button>
+          <button class="guide-tab-btn tab-btn px-4 py-2.5 rounded-xl border transition-all shrink-0"
+            data-guide-target="tab-mentor">
+            🤝 Pendampingan Kakak Tingkat
+          </button>
+        </div>
+
+        <!-- Tab 1: Jalur Masuk -->
+                <!-- Tab 1: Jalur Masuk Kampus -->
+        <div id="tab-jalur" class="guide-content block pt-6">
+
+          <!-- View 1: Daftar Pilihan Kampus (Default View) -->
+          <div id="jalur-selector-view">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+              <div>
+                <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-brand-800 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded-full mb-2">
+                  PANDUAN SELEKSI KAMPUS
+                </span>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  Pilih Kampus Tujuan di Bandung
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
+                  Klik salah satu card kampus di bawah untuk melihat rincian jalur seleksi nasional, ujian mandiri, kuota khusus santri, dan beasiswa tahfidz Al-Qur'an yang tersedia.
+                </p>
+              </div>
+            </div>
+
+            <!-- Campus Cards Grid (3 Columns on Desktop, Responsive) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" id="jalur-campus-grid">
+            <!-- Card 01: UIN Sunan Gunung Djati -->
+            <div class="jalur-card group relative bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-brand-600/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden"
+                 data-campus-id="uin" role="button" tabindex="0" aria-label="Lihat jalur masuk UIN Sunan Gunung Djati">
+              
+              <!-- Top Accent Gradient Line -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600 opacity-80 group-hover:h-1.5 transition-all"></div>
+
+              <!-- Top Row: Number & Badge (Left) + Official Logo (Right) -->
+              <div class="flex items-start justify-between gap-3 pt-1">
+                <div>
+                  <div class="font-serif text-2xl sm:text-3xl text-slate-300 group-hover:text-amber-500 font-light tracking-tight leading-none mb-2 transition-colors">
+                    01
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-emerald-50 text-emerald-800 border-emerald-200/80">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>PTKIN Unggulan</span>
+                  </div>
+                </div>
+
+                <!-- Official Campus Logo on Right Side -->
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-slate-50/80 border border-slate-100 p-2 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-amber-50/20 group-hover:border-amber-200/60 transition-all duration-300 shadow-2xs">
+                  <img src="assets/logos/logo_uin.png" alt="Logo UIN Sunan Gunung Djati" class="max-w-full max-h-full object-contain filter drop-shadow-2xs">
+                </div>
+              </div>
+
+              <!-- Middle Section: Campus Name, Location, Description -->
+              <div class="pt-3 pb-4">
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-brand-800 transition-colors leading-snug">
+                  UIN Sunan Gunung Djati
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span>Cibiru & Gedebage, Bandung</span>
+                </p>
+                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
+                  Basis santri PMUQI terbesar dengan jurusan keagamaan terlengkap, fakultas sains & teknologi, serta jalur beasiswa hafiz Quran.
+                </p>
+              </div>
+
+              <!-- Bottom Row: Pathway Count & Action CTA -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  4 Jalur Masuk
+                </span>
+
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-800 group-hover:text-amber-600 transition-colors">
+                  <span>Lihat Jalur</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+              </div>
+
+            </div>
+            <!-- Card 02: Universitas Padjadjaran (UNPAD) -->
+            <div class="jalur-card group relative bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-brand-600/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden"
+                 data-campus-id="unpad" role="button" tabindex="0" aria-label="Lihat jalur masuk Universitas Padjadjaran (UNPAD)">
+              
+              <!-- Top Accent Gradient Line -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-sky-500 opacity-80 group-hover:h-1.5 transition-all"></div>
+
+              <!-- Top Row: Number & Badge (Left) + Official Logo (Right) -->
+              <div class="flex items-start justify-between gap-3 pt-1">
+                <div>
+                  <div class="font-serif text-2xl sm:text-3xl text-slate-300 group-hover:text-amber-500 font-light tracking-tight leading-none mb-2 transition-colors">
+                    02
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-blue-50 text-blue-800 border-blue-200/80">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    <span>PTN-BH Favorit</span>
+                  </div>
+                </div>
+
+                <!-- Official Campus Logo on Right Side -->
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-slate-50/80 border border-slate-100 p-2 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-amber-50/20 group-hover:border-amber-200/60 transition-all duration-300 shadow-2xs">
+                  <img src="assets/logos/logo_unpad.svg" alt="Logo Universitas Padjadjaran (UNPAD)" class="max-w-full max-h-full object-contain filter drop-shadow-2xs">
+                </div>
+              </div>
+
+              <!-- Middle Section: Campus Name, Location, Description -->
+              <div class="pt-3 pb-4">
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-brand-800 transition-colors leading-snug">
+                  Universitas Padjadjaran (UNPAD)
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span>Jatinangor & Dipatiukur, Bandung</span>
+                </p>
+                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
+                  Komisariat utama di bidang kedokteran, hukum, ilmu komunikasi, ekonomi bisnis, dan ilmu budaya dengan jejaring alumni kuat.
+                </p>
+              </div>
+
+              <!-- Bottom Row: Pathway Count & Action CTA -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  4 Jalur Masuk
+                </span>
+
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-800 group-hover:text-amber-600 transition-colors">
+                  <span>Lihat Jalur</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+              </div>
+
+            </div>
+            <!-- Card 03: Universitas Pendidikan Indonesia (UPI) -->
+            <div class="jalur-card group relative bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-brand-600/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden"
+                 data-campus-id="upi" role="button" tabindex="0" aria-label="Lihat jalur masuk Universitas Pendidikan Indonesia (UPI)">
+              
+              <!-- Top Accent Gradient Line -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 via-red-500 to-amber-500 opacity-80 group-hover:h-1.5 transition-all"></div>
+
+              <!-- Top Row: Number & Badge (Left) + Official Logo (Right) -->
+              <div class="flex items-start justify-between gap-3 pt-1">
+                <div>
+                  <div class="font-serif text-2xl sm:text-3xl text-slate-300 group-hover:text-amber-500 font-light tracking-tight leading-none mb-2 transition-colors">
+                    03
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-rose-50 text-rose-800 border-rose-200/80">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                    <span>PTN-BH Pendidikan & Riset</span>
+                  </div>
+                </div>
+
+                <!-- Official Campus Logo on Right Side -->
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-slate-50/80 border border-slate-100 p-2 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-amber-50/20 group-hover:border-amber-200/60 transition-all duration-300 shadow-2xs">
+                  <img src="assets/logos/logo_upi.svg" alt="Logo Universitas Pendidikan Indonesia (UPI)" class="max-w-full max-h-full object-contain filter drop-shadow-2xs">
+                </div>
+              </div>
+
+              <!-- Middle Section: Campus Name, Location, Description -->
+              <div class="pt-3 pb-4">
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-brand-800 transition-colors leading-snug">
+                  Universitas Pendidikan Indonesia (UPI)
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span>Bumi Siliwangi (Setiabudi), Bandung</span>
+                </p>
+                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
+                  Rujukan utama calon pendidik profesional, studi bahasa arab & inggris, sains terapan, serta ilmu sosial humaniora.
+                </p>
+              </div>
+
+              <!-- Bottom Row: Pathway Count & Action CTA -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                  4 Jalur Masuk
+                </span>
+
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-800 group-hover:text-amber-600 transition-colors">
+                  <span>Lihat Jalur</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+              </div>
+
+            </div>
+            <!-- Card 04: Institut Teknologi Bandung (ITB) -->
+            <div class="jalur-card group relative bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-brand-600/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden"
+                 data-campus-id="itb" role="button" tabindex="0" aria-label="Lihat jalur masuk Institut Teknologi Bandung (ITB)">
+              
+              <!-- Top Accent Gradient Line -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-slate-800 via-blue-900 to-indigo-800 opacity-80 group-hover:h-1.5 transition-all"></div>
+
+              <!-- Top Row: Number & Badge (Left) + Official Logo (Right) -->
+              <div class="flex items-start justify-between gap-3 pt-1">
+                <div>
+                  <div class="font-serif text-2xl sm:text-3xl text-slate-300 group-hover:text-amber-500 font-light tracking-tight leading-none mb-2 transition-colors">
+                    04
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-slate-100 text-slate-800 border-slate-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+                    <span>PTN-BH Sains & Rekayasa</span>
+                  </div>
+                </div>
+
+                <!-- Official Campus Logo on Right Side -->
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-slate-50/80 border border-slate-100 p-2 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-amber-50/20 group-hover:border-amber-200/60 transition-all duration-300 shadow-2xs">
+                  <img src="assets/logos/logo_itb.png" alt="Logo Institut Teknologi Bandung (ITB)" class="max-w-full max-h-full object-contain filter drop-shadow-2xs">
+                </div>
+              </div>
+
+              <!-- Middle Section: Campus Name, Location, Description -->
+              <div class="pt-3 pb-4">
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-brand-800 transition-colors leading-snug">
+                  Institut Teknologi Bandung (ITB)
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span>Ganesha, Jatinangor, & Cirebon</span>
+                </p>
+                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
+                  Institusi teknologi dan rekayasa terkemuka dengan reputasi global untuk sains, informatika, industri, dan seni desain.
+                </p>
+              </div>
+
+              <!-- Bottom Row: Pathway Count & Action CTA -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+                  4 Jalur Masuk
+                </span>
+
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-800 group-hover:text-amber-600 transition-colors">
+                  <span>Lihat Jalur</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+              </div>
+
+            </div>
+            <!-- Card 05: Telkom University (Tel-U) -->
+            <div class="jalur-card group relative bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-brand-600/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden"
+                 data-campus-id="telkom" role="button" tabindex="0" aria-label="Lihat jalur masuk Telkom University (Tel-U)">
+              
+              <!-- Top Accent Gradient Line -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-rose-500 to-orange-500 opacity-80 group-hover:h-1.5 transition-all"></div>
+
+              <!-- Top Row: Number & Badge (Left) + Official Logo (Right) -->
+              <div class="flex items-start justify-between gap-3 pt-1">
+                <div>
+                  <div class="font-serif text-2xl sm:text-3xl text-slate-300 group-hover:text-amber-500 font-light tracking-tight leading-none mb-2 transition-colors">
+                    05
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-red-50 text-red-800 border-red-200/80">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                    <span>PTS Terbaik Nasional</span>
+                  </div>
+                </div>
+
+                <!-- Official Campus Logo on Right Side -->
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-slate-50/80 border border-slate-100 p-2 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-amber-50/20 group-hover:border-amber-200/60 transition-all duration-300 shadow-2xs">
+                  <img src="assets/logos/logo_telkom.png" alt="Logo Telkom University (Tel-U)" class="max-w-full max-h-full object-contain filter drop-shadow-2xs">
+                </div>
+              </div>
+
+              <!-- Middle Section: Campus Name, Location, Description -->
+              <div class="pt-3 pb-4">
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-brand-800 transition-colors leading-snug">
+                  Telkom University (Tel-U)
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span>Dayeuhkolot, Bandung Selatan</span>
+                </p>
+                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
+                  Pusat inovasi teknologi digital, informatika, bisnis digital, dan desain kreatif dengan beasiswa keagamaan.
+                </p>
+              </div>
+
+              <!-- Bottom Row: Pathway Count & Action CTA -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                  4 Jalur Masuk
+                </span>
+
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-800 group-hover:text-amber-600 transition-colors">
+                  <span>Lihat Jalur</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+              </div>
+
+            </div>
+            <!-- Card 06: UNISBA, UNPAS & POLBAN -->
+            <div class="jalur-card group relative bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-brand-600/40 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden"
+                 data-campus-id="unisba-polban" role="button" tabindex="0" aria-label="Lihat jalur masuk UNISBA, UNPAS & POLBAN">
+              
+              <!-- Top Accent Gradient Line -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 opacity-80 group-hover:h-1.5 transition-all"></div>
+
+              <!-- Top Row: Number & Badge (Left) + Official Logo (Right) -->
+              <div class="flex items-start justify-between gap-3 pt-1">
+                <div>
+                  <div class="font-serif text-2xl sm:text-3xl text-slate-300 group-hover:text-amber-500 font-light tracking-tight leading-none mb-2 transition-colors">
+                    06
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-purple-50 text-purple-800 border-purple-200/80">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                    <span>Politeknik Negeri & PTS Favorit</span>
+                  </div>
+                </div>
+
+                <!-- Official Campus Logo on Right Side -->
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-slate-50/80 border border-slate-100 p-2 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-amber-50/20 group-hover:border-amber-200/60 transition-all duration-300 shadow-2xs">
+                  <img src="assets/logos/logo_unisba.png" alt="Logo UNISBA, UNPAS & POLBAN" class="max-w-full max-h-full object-contain filter drop-shadow-2xs">
+                </div>
+              </div>
+
+              <!-- Middle Section: Campus Name, Location, Description -->
+              <div class="pt-3 pb-4">
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-slate-900 group-hover:text-brand-800 transition-colors leading-snug">
+                  UNISBA, UNPAS & POLBAN
+                </h4>
+                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
+                  <span>Tamansari, Lengkong, & Ciwaruga Bandung</span>
+                </p>
+                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
+                  Pilihan favorit santri untuk pendidikan vokasi terapan negeri (POLBAN), kedokteran & hukum islam (UNISBA), dan pasundan (UNPAS).
+                </p>
+              </div>
+
+              <!-- Bottom Row: Pathway Count & Action CTA -->
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                  3 Jalur Masuk
+                </span>
+
+                <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-800 group-hover:text-amber-600 transition-colors">
+                  <span>Lihat Jalur</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+
+          <!-- View 2: Detail Jalur Masuk Kampus (Tampil Saat Card Diklik) -->
+          <div id="jalur-detail-view" class="hidden transition-all duration-300">
+            
+            <!-- Back Button & Quick Switcher Row -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-200">
+              <button id="btn-back-jalur" type="button"
+                      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 hover:text-brand-800 shadow-xs transition-all w-fit cursor-pointer">
+                <i data-lucide="arrow-left" class="w-4 h-4 text-brand-800"></i>
+                <span>Kembali ke Daftar Kampus</span>
+              </button>
+
+              <!-- Campus Quick Switcher Pills -->
+              <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs" id="detail-campus-switcher">
+        <button type="button" class="jalur-quick-btn px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs shrink-0 transition-all flex items-center gap-1.5 cursor-pointer" data-target-campus="uin">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <span>UIN SGD</span>
+        </button>
+        <button type="button" class="jalur-quick-btn px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs shrink-0 transition-all flex items-center gap-1.5 cursor-pointer" data-target-campus="unpad">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+          <span>UNPAD</span>
+        </button>
+        <button type="button" class="jalur-quick-btn px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs shrink-0 transition-all flex items-center gap-1.5 cursor-pointer" data-target-campus="upi">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+          <span>UPI</span>
+        </button>
+        <button type="button" class="jalur-quick-btn px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs shrink-0 transition-all flex items-center gap-1.5 cursor-pointer" data-target-campus="itb">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+          <span>ITB</span>
+        </button>
+        <button type="button" class="jalur-quick-btn px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs shrink-0 transition-all flex items-center gap-1.5 cursor-pointer" data-target-campus="telkom">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+          <span>Tel-U</span>
+        </button>
+        <button type="button" class="jalur-quick-btn px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs shrink-0 transition-all flex items-center gap-1.5 cursor-pointer" data-target-campus="unisba-polban">
+          <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+          <span>Politeknik & Swasta</span>
+        </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Campus Banner -->
+            <div id="detail-campus-banner" class="relative rounded-2xl p-6 sm:p-7 bg-slate-900 text-white shadow-md border border-slate-800 overflow-hidden mb-8">
+              <!-- Glow Highlights -->
+              <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-blue-600/20 blur-3xl pointer-events-none"></div>
+              <div class="absolute -left-16 -bottom-16 w-64 h-64 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
+
+              <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="max-w-2xl">
+                  <div class="flex flex-wrap items-center gap-2 mb-2.5">
+                    <span id="banner-campus-badge" class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-white/10 backdrop-blur-md border border-white/20 text-white">
+                      <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                      <span id="banner-badge-text">PTKIN Unggulan</span>
+                    </span>
+                    <span id="banner-campus-loc" class="text-xs text-slate-300 flex items-center gap-1">
+                      <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i>
+                      <span id="banner-loc-text">Cibiru & Gedebage, Bandung</span>
+                    </span>
+                  </div>
+
+                  <h3 id="banner-campus-title" class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                    UIN Sunan Gunung Djati
+                  </h3>
+
+                  <p id="banner-campus-desc" class="text-xs sm:text-sm text-slate-200/90 mt-2 leading-relaxed">
+                    Basis santri PMUQI terbesar dengan jurusan keagamaan terlengkap, fakultas sains & teknologi, serta jalur beasiswa hafiz Quran.
+                  </p>
+
+                  <!-- Official Link Button -->
+                  <div class="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center gap-3">
+                    <a id="banner-portal-link" href="https://pmb.uinsgd.ac.id" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md transition-all">
+                      <span>Buka Portal PMB Resmi</span>
+                      <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <span class="text-[11px] text-slate-300">Diverifikasi untuk Penerimaan Akademik 2026/2027</span>
+                  </div>
+                </div>
+
+                <!-- Campus Logo Hero Box on Right -->
+                <div class="w-20 h-20 sm:w-24 sm:h-24 p-3 bg-white/95 rounded-2xl shadow-xl flex items-center justify-center shrink-0 border border-white/40 self-start md:self-center">
+                  <img id="banner-campus-logo" src="assets/logos/logo_uin.png" alt="Logo Kampus" class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                </div>
+              </div>
+            </div>
+
+            <!-- Admission Pathways Section Header -->
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <h4 class="font-bold text-slate-900 text-base sm:text-lg flex items-center gap-2">
+                  <i data-lucide="award" class="w-5 h-5 text-brand-700"></i>
+                  <span>Daftar Jalur Masuk yang Tersedia</span>
+                </h4>
+                <p class="text-xs text-slate-500 mt-0.5">Informasi persyaratan dan catatan peluang khusus santri pondok pesantren</p>
+              </div>
+              <span id="banner-pathways-count" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                4 Jalur
+              </span>
+            </div>
+
+            <!-- Admission Pathways Cards Grid -->
+            <div id="detail-pathways-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              <!-- Dynamically Populated by JavaScript -->
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Tab 2: Kost Santri -->
+        <div id="tab-kost" class="guide-content hidden pt-6">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Rekomendasi Area Kost Ramah Santri di Bandung</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-blue-700"></i>
+                <span>Kawasan Cibiru & Cipadung (Dekat UIN Bandung)</span>
+              </h4>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Lingkungan religius dengan banyak masjid jami' dan pesantren mahasiswa (pesma). Biaya kost berkisar Rp
+                500.000 – Rp 1.200.000/bulan dengan biaya hidup makan yang sangat terjangkau.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i>
+                <span>Kawasan Jatinangor (Dekat UNPAD, ITB Jatinangor)</span>
+              </h4>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Pusat kawasan pendidikan dengan mobilitas tinggi. Fasilitas lengkap: perpustakaan, transportasi
+                antar-jemput, dan banyak perkumpulan santri perantau.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Beasiswa -->
+        <div id="tab-beasiswa" class="guide-content hidden pt-6">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">Peluang Beasiswa untuk Santri Berprestasi</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-slate-900 text-sm">KIP Kuliah Merdeka</h4>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Pembebasan biaya kuliah UKT 100% ditambah tunjangan biaya hidup bulanan untuk PTN dan PTS terakreditasi.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-slate-900 text-sm">Beasiswa Cendekia Baznas</h4>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Khusus mahasiswa aktif perguruan tinggi mitra di Jawa Barat dengan pembinaan kepemimpinan dan uang saku.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h4 class="font-bold text-slate-900 text-sm">Jabar Future Leaders (JFLS)</h4>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Program beasiswa dari Pemerintah Provinsi Jawa Barat untuk jenjang D3/D4/S1 dengan jalur prestasi
+                akademik/keagamaan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Pendampingan Kakak Tingkat -->
+        <div id="tab-mentor" class="guide-content hidden pt-6">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Butuh Teman Diskusi atau Konsultasi Jurusan?</h3>
+          <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mb-6">
+            Kakak-kakak alumni IKAPMI Regional Bandung siap mendampingi adik-adik santri PMUQI mulai dari memilih
+            jurusan, strategi belajar, hingga penjemputan saat pertama kali menginjakkan kaki di Bandung.
+          </p>
+          <a href="https://wa.me/6281200000000?text=Assalamu'alaikum%20Kakak%20IKAPMI%20Bandung,%20saya%20santri%20PMUQI%20yang%20ingin%20konsultasi%20kuliah%20di%20Bandung..."
+            target="_blank"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition-all">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>Konsultasi Gratis via WhatsApp Helpdesk</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       8. DOKUMENTASI KEGIATAN: 3D PERSPECTIVE TUNNEL CORRIDOR
+       Inspired by 21st.dev/daiwiikharihar/perspective-tunnel-hero (Original White Theme)
+  ================================================================== -->
+  <!-- =================================================================
+       8. DOKUMENTASI KEGIATAN: 3D PERSPECTIVE TUNNEL CORRIDOR
+       Inspired by 21st.dev/daiwiikharihar/perspective-tunnel-hero (Original White Theme)
+  ================================================================== -->
+  <!-- =================================================================
+       8. DOKUMENTASI KEGIATAN: 3D PERSPECTIVE TUNNEL CORRIDOR
+       Inspired by 21st.dev/daiwiikharihar/perspective-tunnel-hero (Clean White Minimalist)
+  ================================================================== -->
+  <section id="dokumentasi"
+    class="relative bg-white text-slate-900 overflow-hidden border-b border-slate-200 select-none py-16 sm:py-24">
+
+    <!-- Centered Header Section (Badge & Warp Buttons Removed) -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 mb-8 sm:mb-12 text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+        Arsip Momen & Jejak Langkah Organisasi
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600 mt-3 max-w-2xl mx-auto leading-relaxed">
+        Jelajahi linimasa visual kegiatan MUREG, RAKER, dan Keakraban Alumni IKAPMI Bandung dalam koridor ruang 3D
+        interaktif.
+      </p>
+    </div>
+
+    <!-- 3D Tunnel Spatial Canvas (White / Light Background like 21st.dev reference) -->
+    <div id="perspective-tunnel-container"
+      class="relative w-full h-[640px] sm:h-[780px] overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing border-y border-slate-200 bg-[#fafafa]">
+
+      <!-- 1. Ambient Background: Radial Grid Dot Matrix -->
+      <div
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1.2px,transparent_1.2px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_75%_75%_at_50%_50%,#000_50%,transparent_100%)] opacity-85 z-0">
+      </div>
+
+      <!-- 2. Ambient Background: Center Glowing Emerald Core -->
+      <div
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(15,46,89,0.08)_0%,rgba(201,138,44,0.05)_40%,transparent_70%)] z-0">
+      </div>
+
+      <!-- 3. Concentric Tunnel Guide Rings (21st.dev signature) -->
+      <div class="pointer-events-none absolute h-[48vmin] w-[48vmin] rounded-full border border-blue-700/25 z-0">
+      </div>
+      <div
+        class="pointer-events-none absolute h-[76vmin] w-[76vmin] rounded-full border border-dashed border-slate-300 z-0">
+      </div>
+      <div class="pointer-events-none absolute h-[105vmin] w-[105vmin] rounded-full border border-blue-700/15 z-0">
+      </div>
+
+      <!-- 4. Center Typography: PLACED IN THE DEEPEST BACKGROUND (z-0) BEHIND ALL CARDS WITH THIN WHITE BORDER -->
+      <div id="tunnel-center-title"
+        class="pointer-events-none absolute z-0 flex flex-col items-center text-center px-6 max-w-xl select-none transition-all duration-300">
+        <p class="text-xs font-mono uppercase tracking-[0.4em] text-brand-700 font-bold mb-3 drop-shadow-sm">IKAPMI
+          SPATIAL ARCHIVE</p>
+        <h3 class="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.92] text-slate-800"
+          style="-webkit-text-stroke: 1.5px #ffffff; paint-order: stroke fill; text-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+          SADULUR<br>NGAHIJI.
+        </h3>
+      </div>
+
+      <!-- 5. Spatial Perspective Stage Wrapper (z-10, ALL 3D CARDS FLY IN FRONT OF SADULUR NGAHIJI) -->
+      <div id="tunnel-stage" class="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
+        style="perspective: 1200px; transform-style: preserve-3d;">
+        <!-- 3D Golden-Angle Cards Stage -->
+        <div id="tunnel-cards-stage" class="absolute inset-0 pointer-events-none" style="transform-style: preserve-3d;">
+          <!-- Generated & Managed Dynamically via JavaScript -->
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================================
+       9. WARTA & ARTIKEL TERKINI (KABAR SADULUR)
+  ================================================================== -->
+  <section id="warta" class="py-16 sm:py-24 bg-[#f8faf9] border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-emerald text-xs font-semibold mb-3">
+          <span>KABAR TERKINI</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
+          Warta & Publikasi IKAPMI Bandung
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2">
+          Ikuti perkembangan agenda, rilis resmi organisasi, dan tulisan refleksi dari anggota IKAPMI Regional Bandung.
+        </p>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Article 1 -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="assets/mureg_presidium.jpg" alt="MUREG 2025" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                <span>14 Januari 2025</span>
+                <span></span>
+                <span class="text-brand-700 font-semibold">Organisasi</span>
+              </div>
+              <h3
+                class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 hover:text-brand-700 transition-colors">
+                MUREG 2025: Suksesi Kepemimpinan dan Penetapan Arah Baru IKAPMI Bandung
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                Forum musyawarah regional tertinggi resmi menetapkan nakhoda baru serta menyepakati penguatan basis
+                database digital anggota.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button
+              class="read-article-btn inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 transition-colors"
+              data-article-id="1">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="assets/raker_plenary.jpg" alt="RAKER 2025" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                <span>28 Januari 2025</span>
+                <span></span>
+                <span class="text-blue-700 font-semibold">Program Kerja</span>
+              </div>
+              <h3
+                class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 hover:text-brand-700 transition-colors">
+                RAKER 2025: Rumuskan 18 Program Kerja Prioritas untuk Mahasiswa Alumni
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                Bedah komisi kerja menghasilkan 18 rencana aksi konkret mulai dari beasiswa, pengajian berkala, hingga
+                inkubasi wirausaha.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button
+              class="read-article-btn inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 transition-colors"
+              data-article-id="2">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="assets/hero_mureg.jpg" alt="Campus Expo PMUQI" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                <span>04 Februari 2025</span>
+                <span></span>
+                <span class="text-blue-700 font-semibold">Pengabdian</span>
+              </div>
+              <h3
+                class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 hover:text-brand-700 transition-colors">
+                Delegasi Campus Expo: IKAPMI Bandung Sambangi Santri PMUQI Bogor
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                Antusiasme tinggi santri kelas akhir MA Ummul Quro saat delegasi IKAPMI Bandung membagikan tips menembus
+                kampus impian di Bandung.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button
+              class="read-article-btn inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 transition-colors"
+              data-article-id="3">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       10. FORMULIR REGISTRASI DATABASE ALUMNI RESMI
+  ================================================================== -->
+  <section id="database" class="py-16 sm:py-24 bg-brand-900 text-white relative overflow-hidden">
+
+    <!-- Background Subtle Pattern -->
+    <div class="absolute inset-0 bg-islamic-pattern opacity-10 pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span
+          class="inline-block px-3 py-1 rounded-full bg-blue-800/80 text-blue-200 text-xs font-bold uppercase tracking-wider mb-3">
+          DATABASE RESMI ANGGOTA
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+          Formulir Pendataan Alumni IKAPMI Bandung
+        </h2>
+        <p class="text-xs sm:text-sm text-blue-100/80 mt-2">
+          Bagi seluruh alumni Pondok Pesantren Modern Ummul Quro Al-Islami yang kuliah, bekerja, atau berdomisili di
+          Bandung Raya, mohon daftarkan data Anda untuk memudahkan koordinasi dan silaturahmi.
+        </p>
+
+        <!-- Live Counter Pill -->
+        <div
+          class="inline-flex items-center gap-2 mt-4 px-4 py-1.5 rounded-full bg-blue-950/70 border border-blue-700/50 text-xs text-blue-200">
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          <span>Total Alumni Terdata Saat Ini:</span>
+          <span id="total-registered-counter" class="font-bold text-white text-sm">696</span>
+          <span>Orang</span>
+        </div>
+      </div>
+
+      <!-- Registration Form Container -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 text-slate-800 shadow-2xl border border-blue-800/30">
+        <form id="alumni-reg-form" class="space-y-6">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+            <!-- Nama Lengkap -->
+            <div>
+              <label for="reg-nama" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Nama Lengkap & Panggilan <span class="text-red-500">*</span>
+              </label>
+              <input type="text" id="reg-nama" required placeholder="Contoh: Muhammad Raihan (Raihan)"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm input-field bg-slate-50 focus:bg-white">
+            </div>
+
+            <!-- Angkatan Santri PMUQI -->
+            <div>
+              <label for="reg-angkatan" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Angkatan / Tahun Lulus PMUQI <span class="text-red-500">*</span>
+              </label>
+              <input type="text" id="reg-angkatan" required placeholder="Contoh: Angkatan 28 / Lulus 2024"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm input-field bg-slate-50 focus:bg-white">
+            </div>
+
+            <!-- WhatsApp -->
+            <div>
+              <label for="reg-wa" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Nomor WhatsApp Aktif <span class="text-red-500">*</span>
+              </label>
+              <input type="tel" id="reg-wa" required placeholder="08xxxxxxxxxx"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm input-field bg-slate-50 focus:bg-white">
+            </div>
+
+            <!-- Kampus / Instansi -->
+            <div>
+              <label for="reg-kampus" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Kampus / Universitas di Bandung <span class="text-red-500">*</span>
+              </label>
+              <select id="reg-kampus" required
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm input-field bg-slate-50 focus:bg-white">
+                <option value="">Pilih Kampus...</option>
+                <option value="UIN Sunan Gunung Djati">UIN Sunan Gunung Djati</option>
+                <option value="Universitas Padjadjaran (UNPAD)">Universitas Padjadjaran (UNPAD)</option>
+                <option value="Universitas Pendidikan Indonesia (UPI)">Universitas Pendidikan Indonesia (UPI)</option>
+                <option value="Institut Teknologi Bandung (ITB)">Institut Teknologi Bandung (ITB)</option>
+                <option value="Telkom University">Telkom University</option>
+                <option value="UNISBA">UNISBA</option>
+                <option value="UNPAS">UNPAS</option>
+                <option value="POLBAN">POLBAN</option>
+                <option value="Bekerja / Wiraswasta">Sudah Bekerja / Wiraswasta</option>
+                <option value="Kampus Lainnya">Kampus Lainnya</option>
+              </select>
+            </div>
+
+            <!-- Fakultas & Program Studi -->
+            <div>
+              <label for="reg-jurusan" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Fakultas / Program Studi
+              </label>
+              <input type="text" id="reg-jurusan" placeholder="Contoh: Ushuluddin / Ilmu Al-Qur'an & Tafsir"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm input-field bg-slate-50 focus:bg-white">
+            </div>
+
+            <!-- Status Mahasiswa -->
+            <div>
+              <label for="reg-status" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Status Saat Ini
+              </label>
+              <select id="reg-status"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm input-field bg-slate-50 focus:bg-white">
+                <option value="Mahasiswa Baru (Semester 1-2)">Mahasiswa Baru (Semester 1-2)</option>
+                <option value="Mahasiswa Aktif (Tingkat Menengah)">Mahasiswa Aktif (Tingkat Menengah)</option>
+                <option value="Tingkat Akhir / Skripsi">Tingkat Akhir / Skripsi</option>
+                <option value="Fresh Graduate">Fresh Graduate</option>
+                <option value="Bekerja / Menetap di Bandung">Bekerja / Menetap di Bandung</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Domisili Kost / Tempat Tinggal di Bandung -->
+          <div>
+            <label for="reg-domisili" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Alamat Domisili / Area Kost di Bandung
+            </label>
+            <input type="text" id="reg-domisili" placeholder="Contoh: Jl. Manisi Gg. Bakti, Cibiru, Bandung Timur"
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm input-field bg-slate-50 focus:bg-white">
+          </div>
+
+          <!-- Privacy Note & Submit Button -->
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+            <p class="text-[11px] text-slate-500 text-center sm:text-left">
+              🔒 <em>Data Anda dijaga kerahasiaannya dan hanya digunakan untuk kepentingan internal IKAPMI Regional
+                Bandung.</em>
+            </p>
+            <button type="submit"
+              class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5">
+              Simpan & Daftarkan Data Saya
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       11. SEKRETARIAT & HUBUNGI KAMI
+  ================================================================== -->
+  <section id="kontak" class="py-16 sm:py-24 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Contact Information -->
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-emerald text-xs font-semibold mb-3">
+            <span>LAYANAN SEKRETARIAT</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug mb-4">
+            Terhubung dengan Pengurus IKAPMI Regional Bandung
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mb-8 leading-relaxed">
+            Pintu sekretariat kami senantiasa terbuka untuk silaturahmi, konsultasi adik santri, maupun kolaborasi
+            kemitraan dan sosial.
+          </p>
+
+          <div class="space-y-6">
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-10 h-10 rounded-xl bg-brand-50 border border-brand-200 text-brand-700 flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900">Alamat Sekretariat</h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                  Jl. A.H. Nasution No. 105, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40614
+                </p>
+                <p class="text-xs text-brand-700 font-medium mt-1">Titik Kumpul: Kawasan Bandung Timur (Dekat Kampus
+                  UIN)</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center shrink-0">
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900">Instagram Resmi</h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  Ikuti informasi harian, dokumentasi acara, dan pengumuman di:
+                </p>
+                <a href="https://www.instagram.com/ikapmi.bandung/" target="_blank" rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-700 hover:text-brand-900 mt-1 underline underline-offset-2">
+                  <span>@ikapmi.bandung</span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center shrink-0">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900">Waktu Layanan & Respon</h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  Senin – Ahad: 09.00 – 21.00 WIB (Fast response via WhatsApp)
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-3">
+            <a href="https://wa.me/6281200000000?text=Assalamu'alaikum%20Pengurus%20IKAPMI%20Bandung..." target="_blank"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors">
+              <i data-lucide="phone-call" class="w-4 h-4"></i>
+              <span>Hubungi Pengurus via WhatsApp</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Visual Location Card (Map/Banner representation) -->
+        <div class="lg:col-span-6">
+          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-sm">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-3 h-3 rounded-full bg-red-500 animate-ping"></div>
+              <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Pusat Aktivitas Alumni Bandung
+                Raya</span>
+            </div>
+
+            <!-- Stylized Metro Map Display -->
+            <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white p-5 space-y-4">
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-brand-100 text-brand-800 flex items-center justify-center font-bold text-xs">
+                    ST
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-slate-900">Sekretariat Regional</p>
+                    <p class="text-[11px] text-slate-500">Cibiru, Bandung Timur</p>
+                  </div>
+                </div>
+                <span
+                  class="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">Aktif</span>
+              </div>
+
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-xs">
+                    JT
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-slate-900">Titik Kumpul Jatinangor</p>
+                    <p class="text-[11px] text-slate-500">Kawasan UNPAD & ITB Jatinangor</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">Komisariat</span>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">
+                    SB
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-slate-900">Titik Kumpul Bandung Utara</p>
+                    <p class="text-[11px] text-slate-500">Kawasan Setiabudi (UPI) & Ganesha (ITB)</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">Komisariat</span>
+              </div>
+            </div>
+
+            <!-- Authentic Photo Preview -->
+            <div class="mt-6 rounded-2xl overflow-hidden shadow-inner aspect-[16/9]">
+              <img src="assets/hero_raker.jpg" alt="Konsolidasi Pengurus IKAPMI Bandung"
+                class="w-full h-full object-cover">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
+       12. FOOTER
+  ================================================================== -->
+  <footer class="bg-slate-950 text-slate-400 text-xs py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+
+        <!-- Col 1: Brand -->
+        <div class="md:col-span-2 space-y-3">
+          <div class="flex items-center gap-3">
+            <img src="assets/ikapmi_logo.jpg" alt="Logo IKAPMI Regional Bandung" class="w-8 h-8 rounded-full">
+            <span class="font-extrabold text-sm text-white tracking-tight">IKAPMI REGIONAL BANDUNG</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed max-w-md">
+            Ikatan Keluarga Besar & Alumni Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI) Leuwiliang Bogor –
+            Regional Bandung Raya.
+            Menjunjung tinggi nilai adab santri, kebersamaan <em class="text-blue-400">"Sadulur Ngahiji"</em>, dan
+            pengabdian bagi umat.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://www.instagram.com/ikapmi.bandung/" target="_blank" rel="noopener noreferrer"
+              class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="mailto:ikapmi.regionalbandung@gmail.com"
+              class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigasi Cepat -->
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Navigasi Utama</h4>
+          <ul class="space-y-2">
+            <li><a href="#beranda" class="hover:text-blue-400 transition-colors">Beranda</a></li>
+            <li><a href="#tentang" class="hover:text-blue-400 transition-colors">Filosofi & Nilai</a></li>
+            <li><a href="#struktur" class="hover:text-blue-400 transition-colors">Kepengurusan 2025</a></li>
+            <li><a href="#kampus" class="hover:text-blue-400 transition-colors">Direktori Kampus</a></li>
+            <li><a href="#panduan" class="hover:text-blue-400 transition-colors">Panduan Santri Baru</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Jejaring Almamater -->
+        <div>
+          <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Tautan Almamater</h4>
+          <ul class="space-y-2">
+            <li><a href="https://pmuqi.com" target="_blank" rel="noopener noreferrer"
+                class="hover:text-blue-400 transition-colors">Pondok Pesantren Modern Ummul Quro Al-Islami</a></li>
+            <li><a href="https://pmuqi.com" target="_blank" rel="noopener noreferrer"
+                class="hover:text-blue-400 transition-colors">Institut Ummul Quro Al-Islami (IUQI) Bogor</a></li>
+            <li><a href="#database" class="hover:text-blue-400 transition-colors">Registrasi Database Alumni</a></li>
+            <li><a href="#kontak" class="hover:text-blue-400 transition-colors">Kontak Sekretariat Bandung</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Notice -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <p>© 2025–2026 IKAPMI Regional Bandung. Seluruh hak cipta dilindungi.</p>
+        <p>Dirancang & dikembangkan dengan integritas untuk seluruh santri perantau di Jawa Barat.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =================================================================
+       13. MODALS & TOAST NOTIFICATION CONTAINER
+  ================================================================== -->
+
+  <!-- Lightbox Modal for Photo Inspection -->
+  <div id="lightbox-modal"
+    class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+    <div class="lightbox-backdrop absolute inset-0"></div>
+    <div
+      class="relative z-10 max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 animate-fadeIn">
+      <button id="lightbox-close"
+        class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="max-h-[70vh] flex items-center justify-center bg-black">
+        <img id="lightbox-img" src="" alt="Dokumentasi IKAPMI Bandung" class="max-h-[70vh] w-auto object-contain">
+      </div>
+      <div class="p-5 bg-slate-900 border-t border-slate-800 text-white">
+        <h3 id="lightbox-title" class="text-base sm:text-lg font-bold">Judul Foto</h3>
+        <p id="lightbox-desc" class="text-xs text-slate-400 mt-1">Deskripsi dokumentasi kegiatan.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article Reader Modal -->
+  <div id="article-modal"
+    class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div class="article-modal-backdrop absolute inset-0"></div>
+    <div
+      class="relative z-10 max-w-2xl w-full max-h-[85vh] overflow-y-auto bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 animate-fadeIn">
+      <button id="article-modal-close"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <div id="article-modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="reg-toast"
+    class="hidden fixed bottom-6 right-6 z-50 max-w-md bg-white border border-slate-200 shadow-2xl rounded-2xl p-4 flex items-center gap-3 transform transition-all duration-300 translate-y-8 opacity-0">
+    <div
+      class="toast-icon w-8 h-8 rounded-full bg-[#0f2e59] text-white flex items-center justify-center font-bold text-sm shrink-0">
+      ✓
+    </div>
+    <div class="text-xs text-slate-800 font-medium toast-message">
+      Notifikasi pesan berhasil disimpan.
+    </div>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="js/app.js?v=5.0"></script>
+  <script>
+    // Initialize Lucide Icons after DOM load
+    lucide.createIcons();
+  </script>
+  <script src="js/card-deck-carousel.bundle.js"></script>
+  <script src="js/team-lanyard-rail.v6.js?v=clean_caption"></script>
+  <!-- Inline Campus Filter Script to guarantee 100% instantaneous execution on all browsers -->
+  <script>
+    (function() {
+      function setupCampusFilter() {
+        const filterBtns = document.querySelectorAll('.campus-filter-btn');
+        const campusCards = document.querySelectorAll('#campus-cards-grid > .campus-card');
+        const searchInput = document.getElementById('campus-search');
+        const noResult = document.getElementById('no-campus-found');
+
+        if (!filterBtns.length || !campusCards.length) return;
+
+        function applyFilter(category, query) {
+          const cat = (category || 'all').trim().toLowerCase();
+          const q = (query || '').trim().toLowerCase();
+          const queryWords = q.split(/\s+/).filter(Boolean);
+          let visibleCount = 0;
+
+          campusCards.forEach(function(card) {
+            const cardCat = (card.getAttribute('data-category') || card.getAttribute('data-campus') || '').toLowerCase();
+            const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+            const cardText = (card.textContent || '').toLowerCase() + ' ' + cardKeywords;
+
+            const matchCat = (cat === 'all') || (cardCat === cat) || (cardCat.indexOf(cat) !== -1);
+            const matchQuery = queryWords.length === 0 || queryWords.every(function(word) {
+              return cardText.indexOf(word) !== -1;
+            });
+
+            if (matchCat && matchQuery) {
+              card.style.display = 'flex';
+              card.classList.remove('hidden');
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+              card.classList.add('hidden');
+            }
+          });
+
+          if (noResult) {
+            if (visibleCount === 0) {
+              noResult.classList.remove('hidden');
+            } else {
+              noResult.classList.add('hidden');
+            }
+          }
+        }
+
+        filterBtns.forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            filterBtns.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            const cat = btn.getAttribute('data-filter') || 'all';
+            const q = searchInput ? searchInput.value : '';
+            applyFilter(cat, q);
+          });
+        });
+
+        if (searchInput) {
+          searchInput.addEventListener('input', function(e) {
+            const q = (e.target.value || '').trim();
+            let activeBtn = document.querySelector('.campus-filter-btn.active');
+            let cat = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+
+            // If user types query and current tab yields zero, auto switch to "all" tab so user finds campus immediately
+            if (q && cat !== 'all') {
+              let matchesInCat = false;
+              campusCards.forEach(function(card) {
+                const cardCat = (card.getAttribute('data-category') || '').toLowerCase();
+                const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const cardText = (card.textContent || '').toLowerCase() + ' ' + cardKeywords;
+                if (cardCat === cat && cardText.indexOf(q.toLowerCase()) !== -1) {
+                  matchesInCat = true;
+                }
+              });
+              if (!matchesInCat) {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                const allBtn = document.querySelector('.campus-filter-btn[data-filter="all"]');
+                if (allBtn) allBtn.classList.add('active');
+                cat = 'all';
+              }
+            }
+
+            applyFilter(cat, e.target.value);
+          });
+
+          searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+              searchInput.value = '';
+              const activeBtn = document.querySelector('.campus-filter-btn.active');
+              const cat = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+              applyFilter(cat, '');
+            }
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupCampusFilter);
+      } else {
+        setupCampusFilter();
+      }
+    })();
+  </script>
+
+
+  <!-- Inline Jalur Kampus Interactive Handler to guarantee instant execution -->
+  <script>
+    (function() {
+      function setupJalur() {
+        if (typeof initJalurKampus === 'function') {
+          initJalurKampus();
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupJalur);
+      } else {
+        setupJalur();
+      }
+    })();
+  </script>
+</body>
+
+
+</html>
