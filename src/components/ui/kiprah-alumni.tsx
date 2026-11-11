@@ -65,43 +65,8 @@ export function KiprahAlumniSection() {
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto mb-14 sm:mb-16 flex max-w-5xl flex-col items-center px-6 text-center lg:px-0">
-          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-900/40">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M16.051 12.616a1 1 0 0 1 1.909.024l.737 1.452a1 1 0 0 0 .737.535l1.634.256a1 1 0 0 1 .588 1.806l-1.172 1.168a1 1 0 0 0-.282.866l.259 1.613a1 1 0 0 1-1.541 1.134l-1.465-.75a1 1 0 0 0-.912 0l-1.465.75a1 1 0 0 1-1.539-1.133l.258-1.613a1 1 0 0 0-.282-.866l-1.156-1.153a1 1 0 0 1 .572-1.822l1.633-.256a1 1 0 0 0 .737-.535z" />
-              <path d="M8 15H7a4 4 0 0 0-4 4v2" />
-              <circle cx="10" cy="7" r="4" />
-            </svg>
-          </div>
-
-          <h2 className="relative mb-4 font-bold text-3xl text-white tracking-tight sm:text-5xl">
+          <h2 className="mb-4 font-bold text-3xl text-white tracking-tight sm:text-5xl">
             Kiprah Alumni
-            <svg
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-2 -right-8 -z-10 w-24 text-white/10"
-              fill="currentColor"
-              height="86"
-              viewBox="0 0 108 86"
-              width="108"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M38.8484 16.236L15 43.5793L78.2688 15L18.1218 71L93 34.1172L70.2047 65.2739"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="28"
-              />
-            </svg>
           </h2>
           <p className="max-w-2xl text-slate-300 text-sm sm:text-base leading-relaxed">
             Mengenal tokoh dan senior alumni Pondok Pesantren Modern Ummul Quro
@@ -124,7 +89,7 @@ export function KiprahAlumniSection() {
                 <div className="relative h-[23rem] w-full overflow-hidden rounded-2xl bg-[#0d1f3c] border border-white/10 shadow-xl">
                   <img
                     alt={member.name}
-                    className="h-full w-full object-cover object-top grayscale transition-all duration-300 group-hover:grayscale-0"
+                    className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                     src={member.image}
                   />
                   <div className="absolute bottom-0 w-full rounded-lg bg-white/90 backdrop-blur-sm p-3 text-left">
