@@ -267,24 +267,26 @@ function initPerspectiveTunnelHero() {
 
   if (!container || !cardsStage) return;
 
-  // Curated pool of distinct, varied event photos (shuffled randomly on each visit)
+  // Curated pool of ONLY large-group ("foto bersama-sama") LANDSCAPE photos (shuffled randomly on each visit)
   const curatedPool = [
-    { src: "assets/gallery/gallery_36.jpg", ratio: "4 / 3", title: "Kebersamaan di Masjid Al-Jabbar", desc: "Silaturahmi keluarga besar IKAPMI Bandung di pelataran Masjid Raya Al-Jabbar." },
+    { src: "assets/gallery/gallery_36.jpg", ratio: "16 / 9", title: "Kebersamaan di Masjid Al-Jabbar", desc: "Silaturahmi keluarga besar IKAPMI Bandung di pelataran Masjid Raya Al-Jabbar." },
+    { src: "assets/gallery/gallery_38.jpg", ratio: "16 / 9", title: "Silaturahmi Akbar Keluarga IKAPMI", desc: "Kebersamaan penuh kehangatan seluruh anggota IKAPMI Regional Bandung." },
     { src: "assets/gallery/gallery_39.jpg", ratio: "4 / 3", title: "Kumpul Akbar Depan Gedung Sate", desc: "Konsolidasi santri perantau Bandung Raya berlatar ikon Kota Bandung." },
-    { src: "assets/gallery/gallery_23.jpg", ratio: "4 / 3", title: "Delegasi Campus Expo PMUQI", desc: "Tim delegasi IKAPMI Bandung hadir menyapa santri kelas akhir pada Campus Expo." },
-    { src: "assets/gallery/gallery_14.jpg", ratio: "4 / 3", title: "Kumpul Hangat Lintas Kampus", desc: "Suasana akrab penuh tawa saat santri perantau melepas rindu di Bandung." },
-    { src: "assets/gallery/gallery_25.jpg", ratio: "4 / 3", title: "Sosialisasi Jalur Masuk PTN & PTS", desc: "Berbagi informasi beasiswa, jalur masuk kampus, dan kehidupan mahasiswa di Bandung." },
-    { src: "assets/gallery/gallery_11.jpg", ratio: "4 / 3", title: "Temu Kangen Lintas Angkatan", desc: "Hangatnya silaturahmi mahasiswa alumni santri dalam suasana santai penuh tawa." },
-    { src: "assets/gallery/gallery_45.jpg", ratio: "4 / 3", title: "Diskusi Santai & Sharing Kuliah", desc: "Obrolan ringan seputar dinamika perkuliahan dan adaptasi santri perantau." },
+    { src: "assets/gallery/gallery_40.jpg", ratio: "4 / 3", title: "Temu Keluarga Besar IKAPMI", desc: "Potret kehangatan pertemuan rutin keluarga mahasiswa santri di Bandung." },
+    { src: "assets/gallery/gallery_41.jpg", ratio: "16 / 9", title: "Silaturahmi & Konsolidasi Bersama", desc: "Momen kebersamaan lintas angkatan mempererat ukhuwah di tanah perantauan." },
+    { src: "assets/gallery/gallery_43.jpg", ratio: "4 / 3", title: "Kumpul Anggota Lintas Kampus", desc: "Sinergi santri PMUQI yang tersebar di berbagai universitas di Bandung Raya." },
     { src: "assets/gallery/gallery_46.jpg", ratio: "4 / 3", title: "Malam Keakraban Pendopo Kabinet", desc: "Mempererat ukhuwah dan rasa kekeluargaan pengurus di suasana malam Bandung." },
-    { src: "assets/gallery/gallery_34.jpg", ratio: "4 / 5", title: "Campus Expo di GOR PMUQI Bogor", desc: "Antusiasme santri kelas akhir menyambut rombongan alumni perantau Bandung." },
-    { src: "assets/raker_IMG_1708.JPG", ratio: "4 / 3", title: "Konsolidasi Komisi Kerja RAKER", desc: "Musyawarah divisi merumuskan program kerja strategis kabinet Astra Nowanta." },
-    { src: "assets/warta_futsal.jpg", ratio: "4 / 5", title: "Sparring Futsal & Olahraga Bersama", desc: "Menjaga kebugaran sekaligus mempererat sportivitas antar-anggota IKAPMI Bandung." },
-    { src: "assets/gallery/gallery_79.jpg", ratio: "4 / 3", title: "Soliditas Kabinet Astra Nowanta", desc: "Kekompakan dan semangat berkarya pengurus harian IKAPMI Regional Bandung." },
-    { src: "assets/gallery/gallery_18.jpg", ratio: "4 / 5", title: "Keakraban Srikandi IKAPMI", desc: "Potret kebersamaan jajaran pengurus putri saat agenda konsolidasi internal." },
-    { src: "assets/day2_DSC01263.JPG", ratio: "4 / 3", title: "Keceriaan Rihlah & Outbound", desc: "Momen akrab di ruang terbuka memperkuat ikatan emosional santri perantau." },
-    { src: "assets/warta_pengajian_yasin.jpg", ratio: "4 / 5", title: "Kajian & Yasinan Rutin Alumni", desc: "Menjaga tradisi spiritual pesantren di tengah kesibukan kuliah di perantauan." },
-    { src: "assets/gallery/gallery_38.jpg", ratio: "16 / 10", title: "Silaturahmi Akbar Keluarga IKAPMI", desc: "Kebersamaan penuh kehangatan seluruh anggota IKAPMI Regional Bandung." }
+    { src: "assets/gallery/gallery_77.jpg", ratio: "16 / 9", title: "Konsolidasi Pengurus & Anggota", desc: "Foto bersama keluarga besar IKAPMI Regional Bandung pasca forum musyawarah." },
+    { src: "assets/gallery/gallery_79.jpg", ratio: "3 / 2", title: "Soliditas Kabinet Astra Nowanta", desc: "Kekompakan dan semangat berkarya pengurus harian IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_11.jpg", ratio: "4 / 3", title: "Temu Kangen Lintas Angkatan", desc: "Hangatnya silaturahmi mahasiswa alumni santri dalam suasana penuh keakraban." },
+    { src: "assets/gallery/gallery_23.jpg", ratio: "3 / 2", title: "Delegasi Campus Expo PMUQI", desc: "Tim delegasi IKAPMI Bandung hadir menyapa santri kelas akhir pada Campus Expo." },
+    { src: "assets/mureg_IMG_6782.JPG", ratio: "16 / 9", title: "Musyawarah Regional IKAPMI Bandung", desc: "Foto bersama delegasi dan pengurus dalam agenda Musyawarah Regional." },
+    { src: "assets/warta_bukber.jpg", ratio: "4 / 3", title: "Buka Puasa Bersama di Al-Jabbar", desc: "Menjalin kehangatan Ramadhan bersama santri perantau se-Bandung Raya." },
+    { src: "assets/tunnel/tunnel_gor_expo.jpg", ratio: "4 / 3", title: "Campus Expo di GOR PMUQI Bogor", desc: "Antusiasme santri kelas akhir menyambut rombongan alumni perantau Bandung." },
+    { src: "assets/tunnel/tunnel_futsal.jpg", ratio: "4 / 3", title: "Sparring Futsal & Olahraga Bersama", desc: "Menjaga kebugaran sekaligus mempererat sportivitas antar-anggota IKAPMI Bandung." },
+    { src: "assets/tunnel/tunnel_yasin.jpg", ratio: "4 / 3", title: "Kajian & Yasinan Rutin Alumni", desc: "Menjaga tradisi spiritual pesantren di tengah kesibukan kuliah di perantauan." },
+    { src: "assets/tunnel/tunnel_silaturahmi.jpg", ratio: "4 / 3", title: "Silaturahmi Bersama Pimpinan PMUQI", desc: "Memohon doa restu serta memperkuat khidmah IKAPMI Regional Bandung untuk almamater." },
+    { src: "assets/tunnel/tunnel_saung_siang.jpg", ratio: "16 / 9", title: "Upgrading & Kebersamaan Kabinet", desc: "Suasana akrab di saung terbuka dalam agenda upgrading pengurus regional." }
   ];
 
   // Fisher-Yates shuffle so every visit shows random, non-repeating photos
