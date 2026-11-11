@@ -575,7 +575,8 @@ const articleData = {
     date: "04 Februari 2025",
     author: "Departemen Pendidikan & Akademik",
     tag: "Pengabdian Almamater",
-    image: "assets/hero_mureg.jpg",
+    image: "assets/gallery/gallery_34.jpg",
+    imageFit: "contain",
     content: `
       <p class="mb-4">Sebagai wujud khidmah dan bakti kepada almamater tercinta di Leuwiliang Bogor, delegasi IKAPMI Regional Bandung hadir secara langsung dalam agenda tahunan Campus Expo di MA Ummul Quro Al-Islami.</p>
       <p class="mb-4">Delegasi Bandung mendirikan booth informasi khusus yang memperkenalkan ragam perguruan tinggi ternama di Bandung Raya, seperti UIN SGD, UNPAD, UPI, ITB, dan Telkom University. Para santri kelas akhir tampak sangat antusias berkonsultasi mengenai jalur seleksi masuk (SNBP, SNBT, SPAN-PTKIN, dan Ujian Mandiri).</p>
