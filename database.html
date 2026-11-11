@@ -224,88 +224,85 @@
   <!-- Main Content: Dedicated Database Alumni Registration -->
   <main class="flex-1 bg-[#081326] text-white">
     <section id="database" class="pt-10 sm:pt-14 pb-16 sm:pb-24 relative overflow-hidden">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Editorial Header -->
-        <div class="max-w-2xl mx-auto text-center mb-10 sm:mb-12">
-          <div class="mb-5">
-            <a href="index.html"
-              class="inline-flex items-center gap-1.5 text-xs font-medium text-blue-200/90 hover:text-white transition-colors">
-              <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-              <span>Kembali ke Halaman Utama</span>
-            </a>
-          </div>
-          <p class="text-xs font-semibold tracking-wider text-blue-300 uppercase mb-2">
-            IKAPMI REGIONAL BANDUNG
+        <!-- Concise Editorial Header -->
+        <div class="text-center mb-8 sm:mb-10">
+          <p class="text-[11px] font-semibold tracking-widest text-blue-300 uppercase mb-2">
+            IKAPMI Bandung
           </p>
-          <h1 class="text-2xl sm:text-3xl lg:text-[2.35rem] font-bold text-white tracking-tight">
-            Database Alumni IKAPMI Bandung
+          <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            Database Alumni
           </h1>
-          <p class="text-sm text-slate-300 mt-3 leading-relaxed">
-            Bagi seluruh alumni Pondok Pesantren Modern Ummul Quro Al-Islami yang menempuh studi, berkarier, atau
-            berdomisili di Bandung Raya, mohon daftarkan data Anda untuk memudahkan koordinasi dan silaturahmi.
+          <p class="text-sm text-slate-300/90 mt-2">
+            Pendataan alumni PMUQI untuk koordinasi &amp; silaturahmi di Bandung Raya.
           </p>
         </div>
 
         <!-- Registration Form Surface -->
-        <div class="bg-white rounded-xl border border-blue-900/30 p-6 sm:p-10 shadow-2xl text-[#242A27]">
-          <form id="alumni-reg-form" class="space-y-8">
+        <div class="bg-white rounded-2xl border border-blue-900/20 p-6 sm:p-8 shadow-2xl text-[#242A27]">
+          <form id="alumni-reg-form" class="space-y-6">
 
-            <!-- Section 1: Informasi Alumni -->
+            <!-- Group 1: Data Diri & Domisili -->
             <div>
-              <div class="pb-2.5 mb-5 border-b border-slate-200">
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-[#081326]">
-                  Informasi Alumni
+              <div class="pb-2 mb-4 border-b border-slate-100">
+                <h2 class="text-[11px] font-bold uppercase tracking-wider text-[#081326]">
+                  Data Diri &amp; Domisili
                 </h2>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <!-- Nama Lengkap & Panggilan -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label for="reg-nama" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Nama Lengkap &amp; Panggilan <span class="text-slate-400 text-xs font-normal" title="Wajib">*</span>
+                    Nama Lengkap <span class="text-slate-400 font-normal" title="Wajib">*</span>
                   </label>
                   <input type="text" id="reg-nama" name="nama" required
-                    placeholder="Contoh: Muhammad Raihan (Raihan)"
-                    class="w-full h-12 px-4 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    placeholder="Nama lengkap / panggilan"
+                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
                 </div>
 
-                <!-- Angkatan / Tahun Lulus PMUQI -->
                 <div>
                   <label for="reg-angkatan" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Angkatan / Tahun Lulus PMUQI <span class="text-slate-400 text-xs font-normal" title="Wajib">*</span>
+                    Angkatan PMUQI <span class="text-slate-400 font-normal" title="Wajib">*</span>
                   </label>
                   <input type="text" id="reg-angkatan" name="angkatan" required
-                    placeholder="Contoh: Angkatan 28 / Lulus 2024"
-                    class="w-full h-12 px-4 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    placeholder="Contoh: Angkatan 28 / 2024"
+                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
                 </div>
 
-                <!-- Nomor WhatsApp Aktif -->
-                <div class="sm:col-span-2">
+                <div>
                   <label for="reg-wa" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Nomor WhatsApp Aktif <span class="text-slate-400 text-xs font-normal" title="Wajib">*</span>
+                    No. WhatsApp <span class="text-slate-400 font-normal" title="Wajib">*</span>
                   </label>
                   <input type="tel" id="reg-wa" name="whatsapp" required placeholder="08xxxxxxxxxx"
-                    class="w-full h-12 px-4 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                </div>
+
+                <div>
+                  <label for="reg-domisili" class="block text-xs font-medium text-[#242A27] mb-1.5">
+                    Domisili Bandung
+                  </label>
+                  <input type="text" id="reg-domisili" name="domisili"
+                    placeholder="Kecamatan / area kost"
+                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
                 </div>
               </div>
             </div>
 
-            <!-- Section 2: Informasi Pendidikan -->
+            <!-- Group 2: Kampus & Status -->
             <div>
-              <div class="pb-2.5 mb-5 border-b border-slate-200">
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-[#081326]">
-                  Informasi Pendidikan
+              <div class="pb-2 mb-4 border-b border-slate-100">
+                <h2 class="text-[11px] font-bold uppercase tracking-wider text-[#081326]">
+                  Kampus &amp; Aktivitas
                 </h2>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <!-- Kampus / Universitas di Bandung -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label for="reg-kampus" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Kampus / Universitas di Bandung <span class="text-slate-400 text-xs font-normal" title="Wajib">*</span>
+                    Kampus / Instansi <span class="text-slate-400 font-normal" title="Wajib">*</span>
                   </label>
                   <div class="relative">
                     <select id="reg-kampus" name="kampus" required
-                      class="w-full h-12 px-4 pr-10 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors appearance-none cursor-pointer">
+                      class="w-full h-11 px-3.5 pr-10 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors appearance-none cursor-pointer">
                       <option value="">Pilih Kampus...</option>
                       <option value="UIN Sunan Gunung Djati">UIN Sunan Gunung Djati</option>
                       <option value="Universitas Padjadjaran (UNPAD)">Universitas Padjadjaran (UNPAD)</option>
@@ -313,8 +310,14 @@
                       <option value="Institut Teknologi Bandung (ITB)">Institut Teknologi Bandung (ITB)</option>
                       <option value="Telkom University">Telkom University</option>
                       <option value="UNISBA">UNISBA</option>
-                      <option value="UNPAS">UNPAS</option>
+                      <option value="UNPAS">Universitas Pasundan (UNPAS)</option>
                       <option value="POLBAN">POLBAN</option>
+                      <option value="Universitas Widyatama">Universitas Widyatama</option>
+                      <option value="Universitas Teknologi Bandung">Universitas Teknologi Bandung (UTB)</option>
+                      <option value="Universitas Muhammadiyah Bandung">Universitas Muhammadiyah Bandung (UMB)</option>
+                      <option value="UNPAR">Universitas Katolik Parahyangan (UNPAR)</option>
+                      <option value="BINUS Bandung">BINUS University Bandung</option>
+                      <option value="Poltekpar NHI Bandung">Poltekpar NHI Bandung</option>
                       <option value="Bekerja / Wiraswasta">Sudah Bekerja / Wiraswasta</option>
                       <option value="Kampus Lainnya">Kampus Lainnya</option>
                     </select>
@@ -326,26 +329,24 @@
                   </div>
                 </div>
 
-                <!-- Fakultas / Program Studi -->
                 <div>
                   <label for="reg-jurusan" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Fakultas / Program Studi
+                    Jurusan / Prodi
                   </label>
                   <input type="text" id="reg-jurusan" name="jurusan"
-                    placeholder="Contoh: Ushuluddin / Ilmu Al-Qur'an & Tafsir"
-                    class="w-full h-12 px-4 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    placeholder="Fakultas / program studi"
+                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
                 </div>
 
-                <!-- Status Saat Ini -->
                 <div class="sm:col-span-2">
                   <label for="reg-status" class="block text-xs font-medium text-[#242A27] mb-1.5">
                     Status Saat Ini
                   </label>
                   <div class="relative">
                     <select id="reg-status" name="status"
-                      class="w-full h-12 px-4 pr-10 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors appearance-none cursor-pointer">
-                      <option value="Mahasiswa Baru (Semester 1-2)">Mahasiswa Baru (Semester 1-2)</option>
-                      <option value="Mahasiswa Aktif (Tingkat Menengah)">Mahasiswa Aktif (Tingkat Menengah)</option>
+                      class="w-full h-11 px-3.5 pr-10 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors appearance-none cursor-pointer">
+                      <option value="Mahasiswa Baru (Semester 1-2)">Mahasiswa Baru (Semester 1–2)</option>
+                      <option value="Mahasiswa Aktif (Tingkat Menengah)">Mahasiswa Aktif</option>
                       <option value="Tingkat Akhir / Skripsi">Tingkat Akhir / Skripsi</option>
                       <option value="Fresh Graduate">Fresh Graduate</option>
                       <option value="Bekerja / Menetap di Bandung">Bekerja / Menetap di Bandung</option>
@@ -360,34 +361,17 @@
               </div>
             </div>
 
-            <!-- Section 3: Domisili -->
-            <div>
-              <div class="pb-2.5 mb-5 border-b border-slate-200">
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-[#081326]">
-                  Domisili
-                </h2>
-              </div>
-              <div>
-                <label for="reg-domisili" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                  Alamat Domisili / Area Kost di Bandung
-                </label>
-                <input type="text" id="reg-domisili" name="domisili"
-                  placeholder="Contoh: Jl. Manisi Gg. Bakti, Cibiru, Bandung Timur"
-                  class="w-full h-12 px-4 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
-              </div>
-            </div>
-
             <!-- Inline Submission Feedback Banner -->
             <div id="reg-status-banner" class="hidden rounded-lg border px-4 py-3 text-xs leading-relaxed"></div>
 
-            <!-- Institutional Notice & Submit Button -->
-            <div class="pt-5 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200">
-              <p class="text-xs text-[#777D78] text-center sm:text-left leading-relaxed max-w-md">
-                Data dijaga kerahasiaannya dan hanya digunakan untuk kepentingan internal IKAPMI Regional Bandung.
+            <!-- Notice & Submit Button -->
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-100">
+              <p class="text-xs text-[#777D78] text-center sm:text-left">
+                Data dijaga untuk koordinasi internal IKAPMI Bandung.
               </p>
               <button type="submit" id="reg-submit-btn"
-                class="w-full sm:w-auto px-7 h-12 rounded-lg bg-[#081326] hover:bg-[#0f2e59] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium text-sm transition-colors focus:ring-2 focus:ring-[#081326] focus:ring-offset-2 outline-none shrink-0 cursor-pointer inline-flex items-center justify-center gap-2">
-                <span id="reg-submit-label">Simpan Data Alumni</span>
+                class="w-full sm:w-auto px-7 h-11 rounded-lg bg-[#081326] hover:bg-[#0f2e59] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium text-sm transition-colors focus:ring-2 focus:ring-[#081326] focus:ring-offset-2 outline-none shrink-0 cursor-pointer inline-flex items-center justify-center gap-2">
+                <span id="reg-submit-label">Simpan Data</span>
               </button>
             </div>
 
@@ -395,10 +379,10 @@
         </div>
 
         <!-- Subtle Help Link -->
-        <p class="text-center text-xs text-slate-400 mt-6">
-          Kendala saat pengisian data?
+        <p class="text-center text-xs text-slate-400 mt-5">
+          Butuh bantuan?
           <a href="index.html#kontak" class="text-blue-300 hover:text-white underline underline-offset-4 transition-colors">
-            Hubungi Pengurus Sekretariat
+            Hubungi Sekretariat
           </a>
         </p>
 
@@ -407,10 +391,10 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-950 text-slate-400 text-xs py-12 border-t border-slate-800">
+  <footer class="bg-slate-950 text-slate-400 text-xs py-10 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
 
         <!-- Col 1: Brand -->
         <div class="md:col-span-2 space-y-3">
@@ -419,17 +403,21 @@
             <span class="font-extrabold text-sm text-white tracking-tight">IKAPMI REGIONAL BANDUNG</span>
           </div>
           <p class="text-slate-400 text-xs leading-relaxed max-w-md">
-            Ikatan Keluarga Besar &amp; Alumni Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI) Leuwiliang Bogor –
-            Regional Bandung Raya.
-            Menjunjung tinggi nilai adab santri, kebersamaan <em class="text-blue-400">"Sadulur Ngahiji"</em>, dan
-            pengabdian bagi umat.
+            Ikatan Keluarga Besar &amp; Alumni PMUQI Leuwiliang Bogor — Regional Bandung Raya. <em class="text-blue-400">"Sadulur Ngahiji"</em>.
           </p>
-          <div class="flex items-center gap-3 pt-2">
+          <div class="flex items-center gap-3 pt-1">
             <a href="https://www.instagram.com/ikapmi.bandung/" target="_blank" rel="noopener noreferrer"
+              aria-label="Instagram IKAPMI Bandung"
               class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
-              <i data-lucide="instagram" class="w-4 h-4"></i>
+              <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
             </a>
             <a href="mailto:ikapmi.regionalbandung@gmail.com"
+              aria-label="Email IKAPMI Bandung"
               class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
               <i data-lucide="mail" class="w-4 h-4"></i>
             </a>
@@ -466,7 +454,7 @@
       <!-- Copyright Notice -->
       <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
         <p>© 2025–2026 IKAPMI Regional Bandung. Seluruh hak cipta dilindungi.</p>
-        <p>Dirancang &amp; dikembangkan dengan integritas untuk seluruh santri perantau di Jawa Barat.</p>
+        <p>Dirancang &amp; dikembangkan untuk santri perantau di Jawa Barat.</p>
       </div>
 
     </div>
@@ -485,7 +473,7 @@
   </div>
 
   <!-- Application Logic -->
-  <script src="js/app.js?v=6.1"></script>
+  <script src="js/app.js?v=6.6"></script>
   <script>
     lucide.createIcons();
   </script>

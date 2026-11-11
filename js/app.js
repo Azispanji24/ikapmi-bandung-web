@@ -267,21 +267,32 @@ function initPerspectiveTunnelHero() {
 
   if (!container || !cardsStage) return;
 
-  // 12 Curated Authentic Photos (4 MUREG, 4 RAKER, 4 IBANES) - Uncrowded, aesthetic, ample breathing room
-  const tunnelData = [
-    { src: "assets/mureg_IMG_6774.JPG", title: "Sidang Pleno MUREG 2025", desc: "Pembukaan resmi sidang pleno Musyawarah Regional IKAPMI Bandung." },
-    { src: "assets/raker_IMG_1705.JPG", title: "Pemaparan Program RAKER 2025", desc: "Pemaparan rencana kerja strategis pengurus kabinet Astra Nowanta." },
-    { src: "assets/day2_DSC01245.JPG", title: "Keakraban Sadulur Ngahiji", desc: "Momen kehangatan dan keakraban alumni santri di alam terbuka Bandung." },
-    { src: "assets/mureg_IMG_6776.JPG", title: "Presidium Sidang Regional", desc: "Presidium sidang memandu jalannya musyawarah secara demokratis." },
-    { src: "assets/raker_IMG_1711.JPG", title: "Konsolidasi Komisi Kerja", desc: "Musyawarah komisi membedah kebutuhan anggota di setiap kampus." },
-    { src: "assets/day2_DSC01248.JPG", title: "Dinamika Persaudaraan", desc: "Aktivitas kebersamaan mempererat ikatan emosional santri perantau." },
-    { src: "assets/mureg_IMG_6779.JPG", title: "Peserta Musyawarah", desc: "Partisipasi aktif anggota dalam perumusan arah gerak organisasi." },
-    { src: "assets/raker_IMG_1729.JPG", title: "Sinergi Kabinet Astra Nowanta", desc: "Kekompakan pengurus kabinet Astra Nowanta dalam rapat kerja tahunan." },
-    { src: "assets/day2_DSC01258.JPG", title: "Senyum Santri Perantau", desc: "Ceria, tawa, dan kehangatan persaudaraan sejati di tatar Pasundan." },
-    { src: "assets/mureg_IMG_6790.JPG", title: "Forum Pleno Tertinggi", desc: "Laporan pertanggungjawaban dan penetapan keputusan penting organisasi." },
-    { src: "assets/raker_IMG_1734.JPG", title: "Perumusan Gagasan Strategis", desc: "Diskusi mendalam perumusan indikator keberhasilan program tiap divisi." },
-    { src: "assets/day2_DSC01268.JPG", title: "Potret Generasi Berprestasi", desc: "Alumni santri siap berkarya dan membawa nama baik almamater di Bandung." }
+  // Curated pool of distinct, varied event photos (shuffled randomly on each visit)
+  const curatedPool = [
+    { src: "assets/gallery/gallery_36.jpg", ratio: "4 / 3", title: "Kebersamaan di Masjid Al-Jabbar", desc: "Silaturahmi keluarga besar IKAPMI Bandung di pelataran Masjid Raya Al-Jabbar." },
+    { src: "assets/gallery/gallery_39.jpg", ratio: "4 / 3", title: "Kumpul Akbar Depan Gedung Sate", desc: "Konsolidasi santri perantau Bandung Raya berlatar ikon Kota Bandung." },
+    { src: "assets/gallery/gallery_23.jpg", ratio: "4 / 3", title: "Delegasi Campus Expo PMUQI", desc: "Tim delegasi IKAPMI Bandung hadir menyapa santri kelas akhir pada Campus Expo." },
+    { src: "assets/gallery/gallery_24.jpg", ratio: "4 / 3", title: "Konsultasi Jurusan & Kampus", desc: "Sesi tanya jawab hangat bersama calon mahasiswa baru di stan IKAPMI Bandung." },
+    { src: "assets/gallery/gallery_25.jpg", ratio: "4 / 3", title: "Sosialisasi Jalur Masuk PTN & PTS", desc: "Berbagi informasi beasiswa, jalur masuk kampus, dan kehidupan mahasiswa di Bandung." },
+    { src: "assets/gallery/gallery_11.jpg", ratio: "4 / 3", title: "Temu Kangen Lintas Angkatan", desc: "Hangatnya silaturahmi mahasiswa alumni santri dalam suasana santai penuh tawa." },
+    { src: "assets/gallery/gallery_45.jpg", ratio: "4 / 3", title: "Diskusi Santai & Sharing Kuliah", desc: "Obrolan ringan seputar dinamika perkuliahan dan adaptasi santri perantau." },
+    { src: "assets/gallery/gallery_46.jpg", ratio: "4 / 3", title: "Malam Keakraban Pendopo Kabinet", desc: "Mempererat ukhuwah dan rasa kekeluargaan pengurus di suasana malam Bandung." },
+    { src: "assets/gallery/gallery_34.jpg", ratio: "4 / 5", title: "Campus Expo di GOR PMUQI Bogor", desc: "Antusiasme santri kelas akhir menyambut rombongan alumni perantau Bandung." },
+    { src: "assets/raker_IMG_1708.JPG", ratio: "4 / 3", title: "Konsolidasi Komisi Kerja RAKER", desc: "Musyawarah divisi merumuskan program kerja strategis kabinet Astra Nowanta." },
+    { src: "assets/warta_futsal.jpg", ratio: "4 / 5", title: "Sparring Futsal & Olahraga Bersama", desc: "Menjaga kebugaran sekaligus mempererat sportivitas antar-anggota IKAPMI Bandung." },
+    { src: "assets/gallery/gallery_79.jpg", ratio: "4 / 3", title: "Soliditas Kabinet Astra Nowanta", desc: "Kekompakan dan semangat berkarya pengurus harian IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_18.jpg", ratio: "4 / 5", title: "Keakraban Srikandi IKAPMI", desc: "Potret kebersamaan jajaran pengurus putri saat agenda konsolidasi internal." },
+    { src: "assets/day2_DSC01263.JPG", ratio: "4 / 3", title: "Keceriaan Rihlah & Outbound", desc: "Momen akrab di ruang terbuka memperkuat ikatan emosional santri perantau." },
+    { src: "assets/warta_pengajian_yasin.jpg", ratio: "4 / 5", title: "Kajian & Yasinan Rutin Alumni", desc: "Menjaga tradisi spiritual pesantren di tengah kesibukan kuliah di perantauan." },
+    { src: "assets/gallery/gallery_03.jpg", ratio: "4 / 3", title: "Apresiasi & Sertifikat Kolaborasi", desc: "Penyerahan cendera mata sebagai simbol sinergi aktif alumni bersama almamater." }
   ];
+
+  // Fisher-Yates shuffle so every visit shows random, non-repeating photos
+  for (let i = curatedPool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [curatedPool[i], curatedPool[j]] = [curatedPool[j], curatedPool[i]];
+  }
+  const tunnelData = curatedPool.slice(0, 12);
 
   const totalCards = tunnelData.length;
   const goldenAngle = 137.5 * (Math.PI / 180);
@@ -304,8 +315,9 @@ function initPerspectiveTunnelHero() {
   cardsStage.innerHTML = '';
   const cardElements = cards.map((card) => {
     const el = document.createElement('div');
-    el.className = 'tunnel-card-item pointer-events-auto absolute left-1/2 top-1/2 aspect-[4/5] will-change-transform select-none cursor-pointer';
+    el.className = 'tunnel-card-item pointer-events-auto absolute left-1/2 top-1/2 will-change-transform select-none cursor-pointer';
     el.style.transformStyle = 'preserve-3d';
+    el.style.aspectRatio = card.item.ratio || '4 / 5';
     
     el.innerHTML = `
       <div class="group relative h-full w-full overflow-hidden rounded-2xl bg-white border border-slate-200/90 shadow-xl shadow-slate-900/10 ring-1 ring-black/5 transition-all duration-300 hover:ring-2 hover:ring-blue-700 hover:shadow-2xl hover:shadow-blue-950/25">

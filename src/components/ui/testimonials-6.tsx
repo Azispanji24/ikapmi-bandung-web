@@ -45,12 +45,14 @@ function isValidTestimonial(item: any): boolean {
   const name = String(item.name).trim().toLowerCase();
   const quote = String(item.quote).trim().toLowerCase();
 
-  // Filter out test/dummy accounts
+  // Filter out test/dummy/removed accounts
   if (
     name === "cpntph" ||
     name === "contoh" ||
     name === "m. azis panji" ||
-    name === "fulan"
+    name === "fulan" ||
+    name.includes("haji qodir") ||
+    name === "qodir"
   ) {
     return false;
   }

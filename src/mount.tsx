@@ -25,7 +25,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   },
   {
     "id": "muhammad-kahfi",
-    "name": "Muhammad Kahfi",
+    "name": "M. Kahfi",
     "role": "Sekretaris Umum",
     "team": "EX OFF",
     "image": "assets/pengurus/muhammad-kahfi-Sekretaris-Umum.jpg?v=20261112",
@@ -85,7 +85,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   },
   {
     "id": "rizqi-rehan",
-    "name": "Muhammad Rizqi Rehan Hamdillah",
+    "name": "M. Rizqi Rehan",
     "role": "Bidang PIK",
     "team": "KETUA BIDANG",
     "image": "assets/pengurus/rizqi-rehan-ketua-bidang-PIK.jpg",
@@ -105,7 +105,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   },
   {
     "id": "isfahani-fadhil",
-    "name": "Muhamad Isfahani Fadhil Rahman",
+    "name": "M. Isfahani F.",
     "role": "Bidang KOMINFO",
     "team": "KETUA BIDANG",
     "image": "assets/pengurus/isfahani-fadhil-ketua-bidang-KOMINFO.jpg",
@@ -125,7 +125,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   },
   {
     "id": "fadlan-ahmad",
-    "name": "Fadlan Ahmad Rizki",
+    "name": "Fadlan A. Rizki",
     "role": "Bidang Sosem",
     "team": "KETUA BIDANG",
     "image": "assets/pengurus/fadlan-ahmad-ketua-bidang-SOSKEM.jpg",

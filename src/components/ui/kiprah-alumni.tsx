@@ -35,33 +35,6 @@ export function KiprahAlumniSection() {
       id="kiprah"
       className="scroll-mt-20 sm:scroll-mt-24 relative w-full overflow-hidden bg-[#081326] py-16 md:py-24 text-white border-b border-blue-950/80"
     >
-      {/* Decorative subtle curved stroke */}
-      <div aria-hidden="true">
-        <svg
-          className="pointer-events-none absolute right-0 bottom-0 text-white/[0.06]"
-          fill="none"
-          height="154"
-          viewBox="0 0 460 154"
-          width="460"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clipPath="url(#clip0_kiprah_bg)">
-            <path
-              d="M-87.463 458.432C-102.118 348.092 -77.3418 238.841 -15.0744 188.274C57.4129 129.408 180.708 150.071 351.748 341.128C278.246 -374.233 633.954 380.602 548.123 42.7707"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="40"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_kiprah_bg">
-              <rect fill="white" height="154" width="460" />
-            </clipPath>
-          </defs>
-        </svg>
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto mb-14 sm:mb-16 flex max-w-5xl flex-col items-center px-6 text-center lg:px-0">
