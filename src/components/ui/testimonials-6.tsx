@@ -10,13 +10,11 @@ import {
   Send,
   Heart,
   CheckCircle2,
-  Sparkles,
   Camera,
   Trash2,
   Cloud,
   RefreshCw,
-  Sliders,
-  Hand,
+  User,
 } from "lucide-react";
 
 export type Testimonial = {
@@ -32,19 +30,15 @@ export type Testimonial = {
 export const DEFAULT_CLOUD_API_URL =
   "https://script.google.com/macros/s/AKfycbwUxVCFgFcPPaMwwJJisWoVlNnmXC0_iW7xJGOESROCUBAvYklT6DQDNZeKJLcFWB1z/exec";
 
-const DEFAULT_TESTIMONIALS: Testimonial[] = [];
-
-const AVATAR_OPTIONS = [
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-];
-
 const LOCAL_STORAGE_KEY = "ikapmi_testimonials_v4";
 const CLOUD_URL_STORAGE_KEY = "ikapmi_cloud_api_url_v1";
+
+function getInitials(name: string): string {
+  const parts = String(name).trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
 
 function isValidTestimonial(item: any): boolean {
   if (!item || !item.name || !item.quote) return false;
@@ -52,7 +46,12 @@ function isValidTestimonial(item: any): boolean {
   const quote = String(item.quote).trim().toLowerCase();
 
   // Filter out test/dummy accounts
-  if (name === "cpntph" || name === "contoh" || name === "m. azis panji") {
+  if (
+    name === "cpntph" ||
+    name === "contoh" ||
+    name === "m. azis panji" ||
+    name === "fulan"
+  ) {
     return false;
   }
 
@@ -120,8 +119,7 @@ export function TestimonialsSection() {
   const [formRole, setFormRole] = React.useState("");
   const [formCompany, setFormCompany] = React.useState("ITB Bandung");
   const [formQuote, setFormQuote] = React.useState("");
-  const [selectedAvatar, setSelectedAvatar] = React.useState(AVATAR_OPTIONS[0]);
-  const [isCustomUploaded, setIsCustomUploaded] = React.useState(false);
+  const [selectedAvatar, setSelectedAvatar] = React.useState("");
   const [uploadError, setUploadError] = React.useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
@@ -189,15 +187,13 @@ export function TestimonialsSection() {
       setUploadError(null);
       const compressed = await compressAvatar(file);
       setSelectedAvatar(compressed);
-      setIsCustomUploaded(true);
     } catch (err: any) {
       setUploadError(err?.message || "Gagal memproses gambar.");
     }
   };
 
   const handleResetAvatar = () => {
-    setSelectedAvatar(AVATAR_OPTIONS[0]);
-    setIsCustomUploaded(false);
+    setSelectedAvatar("");
     setUploadError(null);
   };
 
@@ -242,8 +238,7 @@ export function TestimonialsSection() {
       setFormName("");
       setFormRole("");
       setFormQuote("");
-      setSelectedAvatar(AVATAR_OPTIONS[0]);
-      setIsCustomUploaded(false);
+      setSelectedAvatar("");
     }, 1500);
   };
 
@@ -425,20 +420,31 @@ export function TestimonialsSection() {
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Avatar Upload / Selector */}
+                  {/* Avatar Upload */}
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-2">
-                      Foto Profil / Avatar Bebas:
+                      Foto Profil:
                     </label>
 
                     <div className="flex items-center gap-4 p-3 rounded-2xl bg-slate-50/90 border border-slate-200/80">
                       {/* Avatar Preview */}
-                      <div className="relative size-14 rounded-full overflow-hidden ring-2 ring-brand-500 shadow-sm shrink-0 bg-white">
-                        <img
-                          src={selectedAvatar}
-                          alt="Preview Foto"
-                          className="w-full h-full object-cover"
-                        />
+                      <div
+                        className={cn(
+                          "relative size-14 rounded-full overflow-hidden shadow-sm shrink-0 flex items-center justify-center bg-white",
+                          selectedAvatar
+                            ? "ring-2 ring-brand-500"
+                            : "border border-dashed border-slate-300 text-slate-400"
+                        )}
+                      >
+                        {selectedAvatar ? (
+                          <img
+                            src={selectedAvatar}
+                            alt="Preview Foto"
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <User className="w-6 h-6" />
+                        )}
                       </div>
 
                       {/* Upload Actions */}
@@ -449,7 +455,7 @@ export function TestimonialsSection() {
                             className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-medium text-xs shadow-sm transition"
                           >
                             <Camera className="w-3.5 h-3.5" />
-                            <span>{isCustomUploaded ? "Ganti Foto Anda" : "Unggah Foto Bebas"}</span>
+                            <span>{selectedAvatar ? "Ganti Foto Anda" : "Unggah Foto"}</span>
                           </label>
                           <input
                             id="avatar-file-input"
@@ -459,12 +465,12 @@ export function TestimonialsSection() {
                             onChange={handleFileUpload}
                           />
 
-                          {isCustomUploaded && (
+                          {selectedAvatar && (
                             <button
                               type="button"
                               onClick={handleResetAvatar}
                               className="p-1.5 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
-                              title="Reset ke avatar preset"
+                              title="Hapus foto"
                             >
                               <Trash2 className="w-4 h-4" />
                             </button>
@@ -478,35 +484,6 @@ export function TestimonialsSection() {
                             {uploadError}
                           </p>
                         )}
-                      </div>
-                    </div>
-
-                    {/* Preset Avatars Row */}
-                    <div className="mt-2.5">
-                      <div className="text-[11px] font-medium text-slate-500 mb-1.5">
-                        Atau pilih avatar siap pakai:
-                      </div>
-                      <div className="flex items-center gap-2 overflow-x-auto pb-1">
-                        {AVATAR_OPTIONS.map((imgUrl, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => {
-                              setSelectedAvatar(imgUrl);
-                              setIsCustomUploaded(false);
-                              setUploadError(null);
-                            }}
-                            className={cn(
-                              "relative size-9 rounded-full overflow-hidden border-2 transition-all shrink-0 cursor-pointer",
-                              selectedAvatar === imgUrl && !isCustomUploaded
-                                ? "border-brand-600 scale-110 shadow-sm ring-2 ring-brand-200"
-                                : "border-transparent opacity-65 hover:opacity-100"
-                            )}
-                            title={`Pilih avatar ${idx + 1}`}
-                          >
-                            <img src={imgUrl} alt="Avatar" className="w-full h-full object-cover" />
-                          </button>
-                        ))}
                       </div>
                     </div>
                   </div>
@@ -714,8 +691,12 @@ function TestimonialsCard({
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3 pt-3 border-t border-slate-100">
         <Avatar className="size-9 rounded-full ring-2 ring-brand-100/80 shrink-0">
-          <AvatarImage alt={`${name}'s profile picture`} src={image} />
-          <AvatarFallback>{name.charAt(0)}</AvatarFallback>
+          {image ? (
+            <AvatarImage alt={`${name}'s profile picture`} src={image} />
+          ) : null}
+          <AvatarFallback className="bg-brand-50 text-brand-700 font-semibold text-xs">
+            {getInitials(name)}
+          </AvatarFallback>
         </Avatar>
         <div className="flex flex-col min-w-0">
           <div className="flex items-center gap-1.5">
