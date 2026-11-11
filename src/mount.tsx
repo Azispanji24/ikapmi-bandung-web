@@ -66,8 +66,8 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "ramji-al-jamali",
     "name": "Ramji Al Jamali",
-    "role": "Ketua Bidang PSDO",
-    "team": "IKAPMI Bandung · PSDO",
+    "role": "Bidang PSDO",
+    "team": "KETUA BIDANG",
     "image": "assets/pengurus/ramji-al-jamali-ketua-bidang-PSDO.jpg",
     "bio": "Ketua Bidang Pengembangan Sumber Daya Organisasi: Mengelola potensi internal, soliditas pengurus, kaderisasi, dan pengembangan kapasitas keorganisasian alumni.",
     "tags": [
@@ -86,8 +86,8 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "rizqi-rehan",
     "name": "Muhammad Rizqi Rehan Hamdillah",
-    "role": "Ketua Bidang PIK",
-    "team": "IKAPMI Bandung · PIK",
+    "role": "Bidang PIK",
+    "team": "KETUA BIDANG",
     "image": "assets/pengurus/rizqi-rehan-ketua-bidang-PIK.jpg",
     "bio": "Ketua Bidang Pengembangan Intelektual & Keislaman: Mengoordinasikan kajian keagamaan, forum keilmuan, riset alumni, dan pendampingan prestasi akademik.",
     "tags": [
@@ -106,8 +106,8 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "isfahani-fadhil",
     "name": "Muhamad Isfahani Fadhil Rahman",
-    "role": "Ketua Bidang KOMINFO",
-    "team": "IKAPMI Bandung · KOMINFO",
+    "role": "Bidang KOMINFO",
+    "team": "KETUA BIDANG",
     "image": "assets/pengurus/isfahani-fadhil-ketua-bidang-KOMINFO.jpg",
     "bio": "Ketua Bidang KOMINFO: Mengoordinasikan publikasi media sosial, dokumentasi visual, branding (@ikapmi.bandung), dan siaran warta kealumnian.",
     "tags": [
@@ -126,8 +126,8 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "fadlan-ahmad",
     "name": "Fadlan Ahmad Rizki",
-    "role": "Ketua Bidang Sosem",
-    "team": "IKAPMI Bandung · Sosem",
+    "role": "Bidang Sosem",
+    "team": "KETUA BIDANG",
     "image": "assets/pengurus/fadlan-ahmad-ketua-bidang-SOSKEM.jpg",
     "bio": "Ketua Bidang Sosem (Sosial & Ekonomi): Mengawal aksi sosial kemanusiaan, advokasi kesejahteraan santri perantau, serta inkubasi kewirausahaan alumni.",
     "tags": [
@@ -146,8 +146,8 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "ahmad-shidqi",
     "name": "Ahmad Shidqi",
-    "role": "Ketua Bidang Olahraga",
-    "team": "IKAPMI Bandung · Olahraga",
+    "role": "Bidang Olahraga",
+    "team": "KETUA BIDANG",
     "image": "assets/pengurus/Ahmad-Shidqi-ketua-bidang-OLAHRAGA.jpeg",
     "bio": "Ketua Bidang Olahraga: Mengoordinasikan agenda olahraga rutin, turnamen keakraban santri perantau, serta mempererat ukhuwah melalui sportivitas.",
     "tags": [
