@@ -1308,6 +1308,368 @@ const CAMPUS_JALUR_DATA = {
         "link": "https://pmb.unpas.ac.id"
       }
     ]
+  },
+  "widyatama": {
+    "id": "widyatama",
+    "num": "07",
+    "name": "Universitas Widyatama (UTama)",
+    "short": "Widyatama",
+    "badge": "PTS Akreditasi Unggul",
+    "dotColor": "bg-amber-500",
+    "badgeClass": "bg-amber-50 text-amber-800 border-amber-200/80",
+    "accentGradient": "from-amber-500 via-orange-500 to-amber-600",
+    "logo": "assets/logos/logo_widyatama.png",
+    "location": "Jl. Cikutra No. 204A, Bandung",
+    "shortDesc": "Kampus unggul di Cikutra Bandung dengan jenjang D3, D4, & S1 bidang Ekonomi, Teknik, Bahasa, dan DKV serta 15 skema beasiswa.",
+    "fullDesc": "Universitas Widyatama (UTama) beralamat di Jl. Cikutra No. 204A, Bandung 40125. Menyediakan program D3, Sarjana Terapan (D4), dan Sarjana (S1) pada Fakultas Ekonomi & Bisnis, Teknik, Bahasa, Ilmu Sosial & Politik, serta Desain Komunikasi Visual dengan fitur Kalkulator Jalur & Beasiswa resmi di pmb.widyatama.ac.id.",
+    "portal": "https://pmb.widyatama.ac.id",
+    "pathways": [
+      {
+        "name": "Jalur Beasiswa PMDK (Rapor / UTBK)",
+        "tag": "Seleksi Rapor Tanpa Tes",
+        "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
+        "schedule": "1 Maret – 30 April 2026",
+        "desc": "Seleksi tanpa tes tertulis berdasarkan nilai rapor semester 1–4 (rata-rata min. 70 untuk D3/D4, min. 75 untuk S1), skor UTBK min. 450, atau USM-CBT (450 D3/D4, 500 S1). Menawarkan potongan Uang Pembangunan 75% (D3) dan 25% (D4/S1).",
+        "santriNote": "Rapor MA/SMA PMUQI diakui penuh. Tersedia simulasi Kalkulator Jalur & Beasiswa langsung di portal pmb.widyatama.ac.id.",
+        "link": "https://pmb.widyatama.ac.id"
+      },
+      {
+        "name": "Jalur Reguler (Rapor / USM-CBT / UTBK)",
+        "tag": "Penerimaan Utama Fleksibel",
+        "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
+        "schedule": "September 2025 – Agustus 2026",
+        "desc": "Skema penerimaan utama sepanjang tahun ajaran untuk jenjang D3, D4, dan S1 melalui seleksi nilai rapor (min. 65 D3/D4, 70 S1), UTBK (min. 400), tes USM-CBT online, atau nilai UM-PTN.",
+        "santriNote": "Jadwal fleksibel dari awal tahun hingga Agustus sehingga aman dijadikan pilihan strategis maupun opsi cadangan PTN.",
+        "link": "https://pmb.widyatama.ac.id"
+      },
+      {
+        "name": "Jalur Beasiswa UTama, Prioritas & Unggulan",
+        "tag": "Beasiswa Prestasi Akademik",
+        "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
+        "schedule": "Gelombang Awal – Pertengahan",
+        "desc": "Tiga tingkatan beasiswa prestasi akademik unggulan dari Universitas Widyatama berupa keringanan hingga pembebasan penuh Uang Pembangunan & Uang Kuliah Tetap bagi peraih skor seleksi tertinggi.",
+        "santriNote": "Daftar di gelombang awal untuk peluang kuota beasiswa Prioritas & Unggulan lebih besar.",
+        "link": "https://pmb.widyatama.ac.id"
+      },
+      {
+        "name": "Jalur Beasiswa Khusus (Tahfidz & Kejuaraan)",
+        "tag": "Afirmasi Prestasi & Santri",
+        "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
+        "schedule": "Sesuai Kuota PMB 2026/2027",
+        "desc": "Mencakup sekitar 15 skema beasiswa/keringanan biaya seperti prestasi kejuaraan akademik/non-akademik, hafalan Al-Qur'an (Tahfidz), jalur afirmasi/sosial, anak guru/dosen/ASN, hingga mitra institusi.",
+        "santriNote": "Santri PMUQI berprestasi tahfidz maupun kejuaraan MTQ/lomba keagamaan dapat melampirkan sertifikat resmi saat mendaftar.",
+        "link": "https://pmb.widyatama.ac.id"
+      }
+    ]
+  },
+  "utb": {
+    "id": "utb",
+    "num": "08",
+    "name": "Universitas Teknologi Bandung (UTB)",
+    "short": "UTB",
+    "badge": "PTS Teknologi & Kreatif",
+    "dotColor": "bg-emerald-600",
+    "badgeClass": "bg-emerald-50 text-emerald-800 border-emerald-200/80",
+    "accentGradient": "from-emerald-600 via-teal-500 to-sky-600",
+    "logo": "assets/logos/logo_utb.png",
+    "location": "Jl. Soekarno-Hatta No. 376–378, Bandung",
+    "shortDesc": "Transformasi STT Bandung untuk Teknik Informatika, Industri, DKV, Bisnis Digital, & Manajemen Ritel dengan KIP Kuliah dan beasiswa rapor.",
+    "fullDesc": "Universitas Teknologi Bandung (UTB) berlokasi di Jl. Soekarno-Hatta No. 376–378, Kebon Lega, Bojongloa Kidul, Bandung 40235. Menaungi Fakultas Industri Kreatif (Teknik Informatika, Teknik Industri, DKV) dan Fakultas Ekonomi & Bisnis (Bisnis Digital, Manajemen Ritel) dengan pilihan Kelas Reguler, Kelas Malam/Karyawan, Hybrid, serta program KIP Kuliah.",
+    "portal": "https://pmb.utb-univ.ac.id/",
+    "pathways": [
+      {
+        "name": "Jalur Beasiswa Prestasi & Rapor",
+        "tag": "Seleksi Rapor Tanpa Tes",
+        "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
+        "schedule": "Gelombang Berjalan 2026",
+        "desc": "Bebas tes masuk dan potongan SPP per semester hingga dana pengembangan bagi lulusan SMA/SMK/MA dengan rata-rata rapor ≥ 85, peringkat 1–10 kelas, atau prestasi kejuaraan olahraga, seni, dan keagamaan.",
+        "santriNote": "Sertifikat prestasi lomba keagamaan di pesantren maupun peringkat rapor MA/SMA dapat diajukan untuk keringanan biaya.",
+        "link": "https://www.utb-univ.ac.id/pendaftaran/beasiswa"
+      },
+      {
+        "name": "Beasiswa Full Kuliah 4 Tahun UTB",
+        "tag": "Beasiswa Penuh 4 Tahun",
+        "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
+        "schedule": "Periode PMB 2026/2027",
+        "desc": "Program beasiswa penuh selama masa studi S1 (4 tahun) bagi calon mahasiswa kelas reguler yang meraih peringkat 1–7 di kelas dengan nilai rapor ≥ 85 atau memiliki prestasi juara tingkat nasional.",
+        "santriNote": "Kuota kompetitif — siapkan scan rapor semester 1–5 dan piagam resmi sejak gelombang pendaftaran dibuka.",
+        "link": "https://www.utb-univ.ac.id/pendaftaran/beasiswa"
+      },
+      {
+        "name": "Jalur PMDK & KIP Kuliah Merdeka",
+        "tag": "Afirmasi & Bantuan Pemerintah",
+        "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
+        "schedule": "Mengikuti Jadwal KIP & PMB",
+        "desc": "Jalur Penelusuran Minat dan Bakat (rata-rata rapor ≥ 75, prestasi non-akademik, atau lampiran SKTM/DTKS) serta penyaluran Beasiswa KIP Kuliah pemerintah untuk kelas reguler pagi.",
+        "santriNote": "Solusi terjangkau bagi santri perantau dari keluarga prasejahtera yang berminat kuliah IT, Bisnis Digital, atau DKV di Bandung.",
+        "link": "https://www.utb-univ.ac.id/pendaftaran/beasiswa"
+      },
+      {
+        "name": "Kelas Reguler, Hybrid & Rekognisi (RPL)",
+        "tag": "Fleksibel & Kelas Karyawan",
+        "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
+        "schedule": "Sepanjang Gelombang 2026",
+        "desc": "Pendaftaran online untuk Kelas Reguler Pagi, Kelas Malam/Karyawan (Blended Learning), serta jalur Rekognisi Pembelajaran Lampau (RPL) di 5 prodi unggulan UTB Bandung.",
+        "santriNote": "Cocok bagi alumni yang berencana kuliah sambil bekerja atau merintis usaha digital di Bandung.",
+        "link": "https://pmb.utb-univ.ac.id/"
+      }
+    ]
+  },
+  "umb": {
+    "id": "umb",
+    "num": "09",
+    "name": "Universitas Muhammadiyah Bandung (UMB)",
+    "short": "UM Bandung",
+    "badge": "PTMA & Kampus Islami",
+    "dotColor": "bg-sky-600",
+    "badgeClass": "bg-sky-50 text-sky-900 border-sky-200/80",
+    "accentGradient": "from-sky-700 via-blue-600 to-teal-500",
+    "logo": "assets/logos/logo_umb.png",
+    "location": "Jl. Soekarno-Hatta No. 752, Cipadung",
+    "shortDesc": "Kampus Islami strategis dekat area Cibiru dengan Beasiswa Hafizh Al-Qur'an (5–30 juz), jalur rapor tanpa tes, dan kader Muhammadiyah.",
+    "fullDesc": "Universitas Muhammadiyah Bandung (UM Bandung) berlokasi di Jl. Soekarno-Hatta No. 752, Cipadung Kidul, Kec. Panyileukan, Bandung 40614 (berdekatan dengan kawasan Cibiru). Memiliki program studi favorit seperti Farmasi, Bioteknologi, Teknik Informatika, Psikologi Islam, Ilmu Komunikasi, dan Ekonomi Syariah dengan skema Beasiswa Hafizh Al-Qur'an unggulan.",
+    "portal": "https://pmb.umbandung.ac.id",
+    "pathways": [
+      {
+        "name": "Beasiswa Hafizh Al-Qur'an (5 – 30 Juz)",
+        "tag": "Beasiswa Tahfidz Santri",
+        "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
+        "schedule": "Gelombang PMB 2026/2027",
+        "desc": "Skema Beasiswa Parsial untuk hafalan minimal 5 Juz dan Beasiswa Penuh untuk hafalan ≥ 26 Juz. Syarat melampirkan fotokopi sertifikat/piagam tahfidz (maks. 2 tahun terakhir) serta surat rekomendasi pengajar atau lembaga tahfidz.",
+        "santriNote": "Sangat direkomendasikan bagi santri tahfidz PMUQI. Lokasi kampus yang dekat Cibiru juga memudahkan silaturahmi dengan mayoritas pengurus IKAPMI.",
+        "link": "https://pmb.umbandung.ac.id"
+      },
+      {
+        "name": "Jalur Reguler: Prestasi Akademik (Rapor)",
+        "tag": "Seleksi Rapor Tanpa Tes",
+        "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
+        "schedule": "Gelombang I – III 2026",
+        "desc": "Seleksi berbasis rata-rata nilai rapor semester 1–5 (ketentuan umum rata-rata ≥ 75 dan rumpun IPA/Farmasi/Bioteknologi ≥ 80 dalam dokumen PDF) tanpa perlu ujian tertulis.",
+        "santriNote": "Proses pendaftaran praktis dan 100% online dari pondok melalui dashboard pmb.umbandung.ac.id.",
+        "link": "https://pmb.umbandung.ac.id"
+      },
+      {
+        "name": "Jalur Undangan PTN & CBT Online",
+        "tag": "Skor UTBK/UM & Tes Daring",
+        "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
+        "schedule": "Gelombang Berjalan 2026",
+        "desc": "Jalur Undangan bagi pendaftar yang melampirkan kartu/skor SNBP, SNBT-UTBK, atau Ujian Mandiri PTN (maks. 2 tahun terakhir), serta Jalur CBT Computer Based Test daring dari PMB UMB.",
+        "santriNote": "Skor SNBT/UM-PTKIN yang sudah dimiliki dapat langsung dimanfaatkan tanpa mengulang ujian.",
+        "link": "https://pmb.umbandung.ac.id"
+      },
+      {
+        "name": "Beasiswa Kader, Non-Akademik & PUTM",
+        "tag": "Kader & Prestasi Lomba",
+        "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
+        "schedule": "Gelombang PMB 2026",
+        "desc": "Mencakup Beasiswa Prestasi Non-Akademik (seni/olahraga/keagamaan dengan piagam maks. 2 tahun terakhir), Beasiswa Kader Muhammadiyah (KTA Ortom), hingga program PUTM dan Tokoh Muda.",
+        "santriNote": "Lingkungan kampus bernuansa Islami modern dengan banyak UKM keagamaan dan kajian mahasiswa.",
+        "link": "https://pmb.umbandung.ac.id"
+      }
+    ]
+  },
+  "unpar": {
+    "id": "unpar",
+    "num": "10",
+    "name": "Universitas Katolik Parahyangan (UNPAR)",
+    "short": "UNPAR",
+    "badge": "PTS Unggul Ciumbuleuit",
+    "dotColor": "bg-amber-600",
+    "badgeClass": "bg-yellow-50 text-amber-900 border-amber-300/80",
+    "accentGradient": "from-yellow-500 via-amber-500 to-emerald-600",
+    "logo": "assets/logos/logo_unpar.png",
+    "location": "Jl. Ciumbuleuit No. 94 & Jl. Merdeka",
+    "shortDesc": "Unggul nasional di bidang Arsitektur, Hukum, HI, Ekonomi, & Kedokteran melalui jalur PMDK rapor, USM 1–4, nilai UTBK, dan Beasiswa Silih Asuh.",
+    "fullDesc": "Universitas Katolik Parahyangan (UNPAR) berlokasi di Kampus Utama Jl. Ciumbuleuit No. 94, Bandung 40141 dan Jl. Merdeka No. 30 (Fakultas Kedokteran). Merupakan salah satu PTS tertua dan terbaik nasional untuk Arsitektur, Teknik Sipil, Hukum, Hubungan Internasional, Manajemen, dan Akuntansi.",
+    "portal": "https://pmb.unpar.ac.id",
+    "pathways": [
+      {
+        "name": "Jalur PMDK (Rapor Tanpa Tes)",
+        "tag": "Prestasi Rapor Dini",
+        "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
+        "schedule": "September – Periode Awal",
+        "desc": "Seleksi tanpa ujian tertulis menggunakan rekam jejak nilai rapor sekolah menengah dan sertifikat prestasi akademik maupun non-akademik untuk hingga 3 pilihan program studi.",
+        "santriNote": "Jalur terbaik bagi santri dengan nilai rapor stabil sejak kelas 10–11 untuk mengunci kursi lebih awal.",
+        "link": "https://pmb.unpar.ac.id"
+      },
+      {
+        "name": "Ujian Saringan Masuk (USM Gelombang 1–4)",
+        "tag": "Seleksi Mandiri Berkala",
+        "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
+        "schedule": "Gelombang USM Sepanjang Tahun",
+        "desc": "Ujian saringan masuk mandiri berbasis daring/komputer yang dibuka secara bertahap (USM 1 sampai USM 4 hingga pertengahan tahun), mencakup tes kemampuan akademik sesuai prodi tujuan.",
+        "santriNote": "Tersedia beberapa kali gelombang USM sehingga santri bisa menyesuaikan waktu persiapan di akhir masa pondok.",
+        "link": "https://pmb.unpar.ac.id"
+      },
+      {
+        "name": "Jalur Nilai UTBK (Tanpa Tes Tambahan)",
+        "tag": "Konversi Skor UTBK-SNBT",
+        "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
+        "schedule": "Pasca Pengumuman UTBK 2026",
+        "desc": "Pendaftaran masuk UNPAR tanpa mengikuti ujian tertulis tambahan hanya dengan mengunggah sertifikat nilai hasil UTBK seleksi nasional di portal pmb.unpar.ac.id.",
+        "santriNote": "Manfaatkan hasil UTBK-SNBT yang sudah diikuti tanpa perlu mengulang tes masuk dari awal.",
+        "link": "https://pmb.unpar.ac.id"
+      },
+      {
+        "name": "Beasiswa Silih Asuh, Project UNPAR & Sagraha",
+        "tag": "Beasiswa Prestasi & Bantuan",
+        "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
+        "schedule": "Dibuka Sesuai Gelombang PMB",
+        "desc": "UNPAR menyediakan Beasiswa Silih Asuh (full cover bagi kondisi finansial terbatas), Beasiswa Sagraha (potongan UKPA 25%–100%), serta Beasiswa Project UNPAR (potongan UKPA 30%–70% bagi juara lomba I–III).",
+        "santriNote": "Jejaring kost kawasan Ciumbuleuit, Cisitu, dan Dago mudah dijangkau dan berdekatan dengan komunitas mahasiswa IKAPMI wilayah utara.",
+        "link": "https://pmb.unpar.ac.id"
+      }
+    ]
+  },
+  "binus": {
+    "id": "binus",
+    "num": "11",
+    "name": "BINUS University @Bandung",
+    "short": "BINUS",
+    "badge": "Creative Tech Campus",
+    "dotColor": "bg-sky-500",
+    "badgeClass": "bg-cyan-50 text-cyan-900 border-cyan-200/80",
+    "accentGradient": "from-sky-500 via-orange-400 to-cyan-600",
+    "logo": "assets/logos/logo_binus.png",
+    "location": "Paskal Hyper Square & Dago Pakar",
+    "shortDesc": "Kampus Computer Science, DKV, Creativepreneurship, & Digital Business dengan seleksi TPKS online dan Widia Scholarship hingga 100%.",
+    "fullDesc": "BINUS @Bandung mengusung konsep Creative Technology and Entrepreneurship Campus di Paskal Campus (Jl. Pasirkaliki No. 25–27, Paskal Hyper Square, Bandung 40181) serta Dago Campus (Dago Pakar). Menawarkan prodi S1 Computer Science, Creativepreneurship, Digital Business Innovation, DKV, Interior Design, Interactive Design & Technology, serta Digital Psychology.",
+    "portal": "https://gabung.binus.ac.id",
+    "pathways": [
+      {
+        "name": "Jalur Reguler (Unggah Rapor + TPKS Online)",
+        "tag": "Tes Potensi Keberhasilan Studi",
+        "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
+        "schedule": "Gelombang Periodik 2025/2026",
+        "desc": "Pendaftaran dilakukan melalui gabung.binus.ac.id dengan mengunggah scan rapor kelas 10–11, lalu mengikuti tes online TPKS (Logika, Abstraksi Non-Verbal, dan Verbal) sesuai jadwal pilihan pendaftar.",
+        "santriNote": "Seleksi TPKS dapat diikuti secara online dan hasilnya segera muncul di akun Gabung BINUS.",
+        "link": "https://gabung.binus.ac.id/admission-procedure/?degree=s1&campus-location=binus-bandung"
+      },
+      {
+        "name": "The Widia Scholarship for Outstanding Achievers",
+        "tag": "Beasiswa Penuh 100% (Kuliah + DP3)",
+        "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
+        "schedule": "Periode Beasiswa BINUS 2026",
+        "desc": "Program beasiswa penuh (bebas biaya kuliah dan sumbangan pembangunan/DP3 hingga lulus) bagi calon mahasiswa berprestasi tingkat nasional atau internasional di bidang akademik maupun non-akademik.",
+        "santriNote": "Prestasi olimpiade sains, lomba IT, seni, maupun kejuaraan tingkat nasional menjadi nilai unggul utama.",
+        "link": "https://gabung.binus.ac.id"
+      },
+      {
+        "name": "Beasiswa Talent Scouting, Startech & OSIS",
+        "tag": "Beasiswa Rapor & Aktivis",
+        "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
+        "schedule": "Mengikuti Admission Calendar",
+        "desc": "Beragam skema potongan biaya kuliah berdasarkan hasil rapor & TPKS, talenta teknologi (Startech), BINUSfluencer, pengurus OSIS/MPK (OSIS Scholarship), hingga BINUSIAN Community Scholarship.",
+        "santriNote": "Aktif di kepengurusan organisasi santri/OSIS PMUQI dan portofolio teknologi berpeluang memperoleh potongan biaya kuliah.",
+        "link": "https://gabung.binus.ac.id"
+      },
+      {
+        "name": "Jalur Portofolio Industri Kreatif (DKV & Desain)",
+        "tag": "Khusus Prodi Desain & Teknologi",
+        "tagClass": "bg-cyan-100 text-cyan-800 border-cyan-200",
+        "schedule": "Gelombang Periodik 2026",
+        "desc": "Seleksi khusus untuk peminat Visual Communication Design (DKV), Interior Design, dan Interactive Design & Technology di BINUS @Bandung menggunakan hasil TPKS dan penilaian karya/minat kreatif.",
+        "santriNote": "Karya desain grafis, ilustrasi, atau proyek multimedia selama di pesantren bisa dirangkum menjadi portofolio resmi.",
+        "link": "https://binus.ac.id/bandung/"
+      }
+    ]
+  },
+  "poltekpar-nhi": {
+    "id": "poltekpar-nhi",
+    "num": "12",
+    "name": "Poltekpar NHI Bandung",
+    "short": "Poltekpar NHI",
+    "badge": "PTN Kemenparekraf / Vokasi",
+    "dotColor": "bg-indigo-600",
+    "badgeClass": "bg-indigo-50 text-indigo-900 border-indigo-200/80",
+    "accentGradient": "from-indigo-800 via-blue-700 to-cyan-600",
+    "logo": "assets/logos/logo_poltekpar_nhi.png",
+    "location": "Jl. Dr. Setiabudi No. 186 & Dayeuhkolot",
+    "shortDesc": "Perguruan tinggi negeri pariwisata Kemenpar untuk Perhotelan, Kuliner, Patiseri, UPW, & MICE lewat seleksi nasional SBM & SMM Poltekpar.",
+    "fullDesc": "Politeknik Pariwisata (Poltekpar) NHI Bandung adalah perguruan tinggi negeri/kedinasan vokasi di bawah Kementerian Pariwisata RI dengan kampus utama di Jl. Dr. Setiabudi No. 186, Hegarmanah, Bandung 40141 serta pengembangan kampus di Dayeuhkolot. Menawarkan prodi D3 (Divisi Kamar, Tata Hidang, Seni Kuliner, Patiseri) dan D4 (Pengelolaan Perhotelan, Usaha Perjalanan Wisata, MICE, Destinasi Pariwisata, Pengelolaan Usaha Rekreasi).",
+    "portal": "https://sbmpoltekpar.kemenpar.go.id/",
+    "pathways": [
+      {
+        "name": "SBM Poltekpar (Seleksi Bersama Nasional)",
+        "tag": "Seleksi Bersama 6 Poltekpar Kemenpar",
+        "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
+        "schedule": "Maret – Juni 2026",
+        "desc": "Seleksi nasional terpusat untuk 6 Politeknik Pariwisata di bawah Kementerian Pariwisata RI (termasuk Poltekpar NHI Bandung). Rangkaian tes meliputi Tes Bakat Skolastik, Literasi Bahasa Inggris, Psikotes, serta Ujian Wawancara.",
+        "santriNote": "Biaya kuliah negeri di bawah Kementerian Pariwisata relatif terjangkau dengan prospek karier perhotelan, wisata halal, dan event internasional.",
+        "link": "https://sbmpoltekpar.kemenpar.go.id/"
+      },
+      {
+        "name": "SMM Poltekpar NHI (Seleksi Mandiri Masuk)",
+        "tag": "Ujian Mandiri Kampus Bandung",
+        "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
+        "schedule": "Mei – Juli 2026",
+        "desc": "Jalur seleksi mandiri lokal yang dibuka oleh Poltekpar NHI Bandung setelah rangkaian SBM selesai, melalui mekanisme ujian Computer Based Test (CBT) dan wawancara bagi lulusan SMA/SMK/MA sederajat.",
+        "santriNote": "Lulusan semua jurusan MA/SMA (IPA, IPS, Agama/Bahasa) diperbolehkan mendaftar selama memenuhi syarat kesehatan prodi.",
+        "link": "https://poltekpar-nhi.ac.id"
+      },
+      {
+        "name": "Ketentuan Kesehatan & Fisik Khusus Industri",
+        "tag": "Wajib Perhatikan Sebelum Pilih Prodi",
+        "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
+        "schedule": "Tahap Verifikasi Kesehatan 2026",
+        "desc": "Prodi bidang Hospitaliti (Pengelolaan Perhotelan, Divisi Kamar, Tata Hidang, Seni Kuliner, Patiseri) mensyaratkan tidak buta warna (total/parsial), tinggi badan minimal (±150 cm), bebas TBC, dan tanpa kelainan tulang belakang berat. Prodi UPW/MICE/Destinasi umumnya mensyaratkan tidak buta warna total.",
+        "santriNote": "Cek buku panduan kesehatan resmi SBM Poltekpar di portal Kemenpar sebelum mengunci pilihan program studi.",
+        "link": "https://sbmpoltekpar.kemenpar.go.id/"
+      }
+    ]
+  },
+  "unpas": {
+    "id": "unpas",
+    "num": "13",
+    "name": "Universitas Pasundan (UNPAS)",
+    "short": "UNPAS",
+    "badge": "PTS Favorit Bandung",
+    "dotColor": "bg-yellow-600",
+    "badgeClass": "bg-amber-50 text-amber-900 border-amber-300/80",
+    "accentGradient": "from-yellow-600 via-amber-500 to-emerald-600",
+    "logo": "assets/logos/logo_unpas.png",
+    "location": "Tamansari, Lengkong, Sumatra & Setiabudi",
+    "shortDesc": "Pilihan favorit untuk Hukum, FISIP, Teknik, Ekonomi, FKIP, & Kedokteran lewat PMDK rapor, USM 1–3, nilai UTBK, dan Beasiswa Tahfidz LP2SI.",
+    "fullDesc": "Universitas Pasundan (UNPAS) memiliki 4 kampus utama di jantung Kota Bandung (Sekretariat PMB Jl. Tamansari No. 4–8, Jl. Lengkong Besar, Jl. Sumatra, dan Jl. Dr. Setiabudhi) dengan 7 Fakultas unggulan termasuk Hukum, FISIP (HI, Ilmu Komunikasi, Administrasi Publik), Teknik, Ekonomi & Bisnis, FKIP, Ilmu Seni & Sastra, serta Kedokteran.",
+    "portal": "https://pmb.unpas.ac.id",
+    "pathways": [
+      {
+        "name": "Jalur PMDK & Early Bird (Rapor Tanpa Tes)",
+        "tag": "Seleksi Rapor Tanpa Tes",
+        "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
+        "schedule": "Gelombang Awal – Juli 2026",
+        "desc": "Penelusuran Minat dan Kemampuan (PMDK) tanpa tes tertulis berbasis rata-rata rapor (semester 1–4/5) dan sertifikat prestasi akademik/non-akademik, termasuk program insentif pendaftaran awal (Early Bird).",
+        "santriNote": "Banyak santri PMUQI masuk prodi Hukum, Hubungan Internasional, Ilmu Komunikasi, & Teknik melalui jalur rapor bebas tes ini.",
+        "link": "https://pmb.unpas.ac.id"
+      },
+      {
+        "name": "Jalur USM (Ujian Saringan Masuk & Kedokteran)",
+        "tag": "Tes Online Gelombang 1–3",
+        "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
+        "schedule": "Januari – Agustus 2026",
+        "desc": "Ujian Saringan Masuk bertahap (Gelombang 1–3 dan seterusnya) secara online melalui materi TPA/skolastik & Saintek/Soshum, serta jalur USM khusus bagi peminat Fakultas Kedokteran UNPAS.",
+        "santriNote": "Pendaftaran terpusat di pmb.unpas.ac.id / situ2.unpas.ac.id dengan biaya pendaftaran reguler S1 umumnya Rp300.000.",
+        "link": "https://situ2.unpas.ac.id/spmbfront/home"
+      },
+      {
+        "name": "Jalur Nilai UTBK & Transfer / RPL",
+        "tag": "Skor UTBK-SNBT & Lanjutan",
+        "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
+        "schedule": "Periode UTBK & Gelombang PMB",
+        "desc": "Penerimaan mahasiswa baru menggunakan pemanfaatan skor/keikutsertaan UTBK-SNBT tanpa ujian tulis tambahan, serta jalur Rekognisi Pembelajaran Lampau (RPL) untuk transfer kredit lulusan D1–D3/pekerja.",
+        "santriNote": "Alternatif efisien sesudah pengumuman SNBT tanpa mengulang tes skolastik kampus.",
+        "link": "https://situ2.unpas.ac.id/spmbfront/home"
+      },
+      {
+        "name": "Beasiswa Tahfidz Al-Qur'an LP2SI & KIP Kuliah",
+        "tag": "Beasiswa Hafiz & Pemerintah",
+        "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
+        "schedule": "Jadwal Seleksi Tahfidz & KIP 2026",
+        "desc": "Seleksi khusus penghafal Al-Qur'an melalui uji hafalan (sambung ayat) oleh Lembaga Pengkajian & Pengembangan Syiar Islam (LP2SI) UNPAS berhadiah potongan hingga pembebasan biaya kuliah sesuai juz, serta penyaluran KIP Kuliah.",
+        "santriNote": "Hotline resmi PMB UNPAS: WhatsApp 0811-960-193 atau pmb@unpas.ac.id untuk jadwal uji tahfidz terbaru.",
+        "link": "https://pmb.unpas.ac.id"
+      }
+    ]
   }
 };
 
