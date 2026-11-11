@@ -581,6 +581,58 @@ const articleData = {
       <p class="mb-4">Delegasi Bandung mendirikan booth informasi khusus yang memperkenalkan ragam perguruan tinggi ternama di Bandung Raya, seperti UIN SGD, UNPAD, UPI, ITB, dan Telkom University. Para santri kelas akhir tampak sangat antusias berkonsultasi mengenai jalur seleksi masuk (SNBP, SNBT, SPAN-PTKIN, dan Ujian Mandiri).</p>
       <p class="mb-4">Selain membagikan brosur dan modul panduan belajar, tim IKAPMI Bandung juga mengadakan sesi bedah jurusan dan sharing kiat sukses menembus kampus impian bersama para kakak tingkat.</p>
     `
+  },
+  4: {
+    title: "Buka Puasa Bersama IKAPMI Bandung di Pelataran Masjid Raya Al-Jabbar",
+    date: "Agenda Ramadhan",
+    author: "IKAPMI Regional Bandung",
+    tag: "Kebersamaan",
+    image: "assets/warta_bukber.jpg",
+    imagePosition: "object-[50%_68%]",
+    content: `
+      <p class="mb-4">Suasana hangat penuh kekeluargaan menyelimuti pelataran Masjid Raya Al-Jabbar saat keluarga besar IKAPMI Regional Bandung menggelar kegiatan Buka Puasa Bersama di bulan suci Ramadhan.</p>
+      <p class="mb-4">Mengenakan pakaian dinas lapangan (PDL) IKAPMI Bandung, para mahasiswa dan alumni Pondok Pesantren Modern Ummul Quro Al-Islami duduk melingkar bersama, berbagi hidangan takjil, serta bertukar cerita mengenai dinamika perkuliahan dan pengabdian di Bandung Raya.</p>
+      <p class="mb-4">Momentum buka puasa bersama ini menjadi pengingat bahwa di tengah kesibukan akademik masing-masing kampus, ikatan ukhuwah sesama alumni santri tetap terjaga erat dalam bingkai kebersamaan <em>Sadulur Ngahiji</em>.</p>
+    `
+  },
+  5: {
+    title: "Pengajian Yasin Rutinan: Menjaga Tradisi Doa dan Ukhuwah Santri Rantau",
+    date: "Program Rutinan",
+    author: "Departemen Keagamaan IKAPMI Bandung",
+    tag: "Keagamaan",
+    image: "assets/warta_pengajian_yasin.jpg",
+    imageFit: "contain",
+    content: `
+      <p class="mb-4">Sebagai ikhtiar merawat ruhani dan tradisi keilmuan pesantren di tanah rantau, IKAPMI Regional Bandung secara istikamah menyelenggarakan Pengajian Yasin Rutinan yang diikuti oleh santri ikhwan dan akhwat lintas kampus.</p>
+      <p class="mb-4">Kegiatan diisi dengan pembacaan Surah Yasin, tahlil, doa bersama untuk kedua orang tua, para masyayikh Pondok Pesantren Modern Ummul Quro Al-Islami, serta ditutup dengan ramah tamah hangat antaranggota.</p>
+      <p class="mb-4">Melalui majelis rutinan sederhana namun penuh keberkahan ini, diharapkan para mahasiswa perantau senantiasa diberi keteguhan hati, kelancaran studi, dan kepekaan sosial di lingkungan masyarakat Bandung.</p>
+    `
+  },
+  6: {
+    title: "Futsal Bersama IKAPMI Bandung: Ajang Silaturahmi Lintas Kampus dan Angkatan",
+    date: "Olahraga & Ukhuwah",
+    author: "Departemen Minat & Bakat",
+    tag: "Kepemudaan",
+    image: "assets/warta_futsal.jpg",
+    imageFit: "contain",
+    content: `
+      <p class="mb-4">Tak hanya aktif di ruang diskusi akademik dan keagamaan, anggota IKAPMI Regional Bandung juga menyalurkan semangat kebersamaan melalui agenda olahraga Futsal Bersama lintas kampus dan angkatan.</p>
+      <p class="mb-4">Berlangsung meriah dengan dukungan penuh rekan-rekan ikhwan dan akhwat yang turut hadir memberikan semangat di pinggir lapangan, laga persahabatan ini menjunjung tinggi sportivitas serta menjadi pelepas penat di sela jadwal kuliah.</p>
+      <p class="mb-4">Kegiatan diakhiri dengan sesi foto bersama membentangkan bendera kebanggaan IKAPMI Regional Bandung dan almamater sebagai simbol solidnya persaudaraan di perantauan.</p>
+    `
+  },
+  7: {
+    title: "Silaturahmi Pimpinan PMUQI: Mempererat Restu Almamater dan Sinergi Kader",
+    date: "Agenda Almamater",
+    author: "BPH IKAPMI Regional Bandung",
+    tag: "Silaturahmi",
+    image: "assets/warta_silaturahmi_pimpinan.jpg",
+    imageFit: "contain",
+    content: `
+      <p class="mb-4">Jajaran pengurus dan perwakilan santri IKAPMI Regional Bandung melaksanakan agenda Silaturahmi bersama Pimpinan Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI) sebagai wujud ta'zhim sekaligus penyelarasan langkah pengabdian alumni.</p>
+      <p class="mb-4">Dalam suasana penuh kehangatan dan kesederhanaan, para kader memohon doa restu serta menyimak wejangan berharga terkait menjaga adab santri, integritas keilmuan, dan kesiapan berkontribusi bagi umat setelah menyelesaikan studi di Bandung.</p>
+      <p class="mb-4">Pertemuan ini semakin meneguhkan komitmen IKAPMI Bandung untuk menjadi wadah pemersatu yang membawa nama baik almamater di tengah masyarakat luas.</p>
+    `
   }
 };
 
@@ -597,6 +649,10 @@ function initArticleModal() {
       const data = articleData[articleId];
 
       if (data && modal && modalContent) {
+        const imageMarkup = data.imageFit === 'contain'
+          ? `<div class="rounded-xl overflow-hidden mb-6 bg-slate-950/95 flex items-center justify-center"><img src="${data.image}" alt="${data.title}" class="w-full max-h-96 object-contain"></div>`
+          : `<div class="rounded-xl overflow-hidden mb-6 max-h-80"><img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover ${data.imagePosition || ''}"></div>`;
+
         modalContent.innerHTML = `
           <div class="mb-4">
             <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-blue-100 text-[#0f2e59] mb-3">${data.tag}</span>
@@ -606,9 +662,7 @@ function initArticleModal() {
               <span>✍️ ${data.author}</span>
             </div>
           </div>
-          <div class="rounded-xl overflow-hidden mb-6 max-h-80">
-            <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
-          </div>
+          ${imageMarkup}
           <div class="prose max-w-none text-slate-700 leading-relaxed text-sm sm:text-base">
             ${data.content}
           </div>

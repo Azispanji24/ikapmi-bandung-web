@@ -1587,8 +1587,136 @@
         </p>
       </div>
 
-      <!-- Articles Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Featured Activity (Buka Puasa Bersama) -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover mb-8 grid grid-cols-1 lg:grid-cols-12">
+        <div class="lg:col-span-6 aspect-[16/10] lg:aspect-auto lg:h-full min-h-[250px] max-h-[380px] overflow-hidden bg-slate-100">
+          <img src="assets/warta_bukber.jpg" alt="Buka Puasa Bersama IKAPMI Bandung" class="w-full h-full object-cover object-[50%_68%]">
+        </div>
+        <div class="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
+              <span>Agenda Ramadhan</span>
+              <span class="text-slate-300">&bull;</span>
+              <span class="text-brand-700 font-semibold">Kebersamaan</span>
+            </div>
+            <h3
+              class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug mb-3 hover:text-brand-700 transition-colors">
+              Buka Puasa Bersama IKAPMI Bandung di Pelataran Masjid Raya Al-Jabbar
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              Keluarga besar santri perantau dan alumni Pondok Pesantren Modern Ummul Quro Al-Islami di Bandung Raya berkumpul duduk melingkar mempererat ukhuwah sambil menanti waktu berbuka puasa.
+            </p>
+          </div>
+          <div>
+            <button
+              class="read-article-btn inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 transition-colors"
+              data-article-id="4">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Articles Grid (6 balanced cards: 3x2 desktop, 2x3 tablet) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Article 5: Pengajian Yasin Rutinan -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="assets/warta_pengajian_yasin.jpg" alt="Pengajian Yasin Rutinan IKAPMI Bandung" class="w-full h-full object-cover object-[50%_58%]">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                <span>Program Rutinan</span>
+                <span class="text-slate-300">&bull;</span>
+                <span class="text-brand-700 font-semibold">Keagamaan</span>
+              </div>
+              <h3
+                class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 hover:text-brand-700 transition-colors">
+                Pengajian Yasin Rutinan: Menjaga Tradisi Doa dan Ukhuwah Santri Rantau
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                Majelis doa, pembacaan Surah Yasin, dan tahlil bersama antaranggota IKAPMI Bandung untuk merawat tradisi ruhani pesantren di perantauan.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button
+              class="read-article-btn inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 transition-colors"
+              data-article-id="5">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Article 6: Futsal -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="assets/warta_futsal.jpg" alt="Futsal IKAPMI Bandung" class="w-full h-full object-cover object-[50%_62%]">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                <span>Olahraga &amp; Ukhuwah</span>
+                <span class="text-slate-300">&bull;</span>
+                <span class="text-blue-700 font-semibold">Kepemudaan</span>
+              </div>
+              <h3
+                class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 hover:text-brand-700 transition-colors">
+                Futsal Bersama IKAPMI Bandung: Ajang Silaturahmi Lintas Kampus dan Angkatan
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                Momen keakraban anggota IKAPMI di lapangan futsal untuk mempererat solidaritas, sportivitas, dan kebugaran bersama di sela perkuliahan.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button
+              class="read-article-btn inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 transition-colors"
+              data-article-id="6">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Article 7: Silaturahmi Pimpinan PMUQI -->
+        <article
+          class="bg-white rounded-2xl overflow-hidden border border-slate-200 card-hover flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="assets/warta_silaturahmi_pimpinan.jpg" alt="Silaturahmi Pimpinan PMUQI" class="w-full h-full object-cover object-[50%_58%]">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                <span>Agenda Almamater</span>
+                <span class="text-slate-300">&bull;</span>
+                <span class="text-blue-700 font-semibold">Silaturahmi</span>
+              </div>
+              <h3
+                class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 hover:text-brand-700 transition-colors">
+                Silaturahmi Pimpinan PMUQI: Mempererat Restu Almamater dan Sinergi Kader
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                Pertemuan hangat pengurus dan kader IKAPMI Bandung bersama Pimpinan PMUQI memohon doa restu serta memperkuat sinergi khidmah alumni.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <button
+              class="read-article-btn inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 transition-colors"
+              data-article-id="7">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </article>
 
         <!-- Article 1 -->
         <article
@@ -1600,7 +1728,7 @@
             <div class="p-6">
               <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
                 <span>14 Januari 2025</span>
-                <span></span>
+                <span class="text-slate-300">&bull;</span>
                 <span class="text-brand-700 font-semibold">Organisasi</span>
               </div>
               <h3
@@ -1633,7 +1761,7 @@
             <div class="p-6">
               <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
                 <span>28 Januari 2025</span>
-                <span></span>
+                <span class="text-slate-300">&bull;</span>
                 <span class="text-blue-700 font-semibold">Program Kerja</span>
               </div>
               <h3
@@ -1666,7 +1794,7 @@
             <div class="p-6">
               <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
                 <span>04 Februari 2025</span>
-                <span></span>
+                <span class="text-slate-300">&bull;</span>
                 <span class="text-blue-700 font-semibold">Pengabdian</span>
               </div>
               <h3
@@ -2024,7 +2152,7 @@
   </div>
 
   <!-- Application Logic -->
-  <script src="js/app.js?v=6.1"></script>
+  <script src="js/app.js?v=6.2"></script>
   <script>
     // Initialize Lucide Icons after DOM load
     lucide.createIcons();
