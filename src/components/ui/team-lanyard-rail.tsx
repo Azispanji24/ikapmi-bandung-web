@@ -344,7 +344,7 @@ const BadgeFaces = React.memo(function BadgeFaces({ item }: { item: LanyardMembe
           {item.role}
         </span>
         {item.team && (
-          <span className="mt-[0.35em] block w-full truncate text-center text-[0.58em] font-medium uppercase tracking-[0.18em] text-slate-500">
+          <span className="mt-[0.35em] block w-full truncate text-center text-[0.54em] font-medium uppercase tracking-[0.09em] text-slate-500">
             {item.team}
           </span>
         )}
