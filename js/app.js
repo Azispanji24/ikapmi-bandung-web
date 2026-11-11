@@ -272,7 +272,7 @@ function initPerspectiveTunnelHero() {
     { src: "assets/gallery/gallery_36.jpg", ratio: "4 / 3", title: "Kebersamaan di Masjid Al-Jabbar", desc: "Silaturahmi keluarga besar IKAPMI Bandung di pelataran Masjid Raya Al-Jabbar." },
     { src: "assets/gallery/gallery_39.jpg", ratio: "4 / 3", title: "Kumpul Akbar Depan Gedung Sate", desc: "Konsolidasi santri perantau Bandung Raya berlatar ikon Kota Bandung." },
     { src: "assets/gallery/gallery_23.jpg", ratio: "4 / 3", title: "Delegasi Campus Expo PMUQI", desc: "Tim delegasi IKAPMI Bandung hadir menyapa santri kelas akhir pada Campus Expo." },
-    { src: "assets/gallery/gallery_24.jpg", ratio: "4 / 3", title: "Konsultasi Jurusan & Kampus", desc: "Sesi tanya jawab hangat bersama calon mahasiswa baru di stan IKAPMI Bandung." },
+    { src: "assets/gallery/gallery_14.jpg", ratio: "4 / 3", title: "Kumpul Hangat Lintas Kampus", desc: "Suasana akrab penuh tawa saat santri perantau melepas rindu di Bandung." },
     { src: "assets/gallery/gallery_25.jpg", ratio: "4 / 3", title: "Sosialisasi Jalur Masuk PTN & PTS", desc: "Berbagi informasi beasiswa, jalur masuk kampus, dan kehidupan mahasiswa di Bandung." },
     { src: "assets/gallery/gallery_11.jpg", ratio: "4 / 3", title: "Temu Kangen Lintas Angkatan", desc: "Hangatnya silaturahmi mahasiswa alumni santri dalam suasana santai penuh tawa." },
     { src: "assets/gallery/gallery_45.jpg", ratio: "4 / 3", title: "Diskusi Santai & Sharing Kuliah", desc: "Obrolan ringan seputar dinamika perkuliahan dan adaptasi santri perantau." },
@@ -284,7 +284,7 @@ function initPerspectiveTunnelHero() {
     { src: "assets/gallery/gallery_18.jpg", ratio: "4 / 5", title: "Keakraban Srikandi IKAPMI", desc: "Potret kebersamaan jajaran pengurus putri saat agenda konsolidasi internal." },
     { src: "assets/day2_DSC01263.JPG", ratio: "4 / 3", title: "Keceriaan Rihlah & Outbound", desc: "Momen akrab di ruang terbuka memperkuat ikatan emosional santri perantau." },
     { src: "assets/warta_pengajian_yasin.jpg", ratio: "4 / 5", title: "Kajian & Yasinan Rutin Alumni", desc: "Menjaga tradisi spiritual pesantren di tengah kesibukan kuliah di perantauan." },
-    { src: "assets/gallery/gallery_03.jpg", ratio: "4 / 3", title: "Apresiasi & Sertifikat Kolaborasi", desc: "Penyerahan cendera mata sebagai simbol sinergi aktif alumni bersama almamater." }
+    { src: "assets/gallery/gallery_38.jpg", ratio: "16 / 10", title: "Silaturahmi Akbar Keluarga IKAPMI", desc: "Kebersamaan penuh kehangatan seluruh anggota IKAPMI Regional Bandung." }
   ];
 
   // Fisher-Yates shuffle so every visit shows random, non-repeating photos
