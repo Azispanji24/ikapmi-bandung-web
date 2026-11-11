@@ -28,7 +28,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "name": "Muhammad Kahfi",
     "role": "Sekretaris Umum",
     "team": "IKAPMI Bandung · BPH",
-    "image": "assets/pengurus/muhammad-kahfi.jpg",
+    "image": "assets/pengurus/muhammad-kahfi.jpg?v=20261112",
     "bio": "Bertanggung jawab penuh atas tata kelola administrasi surat-menyurat, pengarsipan resmi, notulensi rapat, dan regulasi keorganisasian.",
     "tags": [
       "Sekretaris Umum",
