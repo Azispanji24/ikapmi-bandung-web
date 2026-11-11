@@ -43,11 +43,16 @@ function initNavbar() {
     drop.style.opacity = '1';
   }
 
-  // Initialize drop position
+  // Initialize drop position (only visible when an active nav item exists)
   setTimeout(() => {
-    const initialActive = document.querySelector('.liquid-nav-item.active') || navItems[0];
-    activeElement = initialActive;
-    moveDropTo(initialActive);
+    const initialActive = document.querySelector('.liquid-nav-item.active');
+    if (initialActive) {
+      activeElement = initialActive;
+      moveDropTo(initialActive);
+    } else {
+      activeElement = null;
+      drop.style.opacity = '0';
+    }
   }, 100);
 
   // Mouse hover events on dock items
@@ -65,11 +70,13 @@ function initNavbar() {
     });
   });
 
-  // Mouse leaves the dock: snap back to currently active item
+  // Mouse leaves the dock: snap back to currently active item or fade out on subpages
   dock.addEventListener('mouseleave', () => {
     isHovering = false;
     if (activeElement) {
       moveDropTo(activeElement);
+    } else {
+      drop.style.opacity = '0';
     }
   });
 
@@ -630,22 +637,61 @@ function initArticleModal() {
 }
 
 /* ----------------------------------------------------
-   6. FORMULIR REGISTRASI DATABASE ALUMNI
+   6. FORMULIR REGISTRASI DATABASE ALUMNI (GOOGLE APPS SCRIPT + SHEETS)
 ---------------------------------------------------- */
+// Tempel URL Web App Google Apps Script (/exec) dari GoogleAppsScript_DatabaseAlumniBackend.js di sini:
+const ALUMNI_DB_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdiYcLxDtRcussP-J11bhsN8wJXH06pWWoLBGvFyx_NO3zgaSp_uw0YwniFNk1cq4/exec';
+
 function initRegistrationForm() {
   const form = document.getElementById('alumni-reg-form');
   const toast = document.getElementById('reg-toast');
   const statsCount = document.getElementById('total-registered-counter');
+  const submitBtn = document.getElementById('reg-submit-btn');
+  const submitLabel = document.getElementById('reg-submit-label');
+  const statusBanner = document.getElementById('reg-status-banner');
 
-  // Load registered count from localStorage
   const savedData = JSON.parse(localStorage.getItem('ikapmi_alumni_db') || '[]');
-  const baseCount = 696; // matches official Instagram follower/member baseline
+  const baseCount = 696;
   if (statsCount) {
     statsCount.textContent = (baseCount + savedData.length).toString();
   }
 
+  function setSubmitting(isSubmitting) {
+    if (!submitBtn) return;
+    submitBtn.disabled = isSubmitting;
+    if (submitLabel) {
+      submitLabel.textContent = isSubmitting ? 'Menyimpan Data...' : 'Simpan Data Alumni';
+    }
+  }
+
+  function showStatusBanner(message, type) {
+    if (!statusBanner) return;
+    statusBanner.classList.remove(
+      'hidden',
+      'bg-emerald-50', 'border-emerald-200', 'text-emerald-900',
+      'bg-amber-50', 'border-amber-200', 'text-amber-900',
+      'bg-rose-50', 'border-rose-200', 'text-rose-900'
+    );
+    if (type === 'success') {
+      statusBanner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+    } else if (type === 'warning') {
+      statusBanner.classList.add('bg-amber-50', 'border-amber-200', 'text-amber-900');
+    } else {
+      statusBanner.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+    }
+    statusBanner.textContent = message;
+  }
+
+  function saveLocalBackup(entry) {
+    savedData.push(entry);
+    localStorage.setItem('ikapmi_alumni_db', JSON.stringify(savedData));
+    if (statsCount) {
+      statsCount.textContent = (baseCount + savedData.length).toString();
+    }
+  }
+
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const nama = document.getElementById('reg-nama').value.trim();
@@ -656,8 +702,18 @@ function initRegistrationForm() {
       const status = document.getElementById('reg-status').value;
       const domisili = document.getElementById('reg-domisili').value.trim();
 
-      if (!nama || !whatsapp || !kampus) {
-        showToast('Mohon lengkapi nama, nomor WhatsApp, dan kampus Anda.', 'error');
+      if (!nama || !angkatan || !whatsapp || !kampus) {
+        const errMsg = 'Mohon lengkapi nama, angkatan, nomor WhatsApp, dan kampus Anda.';
+        showStatusBanner(errMsg, 'error');
+        showToast(errMsg, 'error');
+        return;
+      }
+
+      const cleanedDigits = whatsapp.replace(/\D/g, '');
+      if (cleanedDigits.length < 9 || cleanedDigits.length > 16) {
+        const waErr = 'Nomor WhatsApp tampak kurang tepat. Mohon periksa kembali (contoh: 081234567890).';
+        showStatusBanner(waErr, 'error');
+        showToast(waErr, 'error');
         return;
       }
 
@@ -673,18 +729,51 @@ function initRegistrationForm() {
         registeredAt: new Date().toISOString()
       };
 
-      savedData.push(newEntry);
-      localStorage.setItem('ikapmi_alumni_db', JSON.stringify(savedData));
+      const hasCloudUrl = ALUMNI_DB_SCRIPT_URL && ALUMNI_DB_SCRIPT_URL.startsWith('http');
 
-      if (statsCount) {
-        statsCount.textContent = (baseCount + savedData.length).toString();
+      if (!hasCloudUrl) {
+        saveLocalBackup(newEntry);
+        form.reset();
+        const localNotice = `Data ${nama} tersimpan sementara di browser ini. Tempel URL Google Apps Script di js/app.js agar otomatis terkirim ke Google Sheets.`;
+        showStatusBanner(localNotice, 'warning');
+        showToast(localNotice, 'warning');
+        return;
       }
 
-      form.reset();
-      showToast(`Alhamdulillah! Syukran ${nama}, data alumni Anda telah berhasil terdaftar ke Database Resmi IKAPMI Regional Bandung.`, 'success');
+      setSubmitting(true);
+      try {
+        const response = await fetch(ALUMNI_DB_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'cors',
+          redirect: 'follow',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(newEntry)
+        });
+
+        const result = await response.json();
+        if (!response.ok || result.status !== 'success') {
+          throw new Error(result.message || 'Server mengembalikan status gagal.');
+        }
+
+        saveLocalBackup(newEntry);
+        form.reset();
+        const successMsg = `Alhamdulillah! Syukran ${nama}, data alumni Anda berhasil tersimpan ke Database Resmi IKAPMI Regional Bandung.`;
+        showStatusBanner(successMsg, 'success');
+        showToast(successMsg, 'success');
+      } catch (err) {
+        const failMsg = 'Gagal mengirim data ke Google Sheets. Periksa koneksi internet Anda lalu klik Simpan Data Alumni kembali.';
+        showStatusBanner(failMsg, 'error');
+        showToast(failMsg, 'error');
+        console.warn('Alumni registration submit error:', err);
+      } finally {
+        setSubmitting(false);
+      }
     });
   }
 
+  let toastTimer = null;
   function showToast(message, type = 'success') {
     if (!toast) return;
     const toastMsg = toast.querySelector('.toast-message');
@@ -693,13 +782,14 @@ function initRegistrationForm() {
     if (toastMsg) toastMsg.textContent = message;
     if (toastIcon) {
       toastIcon.innerHTML = type === 'success' ? '✓' : '⚠️';
-      toastIcon.className = `toast-icon w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${type === 'success' ? 'bg-[#0f2e59] text-white' : 'bg-amber-500 text-white'}`;
+      toastIcon.className = `toast-icon w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${type === 'success' ? 'bg-[#0f2e59] text-white' : 'bg-amber-500 text-white'}`;
     }
 
     toast.classList.remove('hidden', 'translate-y-8', 'opacity-0');
     toast.classList.add('translate-y-0', 'opacity-100');
 
-    setTimeout(() => {
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
       toast.classList.add('translate-y-8', 'opacity-0');
       setTimeout(() => toast.classList.add('hidden'), 300);
     }, 5000);
