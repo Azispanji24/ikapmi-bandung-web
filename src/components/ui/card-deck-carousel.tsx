@@ -172,16 +172,16 @@ function useSlideImages(slides: Slide[]): string[] {
 }
 
 const CD_CSS = `
-.cd-root{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow:hidden;background:var(--cd-bg);color:var(--cd-ink);outline:none;padding:16px 8px;box-sizing:border-box}
+.cd-root{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow:hidden;background:var(--cd-bg);color:var(--cd-ink);outline:none;padding:48px 16px 18px;box-sizing:border-box}
 .cd-root:focus-visible{box-shadow:inset 0 0 0 2px var(--cd-ink)}
-.cd-deck{position:relative;width:var(--cd-w);aspect-ratio:var(--cd-aspect);max-height:430px;touch-action:pan-y}
+.cd-deck{position:relative;width:var(--cd-w);aspect-ratio:var(--cd-aspect);touch-action:pan-y}
 .cd-card{position:absolute;inset:0;border-radius:20px;overflow:hidden;background:#0d1b33;border:1.5px solid rgba(255,255,255,0.18);box-shadow:0 2px 4px rgba(0,0,0,.25),0 30px 60px -20px rgba(0,0,0,.65);transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s ease,filter .4s ease;will-change:transform}
 .cd-card[data-top='1']{cursor:grab}
 .cd-card[data-drag='1']{cursor:grabbing;transition:none}
 .cd-card[data-fly='1']{transition:transform .45s cubic-bezier(.3,.5,.3,1),opacity .45s ease}
 .cd-card[data-snap='1']{transition:none}
-.cd-card img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;pointer-events:none;user-select:none}
-.cd-meta{display:flex;align-items:center;gap:16px;width:min(var(--cd-w),100%);max-width:440px;margin-top:6px}
+.cd-card img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;background:#0d1b33;display:block;pointer-events:none;user-select:none}
+.cd-meta{display:flex;align-items:center;gap:16px;width:min(var(--cd-w),100%);max-width:540px;margin-top:6px}
 .cd-cap{flex:1;min-width:0;overflow:hidden;padding-bottom:.2em}
 .cd-cap>*{display:block;animation:cd-in .6s cubic-bezier(.2,.8,.2,1) both}
 .cd-title{font-size:16px;font-weight:700;line-height:1.2;color:#ffffff;letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

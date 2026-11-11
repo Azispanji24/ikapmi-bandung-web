@@ -4,34 +4,52 @@ import { CardDeckCarousel, Slide } from "./components/ui/card-deck-carousel";
 
 const TENTANG_SLIDES: Slide[] = [
   {
-    image: "assets/tentang_utama.jpg",
+    image: "assets/tentang/tentang_01.jpg",
     title: "Rumah Kedua Santri",
     caption: "Simpul silaturahmi & kehangatan alumni PMUQI di Bandung",
-    alt: "Dokumentasi Kebersamaan Alumni IKAPMI Bandung",
+    alt: "Foto Kebersamaan Pengurus & Anggota IKAPMI Bandung #1",
   },
   {
-    image: "assets/gathering_bonding.jpg",
+    image: "assets/tentang/tentang_02.jpg",
     title: "Sadulur Ngahiji",
     caption: "Menjalin ukhuwah hangat tanpa sekat lintas angkatan",
-    alt: "Keakraban Alumni IKAPMI Bandung",
+    alt: "Foto Ceria Keluarga Besar IKAPMI Bandung #2",
   },
   {
-    image: "assets/hero_mureg.jpg",
-    title: "Musyawarah Regional",
-    caption: "Regenerasi estafet kepemimpinan santri berkarakter",
-    alt: "Musyawarah Regional IKAPMI Bandung",
+    image: "assets/tentang/tentang_03.jpg",
+    title: "Semangat Kebersamaan",
+    caption: "Solidaritas erat santri perantau di Tatar Pasundan",
+    alt: "Foto Kebersamaan IKAPMI Bandung #3",
   },
   {
-    image: "assets/raker_team.jpg",
-    title: "Rapat Kerja Strategis",
-    caption: "Kolaborasi merancang program pemberdayaan alumni",
-    alt: "Rapat Kerja Pengurus IKAPMI Bandung",
+    image: "assets/tentang/tentang_04.jpg",
+    title: "Energi Muda IKAPMI",
+    caption: "Kompak berkarya dan saling menguatkan di tanah rantau",
+    alt: "Pose Semangat Anggota IKAPMI Bandung #4",
   },
   {
-    image: "assets/gathering_portrait.jpg",
-    title: "Khidmah & Kebersamaan",
-    caption: "Berbakti bagi almamater dan masyarakat Priangan",
-    alt: "Dokumentasi Khidmah Santri IKAPMI Bandung",
+    image: "assets/tentang/tentang_05.jpg",
+    title: "Satu Tujuan Bersama",
+    caption: "Berpegang pada adab pesantren serta siap berkontribusi",
+    alt: "Pose Kompak Keluarga IKAPMI Bandung #5",
+  },
+  {
+    image: "assets/tentang/tentang_06.jpg",
+    title: "Warna Persaudaraan",
+    caption: "Ruang pulang yang penuh canda, tawa, dan kekeluargaan",
+    alt: "Momen Hangat Anggota IKAPMI Bandung #6",
+  },
+  {
+    image: "assets/tentang/tentang_07.jpg",
+    title: "Ekspresi Keakraban",
+    caption: "Cerita akrab di sela kesibukan studi mahasiswa Bandung",
+    alt: "Momen Akrab IKAPMI Bandung #7",
+  },
+  {
+    image: "assets/tentang/tentang_08.jpg",
+    title: "Khidmah & Persatuan",
+    caption: "Berbakti bagi almamater dan masyarakat Bandung Raya",
+    alt: "Dokumentasi Kebersamaan IKAPMI Bandung #8",
   },
 ];
 
@@ -39,9 +57,9 @@ function TentangCarouselApp() {
   return (
     <CardDeckCarousel
       slides={TENTANG_SLIDES}
-      cardWidth="min(86vw, 360px)"
-      aspect="4 / 5"
-      scatter={7}
+      cardWidth="min(86vw, 540px)"
+      aspect="1280 / 854"
+      scatter={5}
       autoplay={4500}
       background="transparent"
       ink="#ffffff"
