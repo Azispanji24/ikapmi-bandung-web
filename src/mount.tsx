@@ -7,7 +7,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "id": "hafizh-najwal",
     "name": "Hafizh Najwal",
     "role": "Ketua Umum",
-    "team": "IKAPMI Bandung · BPH",
+    "team": "EX OFF",
     "image": "assets/pengurus/hafizh-najwal-Ketua-Umum.jpg",
     "bio": "Memegang pucuk pimpinan tertinggi, penentu arah kebijakan strategis organisasi, dan representasi resmi IKAPMI Regional Bandung.",
     "tags": [
@@ -27,7 +27,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "id": "muhammad-kahfi",
     "name": "Muhammad Kahfi",
     "role": "Sekretaris Umum",
-    "team": "IKAPMI Bandung · BPH",
+    "team": "EX OFF",
     "image": "assets/pengurus/muhammad-kahfi-Sekretaris-Umum.jpg?v=20261112",
     "bio": "Bertanggung jawab penuh atas tata kelola administrasi surat-menyurat, pengarsipan resmi, notulensi rapat, dan regulasi keorganisasian.",
     "tags": [
@@ -47,7 +47,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "id": "resti-fujianti",
     "name": "Resti Fujianti",
     "role": "Bendahara Umum",
-    "team": "IKAPMI Bandung · BPH",
+    "team": "EX OFF",
     "image": "assets/pengurus/Resti-Fujianti-Bendahara.jpg",
     "bio": "Bertanggung jawab atas pengelolaan keuangan organisasi, penyusunan anggaran program kerja, pelaporan kas transparan, dan tata kelola dana kealumnian.",
     "tags": [
