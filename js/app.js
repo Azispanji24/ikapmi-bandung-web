@@ -1318,7 +1318,7 @@ const CAMPUS_JALUR_DATA = {
     "dotColor": "bg-amber-500",
     "badgeClass": "bg-amber-50 text-amber-800 border-amber-200/80",
     "accentGradient": "from-amber-500 via-orange-500 to-amber-600",
-    "logo": "assets/logos/logo_widyatama.png",
+    "logo": "assets/logos/logo_widyatama.png?v=2",
     "location": "Jl. Cikutra No. 204A, Bandung",
     "shortDesc": "Kampus unggul di Cikutra Bandung dengan jenjang D3, D4, & S1 bidang Ekonomi, Teknik, Bahasa, dan DKV serta 15 skema beasiswa.",
     "fullDesc": "Universitas Widyatama (UTama) beralamat di Jl. Cikutra No. 204A, Bandung 40125. Menyediakan program D3, Sarjana Terapan (D4), dan Sarjana (S1) pada Fakultas Ekonomi & Bisnis, Teknik, Bahasa, Ilmu Sosial & Politik, serta Desain Komunikasi Visual dengan fitur Kalkulator Jalur & Beasiswa resmi di pmb.widyatama.ac.id.",
@@ -1371,7 +1371,7 @@ const CAMPUS_JALUR_DATA = {
     "dotColor": "bg-emerald-600",
     "badgeClass": "bg-emerald-50 text-emerald-800 border-emerald-200/80",
     "accentGradient": "from-emerald-600 via-teal-500 to-sky-600",
-    "logo": "assets/logos/logo_utb.png",
+    "logo": "assets/logos/logo_utb.png?v=2",
     "location": "Jl. Soekarno-Hatta No. 376–378, Bandung",
     "shortDesc": "Transformasi STT Bandung untuk Teknik Informatika, Industri, DKV, Bisnis Digital, & Manajemen Ritel dengan KIP Kuliah dan beasiswa rapor.",
     "fullDesc": "Universitas Teknologi Bandung (UTB) berlokasi di Jl. Soekarno-Hatta No. 376–378, Kebon Lega, Bojongloa Kidul, Bandung 40235. Menaungi Fakultas Industri Kreatif (Teknik Informatika, Teknik Industri, DKV) dan Fakultas Ekonomi & Bisnis (Bisnis Digital, Manajemen Ritel) dengan pilihan Kelas Reguler, Kelas Malam/Karyawan, Hybrid, serta program KIP Kuliah.",
@@ -1424,7 +1424,7 @@ const CAMPUS_JALUR_DATA = {
     "dotColor": "bg-sky-600",
     "badgeClass": "bg-sky-50 text-sky-900 border-sky-200/80",
     "accentGradient": "from-sky-700 via-blue-600 to-teal-500",
-    "logo": "assets/logos/logo_umb.png",
+    "logo": "assets/logos/logo_umb.png?v=2",
     "location": "Jl. Soekarno-Hatta No. 752, Cipadung",
     "shortDesc": "Kampus Islami strategis dekat area Cibiru dengan Beasiswa Hafizh Al-Qur'an (5–30 juz), jalur rapor tanpa tes, dan kader Muhammadiyah.",
     "fullDesc": "Universitas Muhammadiyah Bandung (UM Bandung) berlokasi di Jl. Soekarno-Hatta No. 752, Cipadung Kidul, Kec. Panyileukan, Bandung 40614 (berdekatan dengan kawasan Cibiru). Memiliki program studi favorit seperti Farmasi, Bioteknologi, Teknik Informatika, Psikologi Islam, Ilmu Komunikasi, dan Ekonomi Syariah dengan skema Beasiswa Hafizh Al-Qur'an unggulan.",
@@ -1477,7 +1477,7 @@ const CAMPUS_JALUR_DATA = {
     "dotColor": "bg-amber-600",
     "badgeClass": "bg-yellow-50 text-amber-900 border-amber-300/80",
     "accentGradient": "from-yellow-500 via-amber-500 to-emerald-600",
-    "logo": "assets/logos/logo_unpar.png",
+    "logo": "assets/logos/logo_unpar.png?v=2",
     "location": "Jl. Ciumbuleuit No. 94 & Jl. Merdeka",
     "shortDesc": "Unggul nasional di bidang Arsitektur, Hukum, HI, Ekonomi, & Kedokteran melalui jalur PMDK rapor, USM 1–4, nilai UTBK, dan Beasiswa Silih Asuh.",
     "fullDesc": "Universitas Katolik Parahyangan (UNPAR) berlokasi di Kampus Utama Jl. Ciumbuleuit No. 94, Bandung 40141 dan Jl. Merdeka No. 30 (Fakultas Kedokteran). Merupakan salah satu PTS tertua dan terbaik nasional untuk Arsitektur, Teknik Sipil, Hukum, Hubungan Internasional, Manajemen, dan Akuntansi.",
@@ -1530,7 +1530,7 @@ const CAMPUS_JALUR_DATA = {
     "dotColor": "bg-sky-500",
     "badgeClass": "bg-cyan-50 text-cyan-900 border-cyan-200/80",
     "accentGradient": "from-sky-500 via-orange-400 to-cyan-600",
-    "logo": "assets/logos/logo_binus.png",
+    "logo": "assets/logos/logo_binus.png?v=2",
     "location": "Paskal Hyper Square & Dago Pakar",
     "shortDesc": "Kampus Computer Science, DKV, Creativepreneurship, & Digital Business dengan seleksi TPKS online dan Widia Scholarship hingga 100%.",
     "fullDesc": "BINUS @Bandung mengusung konsep Creative Technology and Entrepreneurship Campus di Paskal Campus (Jl. Pasirkaliki No. 25–27, Paskal Hyper Square, Bandung 40181) serta Dago Campus (Dago Pakar). Menawarkan prodi S1 Computer Science, Creativepreneurship, Digital Business Innovation, DKV, Interior Design, Interactive Design & Technology, serta Digital Psychology.",
@@ -1583,7 +1583,7 @@ const CAMPUS_JALUR_DATA = {
     "dotColor": "bg-indigo-600",
     "badgeClass": "bg-indigo-50 text-indigo-900 border-indigo-200/80",
     "accentGradient": "from-indigo-800 via-blue-700 to-cyan-600",
-    "logo": "assets/logos/logo_poltekpar_nhi.png",
+    "logo": "assets/logos/logo_poltekpar_nhi.png?v=2",
     "location": "Jl. Dr. Setiabudi No. 186 & Dayeuhkolot",
     "shortDesc": "Perguruan tinggi negeri pariwisata Kemenpar untuk Perhotelan, Kuliner, Patiseri, UPW, & MICE lewat seleksi nasional SBM & SMM Poltekpar.",
     "fullDesc": "Politeknik Pariwisata (Poltekpar) NHI Bandung adalah perguruan tinggi negeri/kedinasan vokasi di bawah Kementerian Pariwisata RI dengan kampus utama di Jl. Dr. Setiabudi No. 186, Hegarmanah, Bandung 40141 serta pengembangan kampus di Dayeuhkolot. Menawarkan prodi D3 (Divisi Kamar, Tata Hidang, Seni Kuliner, Patiseri) dan D4 (Pengelolaan Perhotelan, Usaha Perjalanan Wisata, MICE, Destinasi Pariwisata, Pengelolaan Usaha Rekreasi).",
@@ -1627,7 +1627,7 @@ const CAMPUS_JALUR_DATA = {
     "dotColor": "bg-yellow-600",
     "badgeClass": "bg-amber-50 text-amber-900 border-amber-300/80",
     "accentGradient": "from-yellow-600 via-amber-500 to-emerald-600",
-    "logo": "assets/logos/logo_unpas.png",
+    "logo": "assets/logos/logo_unpas.png?v=2",
     "location": "Tamansari, Lengkong, Sumatra & Setiabudi",
     "shortDesc": "Pilihan favorit untuk Hukum, FISIP, Teknik, Ekonomi, FKIP, & Kedokteran lewat PMDK rapor, USM 1–3, nilai UTBK, dan Beasiswa Tahfidz LP2SI.",
     "fullDesc": "Universitas Pasundan (UNPAS) memiliki 4 kampus utama di jantung Kota Bandung (Sekretariat PMB Jl. Tamansari No. 4–8, Jl. Lengkong Besar, Jl. Sumatra, dan Jl. Dr. Setiabudhi) dengan 7 Fakultas unggulan termasuk Hukum, FISIP (HI, Ilmu Komunikasi, Administrasi Publik), Teknik, Ekonomi & Bisnis, FKIP, Ilmu Seni & Sastra, serta Kedokteran.",
@@ -1677,11 +1677,65 @@ function initJalurKampus() {
   const selectorView = document.getElementById('jalur-selector-view');
   const detailView = document.getElementById('jalur-detail-view');
   const campusCards = document.querySelectorAll('.jalur-card');
+  const extraCards = document.querySelectorAll('.jalur-extra-card');
+  const toggleAllBtn = document.getElementById('btn-toggle-all-jalur');
+  const visibleCountBadge = document.getElementById('jalur-visible-count');
   const backBtn = document.getElementById('btn-back-jalur');
   const quickBtns = document.querySelectorAll('.jalur-quick-btn');
   const pathwaysGrid = document.getElementById('detail-pathways-grid');
 
   if (!selectorView || !detailView) return;
+
+  let isExpanded = false;
+
+  if (toggleAllBtn && extraCards.length > 0) {
+    const totalCount = campusCards.length;
+    const baseCount = totalCount - extraCards.length;
+
+    const syncToggleUi = () => {
+      extraCards.forEach(card => {
+        card.classList.toggle('hidden', !isExpanded);
+      });
+      toggleAllBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+
+      if (visibleCountBadge) {
+        visibleCountBadge.textContent = isExpanded
+          ? `Menampilkan semua ${totalCount} Kampus`
+          : `Menampilkan ${baseCount} dari ${totalCount} Kampus`;
+      }
+
+      if (isExpanded) {
+        toggleAllBtn.innerHTML = `
+          <span>Tampilkan Lebih Sedikit</span>
+          <i data-lucide="chevron-up" class="w-4 h-4 text-brand-700 group-hover:-translate-y-0.5 transition-transform"></i>
+        `;
+      } else {
+        toggleAllBtn.innerHTML = `
+          <span>Selengkapnya</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-100/80 text-brand-800">+${extraCards.length} Kampus</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 text-brand-700 group-hover:translate-y-0.5 transition-transform"></i>
+        `;
+      }
+
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    };
+
+    toggleAllBtn.addEventListener('click', () => {
+      const wasExpanded = isExpanded;
+      isExpanded = !isExpanded;
+      syncToggleUi();
+
+      if (wasExpanded && !isExpanded) {
+        const tabJalur = document.getElementById('tab-jalur');
+        if (tabJalur) {
+          const topOffset = tabJalur.getBoundingClientRect().top + window.pageYOffset - 90;
+          window.scrollTo({ top: topOffset, behavior: 'smooth' });
+        }
+      }
+    });
+  }
 
   function renderCampusDetail(campusId) {
     const data = CAMPUS_JALUR_DATA[campusId];
