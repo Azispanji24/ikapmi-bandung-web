@@ -132,6 +132,175 @@ body {
 }
 
 /* =================================================================
+   SHARED LIQUID GLASS NAVBAR & MOBILE NAVIGATION
+================================================================= */
+.liquid-glass-wrapper {
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(20px) saturate(1.55) brightness(1.04);
+  backdrop-filter: blur(20px) saturate(1.55) brightness(1.04);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+    0 12px 30px -12px rgba(8, 19, 38, 0.18),
+    0 2px 8px rgba(8, 19, 38, 0.06);
+}
+
+.liquid-glass-wrapper.navbar-on-dark {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 1),
+    0 16px 36px -12px rgba(2, 6, 23, 0.45),
+    0 4px 12px rgba(2, 6, 23, 0.18);
+}
+
+.liquid-glass-dock {
+  background: rgba(241, 245, 249, 0.65);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02),
+    0 2px 8px rgba(15, 46, 89, 0.04);
+}
+
+.liquid-drop {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  border-radius: 9999px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(120% 140% at 30% 0%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.3) 60%), rgba(15, 46, 89, 0.12);
+  box-shadow:
+    inset 0 1.5px 2px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 4px rgba(15, 46, 89, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.85),
+    0 4px 14px -3px rgba(15, 46, 89, 0.22);
+  will-change: transform, width, opacity;
+  transition: transform 0.42s cubic-bezier(0.25, 1.35, 0.35, 1), width 0.36s cubic-bezier(0.25, 1.35, 0.35, 1), opacity 0.2s ease;
+}
+
+.liquid-nav-item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 15px;
+  border-radius: 9999px;
+  color: #475569;
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.liquid-nav-item:hover,
+.liquid-nav-item.active {
+  color: #0f2e59;
+}
+
+.liquid-nav-item.active {
+  font-weight: 700;
+}
+
+/* Animated Hamburger-to-Close Control */
+.hamburger-box {
+  position: relative;
+  width: 18px;
+  height: 14px;
+  display: block;
+}
+
+.hamburger-line {
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 1.8px;
+  border-radius: 9999px;
+  background-color: #0f172a;
+  transform-origin: center;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s ease, top 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hamburger-line-1 { top: 0; }
+.hamburger-line-2 { top: 6px; width: 14px; left: 4px; }
+.hamburger-line-3 { top: 12px; }
+
+#mobile-toggle[aria-expanded="true"] .hamburger-line-1 {
+  top: 6px;
+  transform: rotate(45deg);
+}
+
+#mobile-toggle[aria-expanded="true"] .hamburger-line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#mobile-toggle[aria-expanded="true"] .hamburger-line-3 {
+  top: 6px;
+  transform: rotate(-45deg);
+}
+
+@keyframes mobileMenuReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+#mobile-menu:not(.hidden) {
+  animation: mobileMenuReveal 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =================================================================
+   MOBILE-FIRST SAAS FORM CONTROLS & iOS SAFARI OPTIMIZATIONS
+================================================================= */
+.saas-control {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  transition: border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.saas-control.is-placeholder {
+  color: #94a3b8;
+}
+
+.saas-control.field-invalid {
+  border-color: #f43f5e;
+  background-color: #fff1f2;
+  color: #0f172a;
+}
+
+.saas-control.field-invalid:focus {
+  border-color: #e11d48;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.14);
+}
+
+/* Prevent unwanted auto-zoom on iOS Safari (< 16px) in bundled modals */
+@media (max-width: 639px) {
+  #testimonials input,
+  #testimonials select,
+  #testimonials textarea {
+    font-size: 16px;
+  }
+}
+
+/* =================================================================
    HERO 3D GLOSSY INTERACTIVE CARD STYLES
 ================================================================= */
 .preserve-3d {

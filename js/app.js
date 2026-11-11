@@ -28,14 +28,12 @@ function initNavbar() {
   const sections = document.querySelectorAll('section[id]');
   const headerWrapper = document.getElementById('navbar-header');
 
-  if (!dock || !drop || !navItems.length) return;
-
   let isHovering = false;
-  let activeElement = navItems[0];
+  let activeElement = navItems.length ? navItems[0] : null;
 
   // Helper to move the real water droplet indicator with physics spring easing
   function moveDropTo(el) {
-    if (!el) return;
+    if (!el || !drop) return;
     const left = el.offsetLeft;
     const width = el.offsetWidth;
     drop.style.transform = `translate3d(${left}px, 0, 0)`;
@@ -43,90 +41,112 @@ function initNavbar() {
     drop.style.opacity = '1';
   }
 
-  // Initialize drop position (only visible when an active nav item exists)
-  setTimeout(() => {
-    const initialActive = document.querySelector('.liquid-nav-item.active');
-    if (initialActive) {
-      activeElement = initialActive;
-      moveDropTo(initialActive);
-    } else {
-      activeElement = null;
-      drop.style.opacity = '0';
-    }
-  }, 100);
+  if (dock && drop && navItems.length) {
+    // Initialize drop position (only visible when an active nav item exists)
+    setTimeout(() => {
+      const initialActive = document.querySelector('.liquid-nav-item.active');
+      if (initialActive) {
+        activeElement = initialActive;
+        moveDropTo(initialActive);
+      } else {
+        activeElement = null;
+        drop.style.opacity = '0';
+      }
+    }, 100);
 
-  // Mouse hover events on dock items
-  navItems.forEach((item) => {
-    item.addEventListener('mouseenter', () => {
-      isHovering = true;
-      moveDropTo(item);
+    // Mouse hover events on dock items
+    navItems.forEach((item) => {
+      item.addEventListener('mouseenter', () => {
+        isHovering = true;
+        moveDropTo(item);
+      });
+
+      item.addEventListener('click', () => {
+        navItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        activeElement = item;
+        moveDropTo(item);
+      });
     });
 
-    item.addEventListener('click', () => {
-      navItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-      activeElement = item;
-      moveDropTo(item);
-    });
-  });
-
-  // Mouse leaves the dock: snap back to currently active item or fade out on subpages
-  dock.addEventListener('mouseleave', () => {
-    isHovering = false;
-    if (activeElement) {
-      moveDropTo(activeElement);
-    } else {
-      drop.style.opacity = '0';
-    }
-  });
-
-  // Recalculate on window resize
-  window.addEventListener('resize', () => {
-    if (activeElement) {
-      moveDropTo(activeElement);
-    }
-  });
-
-  // Scrollspy & Scroll Shadow Integration
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.pageYOffset + 180;
-    let currentId = '';
-
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        currentId = section.getAttribute('id');
+    // Mouse leaves the dock: snap back to currently active item or fade out on subpages
+    dock.addEventListener('mouseleave', () => {
+      isHovering = false;
+      if (activeElement) {
+        moveDropTo(activeElement);
+      } else {
+        drop.style.opacity = '0';
       }
     });
 
-    if (currentId && !isHovering) {
-      navItems.forEach(item => {
-        const href = item.getAttribute('href');
-        if (href === `#${currentId}`) {
-          if (!item.classList.contains('active')) {
-            navItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-            activeElement = item;
-            moveDropTo(item);
-          }
+    // Recalculate on window resize
+    window.addEventListener('resize', () => {
+      if (activeElement) {
+        moveDropTo(activeElement);
+      }
+    });
+
+    // Scrollspy integration
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.pageYOffset + 180;
+      let currentId = '';
+
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentId = section.getAttribute('id');
         }
       });
-    }
-  });
 
-  // Mobile Menu Toggle
+      if (currentId && !isHovering) {
+        navItems.forEach(item => {
+          const href = item.getAttribute('href');
+          if (href === `#${currentId}`) {
+            if (!item.classList.contains('active')) {
+              navItems.forEach(i => i.classList.remove('active'));
+              item.classList.add('active');
+              activeElement = item;
+              moveDropTo(item);
+            }
+          }
+        });
+      }
+    });
+  }
+
+  // Mobile Menu Toggle & Accessible Interactions
   if (mobileToggle && mobileMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const isClosed = mobileMenu.classList.toggle('hidden');
-      mobileToggle.setAttribute('aria-expanded', !isClosed ? 'true' : 'false');
+    function setMobileMenuOpen(isOpen) {
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      mobileToggle.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+    }
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = mobileMenu.classList.contains('hidden');
+      setMobileMenuOpen(willOpen);
     });
 
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileToggle.setAttribute('aria-expanded', 'false');
+        setMobileMenuOpen(false);
       });
+    });
+
+    // Close menu on outside tap/click or Escape key
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('hidden') && headerWrapper && !headerWrapper.contains(e.target)) {
+        setMobileMenuOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        setMobileMenuOpen(false);
+        mobileToggle.focus();
+      }
     });
   }
 }
@@ -717,7 +737,9 @@ function initRegistrationForm() {
   const statsCount = document.getElementById('total-registered-counter');
   const submitBtn = document.getElementById('reg-submit-btn');
   const submitLabel = document.getElementById('reg-submit-label');
+  const submitSpinner = document.getElementById('reg-submit-spinner');
   const statusBanner = document.getElementById('reg-status-banner');
+  const defaultSubmitText = submitLabel ? submitLabel.textContent.trim() : 'Simpan Data';
 
   const savedData = JSON.parse(localStorage.getItem('ikapmi_alumni_db') || '[]');
   const baseCount = 696;
@@ -728,9 +750,46 @@ function initRegistrationForm() {
   function setSubmitting(isSubmitting) {
     if (!submitBtn) return;
     submitBtn.disabled = isSubmitting;
-    if (submitLabel) {
-      submitLabel.textContent = isSubmitting ? 'Menyimpan Data...' : 'Simpan Data Alumni';
+    if (submitSpinner) {
+      submitSpinner.classList.toggle('hidden', !isSubmitting);
     }
+    if (submitLabel) {
+      submitLabel.textContent = isSubmitting ? 'Menyimpan Data...' : defaultSubmitText;
+    }
+  }
+
+  function syncSelectPlaceholder(selectEl) {
+    if (!selectEl) return;
+    const isEmpty = !selectEl.value;
+    selectEl.classList.toggle('is-placeholder', isEmpty);
+  }
+
+  function clearFieldError(el) {
+    if (!el) return;
+    el.classList.remove('field-invalid');
+    el.removeAttribute('aria-invalid');
+    const errEl = document.getElementById(`err-${el.id}`);
+    if (errEl) {
+      errEl.textContent = '';
+      errEl.classList.add('hidden');
+    }
+  }
+
+  function setFieldError(el, message) {
+    if (!el) return;
+    el.classList.add('field-invalid');
+    el.setAttribute('aria-invalid', 'true');
+    const errEl = document.getElementById(`err-${el.id}`);
+    if (errEl) {
+      errEl.textContent = message;
+      errEl.classList.remove('hidden');
+    }
+  }
+
+  function focusInvalidField(el) {
+    if (!el) return;
+    el.focus({ preventScroll: true });
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   function showStatusBanner(message, type) {
@@ -760,29 +819,76 @@ function initRegistrationForm() {
   }
 
   if (form) {
+    // Enable custom SaaS inline validation while keeping semantic required attributes intact
+    form.noValidate = true;
+
+    const namaInput = document.getElementById('reg-nama');
+    const angkatanInput = document.getElementById('reg-angkatan');
+    const waInput = document.getElementById('reg-wa');
+    const kampusInput = document.getElementById('reg-kampus');
+    const jurusanInput = document.getElementById('reg-jurusan');
+    const statusInput = document.getElementById('reg-status');
+    const domisiliInput = document.getElementById('reg-domisili');
+
+    const trackedControls = [namaInput, angkatanInput, waInput, domisiliInput, kampusInput, jurusanInput, statusInput];
+    trackedControls.forEach(ctrl => {
+      if (!ctrl) return;
+      if (ctrl.tagName === 'SELECT') {
+        syncSelectPlaceholder(ctrl);
+        ctrl.addEventListener('change', () => {
+          syncSelectPlaceholder(ctrl);
+          clearFieldError(ctrl);
+        });
+      } else {
+        ctrl.addEventListener('input', () => clearFieldError(ctrl));
+      }
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const nama = document.getElementById('reg-nama').value.trim();
-      const angkatan = document.getElementById('reg-angkatan').value.trim();
-      const whatsapp = document.getElementById('reg-wa').value.trim();
-      const kampus = document.getElementById('reg-kampus').value.trim();
-      const jurusan = document.getElementById('reg-jurusan').value.trim();
-      const status = document.getElementById('reg-status').value;
-      const domisili = document.getElementById('reg-domisili').value.trim();
+      trackedControls.forEach(clearFieldError);
+      if (statusBanner) statusBanner.classList.add('hidden');
 
-      if (!nama || !angkatan || !whatsapp || !kampus) {
+      const nama = namaInput.value.trim();
+      const angkatan = angkatanInput.value.trim();
+      const whatsapp = waInput.value.trim();
+      const kampus = kampusInput.value.trim();
+      const jurusan = jurusanInput.value.trim();
+      const status = statusInput.value;
+      const domisili = domisiliInput.value.trim();
+
+      const missingFields = [];
+      if (!nama) {
+        setFieldError(namaInput, 'Mohon isi nama lengkap atau panggilan Anda.');
+        missingFields.push(namaInput);
+      }
+      if (!angkatan) {
+        setFieldError(angkatanInput, 'Mohon isi angkatan atau tahun lulus PMUQI.');
+        missingFields.push(angkatanInput);
+      }
+      if (!whatsapp) {
+        setFieldError(waInput, 'Mohon isi nomor WhatsApp aktif Anda.');
+        missingFields.push(waInput);
+      }
+      if (!kampus) {
+        setFieldError(kampusInput, 'Mohon pilih kampus atau instansi saat ini.');
+        missingFields.push(kampusInput);
+      }
+
+      if (missingFields.length > 0) {
         const errMsg = 'Mohon lengkapi nama, angkatan, nomor WhatsApp, dan kampus Anda.';
         showStatusBanner(errMsg, 'error');
-        showToast(errMsg, 'error');
+        focusInvalidField(missingFields[0]);
         return;
       }
 
       const cleanedDigits = whatsapp.replace(/\D/g, '');
       if (cleanedDigits.length < 9 || cleanedDigits.length > 16) {
         const waErr = 'Nomor WhatsApp tampak kurang tepat. Mohon periksa kembali (contoh: 081234567890).';
+        setFieldError(waInput, 'Gunakan 9–16 digit angka (contoh: 081234567890).');
         showStatusBanner(waErr, 'error');
-        showToast(waErr, 'error');
+        focusInvalidField(waInput);
         return;
       }
 
@@ -803,6 +909,7 @@ function initRegistrationForm() {
       if (!hasCloudUrl) {
         saveLocalBackup(newEntry);
         form.reset();
+        syncSelectPlaceholder(kampusInput);
         const localNotice = `Data ${nama} tersimpan sementara di browser ini. Tempel URL Google Apps Script di js/app.js agar otomatis terkirim ke Google Sheets.`;
         showStatusBanner(localNotice, 'warning');
         showToast(localNotice, 'warning');
@@ -828,11 +935,12 @@ function initRegistrationForm() {
 
         saveLocalBackup(newEntry);
         form.reset();
+        syncSelectPlaceholder(kampusInput);
         const successMsg = `Alhamdulillah! Syukran ${nama}, data alumni Anda berhasil tersimpan ke Database Resmi IKAPMI Regional Bandung.`;
         showStatusBanner(successMsg, 'success');
         showToast(successMsg, 'success');
       } catch (err) {
-        const failMsg = 'Gagal mengirim data ke Google Sheets. Periksa koneksi internet Anda lalu klik Simpan Data Alumni kembali.';
+        const failMsg = 'Gagal mengirim data ke Google Sheets. Periksa koneksi internet Anda lalu klik Simpan Data kembali.';
         showStatusBanner(failMsg, 'error');
         showToast(failMsg, 'error');
         console.warn('Alumni registration submit error:', err);
@@ -843,6 +951,19 @@ function initRegistrationForm() {
   }
 
   let toastTimer = null;
+  let toastHideTimer = null;
+  function hideToast() {
+    if (!toast) return;
+    toast.classList.add('translate-y-8', 'opacity-0');
+    toast.classList.remove('translate-y-0', 'opacity-100');
+    if (toastHideTimer) clearTimeout(toastHideTimer);
+    toastHideTimer = setTimeout(() => toast.classList.add('hidden'), 300);
+  }
+
+  if (toast) {
+    toast.addEventListener('click', hideToast);
+  }
+
   function showToast(message, type = 'success') {
     if (!toast) return;
     const toastMsg = toast.querySelector('.toast-message');
@@ -854,14 +975,12 @@ function initRegistrationForm() {
       toastIcon.className = `toast-icon w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${type === 'success' ? 'bg-[#0f2e59] text-white' : 'bg-amber-500 text-white'}`;
     }
 
+    if (toastHideTimer) clearTimeout(toastHideTimer);
     toast.classList.remove('hidden', 'translate-y-8', 'opacity-0');
     toast.classList.add('translate-y-0', 'opacity-100');
 
     if (toastTimer) clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toast.classList.add('translate-y-8', 'opacity-0');
-      setTimeout(() => toast.classList.add('hidden'), 300);
-    }, 5000);
+    toastTimer = setTimeout(hideToast, 5000);
   }
 }
 

@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#081326">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -64,100 +65,27 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.1">
-
-  <!-- Liquid Glass Navbar Styles -->
-  <style>
-    .liquid-glass-wrapper {
-      background: rgba(255, 255, 255, 0.88);
-      -webkit-backdrop-filter: blur(20px) saturate(1.6) brightness(1.06);
-      backdrop-filter: blur(20px) saturate(1.6) brightness(1.06);
-      border: 1px solid rgba(255, 255, 255, 0.92);
-      box-shadow:
-        inset 0 1.5px 2px rgba(255, 255, 255, 0.95),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.03),
-        0 16px 36px -12px rgba(15, 46, 89, 0.25),
-        0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .liquid-glass-dock {
-      background: rgba(241, 245, 249, 0.65);
-      -webkit-backdrop-filter: blur(14px) saturate(1.3);
-      backdrop-filter: blur(14px) saturate(1.3);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow:
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.02),
-        0 2px 8px rgba(15, 46, 89, 0.04);
-    }
-
-    .liquid-drop {
-      position: absolute;
-      top: 4px;
-      bottom: 4px;
-      left: 0;
-      border-radius: 9999px;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0;
-      background: radial-gradient(120% 140% at 30% 0%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.3) 60%), rgba(15, 46, 89, 0.12);
-      box-shadow:
-        inset 0 1.5px 2px rgba(255, 255, 255, 1),
-        inset 0 -1.5px 4px rgba(15, 46, 89, 0.14),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.85),
-        0 4px 14px -3px rgba(15, 46, 89, 0.22);
-      will-change: transform, width, opacity;
-      transition: transform 0.42s cubic-bezier(0.25, 1.35, 0.35, 1), width 0.36s cubic-bezier(0.25, 1.35, 0.35, 1), opacity 0.2s ease;
-    }
-
-    .liquid-nav-item {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      height: 36px;
-      padding: 0 15px;
-      border-radius: 9999px;
-      color: #475569;
-      font-weight: 600;
-      font-size: 13.5px;
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 0.25s ease;
-      white-space: nowrap;
-      user-select: none;
-    }
-
-    .liquid-nav-item:hover {
-      color: #0f2e59;
-    }
-
-    .liquid-nav-item.active {
-      color: #0f2e59;
-      font-weight: 700;
-    }
-  </style>
+  <!-- Custom Stylesheet (Shared Header, Form & Responsive Tokens) -->
+  <link rel="stylesheet" href="css/style.css?v=2.3">
 </head>
 
 <body class="bg-[#081326] text-slate-800 antialiased selection:bg-[#0f2e59] selection:text-white min-h-screen flex flex-col">
 
   <!-- Sticky Navigation Bar -->
   <header id="navbar-header"
-    class="sticky top-2 sm:top-4 z-50 w-full px-3 sm:px-6 pointer-events-none transition-all duration-300">
+    class="sticky top-2 sm:top-3.5 z-50 w-full px-3 sm:px-6 pointer-events-none transition-all duration-300">
     <div
-      class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto liquid-glass-wrapper h-16 sm:h-[68px] px-3.5 sm:px-6 rounded-full transition-all duration-300">
+      class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto liquid-glass-wrapper navbar-on-dark h-[50px] sm:h-14 lg:h-[64px] px-3 sm:px-5 lg:px-6 rounded-full transition-all duration-300">
 
       <!-- Brand Logo & Identity -->
-      <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+      <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700/40 rounded-full pr-1">
         <div
-          class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105 shrink-0 shadow-sm">
+          class="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden ring-1 ring-slate-900/10 transition-transform duration-300 group-hover:scale-105 shrink-0">
           <img src="assets/ikapmi_logo.jpg" alt="Logo IKAPMI Regional Bandung"
             class="w-full h-full object-cover rounded-full">
         </div>
         <div class="flex flex-col justify-center">
-          <span class="font-extrabold tracking-tight text-base sm:text-lg text-brand-900 leading-none">
+          <span class="font-extrabold tracking-tight text-[13.5px] sm:text-base lg:text-[17px] text-brand-900 leading-none whitespace-nowrap">
             IKAPMI BANDUNG
           </span>
         </div>
@@ -178,128 +106,168 @@
       </nav>
 
       <!-- Action CTA & Mobile Toggle -->
-      <div class="flex items-center gap-2.5 shrink-0">
+      <div class="flex items-center gap-2 shrink-0">
         <a href="index.html"
-          class="hidden sm:inline-flex items-center gap-2 h-9 sm:h-10 px-4 text-xs font-bold rounded-full bg-brand-700 hover:bg-brand-800 text-white shadow-md shadow-brand-900/10 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 whitespace-nowrap">
+          class="hidden sm:inline-flex items-center gap-2 h-9 lg:h-10 px-3.5 lg:px-4 text-xs font-bold rounded-full bg-brand-700 hover:bg-brand-800 text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap">
           <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-blue-200"></i>
           <span>Kembali ke Beranda</span>
         </a>
 
-        <button id="mobile-toggle" aria-label="Toggle Navigation"
-          class="lg:hidden p-2 rounded-full text-slate-700 hover:bg-white/80 border border-white/60 transition-colors shadow-sm">
-          <i data-lucide="menu" class="w-5 h-5"></i>
+        <button id="mobile-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full text-slate-800 hover:bg-slate-900/5 active:scale-95 transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700/40">
+          <span class="hamburger-box" aria-hidden="true">
+            <span class="hamburger-line hamburger-line-1"></span>
+            <span class="hamburger-line hamburger-line-2"></span>
+            <span class="hamburger-line hamburger-line-3"></span>
+          </span>
         </button>
       </div>
     </div>
 
     <!-- Mobile Dropdown Menu -->
     <div id="mobile-menu"
-      class="hidden lg:hidden max-w-7xl mx-auto mt-2 pointer-events-auto liquid-glass-wrapper rounded-3xl p-4 shadow-2xl animate-fadeIn">
-      <div class="flex flex-col space-y-1 text-sm font-medium text-slate-700">
+      class="hidden lg:hidden max-w-7xl mx-auto mt-2 pointer-events-auto bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl p-2.5 sm:p-3 shadow-[0_20px_48px_-12px_rgba(2,6,23,0.45)]">
+      <nav aria-label="Navigasi Mobile" class="flex flex-col space-y-0.5 text-[13.5px] font-medium text-slate-700">
         <a href="index.html#beranda"
-          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Beranda</a>
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Beranda</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
         <a href="index.html#tentang"
-          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Tentang &amp; Nilai</a>
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Tentang &amp; Nilai</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
         <a href="index.html#struktur"
-          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Kepengurusan 2025</a>
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Kepengurusan 2025</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
         <a href="index.html#kampus"
-          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Direktori Kampus</a>
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Direktori Kampus</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
         <a href="index.html#panduan"
-          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Panduan Santri Baru</a>
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Panduan Santri Baru</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
         <a href="index.html#gallery"
-          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Galeri Foto</a>
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Galeri Foto</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
         <a href="index.html#warta"
-          class="px-4 py-2.5 rounded-2xl hover:bg-white/80 hover:text-brand-800 transition-colors">Warta Sadulur</a>
-        <div class="pt-2 mt-2 border-t border-slate-200/60">
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Warta Sadulur</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <div class="pt-2 mt-1.5 border-t border-slate-200/80">
           <a href="index.html"
-            class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-full bg-brand-700 text-white font-bold text-xs shadow-md">
+            class="flex items-center justify-center gap-2 w-full h-11 px-4 rounded-xl bg-brand-700 hover:bg-brand-800 active:scale-[0.99] text-white font-semibold text-xs shadow-sm transition-all">
             <i data-lucide="arrow-left" class="w-4 h-4 text-blue-200"></i>
             <span>Kembali ke Halaman Utama</span>
           </a>
         </div>
-      </div>
+      </nav>
     </div>
   </header>
 
   <!-- Main Content: Dedicated Database Alumni Registration -->
-  <main class="flex-1 bg-[#081326] text-white">
-    <section id="database" class="pt-10 sm:pt-14 pb-16 sm:pb-24 relative overflow-hidden">
-      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main class="flex-1 bg-[#081326] bg-[radial-gradient(ellipse_80%_42%_at_50%_0%,rgba(37,99,235,0.14),transparent_70%)] text-white">
+    <section id="database" class="pt-5 sm:pt-10 pb-14 sm:pb-24 relative overflow-hidden">
+      <div class="max-w-2xl mx-auto px-3.5 min-[375px]:px-4 sm:px-6 lg:px-8">
 
         <!-- Concise Editorial Header -->
-        <div class="text-center mb-8 sm:mb-10">
-          <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+        <div class="text-center mb-5 sm:mb-8 max-w-xl mx-auto">
+          <h1 class="text-[24px] min-[375px]:text-[26px] sm:text-[34px] font-extrabold text-white tracking-[-0.025em] leading-[1.18]">
             Database Alumni
           </h1>
-          <p class="text-sm text-slate-300/90 mt-2">
+          <p class="text-[13.5px] sm:text-[15px] text-slate-300/95 leading-[1.6] mt-2 max-w-[34ch] sm:max-w-md mx-auto">
             Pendataan alumni PMUQI untuk koordinasi &amp; silaturahmi di Bandung Raya.
           </p>
         </div>
 
         <!-- Registration Form Surface -->
-        <div class="bg-white rounded-2xl border border-blue-900/20 p-6 sm:p-8 shadow-2xl text-[#242A27]">
-          <form id="alumni-reg-form" class="space-y-6">
+        <div class="bg-white rounded-[20px] sm:rounded-2xl border border-slate-200/80 p-4 min-[375px]:p-5 sm:p-8 shadow-[0_24px_60px_-15px_rgba(2,6,23,0.55),0_4px_16px_-4px_rgba(2,6,23,0.18)] text-[#0f172a]">
+          <form id="alumni-reg-form" class="space-y-6 sm:space-y-7">
 
             <!-- Group 1: Data Diri & Domisili -->
             <div>
-              <div class="pb-2 mb-4 border-b border-slate-100">
-                <h2 class="text-[11px] font-bold uppercase tracking-wider text-[#081326]">
-                  Data Diri &amp; Domisili
-                </h2>
+              <div class="flex items-center justify-between gap-3 pb-3 mb-4 border-b border-slate-200/80">
+                <div class="flex items-center gap-2.5">
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-[#0f2e59]/[0.08] text-[#0f2e59] text-[11px] font-bold tabular-nums shrink-0">01</span>
+                  <h2 class="text-[11.5px] sm:text-xs font-bold uppercase tracking-[0.07em] text-[#081326]">
+                    Data Diri &amp; Domisili
+                  </h2>
+                </div>
+                <span class="text-[11px] font-medium text-slate-400 shrink-0"><span class="text-rose-500 font-semibold">*</span> Wajib</span>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                 <div>
-                  <label for="reg-nama" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Nama Lengkap <span class="text-slate-400 font-normal" title="Wajib">*</span>
+                  <label for="reg-nama" class="block text-[13px] sm:text-xs font-semibold text-slate-800 mb-1.5">
+                    Nama Lengkap <span class="text-rose-500 font-semibold ml-0.5" title="Wajib diisi">*</span>
                   </label>
                   <input type="text" id="reg-nama" name="nama" required
+                    autocomplete="name" autocapitalize="words" enterkeyhint="next"
                     placeholder="Nama lengkap / panggilan"
-                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    class="saas-control w-full h-12 sm:h-11 px-3.5 rounded-xl border border-slate-200/95 bg-slate-50/75 text-[16px] sm:text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#1d4ed8] focus:ring-[3px] focus:ring-[#1d4ed8]/15 outline-none">
+                  <p id="err-reg-nama" class="field-error hidden mt-1.5 text-[11.5px] font-medium text-rose-600 leading-snug"></p>
                 </div>
 
                 <div>
-                  <label for="reg-angkatan" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Angkatan PMUQI <span class="text-slate-400 font-normal" title="Wajib">*</span>
+                  <label for="reg-angkatan" class="block text-[13px] sm:text-xs font-semibold text-slate-800 mb-1.5">
+                    Angkatan PMUQI <span class="text-rose-500 font-semibold ml-0.5" title="Wajib diisi">*</span>
                   </label>
                   <input type="text" id="reg-angkatan" name="angkatan" required
+                    enterkeyhint="next"
                     placeholder="Contoh: Angkatan 28 / 2024"
-                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    class="saas-control w-full h-12 sm:h-11 px-3.5 rounded-xl border border-slate-200/95 bg-slate-50/75 text-[16px] sm:text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#1d4ed8] focus:ring-[3px] focus:ring-[#1d4ed8]/15 outline-none">
+                  <p id="err-reg-angkatan" class="field-error hidden mt-1.5 text-[11.5px] font-medium text-rose-600 leading-snug"></p>
                 </div>
 
                 <div>
-                  <label for="reg-wa" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    No. WhatsApp <span class="text-slate-400 font-normal" title="Wajib">*</span>
+                  <label for="reg-wa" class="block text-[13px] sm:text-xs font-semibold text-slate-800 mb-1.5">
+                    No. WhatsApp <span class="text-rose-500 font-semibold ml-0.5" title="Wajib diisi">*</span>
                   </label>
-                  <input type="tel" id="reg-wa" name="whatsapp" required placeholder="08xxxxxxxxxx"
-                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                  <input type="tel" id="reg-wa" name="whatsapp" required
+                    inputmode="tel" autocomplete="tel" enterkeyhint="next"
+                    placeholder="08xxxxxxxxxx"
+                    class="saas-control w-full h-12 sm:h-11 px-3.5 rounded-xl border border-slate-200/95 bg-slate-50/75 text-[16px] sm:text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#1d4ed8] focus:ring-[3px] focus:ring-[#1d4ed8]/15 outline-none">
+                  <p id="err-reg-wa" class="field-error hidden mt-1.5 text-[11.5px] font-medium text-rose-600 leading-snug"></p>
                 </div>
 
                 <div>
-                  <label for="reg-domisili" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Domisili Bandung
+                  <label for="reg-domisili" class="block text-[13px] sm:text-xs font-semibold text-slate-800 mb-1.5">
+                    Domisili Bandung <span class="text-[11px] font-normal text-slate-400 ml-1">(opsional)</span>
                   </label>
                   <input type="text" id="reg-domisili" name="domisili"
+                    autocomplete="address-level2" enterkeyhint="next"
                     placeholder="Kecamatan / area kost"
-                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    class="saas-control w-full h-12 sm:h-11 px-3.5 rounded-xl border border-slate-200/95 bg-slate-50/75 text-[16px] sm:text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#1d4ed8] focus:ring-[3px] focus:ring-[#1d4ed8]/15 outline-none">
                 </div>
               </div>
             </div>
 
             <!-- Group 2: Kampus & Status -->
             <div>
-              <div class="pb-2 mb-4 border-b border-slate-100">
-                <h2 class="text-[11px] font-bold uppercase tracking-wider text-[#081326]">
+              <div class="flex items-center gap-2.5 pb-3 mb-4 border-b border-slate-200/80">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-[#0f2e59]/[0.08] text-[#0f2e59] text-[11px] font-bold tabular-nums shrink-0">02</span>
+                <h2 class="text-[11.5px] sm:text-xs font-bold uppercase tracking-[0.07em] text-[#081326]">
                   Kampus &amp; Aktivitas
                 </h2>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                 <div>
-                  <label for="reg-kampus" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Kampus / Instansi <span class="text-slate-400 font-normal" title="Wajib">*</span>
+                  <label for="reg-kampus" class="block text-[13px] sm:text-xs font-semibold text-slate-800 mb-1.5">
+                    Kampus / Instansi <span class="text-rose-500 font-semibold ml-0.5" title="Wajib diisi">*</span>
                   </label>
                   <div class="relative">
                     <select id="reg-kampus" name="kampus" required
-                      class="w-full h-11 px-3.5 pr-10 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors appearance-none cursor-pointer">
+                      class="saas-control w-full h-12 sm:h-11 px-3.5 pr-10 rounded-xl border border-slate-200/95 bg-slate-50/75 text-[16px] sm:text-sm text-slate-900 focus:bg-white focus:border-[#1d4ed8] focus:ring-[3px] focus:ring-[#1d4ed8]/15 outline-none cursor-pointer">
                       <option value="">Pilih Kampus...</option>
                       <option value="UIN Sunan Gunung Djati">UIN Sunan Gunung Djati</option>
                       <option value="Universitas Padjadjaran (UNPAD)">Universitas Padjadjaran (UNPAD)</option>
@@ -318,39 +286,41 @@
                       <option value="Bekerja / Wiraswasta">Sudah Bekerja / Wiraswasta</option>
                       <option value="Kampus Lainnya">Kampus Lainnya</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-500">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 9l-7 7-7-7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
                   </div>
+                  <p id="err-reg-kampus" class="field-error hidden mt-1.5 text-[11.5px] font-medium text-rose-600 leading-snug"></p>
                 </div>
 
                 <div>
-                  <label for="reg-jurusan" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Jurusan / Prodi
+                  <label for="reg-jurusan" class="block text-[13px] sm:text-xs font-semibold text-slate-800 mb-1.5">
+                    Jurusan / Prodi <span class="text-[11px] font-normal text-slate-400 ml-1">(opsional)</span>
                   </label>
                   <input type="text" id="reg-jurusan" name="jurusan"
+                    enterkeyhint="done"
                     placeholder="Fakultas / program studi"
-                    class="w-full h-11 px-3.5 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] placeholder:text-slate-400 focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors">
+                    class="saas-control w-full h-12 sm:h-11 px-3.5 rounded-xl border border-slate-200/95 bg-slate-50/75 text-[16px] sm:text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#1d4ed8] focus:ring-[3px] focus:ring-[#1d4ed8]/15 outline-none">
                 </div>
 
                 <div class="sm:col-span-2">
-                  <label for="reg-status" class="block text-xs font-medium text-[#242A27] mb-1.5">
-                    Status Saat Ini
+                  <label for="reg-status" class="block text-[13px] sm:text-xs font-semibold text-slate-800 mb-1.5">
+                    Status Saat Ini <span class="text-[11px] font-normal text-slate-400 ml-1">(opsional)</span>
                   </label>
                   <div class="relative">
                     <select id="reg-status" name="status"
-                      class="w-full h-11 px-3.5 pr-10 rounded-lg border border-slate-200 bg-white text-sm text-[#242A27] focus:border-[#081326] focus:ring-1 focus:ring-[#081326] outline-none transition-colors appearance-none cursor-pointer">
+                      class="saas-control w-full h-12 sm:h-11 px-3.5 pr-10 rounded-xl border border-slate-200/95 bg-slate-50/75 text-[16px] sm:text-sm text-slate-900 focus:bg-white focus:border-[#1d4ed8] focus:ring-[3px] focus:ring-[#1d4ed8]/15 outline-none cursor-pointer">
                       <option value="Mahasiswa Baru (Semester 1-2)">Mahasiswa Baru (Semester 1–2)</option>
                       <option value="Mahasiswa Aktif (Tingkat Menengah)">Mahasiswa Aktif</option>
                       <option value="Tingkat Akhir / Skripsi">Tingkat Akhir / Skripsi</option>
                       <option value="Fresh Graduate">Fresh Graduate</option>
                       <option value="Bekerja / Menetap di Bandung">Bekerja / Menetap di Bandung</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-500">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 9l-7 7-7-7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
                   </div>
@@ -359,15 +329,24 @@
             </div>
 
             <!-- Inline Submission Feedback Banner -->
-            <div id="reg-status-banner" class="hidden rounded-lg border px-4 py-3 text-xs leading-relaxed"></div>
+            <div id="reg-status-banner" role="status" aria-live="polite"
+              class="hidden rounded-xl border px-4 py-3 text-[13px] sm:text-xs font-medium leading-relaxed"></div>
 
             <!-- Notice & Submit Button -->
-            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-100">
-              <p class="text-xs text-[#777D78] text-center sm:text-left">
-                Data dijaga untuk koordinasi internal IKAPMI Bandung.
+            <div class="pt-5 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3.5 border-t border-slate-200/80">
+              <p class="text-[11.5px] sm:text-xs text-slate-500 flex items-center justify-center sm:justify-start gap-1.5 leading-snug text-center sm:text-left">
+                <svg aria-hidden="true" class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Data dijaga untuk koordinasi internal IKAPMI Bandung.</span>
               </p>
               <button type="submit" id="reg-submit-btn"
-                class="w-full sm:w-auto px-7 h-11 rounded-lg bg-[#081326] hover:bg-[#0f2e59] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium text-sm transition-colors focus:ring-2 focus:ring-[#081326] focus:ring-offset-2 outline-none shrink-0 cursor-pointer inline-flex items-center justify-center gap-2">
+                class="w-full sm:w-auto px-7 h-12 sm:h-11 rounded-xl bg-[#081326] hover:bg-[#0f2e59] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100 text-white font-semibold text-[15px] sm:text-sm shadow-[0_8px_20px_-6px_rgba(8,19,38,0.45)] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1d4ed8] focus-visible:ring-offset-2 shrink-0 cursor-pointer inline-flex items-center justify-center gap-2">
+                <svg id="reg-submit-spinner" class="hidden w-4 h-4 animate-spin text-blue-200 shrink-0" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
                 <span id="reg-submit-label">Simpan Data</span>
               </button>
             </div>
@@ -376,9 +355,9 @@
         </div>
 
         <!-- Subtle Help Link -->
-        <p class="text-center text-xs text-slate-400 mt-5">
+        <p class="text-center text-[13px] sm:text-xs text-slate-300/80 mt-5">
           Butuh bantuan?
-          <a href="index.html#kontak" class="text-blue-300 hover:text-white underline underline-offset-4 transition-colors">
+          <a href="index.html#kontak" class="text-blue-300 hover:text-white font-medium underline underline-offset-4 py-1 px-0.5 inline-block transition-colors">
             Hubungi Sekretariat
           </a>
         </p>
@@ -388,10 +367,10 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-950 text-slate-400 text-xs py-10 border-t border-slate-800">
+  <footer class="bg-slate-950 text-slate-400 text-xs py-9 sm:py-10 border-t border-slate-800/90">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-7 sm:gap-8 pb-7 sm:pb-8 border-b border-slate-800">
 
         <!-- Col 1: Brand -->
         <div class="md:col-span-2 space-y-3">
@@ -402,10 +381,10 @@
           <p class="text-slate-400 text-xs leading-relaxed max-w-md">
             Ikatan Keluarga Besar &amp; Alumni PMUQI Leuwiliang Bogor — Regional Bandung Raya. <em class="text-blue-400">"Sadulur Ngahiji"</em>.
           </p>
-          <div class="flex items-center gap-3 pt-1">
+          <div class="flex items-center gap-2.5 pt-1">
             <a href="https://www.instagram.com/ikapmi.bandung/" target="_blank" rel="noopener noreferrer"
               aria-label="Instagram IKAPMI Bandung"
-              class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              class="w-10 h-10 rounded-xl bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
               <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -415,7 +394,7 @@
             </a>
             <a href="mailto:ikapmi.regionalbandung@gmail.com"
               aria-label="Email IKAPMI Bandung"
-              class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              class="w-10 h-10 rounded-xl bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
               <i data-lucide="mail" class="w-4 h-4"></i>
             </a>
           </div>
@@ -424,32 +403,32 @@
         <!-- Col 2: Navigasi Cepat -->
         <div>
           <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Navigasi Utama</h4>
-          <ul class="space-y-2">
-            <li><a href="index.html#beranda" class="hover:text-blue-400 transition-colors">Beranda</a></li>
-            <li><a href="index.html#tentang" class="hover:text-blue-400 transition-colors">Filosofi &amp; Nilai</a></li>
-            <li><a href="index.html#struktur" class="hover:text-blue-400 transition-colors">Kepengurusan 2025</a></li>
-            <li><a href="index.html#kampus" class="hover:text-blue-400 transition-colors">Direktori Kampus</a></li>
-            <li><a href="index.html#panduan" class="hover:text-blue-400 transition-colors">Panduan Santri Baru</a></li>
+          <ul class="space-y-1.5">
+            <li><a href="index.html#beranda" class="py-1 inline-block hover:text-blue-400 transition-colors">Beranda</a></li>
+            <li><a href="index.html#tentang" class="py-1 inline-block hover:text-blue-400 transition-colors">Filosofi &amp; Nilai</a></li>
+            <li><a href="index.html#struktur" class="py-1 inline-block hover:text-blue-400 transition-colors">Kepengurusan 2025</a></li>
+            <li><a href="index.html#kampus" class="py-1 inline-block hover:text-blue-400 transition-colors">Direktori Kampus</a></li>
+            <li><a href="index.html#panduan" class="py-1 inline-block hover:text-blue-400 transition-colors">Panduan Santri Baru</a></li>
           </ul>
         </div>
 
         <!-- Col 3: Jejaring Almamater -->
         <div>
           <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Tautan Almamater</h4>
-          <ul class="space-y-2">
+          <ul class="space-y-1.5">
             <li><a href="https://pmuqi.com" target="_blank" rel="noopener noreferrer"
-                class="hover:text-blue-400 transition-colors">Pondok Pesantren Modern Ummul Quro Al-Islami</a></li>
+                class="py-1 inline-block hover:text-blue-400 transition-colors">Pondok Pesantren Modern Ummul Quro Al-Islami</a></li>
             <li><a href="https://pmuqi.com" target="_blank" rel="noopener noreferrer"
-                class="hover:text-blue-400 transition-colors">Institut Ummul Quro Al-Islami (IUQI) Bogor</a></li>
-            <li><a href="database.html" class="hover:text-blue-400 transition-colors">Registrasi Database Alumni</a></li>
-            <li><a href="index.html#kontak" class="hover:text-blue-400 transition-colors">Kontak Sekretariat Bandung</a></li>
+                class="py-1 inline-block hover:text-blue-400 transition-colors">Institut Ummul Quro Al-Islami (IUQI) Bogor</a></li>
+            <li><a href="database.html" class="py-1 inline-block hover:text-blue-400 transition-colors">Registrasi Database Alumni</a></li>
+            <li><a href="index.html#kontak" class="py-1 inline-block hover:text-blue-400 transition-colors">Kontak Sekretariat Bandung</a></li>
           </ul>
         </div>
 
       </div>
 
       <!-- Copyright Notice -->
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-[11px] text-slate-500">
         <p>© 2025–2026 IKAPMI Regional Bandung. Seluruh hak cipta dilindungi.</p>
         <p>Dirancang &amp; dikembangkan untuk santri perantau di Jawa Barat.</p>
       </div>
@@ -458,19 +437,20 @@
   </footer>
 
   <!-- Toast Notification -->
-  <div id="reg-toast"
-    class="hidden fixed bottom-6 right-6 z-50 max-w-md bg-white border border-slate-200 shadow-2xl rounded-2xl p-4 flex items-center gap-3 transform transition-all duration-300 translate-y-8 opacity-0">
+  <div id="reg-toast" role="status" aria-live="polite"
+    class="hidden fixed bottom-4 inset-x-3.5 sm:inset-x-auto sm:bottom-6 sm:right-6 z-50 sm:max-w-md bg-white border border-slate-200/90 shadow-[0_18px_40px_-10px_rgba(2,6,23,0.35)] rounded-2xl p-3.5 sm:p-4 flex items-center gap-3 transform transition-all duration-300 translate-y-8 opacity-0"
+    style="bottom: max(1rem, env(safe-area-inset-bottom));">
     <div
       class="toast-icon w-8 h-8 rounded-full bg-[#0f2e59] text-white flex items-center justify-center font-bold text-sm shrink-0">
       ✓
     </div>
-    <div class="text-xs text-slate-800 font-medium toast-message">
+    <div class="text-[13px] sm:text-xs text-slate-800 font-medium toast-message leading-snug">
       Notifikasi pesan berhasil disimpan.
     </div>
   </div>
 
   <!-- Application Logic -->
-  <script src="js/app.js?v=6.6"></script>
+  <script src="js/app.js?v=6.9"></script>
   <script>
     lucide.createIcons();
   </script>
