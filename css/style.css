@@ -322,3 +322,39 @@ body {
   opacity: 0.95;
   animation-duration: 3.2s;
 }
+
+/* =================================================================
+   KIPRAH ALUMNI HORIZONTAL MARQUEE
+================================================================= */
+@keyframes kiprah-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1.5rem)));
+  }
+}
+
+@keyframes kiprah-marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1.5rem)));
+  }
+}
+
+.animate-kiprah-marquee {
+  animation: kiprah-marquee var(--duration, 28s) linear infinite;
+  will-change: transform;
+}
+
+.animate-kiprah-marquee-vertical {
+  animation: kiprah-marquee-vertical var(--duration, 28s) linear infinite;
+  will-change: transform;
+}
+
+.kiprah-marquee-group:hover .animate-kiprah-marquee,
+.kiprah-marquee-group:hover .animate-kiprah-marquee-vertical {
+  animation-play-state: paused;
+}
