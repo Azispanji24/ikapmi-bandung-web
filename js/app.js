@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOrgFilter();
   initCampusFilter();
   initMentorshipTabs();
+  initBeasiswaCatalog();
   initJalurKampus();
   initPerspectiveTunnelHero();
   initArticleModal();
@@ -2072,3 +2073,1102 @@ function initJalurKampus() {
     });
   });
 }
+
+// ==========================================
+// 11. KATALOG BEASISWA INDONESIA & BANDUNG
+// ==========================================
+const SCHOLARSHIPS_DATA = [
+  // --- A. PEMERINTAH PUSAT (6) ---
+  {
+    id: 'kip-kuliah-merdeka',
+    title: 'KIP Kuliah Merdeka (Kemdiktisaintek)',
+    category: 'pusat',
+    categoryLabel: 'Pemerintah Pusat',
+    provider: 'Kemdiktisaintek RI',
+    logo: 'assets/logos/beasiswa/kip.svg',
+    level: 'D3 / D4 / S1',
+    campuses: 'PTN & PTS Terakreditasi (ITB, UNPAD, UPI, POLBAN, Telkom, UNISBA, UNPAS, UNPAR, Widyatama)',
+    benefit: 'Gratis biaya kuliah (UKT/SPP) penuh hingga lulus + uang saku hidup bulanan sesuai klaster wilayah (Bandung Rp1,1 juta/bulan).',
+    summary: 'Bantuan biaya pendidikan nasional untuk lulusan SMA/SMK/MA/Pesantren berpotensi akademik baik dari keluarga kurang mampu.',
+    requirements: [
+      'Lulusan SMA/SMK/MA/sederajat tahun berjalan atau maksimal lulus 2 tahun sebelumnya.',
+      'Memiliki NISN, NPSN, dan NIK yang valid serta terdaftar di sistem Dapodik/EMIS.',
+      'Terdaftar di DTKS/P3KE Kemensos, pemegang KIP/PKH/KKS, panti asuhan, atau pendapatan kotor gabungan orang tua maksimal Rp4.000.000/bulan (atau Rp750.000 per anggota keluarga) dibuktikan dengan SKTM.',
+      'Lulus seleksi masuk perguruan tinggi jalur SNBP, SNBT, atau Mandiri di prodi terakreditasi.'
+    ],
+    stages: [
+      'Registrasi akun mandiri di portal resmi KIP Kuliah (kip-kuliah.kemdiktisaintek.go.id) untuk memperoleh Nomor Pendaftaran & Kode Akses.',
+      'Sinkronisasi otomatis akun KIP Kuliah dengan jalur seleksi masuk PTN/PTS (SNBP, SNBT, atau Mandiri).',
+      'Mengunggah berkas ekonomi keluarga, foto rumah, dan surat keterangan pendukung.',
+      'Verifikasi berkas & wawancara/kunjungan lapangan oleh pengelola kemahasiswaan kampus tujuan setelah dinyatakan diterima.'
+    ],
+    officialUrl: 'https://kip-kuliah.kemdiktisaintek.go.id',
+    deadlineNote: 'Februari – Oktober (mengikuti jadwal SNBP, SNBT & Mandiri)'
+  },
+  {
+    id: 'kip-kuliah-ptkin',
+    title: 'KIP Kuliah PTKIN (Kementerian Agama)',
+    category: 'pusat',
+    categoryLabel: 'Pemerintah Pusat',
+    provider: 'Kementerian Agama RI',
+    logo: 'assets/logos/beasiswa/kip_kemenag.svg',
+    level: 'S1 PTKIN & PTKIS',
+    campuses: 'UIN Sunan Gunung Djati Bandung & PTKIS Kopertais Jabar',
+    benefit: 'Pembebasan UKT Rp2.400.000/semester + tunjangan biaya hidup Rp700.000/bulan (total Rp6.600.000/semester) hingga 8 semester.',
+    summary: 'Program KIP Kuliah khusus Perguruan Tinggi Keagamaan Islam (UIN SGD Bandung & PTKIS), sangat ramah alumni pesantren/madrasah.',
+    requirements: [
+      'Mahasiswa baru lulusan MA/SMA/SMK/Muadalah/Pendidikan Diniyah Formal tahun berjalan atau maksimal 2 tahun terakhir.',
+      'Menunjukkan keterbatasan ekonomi melalui kartu KIP/PKH/KKS atau Surat Keterangan Tidak Mampu (SKTM) dari desa/kelurahan.',
+      'Tidak sedang menerima beasiswa lain yang bersumber dari APBN/APBD.',
+      'Memiliki hafalan Al-Qur’an atau prestasi keagamaan menjadi nilai tambah di UIN SGD Bandung.'
+    ],
+    stages: [
+      'Mendaftar masuk UIN SGD Bandung (SPAN-PTKIN, UM-PTKIN, atau Mandiri) lalu mendaftar akun KIP Kuliah PTKIN kampus.',
+      'Mengisi formulir ekonomi & prestasi keagamaan di portal pendaftaran KIP Kuliah UIN/Kemenag.',
+      'Seleksi administrasi dan wawancara kelayakan ekonomi serta baca Al-Qur’an oleh tim kemahasiswaan UIN SGD Bandung.',
+      'Penetapan SK Rektor penerima KIP Kuliah PTKIN & pencairan dana setiap semester.'
+    ],
+    officialUrl: 'https://kip-kuliah.kemenag.go.id',
+    deadlineNote: 'Mei – Agustus (dibuka setelah kelulusan PTKIN)'
+  },
+  {
+    id: 'beasiswa-indonesia-bangkit',
+    title: 'Beasiswa Indonesia Bangkit (BIB Kemenag–LPDP)',
+    category: 'pusat',
+    categoryLabel: 'Pemerintah Pusat',
+    provider: 'Kemenag RI & LPDP',
+    logo: 'assets/logos/beasiswa/bib.svg',
+    level: 'S1 / S2 / S3 Dalam & Luar Negeri',
+    campuses: 'UIN SGD Bandung, UNPAD, ITB, UPI Bandung & kampus mitra Kemenag',
+    benefit: 'Pembiayaan penuh (full funded): SPP/UKT, biaya hidup bulanan, biaya buku, riset tesis/disertasi, transportasi & asuransi kesehatan.',
+    summary: 'Beasiswa kolaborasi Kemenag dan LPDP bagi santri, guru madrasah/pesantren, alumni PTKI, dan sivitas akademika keagamaan.',
+    requirements: [
+      'Warga Negara Indonesia bagian dari keluarga besar Kemenag (santri/ustaz/guru madrasah/alumni PTKI atau prodi keagamaan).',
+      'Usia & IPK memenuhi batas program gelar tujuan (S1/S2/S3) serta belum memiliki gelar pada jenjang yang sama.',
+      'Memiliki sertifikat kemampuan bahasa (TOEFL/IELTS/TOAFL) sesuai ketentuan jalur reguler atau afirmasi 3T/Pesantren.',
+      'Menulis esai komitmen kontribusi bagi pembangunan keagamaan dan bangsa Indonesia.'
+    ],
+    stages: [
+      'Pembuatan akun & unggah dokumen administratif di portal resmi beasiswa.kemenag.go.id.',
+      'Seleksi Administrasi (verifikasi LoA Unconditional atau status pendaftar kampus mitra).',
+      'Tes Bakat Skolastik (TBS) berbasis komputer.',
+      'Seleksi Wawancara substantif oleh panel pewawancara Kemenag–LPDP & pengumuman kelulusan.'
+    ],
+    officialUrl: 'https://beasiswa.kemenag.go.id',
+    deadlineNote: 'April – Mei setiap tahun'
+  },
+  {
+    id: 'beasiswa-unggulan',
+    title: 'Beasiswa Unggulan Kemendikdasmen',
+    category: 'pusat',
+    categoryLabel: 'Pemerintah Pusat',
+    provider: 'Kemendikdasmen RI',
+    logo: 'assets/logos/beasiswa/bu.svg',
+    level: 'S1 / S2 / S3 Masyarakat Berprestasi',
+    campuses: 'Semua PTN/PTS terakreditasi unggul di Bandung (ITB, UNPAD, UPI, Telkom, UNPAR, dll.)',
+    benefit: 'Biaya pendidikan/SPP penuh, biaya hidup bulanan, serta tunjangan buku setiap semester.',
+    summary: 'Beasiswa bergengsi pemerintah pusat bagi mahasiswa baru atau on-going yang memiliki prestasi tingkat nasional/internasional.',
+    requirements: [
+      'Diutamakan memiliki sertifikat prestasi akademik/non-akademik tingkat kabupaten/kota, provinsi, nasional, atau internasional.',
+      'Mahasiswa baru yang sudah memiliki LoA Unconditional atau mahasiswa on-going maksimal semester 3 dengan IPK minimal 3,25 (S1) / 3,50 (S2).',
+      'Memiliki sertifikat UKBI (Uji Kemahiran Berbahasa Indonesia) dan esai karya tulis sesuai tema resmi tahun berjalan.',
+      'Surat rekomendasi dari sekolah/kampus atau tokoh akademik/organisasi terkait.'
+    ],
+    stages: [
+      'Registrasi & pengisian data prestasi di portal beasiswaunggulan.kemendikdasmen.go.id.',
+      'Seleksi Administrasi (penilaian dokumen, sertifikat prestasi, UKBI, dan esai).',
+      'Seleksi Wawancara daring bersama asesor Kemendikdasmen.',
+      'Penetapan penerima & penandatanganan kontrak beasiswa.'
+    ],
+    officialUrl: 'https://beasiswaunggulan.kemendikdasmen.go.id',
+    deadlineNote: 'Juli – Agustus setiap tahun'
+  },
+  {
+    id: 'beasiswa-lpdp',
+    title: 'Beasiswa LPDP (Reguler, Afirmasi & Targeted)',
+    category: 'pusat',
+    categoryLabel: 'Pemerintah Pusat',
+    provider: 'Kementerian Keuangan RI',
+    logo: 'assets/logos/beasiswa/lpdp.svg',
+    level: 'S2 / S3 Dalam & Luar Negeri',
+    campuses: 'ITB, UNPAD, UPI Bandung, UIN SGD Bandung & kampus top dunia',
+    benefit: 'Full funded lengkap: dana pendaftaran, SPP/UKT, buku, riset tesis/disertasi, seminar internasional, hidup bulanan & tiket PP.',
+    summary: 'Program beasiswa pascasarjana utama dari Kemenkeu dengan jalur Khusus Santri/Afirmasi, Reguler, dan Targeted PNS/TNI/Polri.',
+    requirements: [
+      'Lulusan D4/S1 untuk program Magister (batas usia umumnya 35 tahun reguler; jalur afirmasi/santri memiliki ketentuan khusus).',
+      'IPK minimal 3,00 (Magister) atau 3,25 (Doktor), kecuali jalur afirmasi tertentu atau pemegang LoA Unconditional.',
+      'Sertifikat TOEFL ITP >= 500 / iBT >= 61 / IELTS >= 6.0 untuk dalam negeri (lebih tinggi untuk luar negeri).',
+      'Menulis Komitmen Kembali ke Indonesia, Rencana Studi, dan Kontribusi Pascastudi.'
+    ],
+    stages: [
+      'Pendaftaran daring & unggah dokumen melalui portal beasiswalpdp.kemenkeu.go.id (Tahap 1 Januari / Tahap 2 Juni).',
+      'Seleksi Administrasi & pengumuman hasil berkas.',
+      'Seleksi Bakat Skolastik (TBS) bagi pendaftar tanpa LoA Unconditional.',
+      'Seleksi Substansi (wawancara mendalam oleh panel akademisi & praktisi) hingga penetapan lulus.'
+    ],
+    officialUrl: 'https://lpdp.kemenkeu.go.id',
+    deadlineNote: '2 Tahap per tahun (Januari–Februari & Juni–Juli)'
+  },
+  {
+    id: 'beasiswa-komdigi',
+    title: 'Beasiswa Komdigi (S2 Bidang TIK & Digital)',
+    category: 'pusat',
+    categoryLabel: 'Pemerintah Pusat',
+    provider: 'Kementerian Komdigi RI',
+    logo: 'assets/logos/beasiswa/komdigi.svg',
+    level: 'S2 Dalam Negeri (Mitra ITB & UNPAD)',
+    campuses: 'ITB Bandung (STEI/SBM), UNPAD Bandung & PTN mitra digitalisasi nasional',
+    benefit: 'Biaya kuliah (UKT/SPP) penuh, biaya operasional pendidikan/riset tesis, serta tunjangan biaya hidup (jalur tertentu).',
+    summary: 'Beasiswa pascasarjana Kementerian Komunikasi dan Digital untuk talenta TIK, keamanan siber, data science, dan kebijakan digital.',
+    requirements: [
+      'WNI berlatar belakang PNS/TNI/Polri maupun masyarakat umum praktisi sektor TIK/start-up/digital minimal masa kerja 2 tahun.',
+      'Usia maksimal 35 tahun (masyarakat umum) atau 37 tahun (PNS/TNI/Polri).',
+      'IPK S1 minimal 3,00 dan memenuhi syarat seleksi masuk Program Pascasarjana kampus mitra (seperti ITB atau UNPAD).',
+      'Mendapatkan izin atasan langsung bagi pelamar yang bekerja.'
+    ],
+    stages: [
+      'Registrasi akun & pemilihan perguruan tinggi mitra di beasiswa.komdigi.go.id.',
+      'Pendaftaran paralel ke ujian masuk Pascasarjana kampus tujuan (mis. USM Pascasarjana ITB / SMUP UNPAD).',
+      'Seleksi Administrasi & verifikasi rekomendasi instansi oleh Komdigi.',
+      'Seleksi Substansi/Wawancara bersama pengelola program studi & Komdigi.'
+    ],
+    officialUrl: 'https://beasiswa.komdigi.go.id',
+    deadlineNote: 'Maret – Mei setiap tahun'
+  },
+
+  // --- B. PEMERINTAH DAERAH JABAR & BANDUNG (3) ---
+  {
+    id: 'jfls-jabar',
+    title: 'Jabar Future Leaders Scholarship (JFLS)',
+    category: 'daerah',
+    categoryLabel: 'Pemda Jabar & Bandung',
+    provider: 'Pemprov Jawa Barat (Disdik)',
+    logo: 'assets/logos/beasiswa/jfls.svg',
+    level: 'D3 / D4 / S1 / S2 / S3',
+    campuses: 'ITB, UNPAD, UPI, UIN SGD, POLBAN, Telkom, UNISBA, UNPAS, UM Bandung, UNPAR, Widyatama',
+    benefit: 'Bantuan biaya pendidikan kuliah hingga Rp10 juta–Rp25 juta/tahun sesuai jalur (Akademik 4 tahun, Non-Akademik/Keagamaan/Percepatan Akses).',
+    summary: 'Beasiswa unggulan Pemerintah Provinsi Jawa Barat khusus warga ber-KTP Jawa Barat yang berkuliah di PTN/PTS mitra Jabar.',
+    requirements: [
+      'Penduduk Jawa Barat dibuktikan dengan KTP & Kartu Keluarga Jawa Barat minimal berdomisili di Jabar.',
+      'Mahasiswa baru atau mahasiswa aktif pada perguruan tinggi mitra JFLS di Jawa Barat (termasuk seluruh kampus besar di Bandung).',
+      'Memenuhi nilai rapor/UTBK (maba) atau IPK minimal 3,00–3,25 (on-going), serta sertifikat prestasi keagamaan/tahfidz/organisasi untuk jalur non-akademik.',
+      'Tidak sedang menerima beasiswa dari sumber lain pada tahun anggaran berjalan.'
+    ],
+    stages: [
+      'Pembuatan akun & pemilihan 1 jenis program (Akademik, Non-Akademik/Keagamaan, atau Afirmasi) di beasiswa-jfl.jabarprov.go.id.',
+      'Mengunggah KTP/KK Jabar, surat keterangan diterima/aktif kuliah, transkrip, sertifikat prestasi, dan video profil singkat.',
+      'Verifikasi Administrasi oleh tim JFLS & verifikasi rekomendasi kampus asal di Bandung.',
+      'Penilaian akhir, asesmen seleksi, dan pengumuman penerima melalui portal resmi JFLS.'
+    ],
+    officialUrl: 'https://beasiswa-jfl.jabarprov.go.id',
+    deadlineNote: 'Juni – Juli setiap tahun'
+  },
+  {
+    id: 'besti-kab-bandung',
+    title: 'Beasiswa Ti Bupati (BESTI) Kab. Bandung',
+    category: 'daerah',
+    categoryLabel: 'Pemda Jabar & Bandung',
+    provider: 'Pemkab Bandung (Dispora)',
+    logo: 'assets/logos/beasiswa/besti.svg',
+    level: 'S1 PTN & PTS Mitra Bandung Raya',
+    campuses: 'UIN SGD Bandung, UNPAD, UPI Bandung, UNPAS, Telkom University, UM Bandung, dll.',
+    benefit: 'Pembiayaan UKT/SPP kuliah sampai lulus untuk kategori Hafidz Al-Qur’an & Siswa Berprestasi warga Kabupaten Bandung.',
+    summary: 'Program prioritas Bupati Bandung bagi putra-putri asli Kabupaten Bandung yang hafal Al-Qur’an minimal 1–5 juz atau berprestasi.',
+    requirements: [
+      'Ber-KTP dan KK asli Kabupaten Bandung (berusia maksimal 21 tahun saat mendaftar).',
+      'Kategori Tahfidz (memiliki hafalan Al-Qur’an) atau Kategori Prestasi Akademik/Non-Akademik juara tingkat kabupaten/provinsi/nasional.',
+      'Berasal dari keluarga kurang mampu / terdaftar DTKS atau melampirkan SKTM yang sah.',
+      'Diterima atau berkuliah di kampus yang bermitra dengan Pemkab Bandung.'
+    ],
+    stages: [
+      'Pendaftaran online sesuai pengumuman resmi Pemerintah Kabupaten Bandung (bandungkab.go.id).',
+      'Seleksi Administrasi kependudukan & berkas prestasi/DTKS.',
+      'Uji hafalan Al-Qur’an (untuk jalur tahfidz) dan wawancara kelayakan.',
+      'Penetapan SK Bupati Bandung & penyaluran beasiswa melalui perguruan tinggi mitra.'
+    ],
+    officialUrl: 'https://bandungkab.go.id',
+    deadlineNote: 'Agustus – Oktober (menunggu rilis jadwal tahunan Pemkab Bandung)'
+  },
+  {
+    id: 'rmp-pemkot-bandung',
+    title: 'Program Bantuan Pendidikan / RMP Pemkot Bandung',
+    category: 'daerah',
+    categoryLabel: 'Pemda Jabar & Bandung',
+    provider: 'Pemkot Bandung (Bagian Kesra)',
+    logo: 'assets/logos/beasiswa/rmp.svg',
+    level: 'D3 / S1 Warga Kota Bandung',
+    campuses: 'Kampus PTN/PTS wilayah Kota Bandung',
+    benefit: 'Bantuan stimulan biaya pendidikan/UKT dan akses jalur afirmasi Rawan Melanjutkan Pendidikan (RMP) warga Kota Bandung.',
+    summary: 'Dukungan akses dan bantuan biaya kuliah Pemerintah Kota Bandung bagi mahasiswa asal keluarga prasejahtera ber-KTP Kota Bandung.',
+    requirements: [
+      'Ber-KTP dan KK Kota Bandung serta terdaftar dalam DTKS Dinas Sosial Kota Bandung atau kategori RMP.',
+      'Aktif kuliah jenjang D3/S1 pada perguruan tinggi di Kota Bandung (terdaftar PDDikti).',
+      'Surat pengantar/rekomendasi kemahasiswaan dari perguruan tinggi masing-masing.',
+      'Tidak berstatus penerima KIP Kuliah penuh atau beasiswa APBN ganda.'
+    ],
+    stages: [
+      'Pengajuan melalui portal layanan Bagian Kesra / Dinsos Pemkot Bandung atau pendataan kampus.',
+      'Verifikasi faktual DTKS Kota Bandung & keaktifan mahasiswa di PDDikti.',
+      'Validasi berkas oleh Bagian Kesra Setda Kota Bandung.',
+      'Penetapan penerima dan transfer bantuan pendidikan.'
+    ],
+    officialUrl: 'https://www.bandung.go.id',
+    deadlineNote: 'Menyesuaikan jadwal pendataan Kesra Pemkot Bandung'
+  },
+
+  // --- C. LEMBAGA / BAZNAS / BUMN / SWASTA (10) ---
+  {
+    id: 'beasiswa-cendekia-baznas',
+    title: 'Beasiswa Cendekia BAZNAS (BCB)',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'BAZNAS RI',
+    logo: 'assets/logos/beasiswa/baznas.svg',
+    level: 'S1 / D4 Dalam Negeri & Ma’had Aly',
+    campuses: 'ITB, UNPAD, UPI Bandung, UIN SGD Bandung, Telkom University, UNISBA, POLBAN (133+ mitra)',
+    benefit: 'Subsidi UKT hingga Rp3–4 juta/semester (maksimal 4 semester) + program pembinaan karakter, kepemimpinan & mentor BAZNAS.',
+    summary: 'Beasiswa andalan bagi santri dan mahasiswa aktif semester 5 di kampus mitra Bandung untuk melahirkan cendekiawan Muslim berkarakter.',
+    requirements: [
+      'Mahasiswa aktif program S1/D4 semester 5 di salah satu kampus mitra BAZNAS (termasuk ITB, UNPAD, UPI, UIN SGD, Telkom, UNISBA).',
+      'IPK minimal 3,00 (skala 4,00).',
+      'Aktif berorganisasi kemahasiswaan/keagamaan/pesantren dan berkomitmen mengikuti pembinaan berkala.',
+      'Melampirkan esai rencana kontribusi pascakampus & rekomendasi tokoh/kampus.'
+    ],
+    stages: [
+      'Mengunduh panduan & mendaftar lewat tautan pendaftaran kampus mitra di beasiswa.baznas.go.id.',
+      'Seleksi Administrasi oleh tim kemahasiswaan kampus mitra BAZNAS.',
+      'Seleksi Wawancara langsung oleh pihak kampus & perwakilan BAZNAS.',
+      'Masa sanggah, verifikasi akhir, dan penetapan penerima BCB angkatan berjalan.'
+    ],
+    officialUrl: 'https://beasiswa.baznas.go.id',
+    deadlineNote: 'Juli – Agustus setiap tahun'
+  },
+  {
+    id: 'bsi-scholarship',
+    title: 'BSI Scholarship (Inspirasi & Prestasi)',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'Bank Syariah Indonesia & BSI Maslahat',
+    logo: 'assets/logos/beasiswa/bsi.svg',
+    level: 'S1 & Pelajar SMA/MA',
+    campuses: 'ITB, UNPAD, UPI, UIN SGD Bandung & kampus mitra BSI Maslahat',
+    benefit: 'Bantuan UKT penuh/parsial + uang saku bulanan + program mentoring kepemimpinan ekonomi syariah & magang industri BSI.',
+    summary: 'Beasiswa dari Bank Syariah Indonesia bagi mahasiswa S1 di PTN/PTS mitra Bandung lewat jalur Inspirasi (ekonomi lemah) & Prestasi.',
+    requirements: [
+      'Mahasiswa aktif S1 semester 3 pada perguruan tinggi mitra BSI Scholarship.',
+      'IPK minimal 3,00 (Inspirasi) atau 3,25 (Prestasi) disertai sertifikat keaktifan organisasi/kompetisi.',
+      'Memiliki sertifikat kemampuan bahasa Inggris atau hafalan Al-Qur’an menjadi nilai tambah.',
+      'Tidak sedang menerima beasiswa sejenis lainnya.'
+    ],
+    stages: [
+      'Pendaftaran online di portal resmi bsischolarship.id.',
+      'Seleksi Administrasi berkas akademik dan kondisi keluarga/prestasi.',
+      'Tes Potensi Akademik / Asesmen Kepemimpinan daring.',
+      'Wawancara mendalam bersama tim BSI Maslahat & Bank Syariah Indonesia.'
+    ],
+    officialUrl: 'https://bsischolarship.id',
+    deadlineNote: 'September – Oktober setiap tahun'
+  },
+  {
+    id: 'ybm-brilian',
+    title: 'Bright Scholarship & Smart Scholarship YBM BRILiaN',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'YBM BRILiaN (Bank BRI)',
+    logo: 'assets/logos/beasiswa/brilian.svg',
+    level: 'S1 PTN Mitra (Bandung)',
+    campuses: 'ITB, UNPAD, UPI Bandung & UIN SGD Bandung',
+    benefit: 'Pembinaan asrama/mentoring intensif, tunjangan biaya pendidikan/UKT + uang saku bulanan hingga lulus.',
+    summary: 'Program pemberdayaan zakat Bank BRI bagi mahasiswa PTN berprestasi dari keluarga prasejahtera dengan penguatan karakter Islami.',
+    requirements: [
+      'Mahasiswa aktif PTN mitra (semester 1 untuk Bright Scholarship; mahasiswa on-going untuk Smart Scholarship).',
+      'Memiliki hafalan Al-Qur’an minimal 1 juz (nilai tambah tinggi bagi santri).',
+      'Berasal dari keluarga kurang mampu dibuktikan SKTM dan foto tempat tinggal.',
+      'Bersedia mengikuti program pembinaan terstruktur (Bright/Smart).'
+    ],
+    stages: [
+      'Registrasi berkas secara online melalui situs ybmbrilian.id sesuai pengumuman regional.',
+      'Seleksi Administrasi & verifikasi kelayakan mustahik.',
+      'Psikotes, FGD (Focus Group Discussion), dan wawancara karakter/tilawah.',
+      'Survei kondisi rumah (home visit) bagi kandidat final & pengukuhan penerima.'
+    ],
+    officialUrl: 'https://ybmbrilian.id',
+    deadlineNote: 'Agustus – November (regional Bandung)'
+  },
+  {
+    id: 'beasiswa-bank-indonesia',
+    title: 'Beasiswa Bank Indonesia (Komunitas GenBI)',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'Bank Indonesia (KPw BI Jabar)',
+    logo: 'assets/logos/beasiswa/bi.svg',
+    level: 'D3 / D4 / S1 Reguler & Unggulan',
+    campuses: 'ITB, UNPAD, UPI Bandung, UIN SGD Bandung, POLBAN & UNISBA',
+    benefit: 'Uang saku bulanan (Rp1 juta–Rp1,5 juta/bulan), pelatihan kepemimpinan tingkat nasional & bergabung di Generasi Baru Indonesia (GenBI).',
+    summary: 'Beasiswa bergengsi Bank Indonesia melalui pengelola kemahasiswaan kampus mitra Jawa Barat yang melatih agen perubahan & literasi kebanksentralan.',
+    requirements: [
+      'Mahasiswa aktif S1 (min. semester 3 / 40 SKS) atau D3 (min. semester 2) di kampus mitra KPw BI Jawa Barat.',
+      'IPK minimal 3,00 (reguler) atau 3,50 + TOEFL 500/IELTS 6.0 (program unggulan).',
+      'Aktif dalam kegiatan sosial kemasyarakatan/organisasi kampus dan tidak sedang menerima beasiswa lain.',
+      'Membuat resume pribadi dan motivation letter dalam Bahasa Indonesia/Inggris.'
+    ],
+    stages: [
+      'Pendaftaran kolektif melalui Direktorat Kemahasiswaan kampus mitra masing-masing (UNPAD/UPI/UIN/ITB/POLBAN/UNISBA).',
+      'Seleksi Administrasi oleh kampus sebelum direkomendasikan ke KPw Bank Indonesia Jawa Barat.',
+      'Wawancara langsung oleh panel Bank Indonesia KPw Jawa Barat.',
+      'Penetapan penerima & pelantikan anggota baru GenBI Jabar.'
+    ],
+    officialUrl: 'https://www.bi.go.id',
+    deadlineNote: 'Januari – Maret setiap tahun'
+  },
+  {
+    id: 'djarum-beasiswa-plus',
+    title: 'Djarum Beasiswa Plus',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'Djarum Foundation',
+    logo: 'assets/logos/beasiswa/djarum.svg',
+    level: 'S1 / D4 Semua Jurusan',
+    campuses: 'ITB, UNPAD, UPI Bandung, Telkom University, POLBAN, UNPAR, UNISBA, Widyatama, dll.',
+    benefit: 'Dana pendidikan Rp1.000.000/bulan selama 1 tahun + pelatihan soft skills eksklusif (Character Building, Leadership, Nation Building).',
+    summary: 'Program pengembangan soft skills dan beasiswa prestisius bagi mahasiswa aktif semester 4 tanpa membatasi latar belakang ekonomi.',
+    requirements: [
+      'Mahasiswa aktif S1/D4 semester IV dari perguruan tinggi mitra Djarum Foundation.',
+      'IPK minimal 3,00 pada semester III serta konsisten mempertahankan IPK >= 3,00 hingga akhir semester IV.',
+      'Aktif mengikuti kegiatan organisasi di dalam maupun luar kampus.',
+      'Tidak sedang menerima beasiswa dari pihak lain.'
+    ],
+    stages: [
+      'Pendaftaran online & pengunggahan berkas melalui djarumbeasiswaplus.org.',
+      'Seleksi Administrasi dan verifikasi dokumen oleh pihak kampus.',
+      'Tes Tulis Online (Tes Potensi Akademik & Kepribadian).',
+      'Wawancara kelompok/individu secara langsung oleh tim Djarum Foundation.'
+    ],
+    officialUrl: 'https://djarumbeasiswaplus.org',
+    deadlineNote: 'Maret – Mei setiap tahun'
+  },
+  {
+    id: 'tanoto-teladan',
+    title: 'Program Kepemimpinan TELADAN Tanoto Foundation',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'Tanoto Foundation',
+    logo: 'assets/logos/beasiswa/tanoto.svg',
+    level: 'S1 Mahasiswa Baru (Mitra ITB & UNPAD)',
+    campuses: 'Institut Teknologi Bandung (ITB) & Universitas Padjadjaran (UNPAD)',
+    benefit: 'Biaya kuliah penuh + tunjangan hidup bulanan + pelatihan kepemimpinan berjenjang (semester 2–8), pendanaan riset & jaringan global.',
+    summary: 'Program pembentukan pemimpin masa depan bagi mahasiswa S1 semester 1 di 10 PTN mitra termasuk ITB dan UNPAD.',
+    requirements: [
+      'Mahasiswa semester 1 program Sarjana reguler di salah satu PTN mitra termasuk ITB Bandung atau UNPAD.',
+      'Memiliki prestasi akademik (nilai rapor SMA/SMK/MA rata-rata min. 8/10) dan pengalaman kepemimpinan organisasi.',
+      'Menunjukkan potensi kepemimpinan kuat serta motivasi berkontribusi bagi masyarakat.',
+      'Berkomitmen mengikuti seluruh rangkaian pelatihan kepemimpinan TELADAN hingga semester 8.'
+    ],
+    stages: [
+      'Mengisi formulir pendaftaran online dan esai kepemimpinan di tanotofoundation.org.',
+      'Seleksi Tahap 1: Penilaian Administrasi & Tes Online (Asesmen Potensi Kepemimpinan).',
+      'Seleksi Tahap 2: Assessment Center (simulasi kerja tim/FGD).',
+      'Seleksi Tahap 3: Wawancara Panel final oleh Tanoto Foundation & pengumuman Tanoto Scholars.'
+    ],
+    officialUrl: 'https://www.tanotofoundation.org',
+    deadlineNote: 'Juli – September setiap tahun'
+  },
+  {
+    id: 'pertamina-sobat-bumi',
+    title: 'Beasiswa Pertamina Sobat Bumi',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'Pertamina Foundation',
+    logo: 'assets/logos/beasiswa/pertamina.svg',
+    level: 'S1 Reguler, Afirmasi & Vokasi',
+    campuses: 'ITB, UNPAD, UPI Bandung & POLBAN',
+    benefit: 'Bantuan biaya UKT/SPP + biaya hidup bulanan + pendanaan program Aksi Sobat Bumi dan pengabdian desa energi bersih.',
+    summary: 'Beasiswa energi & lingkungan dari Pertamina Foundation yang mendorong mahasiswa aktif melaksanakan proyek keberlanjutan di kampus dan masyarakat.',
+    requirements: [
+      'Mahasiswa aktif PTN mitra Pertamina Foundation (minimal semester 2 untuk S1/D4/Vokasi).',
+      'IPK minimal 3,00 (skala 4,00) dan aktif dalam organisasi sosial/lingkungan hidup.',
+      'Menulis esai terkait aksi pelestarian lingkungan atau transisi energi bersih.',
+      'Tidak sedang menerima beasiswa dari lembaga lain.'
+    ],
+    stages: [
+      'Registrasi akun & unggah dokumen esai di portal resmi pertaminafoundation.org.',
+      'Seleksi Administrasi (penilaian IPK, keaktifan organisasi, dan esai lingkungan).',
+      'Seleksi Wawancara berbasis proyek lingkungan oleh asesor Pertamina Foundation.',
+      'Pengumuman penerima & pelaksanaan program Aksi Sobat Bumi.'
+    ],
+    officialUrl: 'https://www.pertaminafoundation.org',
+    deadlineNote: 'Februari – Maret setiap tahun'
+  },
+  {
+    id: 'karyasiswa-kse',
+    title: 'Beasiswa Karya Salemba Empat (KSE)',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'Yayasan Karya Salemba Empat',
+    logo: 'assets/logos/beasiswa/kse.svg',
+    level: 'S1 PTN Mitra (Bandung)',
+    campuses: 'ITB Bandung, UNPAD & UPI Bandung (Paguyuban KSE)',
+    benefit: 'Tunjangan biaya hidup Rp750.000/bulan (dapat diperpanjang tiap tahun) + beasiswa unggulan karier, wirausaha & teknologi.',
+    summary: 'Beasiswa swadaya alumni sejak 1995 dengan komunitas Paguyuban KSE aktif di ITB, UNPAD, dan UPI Bandung yang solid membantu pengembangan mahasiswa.',
+    requirements: [
+      'Mahasiswa aktif program S1 minimal semester 2 pada 35 PTN mitra termasuk ITB, UNPAD, dan UPI.',
+      'Belum menikah dan sedang membutuhkan dukungan finansial untuk perkuliahan.',
+      'Membuat video profil singkat, motivation letter, dan esai rencana pengembangan diri.',
+      'Siap aktif berkontribusi dalam kegiatan sosial Paguyuban KSE kampus masing-masing.'
+    ],
+    stages: [
+      'Pendaftaran online melalui sistem registrasi beasiswa di kse.or.id pada jadwal open recruitment PTN Bandung.',
+      'Seleksi Administrasi & penilaian video profil oleh tim Paguyuban & Yayasan KSE.',
+      'Wawancara daring/luring bersama alumni donatur & pengurus KSE.',
+      'Penetapan sebagai Beswan KSE dan bergabung dengan Paguyuban KSE ITB/UNPAD/UPI.'
+    ],
+    officialUrl: 'https://kse.or.id',
+    deadlineNote: 'Februari – April setiap tahun'
+  },
+  {
+    id: 'paragon-scholarship',
+    title: 'Paragon Scholarship Program (PSP)',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'ParagonCorp (Wardah/Kahf/Emina)',
+    logo: 'assets/logos/beasiswa/paragon.svg',
+    level: 'S1 Excellence & Empowerment',
+    campuses: 'ITB, UNPAD, UPI Bandung & berbagai kampus di Indonesia',
+    benefit: 'Bantuan UKT + uang saku tahunan (Rp6 juta–Rp20 juta sesuai jalur) + dana proyek sosial, mentoring pimpinan Paragon & peluang Management Trainee.',
+    summary: 'Program beasiswa dari perusahaan kosmetik halal terbesar Indonesia untuk mahasiswa inovatif yang ingin memberi dampak sosial.',
+    requirements: [
+      'Mahasiswa S1 semester 3 atau 5 (tergantung jalur PSP Excellence atau Empowerment).',
+      'IPK minimal 3,30 (Excellence) atau 3,00 dengan kondisi ekonomi membutuhkan (Empowerment).',
+      'Memiliki kepedulian sosial, pengalaman organisasi/kompetisi, serta bersedia merancang proyek dampak sosial.',
+      'Tidak sedang terikat kontrak ikatan dinas beasiswa perusahaan lain.'
+    ],
+    stages: [
+      'Pengisian formulir pendaftaran & esai di portal resmi Paragon Scholarship (paragon-innovation.com).',
+      'Seleksi Administrasi dan Tes Potensi Psikometri daring.',
+      'Wawancara / Forum Kelompok & presentasi ide proyek sosial.',
+      'Penetapan Awardee PSP dan onboarding mentoring ParagonCorp.'
+    ],
+    officialUrl: 'https://www.paragon-innovation.com',
+    deadlineNote: 'Juli – Agustus setiap tahun'
+  },
+  {
+    id: 'bakti-bca',
+    title: 'Beasiswa Bakti BCA',
+    category: 'lembaga',
+    categoryLabel: 'Lembaga / Swasta',
+    provider: 'PT Bank Central Asia Tbk',
+    logo: 'assets/logos/beasiswa/bca.svg',
+    level: 'S1 Bantuan Finansial, Prestasi Akademik & Non-Akademik',
+    campuses: 'ITB, UNPAD, UPI Bandung & berbagai PTN mitra BCA',
+    benefit: 'Bantuan dana pendidikan & uang saku bulanan selama 1 tahun penuh + Bakti Champions Camp, company visit & financial literacy.',
+    summary: 'Program CSR pendidikan Bank BCA dengan tiga kategori inklusif: Bantuan Finansial, Prestasi Akademik, dan Prestasi Non-Akademik.',
+    requirements: [
+      'Mahasiswa aktif program S1 semester 3 pada perguruan tinggi negeri mitra/terbuka di Indonesia.',
+      'Usia maksimal 22 tahun dan belum menikah.',
+      'IPK minimal 3,00 (khusus jalur Prestasi Akademik min. 3,25) serta melampirkan sertifikat organisasi/lomba.',
+      'Berkomitmen mengikuti program pengembangan diri Bakti Champions selama 1 tahun.'
+    ],
+    stages: [
+      'Pendaftaran online melalui laman bca.co.id/id/tentang-bca/csr/bakti-bca.',
+      'Seleksi Administrasi dan pengecekan rekam prestasi/kebutuhan finansial.',
+      'Asesmen psikotes & wawancara daring bersama tim Bakti BCA.',
+      'Pengumuman penerima & penyambutan Bakti Champions.'
+    ],
+    officialUrl: 'https://www.bca.co.id/id/tentang-bca/csr/bakti-bca',
+    deadlineNote: 'September – Oktober setiap tahun'
+  },
+
+  // --- D. INTERNAL KAMPUS BANDUNG (11) ---
+  {
+    id: 'internal-uin-sgd',
+    title: 'Beasiswa Internal UIN Sunan Gunung Djati Bandung',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'UIN SGD Bandung',
+    logo: 'assets/logos/logo_uin.png',
+    level: 'S1 (Tahfidz, Prestasi & Keringanan UKT)',
+    campuses: 'UIN Sunan Gunung Djati Bandung (Cibiru)',
+    benefit: 'Pembebasan/penurunan kelompok UKT bagi Hafidz Al-Qur’an 10–30 Juz, juara MTQ/kompetisi nasional, serta bantuan UPZ UIN SGD.',
+    summary: 'Ragam skema bantuan internal UIN SGD Bandung khusus santri hafidz, atlet/juara kompetisi, dan mahasiswa kurang mampu.',
+    requirements: [
+      'Mahasiswa aktif atau calon mahasiswa baru UIN Sunan Gunung Djati Bandung.',
+      'Kategori Tahfidz: sertifikat/syahadah hafalan Al-Qur’an dan lulus ujian tasmi’ tim Ma’had Al-Jami’ah.',
+      'Kategori Prestasi/Bantuan UPZ: sertifikat juara minimal tingkat provinsi atau surat kondisi ekonomi keluarga.',
+      'Tidak berstatus pelanggar kode etik mahasiswa.'
+    ],
+    stages: [
+      'Pantau pengumuman resmi pada laman pmb.uinsgd.ac.id / kemahasiswaan UIN SGD Bandung tiap awal semester.',
+      'Ajukan berkas melalui portal SALAM / sistem keringanan UKT & kemahasiswaan UIN SGD.',
+      'Uji tahfidz (untuk jalur hafalan) dan wawancara verifikasi berkas fakultas/universitas.',
+      'Penetapan SK Rektor untuk penyesuaian UKT atau pencairan dana UPZ.'
+    ],
+    officialUrl: 'https://pmb.uinsgd.ac.id',
+    deadlineNote: 'Setiap awal semester ganjil/genap'
+  },
+  {
+    id: 'internal-unpad',
+    title: 'Beasiswa Padjadjaran & Portal Beasiswa UNPAD',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Universitas Padjadjaran (UNPAD)',
+    logo: 'assets/logos/logo_unpad.svg',
+    level: 'D4 / S1 / Pascasarjana',
+    campuses: 'UNPAD (Jatinangor & Dipatiukur Bandung)',
+    benefit: 'Pembebasan/keringanan UKT (Skema UNPAD Nyaah ka Jabar & bantuan internal) serta penyaluran puluhan mitra donatur di portal beasiswa UNPAD.',
+    summary: 'Sistem satu pintu pengelolaan beasiswa internal UNPAD, keringanan UKT, Beasiswa Unggulan Pascasarjana Padjadjaran (BUPP) & mitra CSR.',
+    requirements: [
+      'Terdaftar aktif sebagai mahasiswa UNPAD di sistem Students / PACIS.',
+      'IPK memenuhi ambang batas skema masing-masing (umumnya >= 2,75 untuk keringanan ekonomi atau >= 3,25 untuk prestasi).',
+      'Melampirkan slip gaji orang tua / keterangan DTKS untuk skema bantuan finansial.',
+      'Mengunggah seluruh dokumen melalui akun mahasiswa di portal beasiswa.unpad.ac.id.'
+    ],
+    stages: [
+      'Login dengan PAuS ID ke portal resmi beasiswa.unpad.ac.id dan pilih skema yang terbuka.',
+      'Lengkapi formulir ekonomi, esai, dan surat rekomendasi dosen wali/fakultas.',
+      'Verifikasi administratif oleh Direktorat Kemahasiswaan UNPAD.',
+      'Wawancara (bila disyaratkan donatur/skema) & pengumuman hasil melalui akun PAuS.'
+    ],
+    officialUrl: 'https://beasiswa.unpad.ac.id',
+    deadlineNote: 'Dibuka sepanjang tahun sesuai jadwal tiap skema'
+  },
+  {
+    id: 'internal-upi',
+    title: 'Beasiswa Internal & Penyesuaian UKT UPI Bandung',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Universitas Pendidikan Indonesia (UPI)',
+    logo: 'assets/logos/logo_upi.svg',
+    level: 'S1 & Pascasarjana',
+    campuses: 'UPI Bandung (Setiabudi) & Kampus Daerah',
+    benefit: 'Beasiswa Prestasi Akademik/Non-Akademik UPI, bantuan IKOMA/Alumni, hingga pengurangan UKT hingga 50%–100% bagi keluarga terdampak.',
+    summary: 'Fasilitas beasiswa internal Direktorat Kemahasiswaan UPI Bandung yang terhubung dengan IKOMA, BAZNAS UPI, dan beasiswa prestasi kampus.',
+    requirements: [
+      'Mahasiswa aktif UPI Bandung memiliki NIM resmi dan tercatat aktif di SIAK.',
+      'Untuk beasiswa prestasi: IPK minimal 3,25 atau piagam kejuaraan tingkat provinsi/nasional.',
+      'Untuk keringanan UKT: bukti penghasilan orang tua / SKTM / bukti terdampak ekonomi.',
+      'Surat rekomendasi fakultas/program studi sesuai panduan kemahasiswaan UPI.'
+    ],
+    stages: [
+      'Mengakses informasi pembukaan pada portal kemahasiswaan.upi.edu dan menu beasiswa SIAK UPI.',
+      'Mengunggah kelengkapan berkas melalui laman pendaftaran beasiswa UPI.',
+      'Validasi berkas oleh Wakil Dekan Kemahasiswaan Fakultas & Direktorat Kemahasiswaan UPI.',
+      'Penetapan SK penerima bantuan/penyesuaian UKT sebelum masa pembayaran semester.'
+    ],
+    officialUrl: 'https://kemahasiswaan.upi.edu',
+    deadlineNote: 'Setiap awal semester & periode seleksi mitra'
+  },
+  {
+    id: 'internal-itb',
+    title: 'Beasiswa Ganesha & Bantuan Finansial ITB',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Institut Teknologi Bandung (Ditmawa ITB)',
+    logo: 'assets/logos/logo_itb.png',
+    level: 'S1 / S2 / S3',
+    campuses: 'ITB Bandung (Ganesha, Jatinangor & Cirebon)',
+    benefit: 'Subsidi UKT hingga Rp0 (UKT-1/Beasiswa UKT), uang saku bulanan dari Dana Lestari ITB/Alumni (Ia-ITB/Salman ITB) & beasiswa riset.',
+    summary: 'Ekosistem bantuan finansial terpadu ITB memastikan tidak ada mahasiswa diterima ITB yang gagal kuliah karena kendala ekonomi.',
+    requirements: [
+      'Mahasiswa S1 atau Pascasarjana ITB aktif (termasuk maba yang mengisi pengajuan UKT berkeadilan).',
+      'Mengisi profil kondisi ekonomi keluarga secara jujur beserta bukti tagihan listrik, slip gaji/surat penghasilan, dan foto rumah.',
+      'Memenuhi IPK & batas waktu pengajuan pada sistem SIX / finaid.itb.ac.id.',
+      'Untuk mahasiswa muslim, tersedia pula dukungan Beasiswa Perintis & Beasiswa Aktivis Masjid Salman ITB.'
+    ],
+    stages: [
+      'Masuk ke portal resmi finaid.itb.ac.id menggunakan akun INA ITB.',
+      'Memilih program Bantuan Keuangan (UKT/Biaya Hidup) atau Beasiswa Mitra yang terbuka.',
+      'Verifikasi berkas oleh Direktorat Kemahasiswaan (Ditmawa) ITB serta wawancara jika dibutuhkan.',
+      'Penetapan besaran subsidi UKT atau dana saku melalui SK resmi ITB.'
+    ],
+    officialUrl: 'https://finaid.itb.ac.id',
+    deadlineNote: 'Pendaftaran ulang Maba & setiap awal semester di finaid.itb.ac.id'
+  },
+  {
+    id: 'internal-telkom',
+    title: 'Beasiswa Unggulan & Pintar Telkom University',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Telkom University (Tel-U)',
+    logo: 'assets/logos/logo_telkom.png',
+    level: 'D3 / D4 / S1 Calon Mahasiswa Baru',
+    campuses: 'Telkom University Bandung (Bojongsoang)',
+    benefit: 'Beasiswa Unggulan (gratis 100% biaya pendidikan BPP/UP3/SDP2 sampai lulus) atau Beasiswa Pintar (potongan biaya masuk hingga 100%).',
+    summary: 'Program beasiswa penuh dan parsial jalur rapor/UTBK/prestasi dari Telkom University untuk calon mahasiswa berprestasi seluruh Indonesia.',
+    requirements: [
+      'Lulusan SMA/SMK/MA memenuhi standar nilai rapor minimal semester 1–5 (rata-rata >= 80–85 sesuai jurusan).',
+      'Memiliki sertifikat prestasi akademik/non-akademik atau skor UTBK (untuk jalur UTBK Plus) menjadi keunggulan.',
+      'Memenuhi syarat kesehatan & bebas buta warna untuk prodi desain/teknik tertentu.',
+      'Mendaftar melalui jalur Beasiswa ID / Unggulan SMB Telkom University.'
+    ],
+    stages: [
+      'Registrasi akun pendaftaran di smb.telkomuniversity.ac.id dan pilih jalur Beasiswa.',
+      'Mengunggah rapor, sertifikat prestasi/tahfidz, serta surat rekomendasi sekolah.',
+      'Mengikuti seleksi wawancara & tes potensi akademik daring Telkom University.',
+      'Pengumuman penetapan besaran beasiswa (Penuh/Parsial) secara online.'
+    ],
+    officialUrl: 'https://smb.telkomuniversity.ac.id',
+    deadlineNote: 'Gelombang beasiswa dibuka November – Juni'
+  },
+  {
+    id: 'internal-unisba',
+    title: 'Beasiswa Tahfidz & Prestasi PMB UNISBA',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Universitas Islam Bandung (UNISBA)',
+    logo: 'assets/logos/logo_unisba.png',
+    level: 'S1 Jalur Prestasi, Tahfidz & Yatim',
+    campuses: 'UNISBA (Tamansari Kota Bandung)',
+    benefit: 'Pembebasan/potongan Dana Pengembangan Pendidikan (DPP/uang pangkal) hingga 100% serta keringanan SPP bagi hafidz 5–30 juz & yatim berprestasi.',
+    summary: 'Kampus bernuansa Islam terkemuka di pusat Kota Bandung yang memberikan apresiasi besar bagi alumni pesantren dan penghafal Al-Qur’an.',
+    requirements: [
+      'Calon mahasiswa baru lulusan SMA/MA/Pesantren yang mendaftar melalui PMB Jalur PMDK/Tahfidz UNISBA.',
+      'Kategori Tahfidz: memiliki syahadah hafalan minimal 3–5 juz (potongan makin besar hingga 30 juz).',
+      'Kategori Prestasi Akademik/Olahraga/Seni: rata-rata rapor >= 80 atau juara minimal tingkat kabupaten/provinsi.',
+      'Melampirkan surat keterangan yatim/duafa bila mendaftar jalur khusus sosial.'
+    ],
+    stages: [
+      'Pendaftaran online melalui admission.unisba.ac.id dengan memilih Jalur PMDK/Beasiswa Tahfidz.',
+      'Unggah nilai rapor & sertifikat hafalan Al-Qur’an/kejuaraan.',
+      'Mengikuti uji tes baca/hafalan Al-Qur’an & wawancara dengan tim PMB UNISBA.',
+      'Penerbitan surat kelulusan beserta SK besaran potongan DPP/SPP.'
+    ],
+    officialUrl: 'https://admission.unisba.ac.id/id',
+    deadlineNote: 'Gelombang PMDK & Reguler Desember – Juli'
+  },
+  {
+    id: 'internal-polban',
+    title: 'Beasiswa Prestasi & Bantuan UKT POLBAN',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Politeknik Negeri Bandung (POLBAN)',
+    logo: 'assets/logos/logo_polban.svg',
+    level: 'D3 / D4 Vokasi',
+    campuses: 'POLBAN (Ciwaruga, Bandung Barat)',
+    benefit: 'Penyesuaian UKT berkeadilan, Beasiswa Ikatan Alumni POLBAN, serta penyaluran KIP Kuliah & beasiswa industri vokasi.',
+    summary: 'Skema dukungan biaya pendidikan di kampus politeknik negeri unggulan Bandung bagi mahasiswa vokasi berprestasi dan kurang mampu.',
+    requirements: [
+      'Mahasiswa aktif program D3/D4 POLBAN terdaftar pada sistem akademik POLBAN.',
+      'Menunjukkan capaian IPK baik (>= 3,00 untuk skema prestasi) dan bebas sanksi akademik.',
+      'Melampirkan dokumen pendapatan keluarga terbaru untuk pengajuan keringanan UKT atau beasiswa sosial alumni.',
+      'Aktif dalam kegiatan kemahasiswaan/UKM POLBAN.'
+    ],
+    stages: [
+      'Memantau pengumuman Subbagian Kemahasiswaan pada portal resmi polban.ac.id.',
+      'Mengisi formulir pengajuan & mengunggah berkas ke sistem informasi akademik POLBAN.',
+      'Verifikasi berkas & wawancara oleh pembimbing kemahasiswaan jurusan/institusi.',
+      'Pengumuman penerima bantuan atau penyesuaian UKT per semester.'
+    ],
+    officialUrl: 'https://www.polban.ac.id',
+    deadlineNote: 'Setiap awal semester & seleksi alumni'
+  },
+  {
+    id: 'internal-unpas',
+    title: 'Beasiswa Yayasan, Tahfidz & PMDK UNPAS',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Universitas Pasundan (UNPAS)',
+    logo: 'assets/logos/logo_unpas.png',
+    level: 'S1 (Jalur PMDK, Tahfidz & KIP)',
+    campuses: 'UNPAS Bandung (Setiabudi, Tamansari, Lengkong & Sumatra)',
+    benefit: 'Potongan Dana Pengembangan (DP) / biaya masuk hingga bebas DP, penyaluran kuota KIP Kuliah Merdeka PTS, serta beasiswa kader/tahfidz.',
+    summary: 'Kesempatan keringanan biaya masuk dan kuliah bagi lulusan MA/pesantren serta keluarga besar Paguyuban Pasundan di UNPAS Bandung.',
+    requirements: [
+      'Calon mahasiswa baru lulusan SMA/SMK/MA mendaftar melalui jalur PMDK atau Prestasi UNPAS.',
+      'Memiliki nilai rapor rata-rata >= 75–80 atau sertifikat hafalan Al-Qur’an / prestasi keagamaan / seni Sunda & olahraga.',
+      'Jalur KIP Kuliah UNPAS: wajib memiliki akun KIP Kuliah Kemdiktisaintek yang aktif.',
+      'Melampirkan surat rekomendasi sekolah/pesantren asal.'
+    ],
+    stages: [
+      'Registrasi calon mahasiswa di pmb.unpas.ac.id dan pilih jalur PMDK/Beasiswa.',
+      'Unggah dokumen rapor/sertifikat prestasi/KIP Kuliah sesuai syarat jalur.',
+      'Verifikasi berkas dan wawancara seleksi oleh Panitia PMB UNPAS.',
+      'Pengumuman SK kelulusan dan potongan biaya kuliah.'
+    ],
+    officialUrl: 'https://pmb.unpas.ac.id',
+    deadlineNote: 'Gelombang PMDK I–III (Januari – Agustus)'
+  },
+  {
+    id: 'internal-umb',
+    title: 'Beasiswa KIP, Tahfidz & Kader UM Bandung',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Universitas Muhammadiyah Bandung (UMB)',
+    logo: 'assets/logos/logo_umb.png',
+    level: 'S1 Jalur Hafidz, Prestasi & KIP Kuliah',
+    campuses: 'UM Bandung (Soekarno-Hatta, Cibiru)',
+    benefit: 'Potongan biaya kuliah/SPP 25%–100% untuk Hafidz 3–30 Juz, Beasiswa Kader Persyarikatan & penyaluran penuh KIP Kuliah Merdeka.',
+    summary: 'Kampus Islam modern di Bandung Timur dengan alokasi besar untuk jalur tahfidz Al-Qur’an, aktivis pesantren/IPM, serta KIP Kuliah.',
+    requirements: [
+      'Calon mahasiswa baru UM Bandung yang memiliki sertifikat hafalan Al-Qur’an minimal 3 juz (jalur Tahfidz) atau surat tugas kader.',
+      'Jalur Prestasi: piagam kejuaraan tingkat kabupaten/provinsi/nasional bidang akademik maupun non-akademik.',
+      'Jalur KIP Kuliah: terdaftar DTKS/SKTM dan lulus seleksi administrasi tim KIP UM Bandung.',
+      'Bersedia mengikuti program pembinaan Al-Islam dan Kemuhammadiyahan.'
+    ],
+    stages: [
+      'Pendaftaran online melalui portal pmb.umbandung.ac.id.',
+      'Memilih jalur Beasiswa (Tahfidz / Prestasi / Kader / KIP) dan mengunggah bukti pendukung.',
+      'Mengikuti tes wawancara & ujian sambung ayat (untuk pendaftar Beasiswa Tahfidz).',
+      'Pengumuman kelulusan beserta besaran beasiswa.'
+    ],
+    officialUrl: 'https://pmb.umbandung.ac.id',
+    deadlineNote: 'Gelombang 1–3 (Januari – September)'
+  },
+  {
+    id: 'internal-unpar',
+    title: 'Beasiswa Mahasiswa Aktif & Prestasi UNPAR',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Universitas Katolik Parahyangan (UNPAR)',
+    logo: 'assets/logos/logo_unpar.png',
+    level: 'D3 / S1 (Maba & Mahasiswa Aktif)',
+    campuses: 'UNPAR Bandung (Ciumbuleuit)',
+    benefit: 'Potongan biaya SKS/SPP per semester (50%–100%) melalui Beasiswa Prestasi Akademik/Olahraga/Seni serta Beasiswa Bantuan Sosial UNPAR.',
+    summary: 'Skema beasiswa internal UNPAR berbasis prestasi akademik (USM/IPK tinggi), bakat olahraga/seni nasional, dan bantuan ekonomi.',
+    requirements: [
+      'Mahasiswa baru yang diterima lewat jalur PMDK/USM Berprestasi atau mahasiswa aktif UNPAR.',
+      'IPK minimal 3,25 (skema prestasi) atau 2,75 dengan kondisi keterbatasan finansial keluarga (skema bantuan sosial).',
+      'Melampirkan data ekonomi keluarga atau sertifikat kejuaraan tingkat nasional.',
+      'Mengajukan permohonan sesuai periode registrasi Direktorat Kemahasiswaan UNPAR.'
+    ],
+    stages: [
+      'Pendaftaran daring melalui laman resmi kemahasiswaan.unpar.ac.id atau portal PMB UNPAR.',
+      'Mengunggah transkrip/nilai rapor, surat permohonan, dan berkas ekonomi/prestasi.',
+      'Seleksi berkas & wawancara verifikasi oleh Direktorat Kemahasiswaan & Alumni UNPAR.',
+      'Penerbitan SK Penerima Beasiswa untuk pemotongan tagihan semester.'
+    ],
+    officialUrl: 'https://kemahasiswaan.unpar.ac.id',
+    deadlineNote: 'Dibuka tiap semester (cek kalender kemahasiswaan UNPAR)'
+  },
+  {
+    id: 'internal-widyatama',
+    title: 'Beasiswa Prestasi, Rapor & KIP Universitas Widyatama',
+    category: 'kampus',
+    categoryLabel: 'Internal Kampus Bandung',
+    provider: 'Universitas Widyatama (UTama)',
+    logo: 'assets/logos/logo_widyatama.png',
+    level: 'D3 / D4 / S1',
+    campuses: 'Universitas Widyatama (Cikutra, Kota Bandung)',
+    benefit: 'Bebas/potongan Dana Pembangunan & SPP hingga 100% lewat jalur Beasiswa Rapor, Hafidz/Keagamaan, Prestasi Non-Akademik & KIP Kuliah.',
+    summary: 'Program beasiswa internal Universitas Widyatama bagi siswa berprestasi rapor, juara lomba/olahraga/seni, dan penerima KIP Kuliah PTS.',
+    requirements: [
+      'Lulusan SMA/SMK/MA yang mendaftar di Universitas Widyatama jalur Beasiswa/PMDK.',
+      'Rata-rata nilai rapor >= 80–85 atau memiliki piagam juara kompetisi tingkat kota/provinsi/nasional.',
+      'Untuk jalur KIP Kuliah: memiliki kartu registrasi KIP Kuliah aktif & lolos seleksi ekonomi kampus.',
+      'Lulus seleksi berkas dan wawancara tim PMB Widyatama.'
+    ],
+    stages: [
+      'Daftar online melalui pmb.widyatama.ac.id dan pilih kategori jalur beasiswa.',
+      'Unggah nilai rapor SMA/MA, sertifikat prestasi, dan berkas KIP Kuliah (jika relevan).',
+      'Mengikuti seleksi wawancara & verifikasi kelayakan tim PMB Widyatama.',
+      'Mendapatkan SK penerima potongan biaya masuk/kuliah.'
+    ],
+    officialUrl: 'https://pmb.widyatama.ac.id',
+    deadlineNote: 'Januari – Agustus setiap tahun'
+  }
+];
+
+function initBeasiswaCatalog() {
+  const grid = document.getElementById('beasiswa-cards-grid');
+  if (!grid) return;
+
+  const filterBtns = document.querySelectorAll('.beasiswa-filter-btn');
+  const searchInput = document.getElementById('beasiswa-search');
+  const countEl = document.getElementById('beasiswa-visible-count');
+  const emptyState = document.getElementById('no-beasiswa-found');
+  const toggleWrap = document.getElementById('beasiswa-toggle-wrap');
+  const toggleBtn = document.getElementById('btn-toggle-all-beasiswa');
+
+  const modal = document.getElementById('scholarship-modal');
+  const modalBody = document.getElementById('scholarship-modal-body');
+  const modalClose = document.getElementById('scholarship-modal-close');
+  const modalBackdrop = modal?.querySelector('.scholarship-modal-backdrop');
+
+  let activeFilter = 'all';
+  let searchQuery = '';
+  let showAll = false;
+
+  const badgeColors = {
+    pusat: 'bg-blue-50 text-blue-700 border-blue-200',
+    daerah: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    lembaga: 'bg-amber-50 text-amber-800 border-amber-200',
+    kampus: 'bg-indigo-50 text-indigo-700 border-indigo-200'
+  };
+
+  function getInitialLimit() {
+    return window.innerWidth < 768 ? 6 : 9;
+  }
+
+  function escapeHtml(text) {
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function openScholarshipModal(id) {
+    const item = SCHOLARSHIPS_DATA.find(s => s.id === id);
+    if (!item || !modal || !modalBody) return;
+
+    const badgeClass = badgeColors[item.category] || 'bg-slate-100 text-slate-700 border-slate-200';
+    const waText = encodeURIComponent(
+      `Assalamu'alaikum Kang Muhamad Kahfi, saya ingin menanyakan informasi lebih lanjut mengenai ${item.title}.`
+    );
+
+    modalBody.innerHTML = `
+      <div class="flex items-start gap-4 pr-8">
+        <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 p-2 flex items-center justify-center shrink-0">
+          <img src="${item.logo}" alt="Logo ${escapeHtml(item.title)}" class="w-full h-full object-contain" />
+        </div>
+        <div class="min-w-0">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${badgeClass}">
+            ${escapeHtml(item.categoryLabel)}
+          </span>
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900 mt-1.5 leading-snug">
+            ${escapeHtml(item.title)}
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5 font-medium">
+            ${escapeHtml(item.provider)} &middot; Jenjang ${escapeHtml(item.level)}
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Cakupan Kampus</div>
+          <p class="text-slate-800 font-medium leading-relaxed">${escapeHtml(item.campuses)}</p>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-amber-800 mb-1">Periode Pendaftaran</div>
+          <p class="text-slate-800 font-medium leading-relaxed">${escapeHtml(item.deadlineNote)}</p>
+        </div>
+      </div>
+
+      <div class="mt-4 p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
+        <div class="text-xs font-bold text-[#0f2e59] mb-1">Informasi &amp; Manfaat Beasiswa</div>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${escapeHtml(item.benefit)}</p>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">${escapeHtml(item.summary)}</p>
+      </div>
+
+      <div class="mt-5">
+        <h4 class="text-xs sm:text-sm font-bold text-slate-900 mb-2.5 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-[#0f2e59] text-white text-[10px] inline-flex items-center justify-center">✓</span>
+          Persyaratan Utama
+        </h4>
+        <ul class="space-y-2 text-xs text-slate-700">
+          ${item.requirements
+            .map(
+              req => `
+            <li class="flex items-start gap-2.5 bg-slate-50 px-3.5 py-2.5 rounded-xl border border-slate-100">
+              <span class="text-emerald-600 font-bold shrink-0">&bull;</span>
+              <span class="leading-relaxed">${escapeHtml(req)}</span>
+            </li>`
+            )
+            .join('')}
+        </ul>
+      </div>
+
+      <div class="mt-5">
+        <h4 class="text-xs sm:text-sm font-bold text-slate-900 mb-2.5 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-amber-500 text-white text-[10px] inline-flex items-center justify-center">1</span>
+          Tahapan Seleksi
+        </h4>
+        <ol class="space-y-2 text-xs text-slate-700">
+          ${item.stages
+            .map(
+              (stage, idx) => `
+            <li class="flex items-start gap-3 bg-slate-50 px-3.5 py-2.5 rounded-xl border border-slate-100">
+              <span class="w-5 h-5 rounded-full bg-[#0f2e59]/10 text-[#0f2e59] font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">${
+                idx + 1
+              }</span>
+              <span class="leading-relaxed">${escapeHtml(stage)}</span>
+            </li>`
+            )
+            .join('')}
+        </ol>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-slate-200 flex flex-col sm:flex-row gap-3">
+        <a href="${item.officialUrl}" target="_blank" rel="noopener noreferrer"
+          class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0f2e59] hover:bg-[#173f78] text-white text-xs font-bold transition-colors shadow-sm">
+          <span>Buka Link Resmi Beasiswa</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+        <a href="https://wa.me/6289630536815?text=${waText}" target="_blank" rel="noopener noreferrer"
+          class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors shadow-sm">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          <span>Tanya Muhamad Kahfi (0896-3053-6815)</span>
+        </a>
+      </div>
+    `;
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  function closeScholarshipModal() {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  function renderCards() {
+    const q = searchQuery.trim().toLowerCase();
+    const filtered = SCHOLARSHIPS_DATA.filter(item => {
+      const matchCat = activeFilter === 'all' || item.category === activeFilter;
+      if (!matchCat) return false;
+      if (!q) return true;
+      const haystack = [
+        item.title,
+        item.provider,
+        item.categoryLabel,
+        item.level,
+        item.campuses,
+        item.benefit,
+        item.summary,
+        ...item.requirements
+      ]
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(q);
+    });
+
+    const isFilteredOrExpanded = showAll || activeFilter !== 'all' || q.length > 0;
+    const limit = getInitialLimit();
+    const itemsToShow = isFilteredOrExpanded ? filtered : filtered.slice(0, limit);
+
+    if (countEl) {
+      countEl.textContent = String(filtered.length);
+    }
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      emptyState?.classList.remove('hidden');
+      toggleWrap?.classList.add('hidden');
+      if (window.lucide) window.lucide.createIcons();
+      return;
+    }
+
+    emptyState?.classList.add('hidden');
+
+    grid.innerHTML = itemsToShow
+      .map(item => {
+        const badgeClass = badgeColors[item.category] || 'bg-slate-100 text-slate-700 border-slate-200';
+        return `
+        <article class="beasiswa-card group bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#0f2e59]/30 transition-all">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 p-1.5 flex items-center justify-center shrink-0">
+                <img src="${item.logo}" alt="Logo ${escapeHtml(item.title)}" class="w-full h-full object-contain" />
+              </div>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${badgeClass}">
+                ${escapeHtml(item.categoryLabel)}
+              </span>
+            </div>
+
+            <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug group-hover:text-[#0f2e59] transition-colors">
+              ${escapeHtml(item.title)}
+            </h4>
+            <p class="text-[11px] font-semibold text-slate-500 mt-1">
+              ${escapeHtml(item.provider)} &middot; ${escapeHtml(item.level)}
+            </p>
+
+            <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
+              ${escapeHtml(item.benefit)}
+            </p>
+
+            <div class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-600">
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-slate-800 shrink-0">Syarat:</span>
+                <span class="line-clamp-1">${escapeHtml(item.requirements[0])}</span>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-slate-800 shrink-0">Tahapan:</span>
+                <span>${item.stages.length} tahap (${escapeHtml(item.deadlineNote)})</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2">
+            <button type="button" data-open-beasiswa="${item.id}"
+              class="flex-1 px-3 py-2 rounded-xl bg-[#0f2e59] hover:bg-[#173f78] text-white text-xs font-bold transition-colors text-center">
+              Detail, Syarat &amp; Tahapan
+            </button>
+            <a href="${item.officialUrl}" target="_blank" rel="noopener noreferrer"
+              title="Buka Portal Resmi ${escapeHtml(item.title)}"
+              class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition-colors shrink-0">
+              <span>Resmi</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>`;
+      })
+      .join('');
+
+    if (toggleWrap && toggleBtn) {
+      if (activeFilter === 'all' && q.length === 0 && filtered.length > limit) {
+        toggleWrap.classList.remove('hidden');
+        toggleBtn.innerHTML = showAll
+          ? '<span>Tampilkan Lebih Sedikit</span><i data-lucide="chevron-up" class="w-4 h-4"></i>'
+          : `<span>Lihat Semua ${filtered.length} Beasiswa</span><i data-lucide="chevron-down" class="w-4 h-4"></i>`;
+      } else {
+        toggleWrap.classList.add('hidden');
+      }
+    }
+
+    grid.querySelectorAll('[data-open-beasiswa]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openScholarshipModal(btn.getAttribute('data-open-beasiswa'));
+      });
+    });
+
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.getAttribute('data-beasiswa-filter') || 'all';
+      showAll = false;
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-[#0f2e59]', 'text-white', 'shadow-sm');
+        b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-100');
+      });
+      btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-100');
+      btn.classList.add('bg-[#0f2e59]', 'text-white', 'shadow-sm');
+      renderCards();
+    });
+  });
+
+  searchInput?.addEventListener('input', e => {
+    searchQuery = e.target.value || '';
+    showAll = false;
+    renderCards();
+  });
+
+  toggleBtn?.addEventListener('click', () => {
+    showAll = !showAll;
+    renderCards();
+  });
+
+  modalClose?.addEventListener('click', closeScholarshipModal);
+  modalBackdrop?.addEventListener('click', closeScholarshipModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeScholarshipModal();
+    }
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!showAll && activeFilter === 'all' && !searchQuery) {
+        renderCards();
+      }
+    }, 150);
+  });
+
+  renderCards();
+}
+

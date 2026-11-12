@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g_djarum" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g_djarum)"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="11.5" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+  <circle cx="52" cy="12" r="4" fill="#fecaca" fill-opacity="0.9"/>
+  <text x="32" y="33" text-anchor="middle" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="800" font-size="18" fill="#ffffff" letter-spacing="-0.4">DJR</text>
+  <text x="32" y="47" text-anchor="middle" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="700" font-size="8.5" fill="#fecaca" letter-spacing="0.8">PLUS</text>
+</svg>
