@@ -1174,18 +1174,17 @@ a.rounded-lg[class*="bg-white"][class*="h-12"], .campus-filter-btn.tab-btn:not(.
    ARTICLE MODAL — Bottom sheet mobile, center panel desktop
 ================================================================= */
 
-/* Slide up from bottom on mobile */
 @keyframes articleModalSlideUp {
-  from { transform: translateY(60px); opacity: 0; }
+  from { transform: translateY(48px); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
 @keyframes articleModalFadeIn {
-  from { transform: scale(0.97) translateY(8px); opacity: 0; }
+  from { transform: scale(0.96) translateY(6px); opacity: 0; }
   to   { transform: scale(1)    translateY(0);   opacity: 1; }
 }
 
 #article-modal:not(.hidden) > div:last-child {
-  animation: articleModalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: articleModalSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @media (min-width: 640px) {
   #article-modal:not(.hidden) > div:last-child {
@@ -1193,13 +1192,31 @@ a.rounded-lg[class*="bg-white"][class*="h-12"], .campus-filter-btn.tab-btn:not(.
   }
 }
 
-/* Smooth overscroll on modal body */
 #article-modal-body {
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
-/* Close button sits over the hero image */
-#article-modal-close {
-  top: 12px;
-  right: 12px;
+/* Hero image inside modal — always cover, never squished */
+#article-modal-body .warta-modal-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0a1628;
+  border-radius: 24px 24px 0 0;
+  flex-shrink: 0;
+}
+#article-modal-body .warta-modal-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+#article-modal-body .warta-modal-hero .hero-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(4,10,22,0.70) 0%, rgba(4,10,22,0.2) 50%, transparent 100%);
 }

@@ -364,6 +364,32 @@ function initPerspectiveTunnelHero() {
 
   // Curated pool of ONLY large-group ("foto bersama-sama") LANDSCAPE photos (shuffled randomly on each visit)
   const curatedPool = [
+    // ── Foto baru (gallery_new) di urutan pertama ──
+    { src: "assets/gallery/gallery_new_01.jpg", ratio: "4 / 3", title: "Kebersamaan IKAPMI Bandung", desc: "Momen hangat bersama keluarga besar IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_new_02.jpg", ratio: "4 / 3", title: "Silaturahmi Santri Perantau", desc: "Santri PMUQI saling berbagi cerita dan semangat di perantauan Bandung." },
+    { src: "assets/gallery/gallery_new_03.jpg", ratio: "4 / 3", title: "Agenda IKAPMI Bandung", desc: "Kegiatan rutin mempererat ukhuwah anggota IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_new_04.jpg", ratio: "4 / 3", title: "Foto Bersama Lintas Angkatan", desc: "Potret keakraban alumni PMUQI lintas generasi di Bandung Raya." },
+    { src: "assets/gallery/gallery_new_05.jpg", ratio: "4 / 3", title: "Konsolidasi Anggota IKAPMI", desc: "Pertemuan penuh semangat pengurus dan anggota IKAPMI Bandung." },
+    { src: "assets/gallery/gallery_new_06.jpg", ratio: "4 / 3", title: "Keakraban Santri di Bandung", desc: "Suasana hangat pertemuan keluarga santri rantau di Kota Bandung." },
+    { src: "assets/gallery/gallery_new_07.jpg", ratio: "4 / 3", title: "Agenda Bersama IKAPMI", desc: "Momen berharga bersama seluruh kader IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_new_08.jpg", ratio: "4 / 3", title: "Ukhuwah IKAPMI Bandung", desc: "Ikatan persaudaraan yang solid di antara anggota IKAPMI Bandung." },
+    { src: "assets/gallery/gallery_new_09.jpg", ratio: "4 / 3", title: "Silaturahmi Rutinan", desc: "Agenda silaturahmi rutin mempererat hubungan sesama alumni." },
+    { src: "assets/gallery/gallery_new_10.jpg", ratio: "4 / 3", title: "Kebersamaan di Bandung Raya", desc: "Santri perantau bersatu padu dalam bingkai Sadulur Ngahiji." },
+    { src: "assets/gallery/gallery_new_11.jpg", ratio: "4 / 3", title: "Rapat & Konsolidasi Kabinet", desc: "Semangat berorganisasi pengurus IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_new_12.jpg", ratio: "4 / 3", title: "Agenda Keagamaan IKAPMI", desc: "Kegiatan ruhani bersama mempererat ikatan spiritual dan kekeluargaan." },
+    { src: "assets/gallery/gallery_new_13.jpg", ratio: "4 / 3", title: "Foto Bersama IKAPMI Bandung", desc: "Kenangan indah bersama seluruh keluarga besar IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_new_14.jpg", ratio: "4 / 3", title: "Momen Kebersamaan", desc: "Semangat persatuan alumni PMUQI di Bandung yang terus terjaga." },
+    { src: "assets/gallery/gallery_new_15.jpg", ratio: "4 / 3", title: "IKAPMI Bandung Bersatu", desc: "Kekuatan ukhuwah yang menjadi fondasi IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_new_16.jpg", ratio: "4 / 3", title: "Kegiatan Sosial IKAPMI", desc: "Aksi nyata IKAPMI Bandung untuk masyarakat dan sesama alumni." },
+    { src: "assets/gallery/gallery_new_17.jpg", ratio: "4 / 3", title: "Soliditas Pengurus IKAPMI", desc: "Kompaknya pengurus IKAPMI Bandung dalam mengemban amanah organisasi." },
+    { src: "assets/gallery/gallery_new_18.jpg", ratio: "4 / 3", title: "Forum Santri Perantau Bandung", desc: "Ruang diskusi dan berbagi pengalaman santri PMUQI di Bandung Raya." },
+    { src: "assets/gallery/gallery_new_19.jpg", ratio: "4 / 3", title: "Gathering IKAPMI Bandung", desc: "Suasana ceria dan hangat dalam agenda gathering keluarga IKAPMI." },
+    { src: "assets/gallery/gallery_new_20.jpg", ratio: "4 / 3", title: "Kolaborasi Lintas Kampus", desc: "Sinergi santri PMUQI dari berbagai universitas di Bandung Raya." },
+    { src: "assets/gallery/gallery_new_21.jpg", ratio: "4 / 3", title: "Semangat IKAPMI Bandung", desc: "Semangat berkarya dan berdedikasi pengurus IKAPMI Regional Bandung." },
+    { src: "assets/gallery/gallery_new_22.jpg", ratio: "4 / 3", title: "Ukhuwah Santri Rantau", desc: "Jalinan persaudaraan yang kuat antaranggota IKAPMI di Bandung." },
+    { src: "assets/gallery/gallery_new_23.jpg", ratio: "4 / 3", title: "Kenangan Bersama IKAPMI", desc: "Momen istimewa bersama keluarga besar santri PMUQI di Bandung." },
+    { src: "assets/gallery/gallery_new_24.jpg", ratio: "4 / 3", title: "IKAPMI Bandung Bergerak", desc: "Langkah nyata IKAPMI Bandung dalam mewujudkan Sadulur Ngahiji." },
+    // ── Foto lama yang masih ada ──
     { src: "assets/gallery/gallery_36.jpg", ratio: "16 / 9", title: "Kebersamaan di Masjid Al-Jabbar", desc: "Silaturahmi keluarga besar IKAPMI Bandung di pelataran Masjid Raya Al-Jabbar." },
     { src: "assets/gallery/gallery_38.jpg", ratio: "16 / 9", title: "Silaturahmi Akbar Keluarga IKAPMI", desc: "Kebersamaan penuh kehangatan seluruh anggota IKAPMI Regional Bandung." },
     { src: "assets/gallery/gallery_39.jpg", ratio: "4 / 3", title: "Kumpul Akbar Depan Gedung Sate", desc: "Konsolidasi santri perantau Bandung Raya berlatar ikon Kota Bandung." },
@@ -779,45 +805,36 @@ function initArticleModal() {
       const data = articleData[articleId];
 
       if (data && modal && modalContent) {
-        // Semua foto pakai cover, bukan contain — lebih clean
-        const imgPosition = data.imagePosition || 'object-center';
+        const imgPosition = data.imagePosition ? data.imagePosition.replace('object-','') : 'center 30%';
 
         modalContent.innerHTML = `
-          <!-- Hero image full-bleed, rasio 16/9 -->
-          <div class="relative w-full overflow-hidden rounded-t-3xl bg-slate-900" style="aspect-ratio:16/9; max-height:280px;">
-            <img src="${data.image}" alt="${data.title}"
-              class="absolute inset-0 w-full h-full object-cover ${imgPosition} transition-transform duration-700">
-            <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(4,10,22,0.75) 0%, rgba(4,10,22,0.2) 50%, transparent 100%)"></div>
-            <!-- Tag overlay on image -->
-            <div class="absolute bottom-3 left-4">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider text-white border border-white/25"
-                style="background:rgba(15,46,89,0.65);backdrop-filter:blur(8px);">
+          <!-- Hero image: always cover, 16/9, rounded top -->
+          <div class="warta-modal-hero">
+            <img src="${data.image}" alt="${data.title}" style="object-position:${imgPosition}">
+            <div class="hero-grad"></div>
+            <!-- Tag badge on image -->
+            <div class="absolute bottom-3 left-4 z-10">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider text-white border border-white/25"
+                style="background:rgba(15,46,89,0.6);backdrop-filter:blur(8px);">
                 ${data.tag}
               </span>
             </div>
           </div>
 
-          <!-- Content -->
-          <div class="px-5 sm:px-6 pt-5 pb-7">
+          <!-- Article content -->
+          <div style="padding:20px 22px 28px;">
 
-            <!-- Meta row -->
-            <div class="flex items-center gap-2 text-[11px] text-slate-400 font-medium mb-3">
-              <span class="inline-flex items-center gap-1">
-                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                ${data.date}
-              </span>
-              <span class="text-slate-200">·</span>
-              <span>${data.author}</span>
-            </div>
+            <!-- Meta -->
+            <p class="text-[11px] text-slate-400 font-medium mb-2.5">${data.date} &middot; ${data.author}</p>
 
             <!-- Title -->
-            <h2 class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-snug tracking-tight mb-4">${data.title}</h2>
+            <h2 style="font-size:17px;font-weight:800;color:#0f172a;line-height:1.35;letter-spacing:-0.01em;margin-bottom:14px;">${data.title}</h2>
 
             <!-- Divider -->
-            <div class="h-px bg-gradient-to-r from-brand-700/30 via-slate-200 to-transparent mb-4"></div>
+            <div style="height:1px;background:linear-gradient(to right,rgba(15,46,89,0.2),rgba(203,213,225,0.5),transparent);margin-bottom:14px;"></div>
 
-            <!-- Article body -->
-            <div class="text-[13.5px] sm:text-sm text-slate-600 leading-[1.75] space-y-3">
+            <!-- Body text -->
+            <div style="font-size:13.5px;color:#475569;line-height:1.75;">
               ${data.content}
             </div>
 
@@ -825,6 +842,8 @@ function initArticleModal() {
         `;
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+        // Re-init lucide icons inside modal
+        if (window.lucide) window.lucide.createIcons();
         modalContent.scrollTop = 0;
       }
     });
