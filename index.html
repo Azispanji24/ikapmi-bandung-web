@@ -376,7 +376,7 @@
           Struktur Kepengurusan IKAPMI Bandung
         </h2>
         <p class="text-sm sm:text-base text-slate-600 mt-2">
-          Periode 2025–2026.
+          Periode 2025–2026
         </p>
       </div>
 
@@ -396,7 +396,7 @@
       <!-- Section Header -->
       <div class="max-w-3xl mb-8 sm:mb-10">
         <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug">
-          Pusat Panduan Santri Baru ke Bandung
+          Informasi Kampus di Bandung Raya
         </h2>
         <p class="text-sm sm:text-base text-blue-100/80 mt-2">
           Jalur masuk kampus, kost, beasiswa, dan narahubung untuk santri PMUQI yang ingin kuliah di Bandung.
@@ -1342,150 +1342,132 @@
         </div>
       </article>
 
-      <!-- ARTICLE GRID — masonry-style 3 columns -->
+      <!-- ARTICLE GRID — semua overlay style seperti featured -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
         <!-- Article 5: Pengajian Yasin -->
-        <article class="warta-card warta-reveal group flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200/80
-          transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(8,19,38,0.16)] hover:border-slate-300"
-          style="--warta-delay:0ms;">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 shrink-0">
+        <article class="warta-card warta-reveal group cursor-pointer rounded-2xl overflow-hidden relative"
+          style="--warta-delay:0ms; box-shadow:0 8px 32px -10px rgba(8,19,38,0.18);">
+          <button class="read-article-btn absolute inset-0 w-full h-full z-10" data-article-id="5"
+            aria-label="Buka artikel Pengajian Yasin Rutinan"></button>
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-900">
             <img src="assets/warta_pengajian_yasin.jpg" alt="Pengajian Yasin"
-              class="w-full h-full object-cover object-[50%_58%] transition-transform duration-500 group-hover:scale-[1.05]">
-            <span class="absolute top-3 left-3 warta-badge warta-badge-agama">Keagamaan</span>
+              class="w-full h-full object-cover object-[50%_58%] transition-transform duration-700 group-hover:scale-[1.06]">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(4,10,22,0.90) 0%,rgba(4,10,22,0.45) 45%,rgba(4,10,22,0.05) 100%)"></div>
           </div>
-          <div class="flex flex-col flex-1 p-5">
-            <p class="text-[11px] text-slate-400 font-medium mb-2">Program Rutinan</p>
-            <h3 class="text-sm sm:text-[15px] font-bold text-slate-900 leading-snug mb-2 flex-1
-              group-hover:text-brand-800 transition-colors duration-200">
+          <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-[2]">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider text-white/80 border border-white/20 mb-2.5" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(6px)">Program Rutinan · Keagamaan</span>
+            <h3 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug tracking-tight mb-2 group-hover:text-amber-100 transition-colors duration-200">
               Pengajian Yasin Rutinan: Menjaga Tradisi Doa dan Ukhuwah Santri Rantau
             </h3>
-            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
-              Majelis doa, pembacaan Surah Yasin, dan tahlil bersama untuk merawat tradisi ruhani pesantren di perantauan.
-            </p>
-            <button class="read-article-btn warta-read-btn" data-article-id="5">
-              Baca <i data-lucide="arrow-right" class="w-3 h-3 inline-block transition-transform duration-200 group-hover:translate-x-0.5"></i>
-            </button>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/60 group-hover:text-amber-300 transition-colors duration-200">
+              Baca <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
           </div>
         </article>
 
         <!-- Article 6: Futsal -->
-        <article class="warta-card warta-reveal group flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200/80
-          transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(8,19,38,0.16)] hover:border-slate-300"
-          style="--warta-delay:80ms;">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 shrink-0">
+        <article class="warta-card warta-reveal group cursor-pointer rounded-2xl overflow-hidden relative"
+          style="--warta-delay:80ms; box-shadow:0 8px 32px -10px rgba(8,19,38,0.18);">
+          <button class="read-article-btn absolute inset-0 w-full h-full z-10" data-article-id="6"
+            aria-label="Buka artikel Futsal Bersama IKAPMI Bandung"></button>
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-900">
             <img src="assets/warta_futsal.jpg" alt="Futsal IKAPMI Bandung"
-              class="w-full h-full object-cover object-[50%_62%] transition-transform duration-500 group-hover:scale-[1.05]">
-            <span class="absolute top-3 left-3 warta-badge warta-badge-olahraga">Kepemudaan</span>
+              class="w-full h-full object-cover object-[50%_62%] transition-transform duration-700 group-hover:scale-[1.06]">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(4,10,22,0.90) 0%,rgba(4,10,22,0.45) 45%,rgba(4,10,22,0.05) 100%)"></div>
           </div>
-          <div class="flex flex-col flex-1 p-5">
-            <p class="text-[11px] text-slate-400 font-medium mb-2">Olahraga &amp; Ukhuwah</p>
-            <h3 class="text-sm sm:text-[15px] font-bold text-slate-900 leading-snug mb-2 flex-1
-              group-hover:text-brand-800 transition-colors duration-200">
+          <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-[2]">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider text-white/80 border border-white/20 mb-2.5" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(6px)">Olahraga &amp; Ukhuwah · Kepemudaan</span>
+            <h3 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug tracking-tight mb-2 group-hover:text-amber-100 transition-colors duration-200">
               Futsal Bersama IKAPMI Bandung: Ajang Silaturahmi Lintas Kampus dan Angkatan
             </h3>
-            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
-              Mempererat solidaritas, sportivitas, dan kebugaran bersama di sela perkuliahan.
-            </p>
-            <button class="read-article-btn warta-read-btn" data-article-id="6">
-              Baca <i data-lucide="arrow-right" class="w-3 h-3 inline-block transition-transform duration-200 group-hover:translate-x-0.5"></i>
-            </button>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/60 group-hover:text-amber-300 transition-colors duration-200">
+              Baca <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
           </div>
         </article>
 
         <!-- Article 7: Silaturahmi Pimpinan -->
-        <article class="warta-card warta-reveal group flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200/80
-          transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(8,19,38,0.16)] hover:border-slate-300"
-          style="--warta-delay:160ms;">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 shrink-0">
+        <article class="warta-card warta-reveal group cursor-pointer rounded-2xl overflow-hidden relative"
+          style="--warta-delay:160ms; box-shadow:0 8px 32px -10px rgba(8,19,38,0.18);">
+          <button class="read-article-btn absolute inset-0 w-full h-full z-10" data-article-id="7"
+            aria-label="Buka artikel Silaturahmi Pimpinan PMUQI"></button>
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-900">
             <img src="assets/warta_silaturahmi_pimpinan.jpg" alt="Silaturahmi Pimpinan PMUQI"
-              class="w-full h-full object-cover object-[50%_58%] transition-transform duration-500 group-hover:scale-[1.05]">
-            <span class="absolute top-3 left-3 warta-badge warta-badge-silaturahmi">Silaturahmi</span>
+              class="w-full h-full object-cover object-[50%_58%] transition-transform duration-700 group-hover:scale-[1.06]">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(4,10,22,0.90) 0%,rgba(4,10,22,0.45) 45%,rgba(4,10,22,0.05) 100%)"></div>
           </div>
-          <div class="flex flex-col flex-1 p-5">
-            <p class="text-[11px] text-slate-400 font-medium mb-2">Agenda Almamater</p>
-            <h3 class="text-sm sm:text-[15px] font-bold text-slate-900 leading-snug mb-2 flex-1
-              group-hover:text-brand-800 transition-colors duration-200">
+          <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-[2]">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider text-white/80 border border-white/20 mb-2.5" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(6px)">Agenda Almamater · Silaturahmi</span>
+            <h3 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug tracking-tight mb-2 group-hover:text-amber-100 transition-colors duration-200">
               Silaturahmi Pimpinan PMUQI: Mempererat Restu Almamater dan Sinergi Kader
             </h3>
-            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
-              Pertemuan hangat pengurus IKAPMI Bandung bersama Pimpinan PMUQI memperkuat sinergi khidmah alumni.
-            </p>
-            <button class="read-article-btn warta-read-btn" data-article-id="7">
-              Baca <i data-lucide="arrow-right" class="w-3 h-3 inline-block transition-transform duration-200 group-hover:translate-x-0.5"></i>
-            </button>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/60 group-hover:text-amber-300 transition-colors duration-200">
+              Baca <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
           </div>
         </article>
 
         <!-- Article 1: MUREG -->
-        <article class="warta-card warta-reveal group flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200/80
-          transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(8,19,38,0.16)] hover:border-slate-300"
-          style="--warta-delay:240ms;">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 shrink-0">
+        <article class="warta-card warta-reveal group cursor-pointer rounded-2xl overflow-hidden relative"
+          style="--warta-delay:240ms; box-shadow:0 8px 32px -10px rgba(8,19,38,0.18);">
+          <button class="read-article-btn absolute inset-0 w-full h-full z-10" data-article-id="1"
+            aria-label="Buka artikel MUREG 2025"></button>
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-900">
             <img src="assets/mureg_presidium.jpg" alt="MUREG 2025"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]">
-            <span class="absolute top-3 left-3 warta-badge warta-badge-org">Organisasi</span>
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(4,10,22,0.90) 0%,rgba(4,10,22,0.45) 45%,rgba(4,10,22,0.05) 100%)"></div>
           </div>
-          <div class="flex flex-col flex-1 p-5">
-            <p class="text-[11px] text-slate-400 font-medium mb-2">14 Januari 2025</p>
-            <h3 class="text-sm sm:text-[15px] font-bold text-slate-900 leading-snug mb-2 flex-1
-              group-hover:text-brand-800 transition-colors duration-200">
+          <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-[2]">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider text-white/80 border border-white/20 mb-2.5" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(6px)">14 Januari 2025 · Organisasi</span>
+            <h3 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug tracking-tight mb-2 group-hover:text-amber-100 transition-colors duration-200">
               MUREG 2025: Suksesi Kepemimpinan dan Penetapan Arah Baru IKAPMI Bandung
             </h3>
-            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
-              Forum musyawarah regional tertinggi menetapkan nakhoda baru serta menyepakati penguatan basis database digital.
-            </p>
-            <button class="read-article-btn warta-read-btn" data-article-id="1">
-              Baca <i data-lucide="arrow-right" class="w-3 h-3 inline-block transition-transform duration-200 group-hover:translate-x-0.5"></i>
-            </button>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/60 group-hover:text-amber-300 transition-colors duration-200">
+              Baca <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
           </div>
         </article>
 
         <!-- Article 2: RAKER -->
-        <article class="warta-card warta-reveal group flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200/80
-          transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(8,19,38,0.16)] hover:border-slate-300"
-          style="--warta-delay:320ms;">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 shrink-0">
+        <article class="warta-card warta-reveal group cursor-pointer rounded-2xl overflow-hidden relative"
+          style="--warta-delay:320ms; box-shadow:0 8px 32px -10px rgba(8,19,38,0.18);">
+          <button class="read-article-btn absolute inset-0 w-full h-full z-10" data-article-id="2"
+            aria-label="Buka artikel RAKER 2025"></button>
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-900">
             <img src="assets/raker_plenary.jpg" alt="RAKER 2025"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]">
-            <span class="absolute top-3 left-3 warta-badge warta-badge-progker">Program Kerja</span>
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(4,10,22,0.90) 0%,rgba(4,10,22,0.45) 45%,rgba(4,10,22,0.05) 100%)"></div>
           </div>
-          <div class="flex flex-col flex-1 p-5">
-            <p class="text-[11px] text-slate-400 font-medium mb-2">28 Januari 2025</p>
-            <h3 class="text-sm sm:text-[15px] font-bold text-slate-900 leading-snug mb-2 flex-1
-              group-hover:text-brand-800 transition-colors duration-200">
+          <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-[2]">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider text-white/80 border border-white/20 mb-2.5" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(6px)">28 Januari 2025 · Program Kerja</span>
+            <h3 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug tracking-tight mb-2 group-hover:text-amber-100 transition-colors duration-200">
               RAKER 2025: Rumuskan 18 Program Kerja Prioritas untuk Mahasiswa Alumni
             </h3>
-            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
-              Bedah komisi kerja menghasilkan 18 rencana aksi dari beasiswa, pengajian berkala, hingga inkubasi wirausaha.
-            </p>
-            <button class="read-article-btn warta-read-btn" data-article-id="2">
-              Baca <i data-lucide="arrow-right" class="w-3 h-3 inline-block transition-transform duration-200 group-hover:translate-x-0.5"></i>
-            </button>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/60 group-hover:text-amber-300 transition-colors duration-200">
+              Baca <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
           </div>
         </article>
 
         <!-- Article 3: Campus Expo -->
-        <article class="warta-card warta-reveal group flex flex-col rounded-2xl overflow-hidden bg-white border border-slate-200/80
-          transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_-12px_rgba(8,19,38,0.16)] hover:border-slate-300"
-          style="--warta-delay:400ms;">
-          <div class="relative overflow-hidden aspect-[16/10] bg-slate-100 shrink-0">
-            <img src="assets/gallery/gallery_34.jpg" alt="Campus Expo PMUQI"
-              class="w-full h-full object-cover object-[50%_75%] transition-transform duration-500 group-hover:scale-[1.05]">
-            <span class="absolute top-3 left-3 warta-badge warta-badge-pengabdian">Pengabdian</span>
+        <article class="warta-card warta-reveal group cursor-pointer rounded-2xl overflow-hidden relative"
+          style="--warta-delay:400ms; box-shadow:0 8px 32px -10px rgba(8,19,38,0.18);">
+          <button class="read-article-btn absolute inset-0 w-full h-full z-10" data-article-id="3"
+            aria-label="Buka artikel Campus Expo IKAPMI Bandung"></button>
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-900">
+            <img src="assets/gallery/gallery_new_01.jpg" alt="Campus Expo PMUQI"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(4,10,22,0.90) 0%,rgba(4,10,22,0.45) 45%,rgba(4,10,22,0.05) 100%)"></div>
           </div>
-          <div class="flex flex-col flex-1 p-5">
-            <p class="text-[11px] text-slate-400 font-medium mb-2">04 Februari 2025</p>
-            <h3 class="text-sm sm:text-[15px] font-bold text-slate-900 leading-snug mb-2 flex-1
-              group-hover:text-brand-800 transition-colors duration-200">
+          <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-[2]">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase tracking-wider text-white/80 border border-white/20 mb-2.5" style="background:rgba(255,255,255,0.1);backdrop-filter:blur(6px)">04 Februari 2025 · Pengabdian</span>
+            <h3 class="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug tracking-tight mb-2 group-hover:text-amber-100 transition-colors duration-200">
               Delegasi Campus Expo: IKAPMI Bandung Sambangi Santri PMUQI Bogor
             </h3>
-            <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
-              Delegasi IKAPMI membagikan tips menembus kampus impian di Bandung kepada santri kelas akhir MA Ummul Quro.
-            </p>
-            <button class="read-article-btn warta-read-btn" data-article-id="3">
-              Baca <i data-lucide="arrow-right" class="w-3 h-3 inline-block transition-transform duration-200 group-hover:translate-x-0.5"></i>
-            </button>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white/60 group-hover:text-amber-300 transition-colors duration-200">
+              Baca <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </span>
           </div>
         </article>
 
@@ -1676,7 +1658,7 @@
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
               </svg>
             </a>
-            <a href="mailto:ikapmi.regionalbandung@gmail.com" aria-label="Email IKAPMI Bandung"
+            <a href="mailto:ikapmi.bandung@gmail.com" aria-label="Email IKAPMI Bandung"
               class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-brand-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
               <i data-lucide="mail" class="w-4 h-4"></i>
             </a>
@@ -1701,11 +1683,11 @@
           <ul class="space-y-2">
             <li><a href="https://pmuqi.com" target="_blank" rel="noopener noreferrer"
                 class="hover:text-blue-400 transition-colors">Pesantren Modern Ummul Quro Al-Islami</a></li>
-            <li><a href="https://pmuqi.com" target="_blank" rel="noopener noreferrer"
-                class="hover:text-blue-400 transition-colors">Institut Ummul Quro Al-Islami (IUQI) Bogor</a></li>
+            <li><a href="https://www.instagram.com/pmuqi" target="_blank" rel="noopener noreferrer"
+                class="hover:text-blue-400 transition-colors">Instagram PMUQI</a></li>
             <li><a href="database.html" class="hover:text-blue-400 transition-colors">Registrasi Database Alumni</a>
             </li>
-            <li><a href="#kontak" class="hover:text-blue-400 transition-colors">Kontak Sekretariat Bandung</a></li>
+            <li><a href="https://www.instagram.com/ikapmi.bandung" class="hover:text-blue-400 transition-colors">Kontak IKAPMI Regional Bandung</a></li>
           </ul>
         </div>
 
@@ -1713,8 +1695,7 @@
 
       <!-- Copyright Notice -->
       <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
-        <p>© 2025–2026 IKAPMI Regional Bandung. Seluruh hak cipta dilindungi.</p>
-        <p>Dirancang & dikembangkan dengan integritas untuk seluruh santri perantau di Jawa Barat.</p>
+        <p>© 2026 IKAPMI Regional Bandung.</p>
       </div>
 
     </div>
@@ -1746,23 +1727,23 @@
 
   <!-- Article Reader Modal -->
   <div id="article-modal"
-    class="modal-overlay hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 bg-black/60 backdrop-blur-sm">
+    class="modal-overlay hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-5 bg-black/55 backdrop-blur-[3px]">
     <div class="article-modal-backdrop absolute inset-0"></div>
     <div
-      class="relative z-10 w-full sm:max-w-2xl bg-white sm:rounded-3xl rounded-t-3xl shadow-2xl border border-slate-200/80 animate-fadeIn flex flex-col"
-      style="max-height: 92svh; max-height: 92vh;">
-      <!-- Close button -->
-      <button id="article-modal-close"
-        class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white flex items-center justify-center transition-colors backdrop-blur-sm">
-        <i data-lucide="x" class="w-4 h-4"></i>
-      </button>
-      <!-- Drag handle (mobile) -->
-      <div class="sm:hidden flex justify-center pt-3 pb-1 shrink-0">
-        <div class="w-10 h-1 rounded-full bg-slate-300"></div>
+      class="relative z-10 w-full sm:max-w-xl bg-white sm:rounded-3xl rounded-t-3xl shadow-[0_32px_80px_-16px_rgba(4,10,22,0.45)] border border-slate-200/60 flex flex-col"
+      style="max-height:88svh; max-height:88vh;">
+      <!-- Drag handle on mobile -->
+      <div class="sm:hidden flex justify-center pt-2.5 shrink-0">
+        <div class="w-9 h-[3px] rounded-full bg-slate-300/80"></div>
       </div>
-      <!-- Scrollable body -->
-      <div id="article-modal-body" class="overflow-y-auto overscroll-contain flex-1 min-h-0">
-        <!-- Injected via JavaScript -->
+      <!-- Close button — floats over hero image -->
+      <button id="article-modal-close" aria-label="Tutup artikel"
+        class="absolute top-3 right-3 z-30 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-150
+          bg-black/30 hover:bg-black/50 text-white backdrop-blur-sm border border-white/20">
+        <i data-lucide="x" class="w-3.5 h-3.5"></i>
+      </button>
+      <!-- Scrollable body — hero image + content inside -->
+      <div id="article-modal-body" class="overflow-y-auto overscroll-contain flex-1 min-h-0 rounded-t-3xl sm:rounded-3xl">
       </div>
     </div>
   </div>
