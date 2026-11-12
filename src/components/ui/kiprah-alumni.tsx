@@ -33,12 +33,12 @@ export function KiprahAlumniSection() {
   return (
     <section
       id="kiprah"
-      className="scroll-mt-20 sm:scroll-mt-24 relative w-full overflow-hidden bg-[#081326] py-16 md:py-24 text-white border-b border-blue-950/80"
+      className="scroll-mt-20 sm:scroll-mt-24 relative w-full overflow-hidden py-16 sm:py-24 text-white border-b border-blue-950/80"
     >
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mx-auto mb-14 sm:mb-16 flex max-w-5xl flex-col items-center px-6 text-center lg:px-0">
-          <h2 className="mb-4 font-bold text-3xl text-white tracking-tight sm:text-5xl">
+        <div className="mx-auto mb-10 sm:mb-12 flex max-w-5xl flex-col items-center px-6 text-center lg:px-0">
+          <h2 className="mb-4 font-extrabold text-2xl text-white tracking-tight leading-snug sm:text-4xl">
             Kiprah Alumni
           </h2>
           <p className="max-w-2xl text-slate-300 text-sm sm:text-base leading-relaxed">
