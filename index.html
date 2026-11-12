@@ -981,6 +981,17 @@
 
       </div>
 
+      <!-- Show More / Less Toggle Button (Mobile Only: max 3 cards initially) -->
+      <div id="campus-mobile-toggle-wrap" class="mt-7 flex flex-col items-center md:hidden">
+        <button id="btn-toggle-all-campus" type="button" aria-expanded="false"
+          class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50/70 hover:border-brand-600/40 text-brand-900 font-bold text-xs sm:text-sm shadow-xs hover:shadow-md transition-all cursor-pointer group">
+          <span>Selengkapnya</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-100/80 text-brand-800">+3 Kampus</span>
+          <i data-lucide="chevron-down"
+            class="w-4 h-4 text-brand-700 group-hover:translate-y-0.5 transition-transform"></i>
+        </button>
+      </div>
+
     </div>
   </section>
 
@@ -2798,7 +2809,7 @@
   </div>
 
   <!-- Application Logic -->
-  <script src="js/app.js?v=6.9"></script>
+  <script src="js/app.js?v=7.0"></script>
   <script>
     // Initialize Lucide Icons after DOM load
     lucide.createIcons();
@@ -2809,109 +2820,6 @@
   <script src="js/testimonials-wall.bundle.js?v=20261112"></script>
   <script src="js/kiprah-alumni.bundle.js?v=20261112_3"></script>
   <script src="js/expand-map.bundle.js?v=20261111"></script>
-  <!-- Inline Campus Filter Script to guarantee 100% instantaneous execution on all browsers -->
-  <script>
-    (function () {
-      function setupCampusFilter() {
-        const filterBtns = document.querySelectorAll('.campus-filter-btn');
-        const campusCards = document.querySelectorAll('#campus-cards-grid > .campus-card');
-        const searchInput = document.getElementById('campus-search');
-        const noResult = document.getElementById('no-campus-found');
-
-        if (!filterBtns.length || !campusCards.length) return;
-
-        function applyFilter(category, query) {
-          const cat = (category || 'all').trim().toLowerCase();
-          const q = (query || '').trim().toLowerCase();
-          const queryWords = q.split(/\s+/).filter(Boolean);
-          let visibleCount = 0;
-
-          campusCards.forEach(function (card) {
-            const cardCat = (card.getAttribute('data-category') || card.getAttribute('data-campus') || '').toLowerCase();
-            const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
-            const cardText = (card.textContent || '').toLowerCase() + ' ' + cardKeywords;
-
-            const matchCat = (cat === 'all') || (cardCat === cat) || (cardCat.indexOf(cat) !== -1);
-            const matchQuery = queryWords.length === 0 || queryWords.every(function (word) {
-              return cardText.indexOf(word) !== -1;
-            });
-
-            if (matchCat && matchQuery) {
-              card.style.display = 'flex';
-              card.classList.remove('hidden');
-              visibleCount++;
-            } else {
-              card.style.display = 'none';
-              card.classList.add('hidden');
-            }
-          });
-
-          if (noResult) {
-            if (visibleCount === 0) {
-              noResult.classList.remove('hidden');
-            } else {
-              noResult.classList.add('hidden');
-            }
-          }
-        }
-
-        filterBtns.forEach(function (btn) {
-          btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            filterBtns.forEach(function (b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            const cat = btn.getAttribute('data-filter') || 'all';
-            const q = searchInput ? searchInput.value : '';
-            applyFilter(cat, q);
-          });
-        });
-
-        if (searchInput) {
-          searchInput.addEventListener('input', function (e) {
-            const q = (e.target.value || '').trim();
-            let activeBtn = document.querySelector('.campus-filter-btn.active');
-            let cat = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
-
-            // If user types query and current tab yields zero, auto switch to "all" tab so user finds campus immediately
-            if (q && cat !== 'all') {
-              let matchesInCat = false;
-              campusCards.forEach(function (card) {
-                const cardCat = (card.getAttribute('data-category') || '').toLowerCase();
-                const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
-                const cardText = (card.textContent || '').toLowerCase() + ' ' + cardKeywords;
-                if (cardCat === cat && cardText.indexOf(q.toLowerCase()) !== -1) {
-                  matchesInCat = true;
-                }
-              });
-              if (!matchesInCat) {
-                filterBtns.forEach(function (b) { b.classList.remove('active'); });
-                const allBtn = document.querySelector('.campus-filter-btn[data-filter="all"]');
-                if (allBtn) allBtn.classList.add('active');
-                cat = 'all';
-              }
-            }
-
-            applyFilter(cat, e.target.value);
-          });
-
-          searchInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-              searchInput.value = '';
-              const activeBtn = document.querySelector('.campus-filter-btn.active');
-              const cat = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
-              applyFilter(cat, '');
-            }
-          });
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupCampusFilter);
-      } else {
-        setupCampusFilter();
-      }
-    })();
-  </script>
 
 
   <!-- Inline Jalur Kampus Interactive Handler to guarantee instant execution -->

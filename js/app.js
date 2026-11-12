@@ -160,25 +160,69 @@ function initCampusFilter() {
   const campusCards = document.querySelectorAll('#campus-cards-grid > .campus-card');
   const searchInput = document.getElementById('campus-search');
   const noResult = document.getElementById('no-campus-found');
+  const toggleWrap = document.getElementById('campus-mobile-toggle-wrap');
+  const toggleBtn = document.getElementById('btn-toggle-all-campus');
+  const campusSection = document.getElementById('kampus');
+
+  if (!campusCards.length) return;
+
+  const MOBILE_BREAKPOINT = 768;
+  const MOBILE_LIMIT = 3;
+  let isMobileExpanded = false;
+  let currentCat = 'all';
+  let currentQuery = '';
+
+  function syncToggleUi(extraCount, shouldShowToggle) {
+    if (!toggleWrap || !toggleBtn) return;
+
+    if (!shouldShowToggle || extraCount <= 0) {
+      toggleWrap.classList.add('hidden');
+      return;
+    }
+
+    toggleWrap.classList.remove('hidden');
+    toggleBtn.setAttribute('aria-expanded', isMobileExpanded ? 'true' : 'false');
+
+    if (isMobileExpanded) {
+      toggleBtn.innerHTML = `
+        <span>Tampilkan Lebih Sedikit</span>
+        <i data-lucide="chevron-up" class="w-4 h-4 text-brand-700 group-hover:-translate-y-0.5 transition-transform"></i>
+      `;
+    } else {
+      toggleBtn.innerHTML = `
+        <span>Selengkapnya</span>
+        <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-100/80 text-brand-800">+${extraCount} Kampus</span>
+        <i data-lucide="chevron-down" class="w-4 h-4 text-brand-700 group-hover:translate-y-0.5 transition-transform"></i>
+      `;
+    }
+
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+  }
 
   function applyFilter(category, query = '') {
-    const cat = (category || 'all').trim().toLowerCase();
-    const q = (query || '').trim().toLowerCase();
+    currentCat = (category || 'all').trim().toLowerCase();
+    currentQuery = query || '';
+    const q = currentQuery.trim().toLowerCase();
     const queryWords = q.split(/\s+/).filter(Boolean);
-    let visibleCount = 0;
+    const isMobileViewport = window.innerWidth < MOBILE_BREAKPOINT;
+    const capForMobile = isMobileViewport && !isMobileExpanded && queryWords.length === 0;
+    let matchCount = 0;
 
     campusCards.forEach(card => {
       const cardCat = (card.getAttribute('data-category') || card.getAttribute('data-campus') || '').toLowerCase();
       const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
       const cardText = (card.textContent || '').toLowerCase() + ' ' + cardKeywords;
 
-      const matchCat = (cat === 'all') || (cardCat === cat) || cardCat.includes(cat);
+      const matchCat = (currentCat === 'all') || (cardCat === currentCat) || cardCat.includes(currentCat);
       const matchQuery = queryWords.length === 0 || queryWords.every(word => cardText.includes(word));
 
       if (matchCat && matchQuery) {
-        card.style.display = 'flex';
-        card.classList.remove('hidden');
-        visibleCount++;
+        matchCount++;
+        const hideByMobileCap = capForMobile && matchCount > MOBILE_LIMIT;
+        card.style.display = hideByMobileCap ? 'none' : 'flex';
+        card.classList.toggle('hidden', hideByMobileCap);
       } else {
         card.style.display = 'none';
         card.classList.add('hidden');
@@ -186,12 +230,24 @@ function initCampusFilter() {
     });
 
     if (noResult) {
-      if (visibleCount === 0) {
-        noResult.classList.remove('hidden');
-      } else {
-        noResult.classList.add('hidden');
-      }
+      noResult.classList.toggle('hidden', matchCount !== 0);
     }
+
+    const extraCount = Math.max(0, matchCount - MOBILE_LIMIT);
+    syncToggleUi(extraCount, isMobileViewport && queryWords.length === 0 && extraCount > 0);
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const wasExpanded = isMobileExpanded;
+      isMobileExpanded = !isMobileExpanded;
+      applyFilter(currentCat, currentQuery);
+
+      if (wasExpanded && !isMobileExpanded && campusSection) {
+        const topOffset = campusSection.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      }
+    });
   }
 
   filterBtns.forEach(btn => {
@@ -199,6 +255,7 @@ function initCampusFilter() {
       e.preventDefault();
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      isMobileExpanded = false;
       const cat = btn.getAttribute('data-filter') || 'all';
       const q = searchInput ? searchInput.value : '';
       applyFilter(cat, q);
@@ -241,6 +298,12 @@ function initCampusFilter() {
       }
     });
   }
+
+  window.addEventListener('resize', () => {
+    applyFilter(currentCat, currentQuery);
+  });
+
+  applyFilter('all', searchInput ? searchInput.value : '');
 }
 
 /* ----------------------------------------------------
