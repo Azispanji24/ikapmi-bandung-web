@@ -12,8 +12,8 @@ Platform digital pusat informasi, jejaring alumni, database anggota, dan panduan
 - **Tentang Kami:** Visi, misi, sejarah, dan nilai-nilai perjuangan santri di perantauan.
 - **Struktur Kepengurusan:** Bagan organisasi interaktif per bidang dengan profil kontak pengurus.
 - **Direktori Kampus & Jejaring Alumni:**
-  - Pemetaan komisariat kampus (UIN Sunan Gunung Djati, UNPAD, UPI, ITB, Telkom University, UNISBA, POLBAN, UNPAS).
-  - Filter kategori PTN & PTS, pencarian jurusan, serta tombol langsung hubungi koordinator komisariat.
+  - Pemetaan kampus (UIN Sunan Gunung Djati, UNPAD, UPI, ITB, Telkom University, UNISBA, POLBAN, UNPAS).
+  - Filter kategori PTN & PTS, pencarian jurusan, serta tombol langsung hubungi koordinator kampus.
 - **Pusat Panduan Santri Baru ke Bandung:**
   - **Jalur Masuk Kampus:** Panduan interaktif pemilihan kampus dengan logo resmi dan daftar jalur masuk terperinci (SNBP, SNBT, SPAN-PTKIN, UM-PTKIN, Mandiri, dan beasiswa Tahfidz Al-Qur'an).
   - **Panduan Wilayah Kost Santri:** Pemetaan area hunian dan rekomendasi kost strategis dekat masjid dan kampus.
