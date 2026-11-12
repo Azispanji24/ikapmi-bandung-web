@@ -130,6 +130,17 @@ function initNavbar() {
       setMobileMenuOpen(willOpen);
     });
 
+    const closeMenu = () => {
+      mobileMenu.classList.add('hidden');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    };
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target) && !mobileToggle.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         setMobileMenuOpen(false);
@@ -421,8 +432,9 @@ function initPerspectiveTunnelHero() {
   });
 
   // State
-  let targetProgress = 0;
-  let currentProgress = 0;
+  const MIN_PROGRESS = 0.14; // below this the stage is empty (title and cards fully faded)
+  let targetProgress = MIN_PROGRESS;
+  let currentProgress = MIN_PROGRESS;
   let targetPointerX = 0;
   let targetPointerY = 0;
   let currentPointerX = 0;
@@ -448,6 +460,24 @@ function initPerspectiveTunnelHero() {
   window.addEventListener('resize', handleResize);
   handleResize();
 
+  // Touch screens / narrow viewports: a swipe scrolls the page, so it cannot also "fly" the tunnel.
+  // There the section is tall and the stage is sticky (see css), and page scroll drives the tunnel.
+  const sectionEl = container.closest('section');
+  function isScrollDriven() {
+    return window.innerWidth < 1024 || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+  }
+  function syncScrollProgress() {
+    if (!sectionEl || !isScrollDriven()) return;
+    const rect = sectionEl.getBoundingClientRect();
+    const travel = rect.height - container.clientHeight;
+    if (travel <= 0) return;
+    const p = Math.max(0, Math.min(1, -rect.top / travel));
+    targetProgress = MIN_PROGRESS + p * (1 - MIN_PROGRESS);
+  }
+  window.addEventListener('scroll', syncScrollProgress, { passive: true });
+  window.addEventListener('resize', syncScrollProgress);
+  syncScrollProgress();
+
   // Helper: check if the container is currently full in the viewport
   function isContainerInFullView() {
     const rect = container.getBoundingClientRect();
@@ -464,6 +494,7 @@ function initPerspectiveTunnelHero() {
   // 2. When reached end of tunnel (mentok akhir), let page scroll down to #warta.
   // 3. When reached start of tunnel (mentok awal), let page scroll up.
   container.addEventListener('wheel', (e) => {
+    if (isScrollDriven()) return; // page scroll drives the tunnel
     // If container is NOT full in screen, let the regular page scroll proceed!
     if (!isContainerInFullView()) {
       return; // Do NOT preventDefault! Let page scroll normally
@@ -479,15 +510,15 @@ function initPerspectiveTunnelHero() {
     }
 
     // When reached start of tunnel corridor (mentok awal) and scrolling up, allow page scroll up
-    if (isScrollingUp && targetProgress <= 0.015) {
-      targetProgress = 0;
+    if (isScrollingUp && targetProgress <= MIN_PROGRESS + 0.015) {
+      targetProgress = MIN_PROGRESS;
       return; // Do NOT preventDefault! Let page scroll normally back up
     }
 
     // Otherwise, we are full in view and navigating inside the 3D tunnel corridor
     e.preventDefault();
     const delta = e.deltaY * 0.0008;
-    targetProgress = Math.max(0, Math.min(1, targetProgress + delta));
+    targetProgress = Math.max(MIN_PROGRESS, Math.min(1, targetProgress + delta));
   }, { passive: false });
 
   // Mouse Drag (Click and drag still supported)
@@ -507,9 +538,9 @@ function initPerspectiveTunnelHero() {
       targetPointerY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
     }
 
-    if (isDragging) {
+    if (isDragging && !isScrollDriven()) {
       const delta = (dragStartY - e.clientY) * 0.002;
-      targetProgress = Math.max(0, Math.min(1, dragStartProgress + delta));
+      targetProgress = Math.max(MIN_PROGRESS, Math.min(1, dragStartProgress + delta));
     }
   });
 
@@ -528,9 +559,9 @@ function initPerspectiveTunnelHero() {
   }, { passive: true });
 
   container.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 1 && isContainerInFullView()) {
+    if (!isScrollDriven() && e.touches.length === 1 && isContainerInFullView()) {
       const delta = (dragStartY - e.touches[0].clientY) * 0.0022;
-      targetProgress = Math.max(0, Math.min(1, dragStartProgress + delta));
+      targetProgress = Math.max(MIN_PROGRESS, Math.min(1, dragStartProgress + delta));
     }
   }, { passive: true });
 
@@ -589,7 +620,7 @@ function initPerspectiveTunnelHero() {
 
     // Update each Card along 3D Z-axis corridor
     const cardWidth = isMobile
-      ? Math.max(140, Math.min(190, stageWidth * 0.38))
+      ? Math.max(150, Math.min(210, stageWidth * 0.46))
       : Math.max(200, Math.min(280, stageWidth * 0.18));
 
     const parallaxShift = isMobile ? 25 : 55;
@@ -1217,7 +1248,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "SPAN-PTKIN",
         "tag": "Prestasi Rapor Nasional (Kemenag)",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Januari – Maret 2026",
+        "schedule": "Januari – Maret",
         "desc": "Seleksi prestasi akademik nasional berbasis nilai rapor semester 1–5 dan portofolio prestasi tanpa tes tertulis. Pendaftaran dilakukan oleh pihak madrasah/sekolah dan bebas biaya (100% Gratis).",
         "santriNote": "Jalur paling favorit bagi santri MA/SMA PMUQI. Kuota sangat besar pada prodi rumpun Ushuluddin, Syariah, Tarbiyah, Dakwah, dan Adab.",
         "link": "https://span.ptkin.ac.id"
@@ -1226,25 +1257,25 @@ const CAMPUS_JALUR_DATA = {
         "name": "UM-PTKIN",
         "tag": "Ujian SSE Nasional (Kemenag)",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "April – Juni 2026",
+        "schedule": "April – Juni",
         "desc": "Ujian seleksi serentak nasional menggunakan Sistem Seleksi Elektronik (SSE). Materi meliputi Penalaran Akademik, Penalaran Matematika, Literasi Membaca (Indonesia, Arab, Inggris), dan Literasi Ajaran Islam.",
         "santriNote": "Sangat menguntungkan bagi santri yang menguasai literasi keislaman dan dasar bahasa Arab. Dapat memilih hingga 3 prodi di PTKIN mana pun se-Indonesia.",
         "link": "https://um.ptkin.ac.id"
       },
       {
-        "name": "SNBP & SNBT (Kemendikbud)",
+        "name": "SNBP & SNBT (SNPMB)",
         "tag": "Seleksi Nasional (SNPMB)",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Februari – Mei 2026",
-        "desc": "Jalur seleksi terpusat Kemendikbudristek untuk program studi umum di bawah Kemendikbud di UIN SGD Bandung seperti Teknik Informatika, Biologi, Kimia, Agroteknologi, dan Psikologi.",
+        "schedule": "Februari – Mei",
+        "desc": "Jalur seleksi nasional SNPMB (Kemdiktisaintek) untuk program studi umum di UIN SGD Bandung seperti Teknik Informatika, Biologi, Kimia, Agroteknologi, dan Psikologi.",
         "santriNote": "Cocok bagi santri lulusan IPA/IPS yang mengincar fakultas sains dan teknologi berakreditasi unggul dengan biaya kuliah UKT ramah kantong.",
-        "link": "https://snpmb.bppp.kemdikbud.go.id"
+        "link": "https://snpmb.id"
       },
       {
         "name": "Jalur Mandiri UIN SGD (CBT & Tahfidz)",
         "tag": "Mandiri Lokal & Beasiswa",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Mei – Juli 2026",
+        "schedule": "Mei – Juli",
         "desc": "Seleksi mandiri lokal UIN Bandung melalui ujian komputer CBT serta jalur prestasi khusus (Hafiz Al-Qur'an dan Juara MTQ/Keagamaan).",
         "santriNote": "Jalur Emas Penghafal Qur'an: Santri hafiz minimal 5, 10, hingga 30 juz berpeluang bebas tes, prioritas kelulusan, serta peluang beasiswa tahfidz.",
         "link": "https://pmb.uinsgd.ac.id"
@@ -1262,34 +1293,34 @@ const CAMPUS_JALUR_DATA = {
     "accentGradient": "from-blue-600 via-indigo-500 to-sky-500",
     "logo": "assets/logos/logo_unpad.svg",
     "location": "Jatinangor & Dipatiukur, Bandung",
-    "shortDesc": "Komisariat utama di bidang kedokteran, hukum, ilmu komunikasi, ekonomi bisnis, dan ilmu budaya dengan jejaring alumni kuat.",
-    "fullDesc": "Universitas Padjadjaran adalah salah satu perguruan tinggi negeri berbadan hukum terkemuka di Indonesia. Santri PMUQI tersebar di berbagai fakultas unggulan dengan dukungan bimbingan seleksi dan mentoring akademik dari IKAPMI Komisariat UNPAD.",
+    "shortDesc": "Kuat di bidang kedokteran, hukum, ilmu komunikasi, ekonomi bisnis, dan ilmu budaya dengan jejaring alumni kuat.",
+    "fullDesc": "Universitas Padjadjaran adalah salah satu perguruan tinggi negeri berbadan hukum terkemuka di Indonesia. Santri PMUQI tersebar di berbagai fakultas unggulan dengan dukungan bimbingan seleksi dan mentoring akademik dari alumni IKAPMI di UNPAD.",
     "portal": "https://smup.unpad.ac.id",
     "pathways": [
       {
         "name": "SNBP (Seleksi Nasional Berdasarkan Prestasi)",
         "tag": "Prestasi Rapor Nasional (SNPMB)",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Januari – Maret 2026",
+        "schedule": "Januari – Maret",
         "desc": "Penjaringan berdasarkan konsistensi nilai rapor semester 1–5 serta portofolio prestasi siswa eligible yang didaftarkan pihak sekolah/madrasah.",
         "santriNote": "Peluang strategis bagi santri berperingkat paralel atas di MA/SMA untuk menembus prodi favorit Unpad tanpa tes tertulis.",
-        "link": "https://snpmb.bppp.kemdikbud.go.id"
+        "link": "https://snpmb.id"
       },
       {
         "name": "SNBT (Seleksi Nasional Berbasis Tes UTBK)",
         "tag": "Ujian UTBK Nasional",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Maret – Mei 2026",
+        "schedule": "Maret – Mei",
         "desc": "Seleksi berbasis ujian tertulis UTBK nasional (Tes Potensi Skolastik, Literasi Bahasa, dan Penalaran Matematika). Memiliki porsi kuota terbesar (~40-50%).",
         "santriNote": "IKAPMI UNPAD rutin mengadakan mentoring belajar, pembahasan soal skolastik, dan strategi pemilihan jurusan bagi adik-adik santri.",
-        "link": "https://snpmb.bppp.kemdikbud.go.id"
+        "link": "https://snpmb.id"
       },
       {
         "name": "SMUP Jalur Nilai Ujian (Nilai UTBK / Daring)",
         "tag": "Seleksi Mandiri SMUP",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "April – Juli 2026",
-        "desc": "Seleksi mandiri Unpad menggunakan skor sertifikat UTBK SNBT Kemendikbud atau ujian daring SMUP yang diselenggarakan secara online.",
+        "schedule": "April – Juli",
+        "desc": "Seleksi mandiri Unpad menggunakan skor sertifikat UTBK-SNBT atau ujian daring SMUP yang diselenggarakan secara online.",
         "santriNote": "Sangat fleksibel dan praktis bagi santri; pendaftar cukup mengunggah skor UTBK tanpa harus datang langsung ke lokasi ujian.",
         "link": "https://smup.unpad.ac.id"
       },
@@ -1297,7 +1328,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "SMUP Jalur Minat Bakat & Tahfidz Al-Qur'an",
         "tag": "Mandiri Prestasi & Keagamaan",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Maret – Juni 2026",
+        "schedule": "Maret – Juni",
         "desc": "Seleksi mandiri bagi calon mahasiswa dengan prestasi luar biasa di bidang sains, olahraga, seni, serta Penghafal Al-Qur'an (Hafiz/Hafizah minimal 10–30 juz).",
         "santriNote": "Peluang emas bagi santri berprestasi tahfidz resmi. Peserta akan mengikuti uji verifikasi hafalan langsung di hadapan tim penguji Unpad.",
         "link": "https://smup.unpad.ac.id"
@@ -1323,25 +1354,25 @@ const CAMPUS_JALUR_DATA = {
         "name": "SNBP (Seleksi Nasional Berdasarkan Prestasi)",
         "tag": "Prestasi Rapor Nasional",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Januari – Maret 2026",
+        "schedule": "Januari – Maret",
         "desc": "Penjaringan calon mahasiswa berprestasi rapor dan portofolio untuk jenjang Sarjana (S1) dan Sarjana Terapan (D4) seluruh fakultas UPI.",
         "santriNote": "Pilihan tepat bagi santri berprestasi di MA/SMA untuk masuk prodi Pendidikan Bahasa Arab, PAI, Bahasa Inggris, atau jurusan sains.",
-        "link": "https://snpmb.bppp.kemdikbud.go.id"
+        "link": "https://snpmb.id"
       },
       {
         "name": "SNBT (Seleksi Nasional Berbasis Tes UTBK)",
         "tag": "Ujian UTBK Nasional",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Maret – Mei 2026",
+        "schedule": "Maret – Mei",
         "desc": "Seleksi nasional dengan sistem tes skolastik, literasi bahasa, dan penalaran matematika terstandar untuk seluruh program studi di UPI.",
         "santriNote": "Tersedia kuota luas di kampus utama Bumi Siliwangi Setiabudi maupun kampus daerah (Cibiru, Purwakarta, Sumedang, Tasikmalaya).",
-        "link": "https://snpmb.bppp.kemdikbud.go.id"
+        "link": "https://snpmb.id"
       },
       {
         "name": "Seleksi Mandiri Reguler (SM-UPI CBT)",
         "tag": "Ujian Komputer Mandiri",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Mei – Juli 2026",
+        "schedule": "Mei – Juli",
         "desc": "Ujian seleksi mandiri berbasis komputer yang diselenggarakan secara independen oleh UPI untuk menguji potensi akademik dan bakat calon mahasiswa.",
         "santriNote": "Alternatif utama jika belum lolos jalur nasional dengan kuota mandiri yang cukup besar di kampus Bandung.",
         "link": "https://pmb.upi.edu"
@@ -1350,7 +1381,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "SM-PI UPI (Prestasi Istimewa & Tahfidz Quran)",
         "tag": "Mandiri Portofolio Khusus",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Mei – Juni 2026",
+        "schedule": "Mei – Juni",
         "desc": "Jalur undangan mandiri bagi siswa berprestasi kejuaraan tingkat nasional/internasional serta Hafiz Al-Qur'an minimal 15–30 juz.",
         "santriNote": "Santri penghafal Al-Qur'an mendapatkan penilaian afirmasi khusus melalui uji kelayakan hafalan oleh tim penguji UPI.",
         "link": "https://pmb.upi.edu"
@@ -1376,34 +1407,34 @@ const CAMPUS_JALUR_DATA = {
         "name": "SNBP & SNBP-Peminatan ITB",
         "tag": "Prestasi Rapor & Peminatan",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Januari – Februari 2026",
+        "schedule": "Januari – Februari",
         "desc": "Seleksi prestasi akademik nilai rapor matematika dan sains. ITB membuka opsi peminatan untuk langsung memilih program studi spesifik.",
         "santriNote": "Peluang besar bagi santri jurusan IPA berprestasi konsisten dan aktif di olimpiade sains/riset madrasah.",
         "link": "https://admission.itb.ac.id"
       },
       {
-        "name": "SNBT (Seleksi Nasional UTBK Kemendikbud)",
+        "name": "SNBT (Seleksi Nasional Berbasis Tes UTBK)",
         "tag": "Ujian UTBK Nasional",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Maret – Mei 2026",
+        "schedule": "Maret – Mei",
         "desc": "Seleksi UTBK terpusat untuk memperebutkan kursi di fakultas bergengsi ITB (STEI, FTMD, FTTM, FMIPA, SBM, SAPPK, FTSL, FSRD).",
         "santriNote": "IKAPMI ITB siap memberikan arahan pemilihan fakultas serta sharing pengalaman belajar kurikulum TPB ITB.",
-        "link": "https://snpmb.bppp.kemdikbud.go.id"
+        "link": "https://snpmb.id"
       },
       {
-        "name": "Seleksi Mandiri ITB (SM-ITB)",
-        "tag": "Ujian Daring & UTBK",
+        "name": "Seleksi Siswa Unggul (SSU) ITB",
+        "tag": "Jalur Mandiri (Pengganti SM-ITB)",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Mei – Juni 2026",
-        "desc": "Ujian mandiri daring materi Matematika & Fisika (Saintek) / TPA + skor UTBK Kemendikbud + tes menggambar khusus calon mahasiswa FSRD.",
-        "santriNote": "Tersedia skema KIP-Kuliah dan pembebasan IPI (uang pangkal) bagi calon mahasiswa berprestasi dari keluarga santri prasejahtera.",
-        "link": "https://admission.itb.ac.id"
+        "schedule": "April – Juni",
+        "desc": "Sejak penerimaan 2026/2027, Seleksi Mandiri ITB (SM-ITB) diubah menjadi SSU ITB. Tersedia jalur non-tes (nilai rapor, nilai UTBK, peserta Olimpiade Sains, atau talenta seni/olahraga/keagamaan) dan jalur tes daring.",
+        "santriNote": "Kategori talenta keagamaan membuka peluang bagi santri berprestasi. Cek syarat, kuota, dan biaya terbaru di laman resmi SSU ITB.",
+        "link": "https://admission.itb.ac.id/id/program/sarjana/seleksi-siswa-unggul-itb"
       },
       {
         "name": "International Undergraduate Program (IUP ITB)",
         "tag": "Kelas Internasional",
         "tagClass": "bg-purple-100 text-purple-800 border-purple-200",
-        "schedule": "Januari – Juni 2026",
+        "schedule": "Januari – Juni",
         "desc": "Program sarjana internasional berbahasa Inggris dengan kesempatan exchange semester dan dual degree di universitas mitra luar negeri.",
         "santriNote": "Sangat direkomendasikan bagi santri yang memiliki kemampuan komunikasi bahasa Inggris aktif dan orientasi karier internasional.",
         "link": "https://admission.itb.ac.id/iup"
@@ -1429,7 +1460,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Prestasi Akademik (JPA Rapor)",
         "tag": "Seleksi Rapor Tanpa Tes",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Agustus 2025 – Februari 2026",
+        "schedule": "Agustus – Februari",
         "desc": "Seleksi berbasis nilai rapor semester 1–5 tanpa tes tertulis. Pendaftaran gelombang awal menawarkan diskon biaya uang sumbangan (SDP2).",
         "santriNote": "Rapor madrasah/pesantren diakui penuh dengan pengumuman online cepat tanpa perlu datang ke Bandung.",
         "link": "https://smb.telkomuniversity.ac.id"
@@ -1447,7 +1478,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Beasiswa Keagamaan & Tahfidz Quran (OPaN)",
         "tag": "Beasiswa Kuliah 100% Penuh",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Februari – April 2026",
+        "schedule": "Februari – April",
         "desc": "Program beasiswa bergengsi bagi calon mahasiswa berprestasi keagamaan dan hafiz Al-Qur'an (minimal 5 hingga 30 juz).",
         "santriNote": "Memperoleh pembebasan biaya kuliah (BPP) hingga 100% sampai lulus serta pembinaan karakter di asrama kampus.",
         "link": "https://smb.telkomuniversity.ac.id"
@@ -1456,7 +1487,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Vokasi & Kemitraan Digital",
         "tag": "Program Terapan Industri",
         "tagClass": "bg-cyan-100 text-cyan-800 border-cyan-200",
-        "schedule": "Maret – Juli 2026",
+        "schedule": "Maret – Juli",
         "desc": "Seleksi program Diploma (D3) dan Sarjana Terapan (D4) dengan kurikulum link-and-match industri teknologi Telkom Group.",
         "santriNote": "Menghasilkan lulusan yang siap kerja dengan portofolio teknologi dan sertifikasi industri internasional.",
         "link": "https://smb.telkomuniversity.ac.id"
@@ -1475,23 +1506,23 @@ const CAMPUS_JALUR_DATA = {
     "logo": "assets/logos/logo_unisba.png",
     "location": "Tamansari, Lengkong, & Ciwaruga Bandung",
     "shortDesc": "Pilihan favorit santri untuk pendidikan vokasi terapan negeri (POLBAN), kedokteran & hukum islam (UNISBA), dan pasundan (UNPAS).",
-    "fullDesc": "Komisariat gabungan yang menaungi santri di Politeknik Negeri Bandung (POLBAN) serta kampus swasta unggulan Bandung seperti Universitas Islam Bandung (UNISBA) dan Universitas Pasundan (UNPAS) dengan jalur masuk ramah nilai rapor dan beasiswa hafiz.",
+    "fullDesc": "Gabungan santri di Politeknik Negeri Bandung (POLBAN) serta kampus swasta unggulan Bandung seperti Universitas Islam Bandung (UNISBA) dan Universitas Pasundan (UNPAS) dengan jalur masuk ramah nilai rapor dan beasiswa hafiz.",
     "portal": "https://pmb.unisba.ac.id",
     "pathways": [
       {
         "name": "POLBAN: SNBP, SNBT & SMBM (Politeknik Negeri)",
         "tag": "Politeknik Terapan Unggulan",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Januari – Juni 2026",
+        "schedule": "Januari – Juni",
         "desc": "Seleksi nasional SNBP, SNBT, dan Seleksi Mandiri Bersama Politeknik Negeri (SMBM) untuk jurusan Teknik Rekayasa & Tata Niaga.",
         "santriNote": "Pilihan nomor 1 bagi santri yang menghendaki pendidikan aplikatif dengan laboratorium modern dan UKT negeri terjangkau.",
-        "link": "https://pmb.polban.ac.id"
+        "link": "https://smb.polban.ac.id"
       },
       {
         "name": "UNISBA: PMDK (Rapor) & USM Daring (Unisba)",
         "tag": "PTS Bernafaskan Islam",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "November 2025 – Juli 2026",
+        "schedule": "November – Juli",
         "desc": "Penjaringan Minat dan Kemampuan (PMDK) berbasis rapor serta Ujian Saringan Masuk (USM) berkala untuk seluruh fakultas termasuk Kedokteran.",
         "santriNote": "Kultur kampus sangat akrab dengan santri (Ruhul Islam). Tersedia Beasiswa Hafiz Al-Qur'an dan kemudahan konversi prestasi pesantren.",
         "link": "https://pmb.unisba.ac.id"
@@ -1500,7 +1531,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "UNPAS: Jalur PMDK & Tes Gelombang 1-3",
         "tag": "Universitas Pasundan",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Desember 2025 – Agustus 2026",
+        "schedule": "Desember – Agustus",
         "desc": "Jalur PMDK rapor bebas tes dan ujian tertulis bertahap dengan fleksibilitas cicilan biaya kuliah serta program studi favorit.",
         "santriNote": "Pilihan favorit santri untuk Fakultas Hukum, FISIP (Hubungan Internasional & Humas), Kedokteran, dan Teknik Industri.",
         "link": "https://pmb.unpas.ac.id"
@@ -1526,7 +1557,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Beasiswa PMDK (Rapor / UTBK)",
         "tag": "Seleksi Rapor Tanpa Tes",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "1 Maret – 30 April 2026",
+        "schedule": "Maret – April",
         "desc": "Seleksi tanpa tes tertulis berdasarkan nilai rapor semester 1–4 (rata-rata min. 70 untuk D3/D4, min. 75 untuk S1), skor UTBK min. 450, atau USM-CBT (450 D3/D4, 500 S1). Menawarkan potongan Uang Pembangunan 75% (D3) dan 25% (D4/S1).",
         "santriNote": "Rapor MA/SMA PMUQI diakui penuh. Tersedia simulasi Kalkulator Jalur & Beasiswa langsung di portal pmb.widyatama.ac.id.",
         "link": "https://pmb.widyatama.ac.id"
@@ -1535,7 +1566,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Reguler (Rapor / USM-CBT / UTBK)",
         "tag": "Penerimaan Utama Fleksibel",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "September 2025 – Agustus 2026",
+        "schedule": "September – Agustus",
         "desc": "Skema penerimaan utama sepanjang tahun ajaran untuk jenjang D3, D4, dan S1 melalui seleksi nilai rapor (min. 65 D3/D4, 70 S1), UTBK (min. 400), tes USM-CBT online, atau nilai UM-PTN.",
         "santriNote": "Jadwal fleksibel dari awal tahun hingga Agustus sehingga aman dijadikan pilihan strategis maupun opsi cadangan PTN.",
         "link": "https://pmb.widyatama.ac.id"
@@ -1553,7 +1584,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Beasiswa Khusus (Tahfidz & Kejuaraan)",
         "tag": "Afirmasi Prestasi & Santri",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Sesuai Kuota PMB 2026/2027",
+        "schedule": "Sesuai Kuota PMB",
         "desc": "Mencakup sekitar 15 skema beasiswa/keringanan biaya seperti prestasi kejuaraan akademik/non-akademik, hafalan Al-Qur'an (Tahfidz), jalur afirmasi/sosial, anak guru/dosen/ASN, hingga mitra institusi.",
         "santriNote": "Santri PMUQI berprestasi tahfidz maupun kejuaraan MTQ/lomba keagamaan dapat melampirkan sertifikat resmi saat mendaftar.",
         "link": "https://pmb.widyatama.ac.id"
@@ -1579,7 +1610,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Beasiswa Prestasi & Rapor",
         "tag": "Seleksi Rapor Tanpa Tes",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Gelombang Berjalan 2026",
+        "schedule": "Gelombang Berjalan",
         "desc": "Bebas tes masuk dan potongan SPP per semester hingga dana pengembangan bagi lulusan SMA/SMK/MA dengan rata-rata rapor ≥ 85, peringkat 1–10 kelas, atau prestasi kejuaraan olahraga, seni, dan keagamaan.",
         "santriNote": "Sertifikat prestasi lomba keagamaan di pesantren maupun peringkat rapor MA/SMA dapat diajukan untuk keringanan biaya.",
         "link": "https://www.utb-univ.ac.id/pendaftaran/beasiswa"
@@ -1588,7 +1619,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Beasiswa Full Kuliah 4 Tahun UTB",
         "tag": "Beasiswa Penuh 4 Tahun",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Periode PMB 2026/2027",
+        "schedule": "Periode PMB",
         "desc": "Program beasiswa penuh selama masa studi S1 (4 tahun) bagi calon mahasiswa kelas reguler yang meraih peringkat 1–7 di kelas dengan nilai rapor ≥ 85 atau memiliki prestasi juara tingkat nasional.",
         "santriNote": "Kuota kompetitif — siapkan scan rapor semester 1–5 dan piagam resmi sejak gelombang pendaftaran dibuka.",
         "link": "https://www.utb-univ.ac.id/pendaftaran/beasiswa"
@@ -1606,7 +1637,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Kelas Reguler, Hybrid & Rekognisi (RPL)",
         "tag": "Fleksibel & Kelas Karyawan",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Sepanjang Gelombang 2026",
+        "schedule": "Sepanjang Gelombang",
         "desc": "Pendaftaran online untuk Kelas Reguler Pagi, Kelas Malam/Karyawan (Blended Learning), serta jalur Rekognisi Pembelajaran Lampau (RPL) di 5 prodi unggulan UTB Bandung.",
         "santriNote": "Cocok bagi alumni yang berencana kuliah sambil bekerja atau merintis usaha digital di Bandung.",
         "link": "https://pmb.utb-univ.ac.id/"
@@ -1632,7 +1663,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Beasiswa Hafizh Al-Qur'an (5 – 30 Juz)",
         "tag": "Beasiswa Tahfidz Santri",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Gelombang PMB 2026/2027",
+        "schedule": "Gelombang PMB",
         "desc": "Skema Beasiswa Parsial untuk hafalan minimal 5 Juz dan Beasiswa Penuh untuk hafalan ≥ 26 Juz. Syarat melampirkan fotokopi sertifikat/piagam tahfidz (maks. 2 tahun terakhir) serta surat rekomendasi pengajar atau lembaga tahfidz.",
         "santriNote": "Sangat direkomendasikan bagi santri tahfidz PMUQI. Lokasi kampus yang dekat Cibiru juga memudahkan silaturahmi dengan mayoritas pengurus IKAPMI.",
         "link": "https://pmb.umbandung.ac.id"
@@ -1641,7 +1672,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Reguler: Prestasi Akademik (Rapor)",
         "tag": "Seleksi Rapor Tanpa Tes",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Gelombang I – III 2026",
+        "schedule": "Gelombang I – III",
         "desc": "Seleksi berbasis rata-rata nilai rapor semester 1–5 (ketentuan umum rata-rata ≥ 75 dan rumpun IPA/Farmasi/Bioteknologi ≥ 80 dalam dokumen PDF) tanpa perlu ujian tertulis.",
         "santriNote": "Proses pendaftaran praktis dan 100% online dari pondok melalui dashboard pmb.umbandung.ac.id.",
         "link": "https://pmb.umbandung.ac.id"
@@ -1650,7 +1681,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Undangan PTN & CBT Online",
         "tag": "Skor UTBK/UM & Tes Daring",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Gelombang Berjalan 2026",
+        "schedule": "Gelombang Berjalan",
         "desc": "Jalur Undangan bagi pendaftar yang melampirkan kartu/skor SNBP, SNBT-UTBK, atau Ujian Mandiri PTN (maks. 2 tahun terakhir), serta Jalur CBT Computer Based Test daring dari PMB UMB.",
         "santriNote": "Skor SNBT/UM-PTKIN yang sudah dimiliki dapat langsung dimanfaatkan tanpa mengulang ujian.",
         "link": "https://pmb.umbandung.ac.id"
@@ -1659,7 +1690,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Beasiswa Kader, Non-Akademik & PUTM",
         "tag": "Kader & Prestasi Lomba",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Gelombang PMB 2026",
+        "schedule": "Gelombang PMB",
         "desc": "Mencakup Beasiswa Prestasi Non-Akademik (seni/olahraga/keagamaan dengan piagam maks. 2 tahun terakhir), Beasiswa Kader Muhammadiyah (KTA Ortom), hingga program PUTM dan Tokoh Muda.",
         "santriNote": "Lingkungan kampus bernuansa Islami modern dengan banyak UKM keagamaan dan kajian mahasiswa.",
         "link": "https://pmb.umbandung.ac.id"
@@ -1703,7 +1734,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Nilai UTBK (Tanpa Tes Tambahan)",
         "tag": "Konversi Skor UTBK-SNBT",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Pasca Pengumuman UTBK 2026",
+        "schedule": "Pasca Pengumuman UTBK",
         "desc": "Pendaftaran masuk UNPAR tanpa mengikuti ujian tertulis tambahan hanya dengan mengunggah sertifikat nilai hasil UTBK seleksi nasional di portal pmb.unpar.ac.id.",
         "santriNote": "Manfaatkan hasil UTBK-SNBT yang sudah diikuti tanpa perlu mengulang tes masuk dari awal.",
         "link": "https://pmb.unpar.ac.id"
@@ -1738,7 +1769,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Reguler (Unggah Rapor + TPKS Online)",
         "tag": "Tes Potensi Keberhasilan Studi",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Gelombang Periodik 2025/2026",
+        "schedule": "Gelombang Periodik",
         "desc": "Pendaftaran dilakukan melalui gabung.binus.ac.id dengan mengunggah scan rapor kelas 10–11, lalu mengikuti tes online TPKS (Logika, Abstraksi Non-Verbal, dan Verbal) sesuai jadwal pilihan pendaftar.",
         "santriNote": "Seleksi TPKS dapat diikuti secara online dan hasilnya segera muncul di akun Gabung BINUS.",
         "link": "https://gabung.binus.ac.id/admission-procedure/?degree=s1&campus-location=binus-bandung"
@@ -1747,7 +1778,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "The Widia Scholarship for Outstanding Achievers",
         "tag": "Beasiswa Penuh 100% (Kuliah + DP3)",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Periode Beasiswa BINUS 2026",
+        "schedule": "Periode Beasiswa BINUS",
         "desc": "Program beasiswa penuh (bebas biaya kuliah dan sumbangan pembangunan/DP3 hingga lulus) bagi calon mahasiswa berprestasi tingkat nasional atau internasional di bidang akademik maupun non-akademik.",
         "santriNote": "Prestasi olimpiade sains, lomba IT, seni, maupun kejuaraan tingkat nasional menjadi nilai unggul utama.",
         "link": "https://gabung.binus.ac.id"
@@ -1765,7 +1796,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur Portofolio Industri Kreatif (DKV & Desain)",
         "tag": "Khusus Prodi Desain & Teknologi",
         "tagClass": "bg-cyan-100 text-cyan-800 border-cyan-200",
-        "schedule": "Gelombang Periodik 2026",
+        "schedule": "Gelombang Periodik",
         "desc": "Seleksi khusus untuk peminat Visual Communication Design (DKV), Interior Design, dan Interactive Design & Technology di BINUS @Bandung menggunakan hasil TPKS dan penilaian karya/minat kreatif.",
         "santriNote": "Karya desain grafis, ilustrasi, atau proyek multimedia selama di pesantren bisa dirangkum menjadi portofolio resmi.",
         "link": "https://binus.ac.id/bandung/"
@@ -1777,7 +1808,7 @@ const CAMPUS_JALUR_DATA = {
     "num": "12",
     "name": "Poltekpar NHI Bandung",
     "short": "Poltekpar NHI",
-    "badge": "PTN Kemenparekraf / Vokasi",
+    "badge": "PTN Kemenpar / Vokasi",
     "dotColor": "bg-indigo-600",
     "badgeClass": "bg-indigo-50 text-indigo-900 border-indigo-200/80",
     "accentGradient": "from-indigo-800 via-blue-700 to-cyan-600",
@@ -1791,7 +1822,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "SBM Poltekpar (Seleksi Bersama Nasional)",
         "tag": "Seleksi Bersama 6 Poltekpar Kemenpar",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Maret – Juni 2026",
+        "schedule": "Maret – Juni",
         "desc": "Seleksi nasional terpusat untuk 6 Politeknik Pariwisata di bawah Kementerian Pariwisata RI (termasuk Poltekpar NHI Bandung). Rangkaian tes meliputi Tes Bakat Skolastik, Literasi Bahasa Inggris, Psikotes, serta Ujian Wawancara.",
         "santriNote": "Biaya kuliah negeri di bawah Kementerian Pariwisata relatif terjangkau dengan prospek karier perhotelan, wisata halal, dan event internasional.",
         "link": "https://sbmpoltekpar.kemenpar.go.id/"
@@ -1800,7 +1831,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "SMM Poltekpar NHI (Seleksi Mandiri Masuk)",
         "tag": "Ujian Mandiri Kampus Bandung",
         "tagClass": "bg-indigo-100 text-indigo-800 border-indigo-200",
-        "schedule": "Mei – Juli 2026",
+        "schedule": "Mei – Juli",
         "desc": "Jalur seleksi mandiri lokal yang dibuka oleh Poltekpar NHI Bandung setelah rangkaian SBM selesai, melalui mekanisme ujian Computer Based Test (CBT) dan wawancara bagi lulusan SMA/SMK/MA sederajat.",
         "santriNote": "Lulusan semua jurusan MA/SMA (IPA, IPS, Agama/Bahasa) diperbolehkan mendaftar selama memenuhi syarat kesehatan prodi.",
         "link": "https://poltekpar-nhi.ac.id"
@@ -1809,7 +1840,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Ketentuan Kesehatan & Fisik Khusus Industri",
         "tag": "Wajib Perhatikan Sebelum Pilih Prodi",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Tahap Verifikasi Kesehatan 2026",
+        "schedule": "Tahap Verifikasi Kesehatan",
         "desc": "Prodi bidang Hospitaliti (Pengelolaan Perhotelan, Divisi Kamar, Tata Hidang, Seni Kuliner, Patiseri) mensyaratkan tidak buta warna (total/parsial), tinggi badan minimal (±150 cm), bebas TBC, dan tanpa kelainan tulang belakang berat. Prodi UPW/MICE/Destinasi umumnya mensyaratkan tidak buta warna total.",
         "santriNote": "Cek buku panduan kesehatan resmi SBM Poltekpar di portal Kemenpar sebelum mengunci pilihan program studi.",
         "link": "https://sbmpoltekpar.kemenpar.go.id/"
@@ -1835,7 +1866,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur PMDK & Early Bird (Rapor Tanpa Tes)",
         "tag": "Seleksi Rapor Tanpa Tes",
         "tagClass": "bg-emerald-100 text-emerald-800 border-emerald-200",
-        "schedule": "Gelombang Awal – Juli 2026",
+        "schedule": "Gelombang Awal – Juli",
         "desc": "Penelusuran Minat dan Kemampuan (PMDK) tanpa tes tertulis berbasis rata-rata rapor (semester 1–4/5) dan sertifikat prestasi akademik/non-akademik, termasuk program insentif pendaftaran awal (Early Bird).",
         "santriNote": "Banyak santri PMUQI masuk prodi Hukum, Hubungan Internasional, Ilmu Komunikasi, & Teknik melalui jalur rapor bebas tes ini.",
         "link": "https://pmb.unpas.ac.id"
@@ -1844,7 +1875,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Jalur USM (Ujian Saringan Masuk & Kedokteran)",
         "tag": "Tes Online Gelombang 1–3",
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
-        "schedule": "Januari – Agustus 2026",
+        "schedule": "Januari – Agustus",
         "desc": "Ujian Saringan Masuk bertahap (Gelombang 1–3 dan seterusnya) secara online melalui materi TPA/skolastik & Saintek/Soshum, serta jalur USM khusus bagi peminat Fakultas Kedokteran UNPAS.",
         "santriNote": "Pendaftaran terpusat di pmb.unpas.ac.id / situ2.unpas.ac.id dengan biaya pendaftaran reguler S1 umumnya Rp300.000.",
         "link": "https://situ2.unpas.ac.id/spmbfront/home"
@@ -1862,7 +1893,7 @@ const CAMPUS_JALUR_DATA = {
         "name": "Beasiswa Tahfidz Al-Qur'an LP2SI & KIP Kuliah",
         "tag": "Beasiswa Hafiz & Pemerintah",
         "tagClass": "bg-amber-100 text-amber-900 border-amber-300",
-        "schedule": "Jadwal Seleksi Tahfidz & KIP 2026",
+        "schedule": "Jadwal Seleksi Tahfidz & KIP",
         "desc": "Seleksi khusus penghafal Al-Qur'an melalui uji hafalan (sambung ayat) oleh Lembaga Pengkajian & Pengembangan Syiar Islam (LP2SI) UNPAS berhadiah potongan hingga pembebasan biaya kuliah sesuai juz, serta penyaluran KIP Kuliah.",
         "santriNote": "Hotline resmi PMB UNPAS: WhatsApp 0811-960-193 atau pmb@unpas.ac.id untuk jadwal uji tahfidz terbaru.",
         "link": "https://pmb.unpas.ac.id"
@@ -1874,6 +1905,20 @@ const CAMPUS_JALUR_DATA = {
 function initJalurKampus() {
   const selectorView = document.getElementById('jalur-selector-view');
   const detailView = document.getElementById('jalur-detail-view');
+  // Campus picker: one quiet row per campus, rendered from CAMPUS_JALUR_DATA
+  const campusGrid = document.getElementById('jalur-campus-grid');
+  if (campusGrid) {
+    campusGrid.innerHTML = Object.values(CAMPUS_JALUR_DATA).map((c) => `
+      <button type="button" class="jalur-card pg-row" data-campus-id="${c.id}" aria-label="Lihat jalur masuk ${c.name}">
+        <span class="pg-logo"><img src="${c.logo}" alt="" loading="lazy"></span>
+        <span class="pg-row-text">
+          <span class="pg-row-title">${c.name}</span>
+          <span class="pg-row-sub">${c.location}</span>
+        </span>
+        <i data-lucide="chevron-right"></i>
+      </button>`).join('');
+    if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+  }
   const campusCards = document.querySelectorAll('.jalur-card');
   const extraCards = document.querySelectorAll('.jalur-extra-card');
   const toggleAllBtn = document.getElementById('btn-toggle-all-jalur');
@@ -1960,51 +2005,26 @@ function initJalurKampus() {
       bannerPortal.href = data.portal;
     }
     if (bannerCount) {
-      bannerCount.textContent = `${data.pathways.length} Jalur Tersedia`;
+      bannerCount.textContent = `${data.pathways.length} jalur masuk`;
     }
 
     // Render pathways cards
     if (pathwaysGrid) {
       pathwaysGrid.innerHTML = data.pathways.map((p) => `
-        <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
-          <div>
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${p.tagClass || 'bg-blue-100 text-blue-800 border-blue-200'} border">
-                <span class="w-1.5 h-1.5 rounded-full ${data.dotColor || 'bg-blue-500'}"></span>
-                <span>${p.tag}</span>
-              </span>
-              <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">
-                <i data-lucide="calendar" class="w-3 h-3 text-slate-400"></i>
-                <span>${p.schedule}</span>
-              </span>
-            </div>
-
-            <h5 class="font-serif text-lg font-bold text-slate-900 group-hover:text-brand-800 transition-colors leading-snug">
-              ${p.name}
-            </h5>
-
-            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-              ${p.desc}
-            </p>
-
-            <div class="mt-3.5 p-3.5 rounded-xl bg-amber-50/80 border border-amber-200/70 text-xs text-amber-950 flex items-start gap-2.5">
-              <i data-lucide="sparkles" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
-              <div class="leading-relaxed">
-                <strong class="font-semibold text-amber-900 block mb-0.5">Catatan Khusus Santri:</strong>
-                <span>${p.santriNote}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-[11px] text-slate-400">Informasi Resmi</span>
-            <a href="${p.link}" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-1 text-xs font-bold text-brand-800 hover:text-amber-600 transition-colors">
-              <span>Buka Tautan</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        <details class="pg-acc">
+          <summary>
+            <span class="pg-acc-title">${p.name}</span>
+            <span class="pg-acc-meta">${p.schedule}</span>
+          </summary>
+          <div class="pg-acc-body">
+            <span class="pg-chip">${p.tag}</span>
+            <p>${p.desc}</p>
+            <p><strong>Catatan santri:</strong> ${p.santriNote}</p>
+            <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="pg-textlink">
+              <span>Buka tautan resmi</span><i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </a>
           </div>
-        </div>
+        </details>
       `).join('');
     }
 
@@ -2088,7 +2108,7 @@ const SCHOLARSHIPS_DATA = [
     logo: 'assets/logos/beasiswa/kip.svg',
     level: 'D3 / D4 / S1',
     campuses: 'PTN & PTS Terakreditasi (ITB, UNPAD, UPI, POLBAN, Telkom, UNISBA, UNPAS, UNPAR, Widyatama)',
-    benefit: 'Gratis biaya kuliah (UKT/SPP) penuh hingga lulus + uang saku hidup bulanan sesuai klaster wilayah (Bandung Rp1,1 juta/bulan).',
+    benefit: 'Gratis biaya kuliah (UKT/SPP) penuh hingga lulus + bantuan biaya hidup bulanan sesuai klaster wilayah (sekitar Rp800 ribu–Rp1,4 juta/bulan; nominal Bandung cek pedoman tahun berjalan).',
     summary: 'Bantuan biaya pendidikan nasional untuk lulusan SMA/SMK/MA/Pesantren berpotensi akademik baik dari keluarga kurang mampu.',
     requirements: [
       'Lulusan SMA/SMK/MA/sederajat tahun berjalan atau maksimal lulus 2 tahun sebelumnya.',
@@ -2238,32 +2258,6 @@ const SCHOLARSHIPS_DATA = [
 
   // --- B. PEMERINTAH DAERAH JABAR & BANDUNG (3) ---
   {
-    id: 'jfls-jabar',
-    title: 'Jabar Future Leaders Scholarship (JFLS)',
-    category: 'daerah',
-    categoryLabel: 'Pemda Jabar & Bandung',
-    provider: 'Pemprov Jawa Barat (Disdik)',
-    logo: 'assets/logos/beasiswa/jfls.svg',
-    level: 'D3 / D4 / S1 / S2 / S3',
-    campuses: 'ITB, UNPAD, UPI, UIN SGD, POLBAN, Telkom, UNISBA, UNPAS, UM Bandung, UNPAR, Widyatama',
-    benefit: 'Bantuan biaya pendidikan kuliah hingga Rp10 juta–Rp25 juta/tahun sesuai jalur (Akademik 4 tahun, Non-Akademik/Keagamaan/Percepatan Akses).',
-    summary: 'Beasiswa unggulan Pemerintah Provinsi Jawa Barat khusus warga ber-KTP Jawa Barat yang berkuliah di PTN/PTS mitra Jabar.',
-    requirements: [
-      'Penduduk Jawa Barat dibuktikan dengan KTP & Kartu Keluarga Jawa Barat minimal berdomisili di Jabar.',
-      'Mahasiswa baru atau mahasiswa aktif pada perguruan tinggi mitra JFLS di Jawa Barat (termasuk seluruh kampus besar di Bandung).',
-      'Memenuhi nilai rapor/UTBK (maba) atau IPK minimal 3,00–3,25 (on-going), serta sertifikat prestasi keagamaan/tahfidz/organisasi untuk jalur non-akademik.',
-      'Tidak sedang menerima beasiswa dari sumber lain pada tahun anggaran berjalan.'
-    ],
-    stages: [
-      'Pembuatan akun & pemilihan 1 jenis program (Akademik, Non-Akademik/Keagamaan, atau Afirmasi) di beasiswa-jfl.jabarprov.go.id.',
-      'Mengunggah KTP/KK Jabar, surat keterangan diterima/aktif kuliah, transkrip, sertifikat prestasi, dan video profil singkat.',
-      'Verifikasi Administrasi oleh tim JFLS & verifikasi rekomendasi kampus asal di Bandung.',
-      'Penilaian akhir, asesmen seleksi, dan pengumuman penerima melalui portal resmi JFLS.'
-    ],
-    officialUrl: 'https://beasiswa-jfl.jabarprov.go.id',
-    deadlineNote: 'Juni – Juli setiap tahun'
-  },
-  {
     id: 'besti-kab-bandung',
     title: 'Beasiswa Ti Bupati (BESTI) Kab. Bandung',
     category: 'daerah',
@@ -2325,8 +2319,8 @@ const SCHOLARSHIPS_DATA = [
     provider: 'BAZNAS RI',
     logo: 'assets/logos/beasiswa/baznas.svg',
     level: 'S1 / D4 Dalam Negeri & Ma’had Aly',
-    campuses: 'ITB, UNPAD, UPI Bandung, UIN SGD Bandung, Telkom University, UNISBA, POLBAN (133+ mitra)',
-    benefit: 'Subsidi UKT hingga Rp3–4 juta/semester (maksimal 4 semester) + program pembinaan karakter, kepemimpinan & mentor BAZNAS.',
+    campuses: 'ITB, UNPAD, UPI Bandung, UIN SGD Bandung, Telkom University, UNISBA, POLBAN (246 kampus mitra pada 2026)',
+    benefit: 'Bantuan UKT hingga Rp4 juta/semester (kampus reguler) atau Rp7 juta/semester (kampus prioritas) selama 4 semester (semester 5–8) + bantuan riset tugas akhir + pembinaan karakter & kepemimpinan BAZNAS.',
     summary: 'Beasiswa andalan bagi santri dan mahasiswa aktif semester 5 di kampus mitra Bandung untuk melahirkan cendekiawan Muslim berkarakter.',
     requirements: [
       'Mahasiswa aktif program S1/D4 semester 5 di salah satu kampus mitra BAZNAS (termasuk ITB, UNPAD, UPI, UIN SGD, Telkom, UNISBA).',
@@ -2341,7 +2335,7 @@ const SCHOLARSHIPS_DATA = [
       'Masa sanggah, verifikasi akhir, dan penetapan penerima BCB angkatan berjalan.'
     ],
     officialUrl: 'https://beasiswa.baznas.go.id',
-    deadlineNote: 'Juli – Agustus setiap tahun'
+    deadlineNote: 'Sekitar Juli – September (2026: 9–27 September)'
   },
   {
     id: 'bsi-scholarship',
@@ -2454,12 +2448,12 @@ const SCHOLARSHIPS_DATA = [
     categoryLabel: 'Lembaga / Swasta',
     provider: 'Tanoto Foundation',
     logo: 'assets/logos/beasiswa/tanoto.svg',
-    level: 'S1 Mahasiswa Baru (Mitra ITB & UNPAD)',
-    campuses: 'Institut Teknologi Bandung (ITB) & Universitas Padjadjaran (UNPAD)',
+    level: 'S1 Mahasiswa Baru (Mitra ITB)',
+    campuses: 'Institut Teknologi Bandung (ITB) — satu-satunya kampus mitra di Bandung Raya',
     benefit: 'Biaya kuliah penuh + tunjangan hidup bulanan + pelatihan kepemimpinan berjenjang (semester 2–8), pendanaan riset & jaringan global.',
-    summary: 'Program pembentukan pemimpin masa depan bagi mahasiswa S1 semester 1 di 10 PTN mitra termasuk ITB dan UNPAD.',
+    summary: 'Program pembentukan pemimpin masa depan bagi mahasiswa S1 semester 1 di 10 PTN mitra; di Bandung Raya hanya ITB.',
     requirements: [
-      'Mahasiswa semester 1 program Sarjana reguler di salah satu PTN mitra termasuk ITB Bandung atau UNPAD.',
+      'Mahasiswa semester 1 program Sarjana reguler di salah satu dari 10 PTN mitra (di Bandung: ITB).',
       'Memiliki prestasi akademik (nilai rapor SMA/SMK/MA rata-rata min. 8/10) dan pengalaman kepemimpinan organisasi.',
       'Menunjukkan potensi kepemimpinan kuat serta motivasi berkontribusi bagi masyarakat.',
       'Berkomitmen mengikuti seluruh rangkaian pelatihan kepemimpinan TELADAN hingga semester 8.'
@@ -2894,8 +2888,10 @@ function initBeasiswaCatalog() {
     kampus: 'bg-indigo-50 text-indigo-700 border-indigo-200'
   };
 
+  const shortLabel = { pusat: 'Pemerintah', daerah: 'Pemda', lembaga: 'Lembaga', kampus: 'Kampus' };
+
   function getInitialLimit() {
-    return window.innerWidth < 768 ? 6 : 9;
+    return window.innerWidth < 768 ? 6 : 10;
   }
 
   function escapeHtml(text) {
@@ -3053,65 +3049,24 @@ function initBeasiswaCatalog() {
     emptyState?.classList.add('hidden');
 
     grid.innerHTML = itemsToShow
-      .map(item => {
-        const badgeClass = badgeColors[item.category] || 'bg-slate-100 text-slate-700 border-slate-200';
-        return `
-        <article class="beasiswa-card group bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#0f2e59]/30 transition-all">
-          <div>
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 p-1.5 flex items-center justify-center shrink-0">
-                <img src="${item.logo}" alt="Logo ${escapeHtml(item.title)}" class="w-full h-full object-contain" />
-              </div>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${badgeClass}">
-                ${escapeHtml(item.categoryLabel)}
-              </span>
-            </div>
-
-            <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug group-hover:text-[#0f2e59] transition-colors">
-              ${escapeHtml(item.title)}
-            </h4>
-            <p class="text-[11px] font-semibold text-slate-500 mt-1">
-              ${escapeHtml(item.provider)} &middot; ${escapeHtml(item.level)}
-            </p>
-
-            <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-2">
-              ${escapeHtml(item.benefit)}
-            </p>
-
-            <div class="mt-3 pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-600">
-              <div class="flex items-start gap-1.5">
-                <span class="font-bold text-slate-800 shrink-0">Syarat:</span>
-                <span class="line-clamp-1">${escapeHtml(item.requirements[0])}</span>
-              </div>
-              <div class="flex items-start gap-1.5">
-                <span class="font-bold text-slate-800 shrink-0">Tahapan:</span>
-                <span>${item.stages.length} tahap (${escapeHtml(item.deadlineNote)})</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2">
-            <button type="button" data-open-beasiswa="${item.id}"
-              class="flex-1 px-3 py-2 rounded-xl bg-[#0f2e59] hover:bg-[#173f78] text-white text-xs font-bold transition-colors text-center">
-              Detail, Syarat &amp; Tahapan
-            </button>
-            <a href="${item.officialUrl}" target="_blank" rel="noopener noreferrer"
-              title="Buka Portal Resmi ${escapeHtml(item.title)}"
-              class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition-colors shrink-0">
-              <span>Resmi</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </article>`;
-      })
+      .map(item => `
+        <button type="button" class="beasiswa-card pg-row" data-open-beasiswa="${item.id}">
+          <span class="pg-logo"><img src="${item.logo}" alt="" loading="lazy" /></span>
+          <span class="pg-row-text">
+            <span class="pg-row-title">${escapeHtml(item.title)}</span>
+            <span class="pg-row-sub">${escapeHtml(item.provider)} &middot; ${escapeHtml(item.level)}</span>
+          </span>
+          <span class="pg-chip">${escapeHtml(shortLabel[item.category] || item.categoryLabel)}</span>
+          <i data-lucide="chevron-right"></i>
+        </button>`)
       .join('');
 
     if (toggleWrap && toggleBtn) {
       if (activeFilter === 'all' && q.length === 0 && filtered.length > limit) {
         toggleWrap.classList.remove('hidden');
         toggleBtn.innerHTML = showAll
-          ? '<span>Tampilkan Lebih Sedikit</span><i data-lucide="chevron-up" class="w-4 h-4"></i>'
-          : `<span>Lihat Semua ${filtered.length} Beasiswa</span><i data-lucide="chevron-down" class="w-4 h-4"></i>`;
+          ? '<span>Tampilkan lebih sedikit</span><i data-lucide="chevron-up" class="w-4 h-4"></i>'
+          : `<span>Lihat semua ${filtered.length} beasiswa</span><i data-lucide="chevron-down" class="w-4 h-4"></i>`;
       } else {
         toggleWrap.classList.add('hidden');
       }
@@ -3130,12 +3085,7 @@ function initBeasiswaCatalog() {
     btn.addEventListener('click', () => {
       activeFilter = btn.getAttribute('data-beasiswa-filter') || 'all';
       showAll = false;
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-[#0f2e59]', 'text-white', 'shadow-sm');
-        b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-100');
-      });
-      btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-100');
-      btn.classList.add('bg-[#0f2e59]', 'text-white', 'shadow-sm');
+      filterBtns.forEach(b => b.classList.toggle('is-active', b === btn));
       renderCards();
     });
   });
