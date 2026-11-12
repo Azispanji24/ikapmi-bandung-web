@@ -235,11 +235,12 @@ body {
 }
 
 /* Larger variant for use inside hero/sections */
-.btn-glass-cta.lg {
+.btn-glass-cta--lg {
   height: 44px;
-  padding: 0 20px;
+  padding: 0 22px;
   font-size: 14px;
   gap: 0.6rem;
+  border-radius: 9999px;
 }
 
 .liquid-drop {
