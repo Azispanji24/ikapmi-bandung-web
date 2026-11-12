@@ -1083,6 +1083,7 @@ function initRegistrationForm() {
    7. SCROLL OBSERVER REVEAL
 ---------------------------------------------------- */
 function initScrollAnimations() {
+  // Generic reveal-on-scroll elements
   const elements = document.querySelectorAll('.reveal-on-scroll');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -1094,10 +1095,25 @@ function initScrollAnimations() {
         }
       });
     }, { threshold: 0.1 });
-
     elements.forEach(el => observer.observe(el));
   } else {
     elements.forEach(el => el.classList.remove('opacity-0', 'translate-y-6'));
+  }
+
+  // Warta section scroll-reveal
+  const wartaEls = document.querySelectorAll('.warta-reveal');
+  if ('IntersectionObserver' in window) {
+    const wartaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          wartaObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    wartaEls.forEach(el => wartaObserver.observe(el));
+  } else {
+    wartaEls.forEach(el => el.classList.add('is-visible'));
   }
 }
 
