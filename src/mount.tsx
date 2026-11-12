@@ -7,8 +7,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "id": "hafizh-najwal",
     "name": "Hafizh Najwal",
     "role": "Ketua Umum",
-    "team": "EX OFF",
-    "image": "assets/pengurus/hafizh-najwal-nobg.png",
+    "team": "Ex Officio",
     "bio": "Memegang pucuk pimpinan tertinggi, penentu arah kebijakan strategis organisasi, dan representasi resmi IKAPMI Regional Bandung.",
     "tags": [
       "Ketua Umum",
@@ -27,7 +26,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "id": "muhammad-kahfi",
     "name": "M. Kahfi",
     "role": "Sekretaris Umum",
-    "team": "EX OFF",
+    "team": "Ex Officio",
     "image": "assets/pengurus/muhammad-kahfi-Sekretaris-Umum.jpg?v=20261112",
     "bio": "Bertanggung jawab penuh atas tata kelola administrasi surat-menyurat, pengarsipan resmi, notulensi rapat, dan regulasi keorganisasian.",
     "tags": [
@@ -47,7 +46,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "id": "resti-fujianti",
     "name": "Resti Fujianti",
     "role": "Bendahara Umum",
-    "team": "EX OFF",
+    "team": "Ex Officio",
     "image": "assets/pengurus/Resti-Fujianti-Bendahara.jpg",
     "bio": "Bertanggung jawab atas pengelolaan keuangan organisasi, penyusunan anggaran program kerja, pelaporan kas transparan, dan tata kelola dana kealumnian.",
     "tags": [
@@ -126,13 +125,13 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
   {
     "id": "fadlan-ahmad",
     "name": "Fadlan A. Rizki",
-    "role": "Bidang Sosem",
+    "role": "Bidang SOSKEM",
     "team": "KETUA BIDANG",
     "image": "assets/pengurus/fadlan-ahmad-ketua-bidang-SOSKEM.jpg",
-    "bio": "Ketua Bidang Sosem (Sosial & Ekonomi): Mengawal aksi sosial kemanusiaan, advokasi kesejahteraan santri perantau, serta inkubasi kewirausahaan alumni.",
+    "bio": "Ketua Bidang SOSKEM (Sosial & Ekonomi): Mengawal aksi sosial kemanusiaan, advokasi kesejahteraan santri perantau, serta inkubasi kewirausahaan alumni.",
     "tags": [
       "Ketua Bidang",
-      "Sosem",
+      "SOSKEM",
       "Sosial"
     ],
     "links": [
