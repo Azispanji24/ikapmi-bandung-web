@@ -393,14 +393,14 @@ body {
   pointer-events: none;
 }
 
-/* Subtle inner image depth kept well within padded bounds so blur never clips */
+/* Subtle inner image depth kept well within p-4 (16px) padded bounds so blur never clips */
 .hero-logo-img-depth {
-  filter: drop-shadow(0 8px 14px rgba(15, 46, 89, 0.18));
+  filter: drop-shadow(0 5px 9px rgba(15, 46, 89, 0.16));
   transition: filter 0.35s ease;
 }
 
 .hero-glossy-logo:hover .hero-logo-img-depth {
-  filter: drop-shadow(0 12px 18px rgba(15, 46, 89, 0.26));
+  filter: drop-shadow(0 8px 12px rgba(15, 46, 89, 0.24));
 }
 
 .hero-logo-shine-mask {
