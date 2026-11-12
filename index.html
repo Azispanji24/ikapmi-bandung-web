@@ -65,7 +65,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.3">
+  <link rel="stylesheet" href="css/style.css?v=2.4">
 </head>
 
 <body class="bg-[#fbfdfc] text-slate-800 antialiased selection:bg-[#0f2e59] selection:text-white">
@@ -179,97 +179,104 @@
        3. HERO SECTION
   ================================================================== -->
   <section id="beranda"
-    class="relative overflow-hidden min-h-[calc(100vh-80px)] lg:min-h-[calc(100vh-84px)] flex items-center py-12 lg:py-16 bg-pattern-subtle border-b border-slate-200">
-    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    class="relative overflow-hidden lg:min-h-[calc(100vh-84px)] flex items-center pt-5 pb-9 sm:py-12 lg:py-16 bg-pattern-subtle border-b border-slate-200">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 sm:py-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-8 items-center">
 
-        <!-- Left Editorial Copy -->
-        <div class="lg:col-span-7 flex flex-col items-start">
+        <!-- Hero Visual: 3D Emblem (First on Mobile above Headline, Right on Desktop) -->
+        <div class="lg:col-span-5 order-1 lg:order-2 relative flex flex-col items-center justify-center pt-0 pb-1 lg:py-0">
+
+          <!-- Ambient Aura Glow Behind Logo (Contained so edges stay soft) -->
+          <div aria-hidden="true"
+            class="absolute inset-2 sm:-inset-8 bg-gradient-to-tr from-brand-500/20 via-blue-400/15 to-indigo-500/15 rounded-full blur-2xl opacity-75 pointer-events-none -z-10 animate-pulse"
+            style="animation-duration: 5s;"></div>
+
+          <!-- 3D Tilt Perspective Wrapper -->
+          <div id="hero-logo-container"
+            class="relative w-full max-w-[185px] min-[375px]:max-w-[205px] sm:max-w-[300px] lg:max-w-[460px] xl:max-w-[490px] aspect-square flex items-center justify-center cursor-pointer select-none"
+            style="perspective: 1200px;">
+
+            <!-- 3D Skewed Interactive Logo (Generous inner padding prevents WebKit/Safari shadow clipping) -->
+            <div id="hero-interactive-logo"
+              class="hero-glossy-logo relative w-full h-full p-5 sm:p-6 flex items-center justify-center preserve-3d">
+
+              <div class="relative w-full h-full flex items-center justify-center">
+                <!-- Standalone HD Logo -->
+                <img src="assets/logo_ikapmi_hd.png" alt="Emblem Logo Resmi IKAPMI Regional Bandung"
+                  class="hero-logo-img-depth w-full h-full object-contain pointer-events-none select-none contrast-[1.06] brightness-[1.03]"
+                  draggable="false">
+
+                <!-- Glossy Specular Glare & Shimmer Layer Masked to Logo Silhouette ("Mengkilat") -->
+                <div class="hero-logo-shine-mask pointer-events-none absolute inset-0"
+                  style="mask-image: url('assets/logo_ikapmi_hd.png'); -webkit-mask-image: url('assets/logo_ikapmi_hd.png'); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-position: center; -webkit-mask-position: center;">
+                  <!-- Dynamic Cursor Follow Glare ("Mengkilat" spotlight) -->
+                  <div class="hero-logo-glare-radial absolute inset-0"></div>
+                  <!-- Sweeping Holographic Shimmer Beam -->
+                  <div class="hero-logo-glare-shimmer absolute inset-0"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Soft Grounded Floor Shadow (Zero Rectangular Clipping on iOS Safari) -->
+            <div aria-hidden="true"
+              class="hero-logo-floor-shadow absolute -bottom-1 sm:bottom-1 left-1/2 -translate-x-1/2 w-[68%] h-5 sm:h-7 rounded-full"></div>
+
+          </div>
+        </div>
+
+        <!-- Editorial Copy (Below Logo on Mobile, Left on Desktop) -->
+        <div class="lg:col-span-7 order-2 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
 
           <!-- Main Distinctive Heading -->
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+          <h1 class="text-[26px] min-[375px]:text-[30px] sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-[-0.025em] leading-[1.15] mb-3 sm:mb-5">
             <span class="font-serif italic font-normal text-brand-700 block sm:inline">Sadulur Ngahiji</span>
             di Tatar Pasundan.
           </h1>
 
           <!-- Lead Paragraph -->
-          <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl">
+          <p class="text-[14px] min-[375px]:text-[15px] sm:text-lg text-slate-600 leading-[1.6] mb-5 sm:mb-8 max-w-[36ch] sm:max-w-2xl">
             Wadah persaudaraan, jejaring intelektual, dan pengabdian bagi seluruh alumni
             <strong class="text-slate-900 font-semibold">Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI)</strong>
             yang tengah menempuh studi perguruan tinggi, berkarya, dan berdomisili di wilayah Bandung Raya.
           </p>
 
-          <!-- Action CTAs -->
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-10">
+          <!-- Action CTAs (Compact, Proportional Buttons) -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 w-full sm:w-auto mb-6 sm:mb-10">
             <a href="database.html"
-              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-semibold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5">
-              <i data-lucide="clipboard-check" class="w-4 h-4 text-blue-200"></i>
+              class="inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-4 sm:px-6 rounded-xl bg-brand-700 hover:bg-brand-800 active:scale-[0.98] text-white font-semibold text-[13px] sm:text-sm shadow-sm shadow-brand-900/15 transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap">
+              <i data-lucide="clipboard-check" class="w-4 h-4 text-blue-200 shrink-0"></i>
               <span>Daftar Database Alumni</span>
             </a>
             <a href="#dokumentasi"
-              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold text-sm shadow-sm transition-all duration-200 hover:border-slate-400">
-              <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+              class="inline-flex items-center justify-center gap-2 h-10 sm:h-11 px-4 sm:px-6 rounded-xl bg-white hover:bg-slate-50 active:scale-[0.98] text-slate-700 border border-slate-300/90 font-semibold text-[13px] sm:text-sm shadow-sm transition-all duration-200 hover:border-slate-400 whitespace-nowrap">
+              <i data-lucide="image" class="w-4 h-4 text-slate-500 shrink-0"></i>
               <span>Lihat Dokumentasi Kegiatan</span>
             </a>
           </div>
 
           <!-- Credibility Metrics Bar -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-6 border-t border-slate-200 w-full">
-            <div>
-              <p class="text-2xl sm:text-3xl font-extrabold text-brand-900 leading-none">690+</p>
-              <p class="text-xs text-slate-500 mt-1">Alumni Terhubung</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-6 pt-5 sm:pt-6 border-t border-slate-200/80 w-full text-left">
+            <div class="rounded-xl bg-white/90 sm:bg-transparent border border-slate-200/80 sm:border-0 px-3.5 py-2.5 sm:p-0 shadow-[0_2px_10px_-4px_rgba(15,46,89,0.08)] sm:shadow-none">
+              <p class="text-[20px] min-[375px]:text-[22px] sm:text-3xl font-extrabold text-brand-900 leading-tight tabular-nums">690+</p>
+              <p class="text-[12.5px] min-[375px]:text-[13px] sm:text-xs font-medium text-slate-600 mt-0.5 leading-snug">Alumni Terhubung</p>
             </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-extrabold text-brand-900 leading-none">8+</p>
-              <p class="text-xs text-slate-500 mt-1">Kampus di Bandung</p>
+            <div class="rounded-xl bg-white/90 sm:bg-transparent border border-slate-200/80 sm:border-0 px-3.5 py-2.5 sm:p-0 shadow-[0_2px_10px_-4px_rgba(15,46,89,0.08)] sm:shadow-none">
+              <p class="text-[20px] min-[375px]:text-[22px] sm:text-3xl font-extrabold text-brand-900 leading-tight tabular-nums">8+</p>
+              <p class="text-[12.5px] min-[375px]:text-[13px] sm:text-xs font-medium text-slate-600 mt-0.5 leading-snug">Kampus di Bandung</p>
             </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-extrabold text-brand-900 leading-none">5</p>
-              <p class="text-xs text-slate-500 mt-1">Divisi Kepengurusan</p>
+            <div class="rounded-xl bg-white/90 sm:bg-transparent border border-slate-200/80 sm:border-0 px-3.5 py-2.5 sm:p-0 shadow-[0_2px_10px_-4px_rgba(15,46,89,0.08)] sm:shadow-none">
+              <p class="text-[20px] min-[375px]:text-[22px] sm:text-3xl font-extrabold text-brand-900 leading-tight tabular-nums">5</p>
+              <p class="text-[12.5px] min-[375px]:text-[13px] sm:text-xs font-medium text-slate-600 mt-0.5 leading-snug">Divisi Kepengurusan</p>
             </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-extrabold text-accent-700 leading-none">1993</p>
-              <p class="text-xs text-slate-500 mt-1">Basis Pesantren PMUQI</p>
+            <div class="rounded-xl bg-white/90 sm:bg-transparent border border-slate-200/80 sm:border-0 px-3.5 py-2.5 sm:p-0 shadow-[0_2px_10px_-4px_rgba(15,46,89,0.08)] sm:shadow-none">
+              <p class="text-[20px] min-[375px]:text-[22px] sm:text-3xl font-extrabold text-accent-700 leading-tight tabular-nums">1993</p>
+              <p class="text-[12.5px] min-[375px]:text-[13px] sm:text-xs font-medium text-slate-600 mt-0.5 leading-snug">Basis Pesantren PMUQI</p>
             </div>
           </div>
 
         </div>
 
-        <!-- Right Hero Visual: 3D Interactive Glossy Standalone Emblem Logo -->
-        <div class="lg:col-span-5 relative flex items-center justify-center py-6 lg:py-0">
-
-          <!-- Ambient Aura Glow Behind Logo -->
-          <div aria-hidden="true"
-            class="absolute -inset-4 sm:-inset-12 bg-gradient-to-tr from-brand-600/35 via-blue-500/25 to-indigo-600/25 rounded-full blur-3xl opacity-80 pointer-events-none -z-10 animate-pulse"
-            style="animation-duration: 5s;"></div>
-
-          <!-- 3D Tilt Perspective Wrapper -->
-          <div id="hero-logo-container"
-            class="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] xl:max-w-[490px] aspect-square flex items-center justify-center cursor-pointer select-none"
-            style="perspective: 1200px;">
-
-            <!-- 3D Skewed Interactive Logo (Glossy & Shiny) -->
-            <div id="hero-interactive-logo"
-              class="hero-glossy-logo relative w-full h-full flex items-center justify-center preserve-3d">
-
-              <!-- Standalone HD Logo -->
-              <img src="assets/logo_ikapmi_hd.png" alt="Emblem Logo Resmi IKAPMI Regional Bandung"
-                class="w-full h-full object-contain pointer-events-none select-none filter contrast-[1.06] brightness-[1.03]"
-                draggable="false">
-
-              <!-- Glossy Specular Glare & Shimmer Layer Masked to Logo Silhouette ("Mengkilat") -->
-              <div class="hero-logo-shine-mask pointer-events-none absolute inset-0"
-                style="mask-image: url('assets/logo_ikapmi_hd.png'); -webkit-mask-image: url('assets/logo_ikapmi_hd.png'); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-position: center; -webkit-mask-position: center;">
-                <!-- Dynamic Cursor Follow Glare ("Mengkilat" spotlight) -->
-                <div class="hero-logo-glare-radial absolute inset-0"></div>
-                <!-- Sweeping Holographic Shimmer Beam -->
-                <div class="hero-logo-glare-shimmer absolute inset-0"></div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
       </div>
     </div>
   </section>
