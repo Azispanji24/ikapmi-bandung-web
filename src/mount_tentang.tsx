@@ -18,7 +18,7 @@ const TENTANG_SLIDES: Slide[] = [
   {
     image: "assets/tentang/tentang_03.jpg",
     title: "Semangat Kebersamaan",
-    caption: "Solidaritas erat santri perantau Bumi Parahyangan",
+    caption: "Solidaritas erat santri perantau di Bhumi Parahyangan",
     alt: "Foto Kebersamaan IKAPMI Bandung #3",
   },
   {
