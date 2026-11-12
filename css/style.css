@@ -1112,12 +1112,12 @@ a.rounded-lg[class*="bg-white"][class*="h-12"], .campus-filter-btn.tab-btn:not(.
   -webkit-backdrop-filter: blur(8px);
 }
 
-.warta-badge-agama   { background: rgba(16,185,129,0.18); color: #065f46; border: 1px solid rgba(16,185,129,0.3); }
-.warta-badge-olahraga{ background: rgba(59,130,246,0.18); color: #1e3a8a; border: 1px solid rgba(59,130,246,0.3); }
-.warta-badge-silaturahmi { background: rgba(168,85,247,0.15); color: #581c87; border: 1px solid rgba(168,85,247,0.25); }
-.warta-badge-org     { background: rgba(15,46,89,0.12); color: #0f2e59; border: 1px solid rgba(15,46,89,0.22); }
-.warta-badge-progker { background: rgba(245,158,11,0.15); color: #78350f; border: 1px solid rgba(245,158,11,0.3); }
-.warta-badge-pengabdian { background: rgba(239,68,68,0.12); color: #7f1d1d; border: 1px solid rgba(239,68,68,0.22); }
+.warta-badge-agama   { background: rgba(255,255,255,0.88); color: #0f2e59; border: 1px solid rgba(255,255,255,0.6); }
+.warta-badge-olahraga{ background: rgba(255,255,255,0.88); color: #0f2e59; border: 1px solid rgba(255,255,255,0.6); }
+.warta-badge-silaturahmi { background: rgba(255,255,255,0.88); color: #0f2e59; border: 1px solid rgba(255,255,255,0.6); }
+.warta-badge-org     { background: rgba(255,255,255,0.88); color: #0f2e59; border: 1px solid rgba(255,255,255,0.6); }
+.warta-badge-progker { background: rgba(255,255,255,0.88); color: #0f2e59; border: 1px solid rgba(255,255,255,0.6); }
+.warta-badge-pengabdian { background: rgba(255,255,255,0.88); color: #0f2e59; border: 1px solid rgba(255,255,255,0.6); }
 
 /* Read button */
 .warta-read-btn {
@@ -1168,4 +1168,38 @@ a.rounded-lg[class*="bg-white"][class*="h-12"], .campus-filter-btn.tab-btn:not(.
     transform: none;
     transition: none;
   }
+}
+
+/* =================================================================
+   ARTICLE MODAL — Bottom sheet mobile, center panel desktop
+================================================================= */
+
+/* Slide up from bottom on mobile */
+@keyframes articleModalSlideUp {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes articleModalFadeIn {
+  from { transform: scale(0.97) translateY(8px); opacity: 0; }
+  to   { transform: scale(1)    translateY(0);   opacity: 1; }
+}
+
+#article-modal:not(.hidden) > div:last-child {
+  animation: articleModalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@media (min-width: 640px) {
+  #article-modal:not(.hidden) > div:last-child {
+    animation: articleModalFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+/* Smooth overscroll on modal body */
+#article-modal-body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Close button sits over the hero image */
+#article-modal-close {
+  top: 12px;
+  right: 12px;
 }

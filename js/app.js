@@ -779,26 +779,36 @@ function initArticleModal() {
       const data = articleData[articleId];
 
       if (data && modal && modalContent) {
-        const imageMarkup = data.imageFit === 'contain'
-          ? `<div class="rounded-xl overflow-hidden mb-6 bg-slate-950/95 flex items-center justify-center"><img src="${data.image}" alt="${data.title}" class="w-full max-h-96 object-contain"></div>`
-          : `<div class="rounded-xl overflow-hidden mb-6 max-h-80"><img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover ${data.imagePosition || ''}"></div>`;
+        // Hero image: full-bleed at top (no padding), with gradient overlay for text readability
+        const imgClass = data.imageFit === 'contain'
+          ? 'w-full h-full object-contain'
+          : `w-full h-full object-cover ${data.imagePosition || ''}`;
 
         modalContent.innerHTML = `
-          <div class="mb-4">
-            <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-blue-100 text-[#0f2e59] mb-3">${data.tag}</span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">${data.title}</h2>
-            <div class="flex items-center gap-4 text-xs text-slate-500 mt-3 pb-4 border-b border-slate-100">
-              <span>📅 ${data.date}</span>
-              <span>✍️ ${data.author}</span>
-            </div>
+          <!-- Hero image full-bleed -->
+          <div class="relative w-full h-48 sm:h-56 overflow-hidden rounded-t-3xl bg-slate-900 shrink-0">
+            <img src="${data.image}" alt="${data.title}" class="${imgClass} absolute inset-0">
+            <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(4,10,22,0.8) 0%,transparent 55%)"></div>
+            <span class="absolute bottom-3 left-4 inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/20 text-white border border-white/30 backdrop-blur-sm">${data.tag}</span>
           </div>
-          ${imageMarkup}
-          <div class="prose max-w-none text-slate-700 leading-relaxed text-sm sm:text-base">
-            ${data.content}
+
+          <!-- Content area -->
+          <div class="px-5 sm:px-7 pt-4 pb-6">
+            <h2 class="text-[17px] sm:text-xl font-extrabold text-slate-900 leading-snug mb-2">${data.title}</h2>
+            <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium pb-3 mb-4 border-b border-slate-100">
+              <span>${data.date}</span>
+              <span class="text-slate-200">·</span>
+              <span>${data.author}</span>
+            </div>
+            <div class="text-sm text-slate-700 leading-relaxed space-y-3">
+              ${data.content}
+            </div>
           </div>
         `;
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+        // Scroll modal body to top on open
+        modalContent.scrollTop = 0;
       }
     });
   });
