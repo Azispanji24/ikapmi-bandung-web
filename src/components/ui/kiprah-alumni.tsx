@@ -102,7 +102,7 @@ export function KiprahAlumniSection() {
                 IKAPMI Regional Bandung
               </p>
               <p className="text-slate-300 text-sm">
-                Sadulur Ngahiji · Tatar Pasundan
+                Sadulur Ngahiji · Bumi Parahyangan
               </p>
             </div>
           </div>
