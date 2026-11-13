@@ -128,7 +128,8 @@ export function TestimonialsSection() {
   // Form states
   const [formName, setFormName] = React.useState("");
   const [formRole, setFormRole] = React.useState("");
-  const [formCompany, setFormCompany] = React.useState("ITB Bandung");
+  const [formCompany, setFormCompany] = React.useState("UIN Sunan Gunung Djati");
+  const [formCompanyCustom, setFormCompanyCustom] = React.useState("");
   const [formQuote, setFormQuote] = React.useState("");
   const [selectedAvatar, setSelectedAvatar] = React.useState("");
   const [uploadError, setUploadError] = React.useState<string | null>(null);
@@ -215,7 +216,7 @@ export function TestimonialsSection() {
     const newTestimonial: Testimonial = {
       name: formName.trim(),
       role: formRole.trim() || "Santri Perantau",
-      company: formCompany.trim() || "Bandung",
+      company: (formCompany === "Lainnya" ? formCompanyCustom.trim() : formCompany.trim()) || "Bandung",
       quote: formQuote.trim(),
       image: selectedAvatar,
       date: "Baru saja",
@@ -248,6 +249,8 @@ export function TestimonialsSection() {
       setIsModalOpen(false);
       setFormName("");
       setFormRole("");
+      setFormCompany("UIN Sunan Gunung Djati");
+      setFormCompanyCustom("");
       setFormQuote("");
       setSelectedAvatar("");
     }, 1500);
@@ -510,17 +513,34 @@ export function TestimonialsSection() {
                         onChange={(e) => setFormCompany(e.target.value)}
                         className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm text-slate-800 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition bg-white"
                       >
-                        <option value="ITB Bandung">ITB Bandung</option>
-                        <option value="UNPAD Jatinangor">UNPAD Jatinangor</option>
-                        <option value="UPI Bumi Siliwangi">UPI Bumi Siliwangi</option>
-                        <option value="UIN Sunan Gunung Djati">UIN SGD Bandung</option>
+                        <option value="">Pilih Kampus...</option>
+                        <option value="UIN Sunan Gunung Djati">UIN Sunan Gunung Djati</option>
+                        <option value="Universitas Padjadjaran (UNPAD)">Universitas Padjadjaran (UNPAD)</option>
+                        <option value="Universitas Pendidikan Indonesia (UPI)">Universitas Pendidikan Indonesia (UPI)</option>
+                        <option value="Institut Teknologi Bandung (ITB)">Institut Teknologi Bandung (ITB)</option>
                         <option value="Telkom University">Telkom University</option>
-                        <option value="POLBAN Bandung">POLBAN Bandung</option>
-                        <option value="Unisba Bandung">Unisba Bandung</option>
-                        <option value="ISBI Bandung">ISBI Bandung</option>
-                        <option value="Alumni IKAPMI">Alumni IKAPMI</option>
-                        <option value="Santri Bandung">Lainnya / Umum</option>
+                        <option value="UNISBA">UNISBA</option>
+                        <option value="Universitas Pasundan (UNPAS)">Universitas Pasundan (UNPAS)</option>
+                        <option value="POLBAN">POLBAN</option>
+                        <option value="Universitas Widyatama">Universitas Widyatama</option>
+                        <option value="Universitas Teknologi Bandung (UTB)">Universitas Teknologi Bandung (UTB)</option>
+                        <option value="Universitas Muhammadiyah Bandung (UMB)">Universitas Muhammadiyah Bandung (UMB)</option>
+                        <option value="Universitas Katolik Parahyangan (UNPAR)">Universitas Katolik Parahyangan (UNPAR)</option>
+                        <option value="BINUS University Bandung">BINUS University Bandung</option>
+                        <option value="Poltekpar NHI Bandung">Poltekpar NHI Bandung</option>
+                        <option value="Sudah Bekerja / Wiraswasta">Sudah Bekerja / Wiraswasta</option>
+                        <option value="Lainnya">Kampus Lainnya...</option>
                       </select>
+                      {formCompany === "Lainnya" && (
+                        <input
+                          type="text"
+                          required
+                          placeholder="Tulis nama kampus / lembagamu..."
+                          value={formCompanyCustom}
+                          onChange={(e) => setFormCompanyCustom(e.target.value)}
+                          className="mt-2 w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm text-slate-800 placeholder-slate-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 transition"
+                        />
+                      )}
                     </div>
                   </div>
 
