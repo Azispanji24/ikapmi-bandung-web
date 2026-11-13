@@ -371,71 +371,49 @@
   </section>
 
   <!-- =================================================================
-       4.5 DEWAN PELINDUNG & PENASEHAT ORGANISASI (ZIGZAG 3D MODEL)
+       4.5 DEWAN PELINDUNG & PENASEHAT ORGANISASI (COMPACT ZIGZAG)
   ================================================================== -->
-  <section id="pelindung" class="py-16 sm:py-24 relative overflow-hidden bg-grid-paper border-b border-slate-200">
+  <section id="pelindung" class="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-grid-paper border-b border-slate-200">
     
-    <!-- Ambient Backdrop Glows -->
-    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-700/10 text-brand-700 border border-brand-700/20 mb-4 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-brand-700 animate-ping"></span>
-          <span>Dewan Pelindung &amp; Penasehat</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-700 tracking-tight leading-tight">
+      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-700 tracking-tight leading-tight">
           Pelindung Organisasi
         </h2>
-        <div class="w-24 h-1.5 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 rounded-full mx-auto mt-4 mb-4"></div>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-          Doa, restu, dan bimbingan dari para Masyayikh &amp; Ahlul Bait Pondok Pesantren Ummul Quro Al-Islami Bogor serta Pengurus Pusat IKAPMI yang senantiasa menaungi gerak langkah pengabdian kami di Bandung Raya.
+        <div class="w-14 h-1 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full mx-auto mt-2.5 mb-2.5"></div>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+          Pondok Pesantren Ummul Quro Al-Islami Bogor &amp; Pengurus Pusat IKAPMI
         </p>
       </div>
 
-      <!-- Strips Stack Container with Pop-Out Figure Styling (Zigzag: Kanan, Kiri, Kanan, Kiri, Kanan) -->
-      <div class="space-y-16 sm:space-y-20 lg:space-y-24">
+      <!-- Compact Strips Stack (Dekat Jaraknya: space-y-3 sm:space-y-4 md:space-y-5) -->
+      <div class="space-y-3 sm:space-y-4 md:space-y-5">
 
         <!-- ==============================================================
              CARD 1 (KANAN): Dr. KH. Saiful Falah, M.Pd.I
              Background: Biru Dongker
         =============================================================== -->
-        <div class="relative pt-14 sm:pt-16 group">
-          <div class="relative bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 pelindung-card-shadow bg-grid-inner-dark min-h-[260px] md:min-h-[290px] flex flex-col md:flex-row items-center justify-between">
+        <div class="relative w-full pt-6 sm:pt-8 md:pt-10 group">
+          <div class="relative w-full bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow bg-grid-inner-dark min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
             
-            <!-- Large Watermark Number -->
-            <span class="absolute right-4 md:right-1/4 -bottom-6 text-[110px] sm:text-[160px] font-black text-white/10 select-none pointer-events-none font-serif leading-none z-0">
-              01
-            </span>
-
-            <!-- Figure Photo: On mobile pops out top center; on desktop sits at right bottom -->
-            <div class="-mt-20 mb-4 md:mt-0 md:mb-0 md:block md:absolute md:bottom-0 md:right-4 lg:right-10 z-20 pointer-events-none flex justify-center order-1 md:order-2">
-              <img src="assets/pelindung/pelindung_saiful_falah.png?v=20261113b" 
-                   alt="Dr. KH. Saiful Falah, M.Pd.I" 
-                   class="h-52 sm:h-64 md:h-[340px] lg:h-[390px] w-auto object-contain pelindung-figure-shadow select-none transform transition-transform duration-300 group-hover:scale-105"
-                   loading="lazy">
-            </div>
-
-            <!-- Content Area (Desktop: 62% width on Left) -->
-            <div class="relative z-10 w-full md:w-[62%] lg:w-[65%] text-left pr-0 md:pr-6 order-2 md:order-1">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30 mb-2.5">
-                <svg class="w-3.5 h-3.5 text-amber-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                AHLUL BAIT PMUQI BOGOR
-              </div>
-              <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-extrabold text-white tracking-tight leading-tight">
+            <!-- Content Left (Mobile & Desktop) -->
+            <div class="w-[62%] sm:w-[66%] md:w-[70%] z-10 text-left">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-white tracking-tight leading-tight">
                 Dr. KH. Saiful Falah, M.Pd.I
               </h3>
-              <p class="text-blue-300 text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 mb-3.5">
+              <p class="text-blue-200 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
                 Pimpinan Pondok Pesantren Ummul Quro Al-Islami Bogor
               </p>
-              <div class="border-l-2 border-amber-400 pl-3.5 sm:pl-4 py-1 bg-white/[0.03] rounded-r-lg">
-                <p class="text-slate-200 text-xs sm:text-sm md:text-base italic font-serif leading-relaxed">
-                  "Santri perantauan harus senantiasa mengakar pada adab, kokoh dalam ilmu, dan menebarkan manfaat di manapun berpijak."
-                </p>
-              </div>
+            </div>
+
+            <!-- Figure Photo: Right (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[36%] sm:w-[32%] md:w-[28%] flex justify-end z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_saiful_falah.png?v=20261113c" 
+                   alt="Dr. KH. Saiful Falah, M.Pd.I" 
+                   class="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain pelindung-figure-shadow select-none -mt-8 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
             </div>
 
           </div>
@@ -445,39 +423,25 @@
              CARD 2 (KIRI): Dr. KH. Syamsul Rizal Mz, S.H.I., M.Pd.I
              Background: Putih
         =============================================================== -->
-        <div class="relative pt-14 sm:pt-16 group">
-          <div class="relative bg-white text-slate-800 rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 pelindung-card-shadow border border-slate-200/90 bg-grid-inner-light min-h-[260px] md:min-h-[290px] flex flex-col md:flex-row items-center justify-between">
+        <div class="relative w-full pt-6 sm:pt-8 md:pt-10 group">
+          <div class="relative w-full bg-white text-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow border border-slate-200/90 bg-grid-inner-light min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
             
-            <!-- Large Watermark Number -->
-            <span class="absolute left-4 md:left-1/4 -bottom-6 text-[110px] sm:text-[160px] font-black text-slate-900/5 select-none pointer-events-none font-serif leading-none z-0">
-              02
-            </span>
-
-            <!-- Figure Photo: On mobile pops out top center; on desktop sits at left bottom -->
-            <div class="-mt-20 mb-4 md:mt-0 md:mb-0 md:block md:absolute md:bottom-0 md:left-4 lg:left-10 z-20 pointer-events-none flex justify-center order-1">
-              <img src="assets/pelindung/pelindung_syamsul_rizal.png?v=20261113b" 
+            <!-- Figure Photo: Left (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[36%] sm:w-[32%] md:w-[28%] flex justify-start z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_syamsul_rizal.png?v=20261113c" 
                    alt="Dr. KH. Syamsul Rizal Mz, S.H.I., M.Pd.I" 
-                   class="h-52 sm:h-64 md:h-[340px] lg:h-[390px] w-auto object-contain pelindung-figure-shadow-light select-none transform transition-transform duration-300 group-hover:scale-105"
+                   class="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain pelindung-figure-shadow-light select-none -mt-8 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
                    loading="lazy">
             </div>
 
-            <!-- Content Area (Desktop: 62% width on Right) -->
-            <div class="relative z-10 w-full md:w-[62%] lg:w-[65%] text-left ml-auto pl-0 md:pl-6 order-2">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-brand-700/10 text-brand-700 border border-brand-700/20 mb-2.5">
-                <svg class="w-3.5 h-3.5 text-brand-700" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                AHLUL BAIT PMUQI BOGOR
-              </div>
-              <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-extrabold text-brand-700 tracking-tight leading-tight">
+            <!-- Content Right (Mobile & Desktop) -->
+            <div class="w-[62%] sm:w-[66%] md:w-[70%] z-10 text-right">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-brand-700 tracking-tight leading-tight">
                 Dr. KH. Syamsul Rizal Mz, S.H.I., M.Pd.I
               </h3>
-              <p class="text-brand-600 text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 mb-3.5">
+              <p class="text-slate-600 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
                 Pimpinan Pondok Pesantren Ummul Quro Al-Islami Bogor
               </p>
-              <div class="border-l-2 border-brand-700 pl-3.5 sm:pl-4 py-1 bg-slate-50/70 rounded-r-lg">
-                <p class="text-slate-600 text-xs sm:text-sm md:text-base italic font-serif leading-relaxed">
-                  "Jadikan intelektualitas kampus sebagai sayap perjuangan dan nilai-nilai kepesantrenan sebagai kompas kehidupan."
-                </p>
-              </div>
             </div>
 
           </div>
@@ -487,39 +451,25 @@
              CARD 3 (KANAN): Ustadzah Hj. Nuril Izzah
              Background: Biru Dongker
         =============================================================== -->
-        <div class="relative pt-14 sm:pt-16 group">
-          <div class="relative bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 pelindung-card-shadow bg-grid-inner-dark min-h-[260px] md:min-h-[290px] flex flex-col md:flex-row items-center justify-between">
+        <div class="relative w-full pt-6 sm:pt-8 md:pt-10 group">
+          <div class="relative w-full bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow bg-grid-inner-dark min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
             
-            <!-- Large Watermark Number -->
-            <span class="absolute right-4 md:right-1/4 -bottom-6 text-[110px] sm:text-[160px] font-black text-white/10 select-none pointer-events-none font-serif leading-none z-0">
-              03
-            </span>
-
-            <!-- Figure Photo: On mobile pops out top center; on desktop sits at right bottom -->
-            <div class="-mt-20 mb-4 md:mt-0 md:mb-0 md:block md:absolute md:bottom-0 md:right-4 lg:right-10 z-20 pointer-events-none flex justify-center order-1 md:order-2">
-              <img src="assets/pelindung/pelindung_nuril_izzah.png?v=20261113b" 
-                   alt="Ustadzah Hj. Nuril Izzah" 
-                   class="h-52 sm:h-64 md:h-[340px] lg:h-[390px] w-auto object-contain pelindung-figure-shadow select-none transform transition-transform duration-300 group-hover:scale-105"
-                   loading="lazy">
-            </div>
-
-            <!-- Content Area (Desktop: 62% width on Left) -->
-            <div class="relative z-10 w-full md:w-[62%] lg:w-[65%] text-left pr-0 md:pr-6 order-2 md:order-1">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30 mb-2.5">
-                <svg class="w-3.5 h-3.5 text-amber-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                AHLUL BAIT PMUQI BOGOR
-              </div>
-              <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-extrabold text-white tracking-tight leading-tight">
+            <!-- Content Left (Mobile & Desktop) -->
+            <div class="w-[62%] sm:w-[66%] md:w-[70%] z-10 text-left">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-white tracking-tight leading-tight">
                 Ustadzah Hj. Nuril Izzah
               </h3>
-              <p class="text-blue-300 text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 mb-3.5">
+              <p class="text-blue-200 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
                 Ahlul Bait Pondok Pesantren Ummul Quro Al-Islami Bogor
               </p>
-              <div class="border-l-2 border-amber-400 pl-3.5 sm:pl-4 py-1 bg-white/[0.03] rounded-r-lg">
-                <p class="text-slate-200 text-xs sm:text-sm md:text-base italic font-serif leading-relaxed">
-                  "Ketulusan hati dalam menuntut ilmu dan berkhidmah akan senantiasa membuka pintu keberkahan yang tiada putus."
-                </p>
-              </div>
+            </div>
+
+            <!-- Figure Photo: Right (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[36%] sm:w-[32%] md:w-[28%] flex justify-end z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_nuril_izzah.png?v=20261113c" 
+                   alt="Ustadzah Hj. Nuril Izzah" 
+                   class="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain pelindung-figure-shadow select-none -mt-8 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
             </div>
 
           </div>
@@ -529,39 +479,25 @@
              CARD 4 (KIRI): Ustadzah Hj. Ummu Hafsoh
              Background: Putih
         =============================================================== -->
-        <div class="relative pt-14 sm:pt-16 group">
-          <div class="relative bg-white text-slate-800 rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 pelindung-card-shadow border border-slate-200/90 bg-grid-inner-light min-h-[260px] md:min-h-[290px] flex flex-col md:flex-row items-center justify-between">
+        <div class="relative w-full pt-6 sm:pt-8 md:pt-10 group">
+          <div class="relative w-full bg-white text-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow border border-slate-200/90 bg-grid-inner-light min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
             
-            <!-- Large Watermark Number -->
-            <span class="absolute left-4 md:left-1/4 -bottom-6 text-[110px] sm:text-[160px] font-black text-slate-900/5 select-none pointer-events-none font-serif leading-none z-0">
-              04
-            </span>
-
-            <!-- Figure Photo: On mobile pops out top center; on desktop sits at left bottom -->
-            <div class="-mt-20 mb-4 md:mt-0 md:mb-0 md:block md:absolute md:bottom-0 md:left-4 lg:left-10 z-20 pointer-events-none flex justify-center order-1">
-              <img src="assets/pelindung/pelindung_ummu_hafsoh.png?v=20261113b" 
+            <!-- Figure Photo: Left (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[36%] sm:w-[32%] md:w-[28%] flex justify-start z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_ummu_hafsoh.png?v=20261113c" 
                    alt="Ustadzah Hj. Ummu Hafsoh" 
-                   class="h-52 sm:h-64 md:h-[340px] lg:h-[390px] w-auto object-contain pelindung-figure-shadow-light select-none transform transition-transform duration-300 group-hover:scale-105"
+                   class="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain pelindung-figure-shadow-light select-none -mt-8 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
                    loading="lazy">
             </div>
 
-            <!-- Content Area (Desktop: 62% width on Right) -->
-            <div class="relative z-10 w-full md:w-[62%] lg:w-[65%] text-left ml-auto pl-0 md:pl-6 order-2">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-brand-700/10 text-brand-700 border border-brand-700/20 mb-2.5">
-                <svg class="w-3.5 h-3.5 text-brand-700" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                AHLUL BAIT PMUQI BOGOR
-              </div>
-              <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-extrabold text-brand-700 tracking-tight leading-tight">
+            <!-- Content Right (Mobile & Desktop) -->
+            <div class="w-[62%] sm:w-[66%] md:w-[70%] z-10 text-right">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-brand-700 tracking-tight leading-tight">
                 Ustadzah Hj. Ummu Hafsoh
               </h3>
-              <p class="text-brand-600 text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 mb-3.5">
+              <p class="text-slate-600 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
                 Ahlul Bait Pondok Pesantren Ummul Quro Al-Islami Bogor
               </p>
-              <div class="border-l-2 border-brand-700 pl-3.5 sm:pl-4 py-1 bg-slate-50/70 rounded-r-lg">
-                <p class="text-slate-600 text-xs sm:text-sm md:text-base italic font-serif leading-relaxed">
-                  "Kemandirian santri adalah keteguhan menjaga kehormatan diri, keistiqomahan ibadah, dan kerukunan ukhuwah."
-                </p>
-              </div>
             </div>
 
           </div>
@@ -571,39 +507,25 @@
              CARD 5 (KANAN): Ustadz Andri Noer Zaelani, M.Pd.
              Background: Biru Dongker
         =============================================================== -->
-        <div class="relative pt-14 sm:pt-16 group">
-          <div class="relative bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 pelindung-card-shadow bg-grid-inner-dark min-h-[260px] md:min-h-[290px] flex flex-col md:flex-row items-center justify-between">
+        <div class="relative w-full pt-6 sm:pt-8 md:pt-10 group">
+          <div class="relative w-full bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow bg-grid-inner-dark min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
             
-            <!-- Large Watermark Number -->
-            <span class="absolute right-4 md:right-1/4 -bottom-6 text-[110px] sm:text-[160px] font-black text-white/10 select-none pointer-events-none font-serif leading-none z-0">
-              05
-            </span>
-
-            <!-- Figure Photo: On mobile pops out top center; on desktop sits at right bottom -->
-            <div class="-mt-20 mb-4 md:mt-0 md:mb-0 md:block md:absolute md:bottom-0 md:right-4 lg:right-10 z-20 pointer-events-none flex justify-center order-1 md:order-2">
-              <img src="assets/pelindung/pelindung_andri_zaelani.png?v=20261113b" 
-                   alt="Ustadz Andri Noer Zaelani, M.Pd." 
-                   class="h-52 sm:h-64 md:h-[340px] lg:h-[390px] w-auto object-contain pelindung-figure-shadow select-none transform transition-transform duration-300 group-hover:scale-105"
-                   loading="lazy">
-            </div>
-
-            <!-- Content Area (Desktop: 62% width on Left) -->
-            <div class="relative z-10 w-full md:w-[62%] lg:w-[65%] text-left pr-0 md:pr-6 order-2 md:order-1">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 mb-2.5">
-                <svg class="w-3.5 h-3.5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                KETUA UMUM IKAPMI PUSAT
-              </div>
-              <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-extrabold text-white tracking-tight leading-tight">
+            <!-- Content Left (Mobile & Desktop) -->
+            <div class="w-[62%] sm:w-[66%] md:w-[70%] z-10 text-left">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-white tracking-tight leading-tight">
                 Ustadz Andri Noer Zaelani, M.Pd.
               </h3>
-              <p class="text-blue-300 text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 mb-3.5">
+              <p class="text-blue-200 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
                 Ketua Umum Pengurus Pusat IKAPMI
               </p>
-              <div class="border-l-2 border-emerald-400 pl-3.5 sm:pl-4 py-1 bg-white/[0.03] rounded-r-lg">
-                <p class="text-slate-200 text-xs sm:text-sm md:text-base italic font-serif leading-relaxed">
-                  "IKAPMI adalah rumah bersama untuk merajut sinergi, memperkuat jejaring alumni, dan berkontribusi nyata bagi peradaban."
-                </p>
-              </div>
+            </div>
+
+            <!-- Figure Photo: Right (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[36%] sm:w-[32%] md:w-[28%] flex justify-end z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_andri_zaelani.png?v=20261113c" 
+                   alt="Ustadz Andri Noer Zaelani, M.Pd." 
+                   class="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain pelindung-figure-shadow select-none -mt-8 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
             </div>
 
           </div>
