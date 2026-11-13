@@ -364,7 +364,6 @@ function initPerspectiveTunnelHero() {
 
   // Curated pool of ONLY large-group ("foto bersama-sama") LANDSCAPE photos (shuffled randomly on each visit)
   const curatedPool = [
-    // ── Foto baru (gallery_new) di urutan pertama ──
     { src: "assets/gallery/gallery_new_01.jpg", ratio: "4 / 3", title: "Kebersamaan IKAPMI Bandung", desc: "Momen hangat bersama keluarga besar IKAPMI Regional Bandung." },
     { src: "assets/gallery/gallery_new_02.jpg", ratio: "4 / 3", title: "Silaturahmi Santri Perantau", desc: "Santri PMUQI saling berbagi cerita dan semangat di perantauan Bandung." },
     { src: "assets/gallery/gallery_new_03.jpg", ratio: "4 / 3", title: "Agenda IKAPMI Bandung", desc: "Kegiatan rutin mempererat ukhuwah anggota IKAPMI Regional Bandung." },
@@ -389,7 +388,6 @@ function initPerspectiveTunnelHero() {
     { src: "assets/gallery/gallery_new_22.jpg", ratio: "4 / 3", title: "Ukhuwah Santri Rantau", desc: "Jalinan persaudaraan yang kuat antaranggota IKAPMI di Bandung." },
     { src: "assets/gallery/gallery_new_23.jpg", ratio: "4 / 3", title: "Kenangan Bersama IKAPMI", desc: "Momen istimewa bersama keluarga besar santri PMUQI di Bandung." },
     { src: "assets/gallery/gallery_new_24.jpg", ratio: "4 / 3", title: "IKAPMI Bandung Bergerak", desc: "Langkah nyata IKAPMI Bandung dalam mewujudkan Sadulur Ngahiji." },
-    // ── Foto lama yang masih ada ──
     { src: "assets/gallery/gallery_36.jpg", ratio: "16 / 9", title: "Kebersamaan di Masjid Al-Jabbar", desc: "Silaturahmi keluarga besar IKAPMI Bandung di pelataran Masjid Raya Al-Jabbar." },
     { src: "assets/gallery/gallery_38.jpg", ratio: "16 / 9", title: "Silaturahmi Akbar Keluarga IKAPMI", desc: "Kebersamaan penuh kehangatan seluruh anggota IKAPMI Regional Bandung." },
     { src: "assets/gallery/gallery_39.jpg", ratio: "4 / 3", title: "Kumpul Akbar Depan Gedung Sate", desc: "Konsolidasi santri perantau Bandung Raya berlatar ikon Kota Bandung." },
@@ -730,8 +728,7 @@ const articleData = {
     date: "04 Februari 2025",
     author: "Departemen Pendidikan & Akademik",
     tag: "Pengabdian Almamater",
-    image: "assets/gallery/gallery_34.jpg",
-    imageFit: "contain",
+    image: "assets/gallery/gallery_new_06.jpg",
     content: `
       <p class="mb-4">Sebagai wujud khidmah dan bakti kepada almamater tercinta di Leuwiliang Bogor, delegasi IKAPMI Regional Bandung hadir secara langsung dalam agenda tahunan Campus Expo di MA Ummul Quro Al-Islami.</p>
       <p class="mb-4">Delegasi Bandung mendirikan booth informasi khusus yang memperkenalkan ragam perguruan tinggi ternama di Bandung Raya, seperti UIN SGD, UNPAD, UPI, ITB, dan Telkom University. Para santri kelas akhir tampak sangat antusias berkonsultasi mengenai jalur seleksi masuk (SNBP, SNBT, SPAN-PTKIN, dan Ujian Mandiri).</p>
