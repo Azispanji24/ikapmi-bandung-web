@@ -30,7 +30,7 @@ const KIPRAH_ALUMNI: AlumnusProfile[] = [
   {
     image: "assets/kiprah/yeyen.jpeg",
     name: "Yeyen Hamidah, M.Pd.",
-    batch: "Angkatan 9 PMUQI",
+    batch: "Angkatan 8 PMUQI",
     role: "Dosen Telkom University",
   },
   {
