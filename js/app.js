@@ -729,6 +729,7 @@ const articleData = {
     author: "Departemen Pendidikan & Akademik",
     tag: "Pengabdian Almamater",
     image: "assets/gallery/gallery_new_06.jpg",
+    imageFit: "contain",
     content: `
       <p class="mb-4">Sebagai wujud khidmah dan bakti kepada almamater tercinta di Leuwiliang Bogor, delegasi IKAPMI Regional Bandung hadir secara langsung dalam agenda tahunan Campus Expo di MA Ummul Quro Al-Islami.</p>
       <p class="mb-4">Delegasi Bandung mendirikan booth informasi khusus yang memperkenalkan ragam perguruan tinggi ternama di Bandung Raya, seperti UIN SGD, UNPAD, UPI, ITB, dan Telkom University. Para santri kelas akhir tampak sangat antusias berkonsultasi mengenai jalur seleksi masuk (SNBP, SNBT, SPAN-PTKIN, dan Ujian Mandiri).</p>
@@ -803,12 +804,14 @@ function initArticleModal() {
 
       if (data && modal && modalContent) {
         const imgPosition = data.imagePosition ? data.imagePosition.replace('object-','') : 'center 30%';
+        const isContain = data.imageFit === 'contain';
 
         modalContent.innerHTML = `
-          <!-- Hero image: always cover, 16/9, rounded top -->
-          <div class="warta-modal-hero">
-            <img src="${data.image}" alt="${data.title}" style="object-position:${imgPosition}">
-            <div class="hero-grad"></div>
+          <!-- Hero image -->
+          <div class="warta-modal-hero" style="${isContain ? 'background:#0a1628;' : ''}">
+            <img src="${data.image}" alt="${data.title}"
+              style="object-fit:${isContain ? 'contain' : 'cover'};object-position:${isContain ? 'center' : imgPosition};${isContain ? 'padding:12px 0;' : ''}">
+            ${isContain ? '' : '<div class="hero-grad"></div>'}
             <!-- Tag badge on image -->
             <div class="absolute bottom-3 left-4 z-10">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider text-white border border-white/25"
