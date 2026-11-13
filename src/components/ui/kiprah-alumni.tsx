@@ -36,7 +36,7 @@ const KIPRAH_ALUMNI: AlumnusProfile[] = [
   {
     image: "assets/kiprah/diki.jpeg",
     name: "Diki Andriana",
-    batch: "Angkatan 9 PMUQI",
+    batch: "Angkatan 12 PMUQI",
     role: "Kepala Kantor DPC PKB Kab. Bandung",
   },
 ];
@@ -65,7 +65,7 @@ export function KiprahAlumniSection() {
           <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-16 sm:w-32 bg-gradient-to-r from-[#081326] to-transparent" />
           <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-16 sm:w-32 bg-gradient-to-l from-[#081326] to-transparent" />
 
-          <Marquee className="[--gap:1.5rem] [--duration:26s]" pauseOnHover repeat={4}>
+          <Marquee className="[--gap:1.5rem] [--duration:16s]" pauseOnHover repeat={4}>
             {KIPRAH_ALUMNI.map((member) => (
               <div
                 className="group flex w-64 shrink-0 flex-col"
@@ -74,7 +74,9 @@ export function KiprahAlumniSection() {
                 <div className="relative h-[23rem] w-full overflow-hidden rounded-2xl bg-[#0d1f3c] border border-white/10 shadow-xl">
                   <img
                     alt={member.name}
-                    className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                    className={`h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 ${
+                      member.name.includes("Yeyen") ? "object-center" : "object-top"
+                    }`}
                     src={member.image}
                   />
                   <div className="absolute bottom-0 w-full rounded-lg bg-white/90 backdrop-blur-sm p-3 text-left">
