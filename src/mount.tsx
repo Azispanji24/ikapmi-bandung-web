@@ -8,6 +8,7 @@ const IKAPMI_OFFICERS: LanyardMember[] = [
     "name": "Hafizh Najwal",
     "role": "Ketua Umum",
     "team": "Ex Officio",
+    "image": "assets/pengurus/hafizh-najwal-Ketua-Umum.jpg?v=20261113",
     "bio": "Memegang pucuk pimpinan tertinggi, penentu arah kebijakan strategis organisasi, dan representasi resmi IKAPMI Regional Bandung.",
     "tags": [
       "Ketua Umum",

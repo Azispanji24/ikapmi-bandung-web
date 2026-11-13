@@ -67,7 +67,7 @@
   <script src="https://unpkg.com/lucide@0.469.0"></script>
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=4.2">
+  <link rel="stylesheet" href="css/style.css?v=4.3">
 </head>
 
 <body class="bg-[#fbfdfc] text-slate-800 antialiased selection:bg-[#0f2e59] selection:text-white">
@@ -101,6 +101,7 @@
 
         <a href="#beranda" class="liquid-nav-item active" data-nav="beranda">Beranda</a>
         <a href="#tentang" class="liquid-nav-item" data-nav="tentang">Tentang</a>
+        <a href="#pelindung" class="liquid-nav-item" data-nav="pelindung">Pelindung</a>
         <a href="#struktur" class="liquid-nav-item" data-nav="struktur">Kepengurusan</a>
         <a href="#panduan" class="liquid-nav-item" data-nav="panduan">Panduan</a>
         <a href="#kampus" class="liquid-nav-item" data-nav="kampus">Kampus</a>
@@ -141,6 +142,11 @@
         <a href="#tentang"
           class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
           <span>Tentang &amp; Nilai</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#pelindung"
+          class="min-h-[42px] px-3.5 py-2.5 rounded-xl hover:bg-slate-100/80 active:bg-slate-100 hover:text-brand-900 transition-colors flex items-center justify-between">
+          <span>Pelindung Organisasi</span>
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </a>
         <a href="#struktur"
@@ -365,6 +371,172 @@
   </section>
 
   <!-- =================================================================
+       4.5 DEWAN PELINDUNG & PENASEHAT ORGANISASI (COMPACT ZIGZAG)
+  ================================================================== -->
+  <section id="pelindung" class="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-grid-paper border-b border-slate-200">
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-700 tracking-tight leading-tight">
+          Pelindung Organisasi
+        </h2>
+        <div class="w-14 h-1 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full mx-auto mt-2.5 mb-2.5"></div>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+          Pondok Pesantren Ummul Quro Al-Islami Bogor &amp; Pengurus Pusat IKAPMI
+        </p>
+      </div>
+
+      <!-- Compact Strips Stack (Dekat Jaraknya: space-y-3 sm:space-y-4 md:space-y-5) -->
+      <div class="space-y-3.5 sm:space-y-4 md:space-y-5">
+
+        <!-- ==============================================================
+             CARD 1 (KANAN): Dr. KH. Saiful Falah, M.Pd.I
+             Background: Biru Dongker
+        =============================================================== -->
+        <div class="relative w-full pt-8 sm:pt-11 md:pt-15 group">
+          <div class="relative w-full bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow bg-grid-inner-dark min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
+            
+            <!-- Content Left (Mobile & Desktop) -->
+            <div class="w-[58%] sm:w-[64%] md:w-[68%] z-10 text-left">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-white tracking-tight leading-tight">
+                Dr. KH. Saiful Falah, M.Pd.I
+              </h3>
+              <p class="text-blue-200 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
+                Pimpinan Pondok Pesantren Ummul Quro Al-Islami Bogor
+              </p>
+            </div>
+
+            <!-- Figure Photo: Right (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[40%] sm:w-[34%] md:w-[30%] flex justify-end z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_saiful_falah.png?v=20261113f" 
+                   alt="Dr. KH. Saiful Falah, M.Pd.I" 
+                   class="h-32 sm:h-44 md:h-56 lg:h-68 w-auto object-contain pelindung-figure-shadow select-none -mt-7 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             CARD 2 (KIRI): Dr. KH. Syamsul Rizal Mz, S.H.I., M.Pd.I
+             Background: Putih
+        =============================================================== -->
+        <div class="relative w-full pt-8 sm:pt-11 md:pt-15 group">
+          <div class="relative w-full bg-white text-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow border border-slate-200/90 bg-grid-inner-light min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
+            
+            <!-- Figure Photo: Left (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[40%] sm:w-[34%] md:w-[30%] flex justify-start z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_syamsul_rizal.png?v=20261113f" 
+                   alt="Dr. KH. Syamsul Rizal Mz, S.H.I., M.Pd.I" 
+                   class="h-32 sm:h-44 md:h-56 lg:h-68 w-auto object-contain pelindung-figure-shadow-light select-none -mt-7 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
+            </div>
+
+            <!-- Content Right (Mobile & Desktop) -->
+            <div class="w-[58%] sm:w-[64%] md:w-[68%] z-10 text-right">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-brand-700 tracking-tight leading-tight">
+                Dr. KH. Syamsul Rizal Mz, S.H.I., M.Pd.I
+              </h3>
+              <p class="text-slate-600 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
+                Pimpinan Pondok Pesantren Ummul Quro Al-Islami Bogor
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             CARD 3 (KANAN): Ustadzah Hj. Nuril Izzah
+             Background: Biru Dongker
+        =============================================================== -->
+        <div class="relative w-full pt-8 sm:pt-11 md:pt-15 group">
+          <div class="relative w-full bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow bg-grid-inner-dark min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
+            
+            <!-- Content Left (Mobile & Desktop) -->
+            <div class="w-[58%] sm:w-[64%] md:w-[68%] z-10 text-left">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-white tracking-tight leading-tight">
+                Ustadzah Hj. Nuril Izzah
+              </h3>
+              <p class="text-blue-200 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
+                Ahlul Bait Pondok Pesantren Ummul Quro Al-Islami Bogor
+              </p>
+            </div>
+
+            <!-- Figure Photo: Right (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[40%] sm:w-[34%] md:w-[30%] flex justify-end z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_nuril_izzah.png?v=20261113f" 
+                   alt="Ustadzah Hj. Nuril Izzah" 
+                   class="h-32 sm:h-44 md:h-56 lg:h-68 w-auto object-contain pelindung-figure-shadow select-none -mt-7 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             CARD 4 (KIRI): Ustadzah Hj. Ummu Hafsoh
+             Background: Putih
+        =============================================================== -->
+        <div class="relative w-full pt-8 sm:pt-11 md:pt-15 group">
+          <div class="relative w-full bg-white text-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow border border-slate-200/90 bg-grid-inner-light min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
+            
+            <!-- Figure Photo: Left (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[40%] sm:w-[34%] md:w-[30%] flex justify-start z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_ummu_hafsoh.png?v=20261113f" 
+                   alt="Ustadzah Hj. Ummu Hafsoh" 
+                   class="h-32 sm:h-44 md:h-56 lg:h-68 w-auto object-contain pelindung-figure-shadow-light select-none -mt-7 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
+            </div>
+
+            <!-- Content Right (Mobile & Desktop) -->
+            <div class="w-[58%] sm:w-[64%] md:w-[68%] z-10 text-right">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-brand-700 tracking-tight leading-tight">
+                Ustadzah Hj. Ummu Hafsoh
+              </h3>
+              <p class="text-slate-600 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
+                Ahlul Bait Pondok Pesantren Ummul Quro Al-Islami Bogor
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==============================================================
+             CARD 5 (KANAN): Ustadz Andri Noer Zaelani, M.Pd.
+             Background: Biru Dongker
+        =============================================================== -->
+        <div class="relative w-full pt-8 sm:pt-11 md:pt-15 group">
+          <div class="relative w-full bg-gradient-to-r from-brand-900 via-brand-700 to-brand-800 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-7 pelindung-card-shadow bg-grid-inner-dark min-h-[90px] sm:min-h-[115px] md:min-h-[130px] flex items-center justify-between">
+            
+            <!-- Content Left (Mobile & Desktop) -->
+            <div class="w-[58%] sm:w-[64%] md:w-[68%] z-10 text-left">
+              <h3 class="text-xs sm:text-base md:text-xl lg:text-2xl font-bold sm:font-extrabold text-white tracking-tight leading-tight">
+                Ustadz Andri Noer Zaelani, M.Pd.
+              </h3>
+              <p class="text-blue-200 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide mt-0.5 sm:mt-1 leading-snug">
+                Ketua Umum Pengurus Pusat IKAPMI
+              </p>
+            </div>
+
+            <!-- Figure Photo: Right (Mobile & Desktop Pop-out Zigzag) -->
+            <div class="w-[40%] sm:w-[34%] md:w-[30%] flex justify-end z-20 pointer-events-none">
+              <img src="assets/pelindung/pelindung_andri_zaelani.png?v=20261113f" 
+                   alt="Ustadz Andri Noer Zaelani, M.Pd." 
+                   class="h-32 sm:h-44 md:h-56 lg:h-68 w-auto object-contain pelindung-figure-shadow select-none -mt-7 sm:-mt-10 md:-mt-14 transform transition-transform duration-300 group-hover:scale-105"
+                   loading="lazy">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================
        5. STRUKTUR KEPENGURUSAN - KABINET ASTRA NOWANTA (TEAM LANYARD RAIL)
   ================================================================== -->
   <section id="struktur" data-bg="diagonals" class="bg-section bg-section-a py-16 sm:py-24 border-b border-slate-200 overflow-hidden">
@@ -560,20 +732,16 @@
         <div id="tab-mentor" class="guide-content hidden">
           <p class="pg-hint">Butuh teman diskusi soal jurusan atau adaptasi di Bandung? Hubungi narahubung.</p>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
-            <!-- Card Pendamping 1: Hafizh Najwal (Ketua Umum) -->
+            <!-- Card Pendamping 1: Hafizh Najwal -->
             <div
               class="relative overflow-hidden bg-gradient-to-br from-[#0f2e59] to-[#1b4a88] text-white rounded-2xl p-4 sm:p-5 border border-[#0f2e59]/20 shadow-md w-full">
               <img src="assets/pengurus/hafizh-najwal-nobg.png" alt="Hafizh Najwal"
-                class="absolute -right-2 sm:right-1 top-1 bottom-0 h-[calc(100%-0.25rem)] w-auto max-w-none object-contain object-bottom pointer-events-none select-none z-0"
+                class="absolute -right-3 sm:-right-1 top-1 bottom-0 h-[calc(100%-0.25rem)] w-auto max-w-none object-contain object-bottom pointer-events-none select-none z-0"
                 style="-webkit-mask-image: linear-gradient(to bottom, #000 45%, rgba(0, 0, 0, 0.2) 100%); mask-image: linear-gradient(to bottom, #000 45%, rgba(0, 0, 0, 0.2) 100%);" />
 
               <div class="relative z-10 pr-32 sm:pr-40">
-                <span
-                  class="inline-block text-[10px] font-bold uppercase tracking-widest text-amber-300 bg-white/10 px-2.5 py-0.5 rounded-full">
-                  Ketua Umum
-                </span>
-                <h4 class="font-bold text-sm sm:text-base mt-1.5">Hafizh Najwal</h4>
-                <p class="text-[11px] text-slate-200 mt-0.5 leading-relaxed">
+                <h4 class="font-bold text-base sm:text-lg text-white">Hafizh Najwal</h4>
+                <p class="text-[11px] text-slate-200 mt-1 leading-relaxed">
                   Pendampingan santri baru, konsultasi jurusan, dan informasi perkuliahan di Bandung.
                 </p>
 
@@ -588,7 +756,7 @@
               </div>
             </div>
 
-            <!-- Card Pendamping 2: Resti Fujianti (Bendahara) -->
+            <!-- Card Pendamping 2: Resti Fujianti -->
             <div
               class="relative overflow-hidden bg-gradient-to-br from-[#0f2e59] to-[#1b4a88] text-white rounded-2xl p-4 sm:p-5 border border-[#0f2e59]/20 shadow-md w-full">
               <img src="assets/pengurus/resti-fujianti-nobg.png" alt="Resti Fujianti"
@@ -596,12 +764,8 @@
                 style="-webkit-mask-image: linear-gradient(to bottom, #000 45%, rgba(0, 0, 0, 0.2) 100%); mask-image: linear-gradient(to bottom, #000 45%, rgba(0, 0, 0, 0.2) 100%);" />
 
               <div class="relative z-10 pr-32 sm:pr-40">
-                <span
-                  class="inline-block text-[10px] font-bold uppercase tracking-widest text-amber-300 bg-white/10 px-2.5 py-0.5 rounded-full">
-                  Bendahara
-                </span>
-                <h4 class="font-bold text-sm sm:text-base mt-1.5">Resti Fujianti</h4>
-                <p class="text-[11px] text-slate-200 mt-0.5 leading-relaxed">
+                <h4 class="font-bold text-base sm:text-lg text-white">Resti Fujianti</h4>
+                <p class="text-[11px] text-slate-200 mt-1 leading-relaxed">
                   Konsultasi adaptasi kampus Bandung &amp; pendampingan khusus santri putri PMUQI.
                 </p>
 
@@ -1786,7 +1950,7 @@
     lucide.createIcons();
   </script>
   <script src="js/card-deck-carousel.bundle.js?v=landscape_20261112_3"></script>
-  <script src="js/team-lanyard-rail.v10.js?t=short_20261112"></script>
+  <script src="js/team-lanyard-rail.v10.js?t=short_20261113"></script>
   <script src="js/coverflow-carousel.bundle.js?v=gallery_80_20261111"></script>
   <script src="js/testimonials-wall.bundle.js?v=20261112_5"></script>
   <script src="js/kiprah-alumni.bundle.js?v=20261112_4"></script>
