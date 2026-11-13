@@ -197,6 +197,87 @@
       };
     },
 
+    /* --------------------------------------------------------------- hexgrid */
+    hexgrid: function (S) {
+      var SIZE = 36, pulses = [], lastPulse = 0;
+      var cols, rows, hexes = [];
+
+      function hexPath(ctx, cx, cy, r) {
+        ctx.beginPath();
+        for (var i = 0; i < 6; i++) {
+          var a = Math.PI / 180 * (60 * i - 30);
+          if (i === 0) ctx.moveTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+          else ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+        }
+        ctx.closePath();
+      }
+
+      return {
+        resize: function () {
+          var w = SIZE * 2, h = Math.sqrt(3) * SIZE;
+          cols = Math.ceil(S.w / (w * 0.75)) + 2;
+          rows = Math.ceil(S.h / h) + 2;
+          hexes = [];
+          for (var r = 0; r < rows; r++) {
+            for (var c = 0; c < cols; c++) {
+              var cx = c * w * 0.75 - SIZE;
+              var cy = r * h + (c % 2 ? h / 2 : 0) - h / 2;
+              hexes.push({ cx: cx, cy: cy, ph: Math.random() * TAU });
+            }
+          }
+        },
+        draw: function (ctx, t, dt) {
+          var T = S.tone, i, h = Math.sqrt(3) * SIZE;
+
+          // Spawn pulse at random hex every 0.6s
+          if (t - lastPulse > 0.6 && hexes.length) {
+            var idx = Math.floor(Math.random() * hexes.length);
+            pulses.push({ cx: hexes[idx].cx, cy: hexes[idx].cy, age: 0, life: 2.2 + Math.random() * 1.8, gold: Math.random() < 0.32 });
+            lastPulse = t;
+          }
+
+          // Static faint hex grid
+          ctx.lineWidth = 0.8;
+          ctx.strokeStyle = rgba(T.line, 0.055 * T.k);
+          for (i = 0; i < hexes.length; i++) {
+            hexPath(ctx, hexes[i].cx, hexes[i].cy, SIZE - 1);
+            ctx.stroke();
+          }
+
+          // Animated pulses: hex fills that fade in and out
+          for (i = pulses.length - 1; i >= 0; i--) {
+            var p = pulses[i];
+            p.age += dt;
+            if (p.age >= p.life) { pulses.splice(i, 1); continue; }
+            var k = p.age / p.life;
+            var alpha = Math.sin(k * Math.PI) * (p.gold ? 0.18 : 0.10) * T.k;
+            ctx.fillStyle = rgba(p.gold ? T.gold : T.soft, alpha);
+            hexPath(ctx, p.cx, p.cy, SIZE - 2);
+            ctx.fill();
+            // Edge glow
+            ctx.lineWidth = 1.4;
+            ctx.strokeStyle = rgba(p.gold ? T.gold : T.line, alpha * 0.7);
+            hexPath(ctx, p.cx, p.cy, SIZE - 2);
+            ctx.stroke();
+          }
+
+          // Mouse: illuminate nearby hexes
+          if (S.mouse.s > 0.01) {
+            for (i = 0; i < hexes.length; i++) {
+              var dx = hexes[i].cx - S.mouse.x, dy = hexes[i].cy - S.mouse.y;
+              var d2 = dx * dx + dy * dy;
+              if (d2 < 180 * 180) {
+                var fade = (1 - Math.sqrt(d2) / 180) * S.mouse.s;
+                ctx.fillStyle = rgba(T.gold, 0.15 * fade * T.k);
+                hexPath(ctx, hexes[i].cx, hexes[i].cy, SIZE - 2);
+                ctx.fill();
+              }
+            }
+          }
+        }
+      };
+    },
+
     /* ------------------------------------------------------------ particles */
     particles: function (S) {
       var ps = [];
