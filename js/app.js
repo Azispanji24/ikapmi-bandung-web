@@ -1,4 +1,4 @@
-/**
+﻿/**
  * IKAPMI Regional Bandung - Official Web Application Logic
  */
 
@@ -710,7 +710,7 @@ const articleData = {
       <blockquote class="p-4 my-4 border-l-4 border-[#0f2e59] bg-blue-50 text-blue-950 rounded-r-lg italic">
         "Bandung adalah kawah candradimuka intelektual. Kita datang dengan bekal adab dan ilmu pesantren, lalu pulang memberikan kontribusi nyata bagi umat dan bangsa."
       </blockquote>
-      <p>MUREG 2025 ditutup dengan doa bersama untuk almamater Pondok Pesantren Modern Ummul Quro Al-Islami dan sesi foto kebersamaan lintas angkatan alumni.</p>
+      <p>MUREG 2025 ditutup dengan doa bersama untuk almamater Pesantren Modern Ummul Quro Al-Islami dan sesi foto kebersamaan lintas angkatan alumni.</p>
     `
   },
   2: {
@@ -747,7 +747,7 @@ const articleData = {
     imagePosition: "object-[50%_68%]",
     content: `
       <p class="mb-4">Suasana hangat penuh kekeluargaan menyelimuti pelataran Masjid Raya Al-Jabbar saat keluarga besar IKAPMI Regional Bandung menggelar kegiatan Buka Puasa Bersama di bulan suci Ramadhan.</p>
-      <p class="mb-4">Mengenakan pakaian dinas lapangan (PDL) IKAPMI Bandung, para mahasiswa dan alumni Pondok Pesantren Modern Ummul Quro Al-Islami duduk melingkar bersama, berbagi hidangan takjil, serta bertukar cerita mengenai dinamika perkuliahan dan pengabdian di Bandung Raya.</p>
+      <p class="mb-4">Mengenakan pakaian dinas lapangan (PDL) IKAPMI Bandung, para mahasiswa dan alumni Pesantren Modern Ummul Quro Al-Islami duduk melingkar bersama, berbagi hidangan takjil, serta bertukar cerita mengenai dinamika perkuliahan dan pengabdian di Bandung Raya.</p>
       <p class="mb-4">Momentum buka puasa bersama ini menjadi pengingat bahwa di tengah kesibukan akademik masing-masing kampus, ikatan ukhuwah sesama alumni santri tetap terjaga erat dalam bingkai kebersamaan <em>Sadulur Ngahiji</em>.</p>
     `
   },
@@ -760,7 +760,7 @@ const articleData = {
     imageFit: "contain",
     content: `
       <p class="mb-4">Sebagai ikhtiar merawat ruhani dan tradisi keilmuan pesantren di tanah rantau, IKAPMI Regional Bandung secara istikamah menyelenggarakan Pengajian Yasin Rutinan yang diikuti oleh santri ikhwan dan akhwat lintas kampus.</p>
-      <p class="mb-4">Kegiatan diisi dengan pembacaan Surah Yasin, tahlil, doa bersama untuk kedua orang tua, para masyayikh Pondok Pesantren Modern Ummul Quro Al-Islami, serta ditutup dengan ramah tamah hangat antaranggota.</p>
+      <p class="mb-4">Kegiatan diisi dengan pembacaan Surah Yasin, tahlil, doa bersama untuk kedua orang tua, para masyayikh Pesantren Modern Ummul Quro Al-Islami, serta ditutup dengan ramah tamah hangat antaranggota.</p>
       <p class="mb-4">Melalui majelis rutinan sederhana namun penuh keberkahan ini, diharapkan para mahasiswa perantau senantiasa diberi keteguhan hati, kelancaran studi, dan kepekaan sosial di lingkungan masyarakat Bandung.</p>
     `
   },
@@ -785,7 +785,7 @@ const articleData = {
     image: "assets/warta_silaturahmi_pimpinan.jpg",
     imageFit: "contain",
     content: `
-      <p class="mb-4">Jajaran pengurus dan perwakilan santri IKAPMI Regional Bandung melaksanakan agenda Silaturahmi bersama Pimpinan Pondok Pesantren Modern Ummul Quro Al-Islami (PMUQI) sebagai wujud ta'zhim sekaligus penyelarasan langkah pengabdian alumni.</p>
+      <p class="mb-4">Jajaran pengurus dan perwakilan santri IKAPMI Regional Bandung melaksanakan agenda Silaturahmi bersama Pimpinan Pesantren Modern Ummul Quro Al-Islami (PMUQI) sebagai wujud ta'zhim sekaligus penyelarasan langkah pengabdian alumni.</p>
       <p class="mb-4">Dalam suasana penuh kehangatan dan kesederhanaan, para kader memohon doa restu serta menyimak wejangan berharga terkait menjaga adab santri, integritas keilmuan, dan kesiapan berkontribusi bagi umat setelah menyelesaikan studi di Bandung.</p>
       <p class="mb-4">Pertemuan ini semakin meneguhkan komitmen IKAPMI Bandung untuk menjadi wadah pemersatu yang membawa nama baik almamater di tengah masyarakat luas.</p>
     `
@@ -1533,7 +1533,7 @@ const CAMPUS_JALUR_DATA = {
         "tagClass": "bg-blue-100 text-blue-800 border-blue-200",
         "schedule": "Setiap Bulan (Fleksibel)",
         "desc": "Ujian online fleksibel dari tempat masing-masing menggunakan laptop/ponsel kapan saja sesuai jadwal yang dipilih pendaftar.",
-        "santriNote": "Sangat praktis bagi santri yang masih mukim di pondok pesantren karena tidak perlu bepergian keluar kampus pondok.",
+        "santriNote": "Sangat praktis bagi santri yang masih mukim di pesantren modern karena tidak perlu bepergian keluar kampus pondok.",
         "link": "https://smb.telkomuniversity.ac.id"
       },
       {

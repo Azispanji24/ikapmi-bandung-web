@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
@@ -281,7 +281,7 @@ export function TestimonialsSection() {
         {/* Header Section Matching 21st.dev testimonials-6 */}
         <div className="mx-auto flex max-w-xl flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-extrabold text-2xl tracking-tight leading-snug text-slate-900 sm:text-4xl">
-            Sapa Sadulur
+            Sapa Dulur
           </h2>
           <p className="text-center text-slate-500 text-sm sm:text-base leading-relaxed">
             Titip salam, kabar, atau ucapan untuk sesama alumni dan santri IKAPMI Bandung.
@@ -384,7 +384,7 @@ export function TestimonialsSection() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">Alhamdulillah!</h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  Pesanmu sudah terkirim dan langsung tampil di Sapa Sadulur.
+                  Pesanmu sudah terkirim dan langsung tampil di Sapa Dulur.
                 </p>
                 {cloudApiUrl && (
                   <p className="mt-1 text-xs text-emerald-600 font-medium">
@@ -396,7 +396,7 @@ export function TestimonialsSection() {
               <div>
                 <div className="flex items-center gap-2 mb-1 text-brand-600">
                   <Heart className="w-4 h-4 fill-brand-600" />
-                  <span className="text-xs font-semibold tracking-wider uppercase">Sapa Sadulur</span>
+                  <span className="text-xs font-semibold tracking-wider uppercase">Sapa Dulur</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">Tulis Pesan</h3>
                 <p className="text-xs text-slate-500 mt-1 mb-5">

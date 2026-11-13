@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 import { Marquee } from "./marquee";
 
 export interface AlumnusProfile {
@@ -42,7 +42,7 @@ export function KiprahAlumniSection() {
             Kiprah Alumni
           </h2>
           <p className="max-w-2xl text-slate-300 text-sm sm:text-base leading-relaxed">
-            Mengenal tokoh dan senior alumni Pondok Pesantren Modern Ummul Quro
+            Mengenal tokoh dan senior alumni Pesantren Modern Ummul Quro
             Al-Islami yang berkiprah aktif sebagai akademisi, praktisi, maupun
             penggerak di masyarakat.
           </p>
