@@ -1246,9 +1246,9 @@ a.rounded-lg[class*="bg-white"][class*="h-12"], .campus-filter-btn.tab-btn:not(.
   box-shadow: 0 20px 45px -15px rgba(10, 30, 60, 0.2), 0 0 0 1px rgba(15, 46, 89, 0.08);
 }
 .pelindung-figure-shadow {
-  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.42));
 }
 .pelindung-figure-shadow-light {
-  filter: drop-shadow(0 18px 24px rgba(15, 46, 89, 0.38));
+  filter: drop-shadow(0 8px 16px rgba(15, 46, 89, 0.25));
 }
 
