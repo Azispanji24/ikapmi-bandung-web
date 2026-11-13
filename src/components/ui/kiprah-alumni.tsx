@@ -27,6 +27,18 @@ const KIPRAH_ALUMNI: AlumnusProfile[] = [
     batch: "Angkatan 9 PMUQI",
     role: "Dosen UIN SGD Bandung",
   },
+  {
+    image: "assets/kiprah/yeyen.jpeg",
+    name: "Yeyen Hamidah, M.Pd.",
+    batch: "Angkatan 9 PMUQI",
+    role: "Dosen Telkom University",
+  },
+  {
+    image: "assets/kiprah/diki.jpeg",
+    name: "Diki Andriana",
+    batch: "Angkatan 9 PMUQI",
+    role: "Kepala Kantor DPC PKB Kab. Bandung",
+  },
 ];
 
 export function KiprahAlumniSection() {
