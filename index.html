@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
   <!-- Tailwind CSS via CDN with custom brand color tokens -->
@@ -85,10 +85,16 @@
           <img src="assets/ikapmi_logo.jpg" alt="Logo IKAPMI Regional Bandung"
             class="w-full h-full object-cover rounded-full">
         </div>
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center leading-none">
           <span
-            class="font-extrabold tracking-tight text-[13.5px] sm:text-base lg:text-[17px] text-brand-900 leading-none whitespace-nowrap">
-            IKAPMI BANDUNG
+            style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:700; letter-spacing:0.04em; font-size:clamp(15px,1.6vw,20px);"
+            class="text-brand-900 whitespace-nowrap tracking-widest uppercase">
+            IKAPMI
+          </span>
+          <span
+            style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; letter-spacing:0.18em; font-size:clamp(7.5px,0.75vw,10px);"
+            class="text-brand-700/70 whitespace-nowrap uppercase mt-[1px]">
+            BANDUNG
           </span>
         </div>
       </a>
